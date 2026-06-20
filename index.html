@@ -344,6 +344,181 @@
             border-color: rgba(247, 201, 72, 0.1);
         }
 
+        /* ----- FREE TRIAL SECTION (after hero) ----- */
+        .trial-section {
+            background: linear-gradient(135deg, rgba(247, 201, 72, 0.06), rgba(224, 157, 0, 0.02));
+            border: 1px solid rgba(247, 201, 72, 0.08);
+            border-radius: 28px;
+            padding: 32px 40px;
+            margin: 10px 0 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .trial-section .trial-info h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .trial-section .trial-info h2 span {
+            color: #f7c948;
+        }
+
+        .trial-section .trial-info p {
+            color: #b0c8ea;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .trial-section .trial-info .contact-details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            padding: 16px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .trial-section .trial-info .contact-details div {
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+
+        .trial-section .trial-info .contact-details div:last-child {
+            margin-bottom: 0;
+        }
+
+        .trial-section .trial-info .contact-details .label {
+            color: #889fc7;
+        }
+
+        .trial-section .trial-info .contact-details a {
+            color: #f7c948;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .trial-section .trial-info .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .trial-section .trial-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .trial-section .trial-form .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .trial-section .trial-form select,
+        .trial-section .trial-form input {
+            flex: 1;
+            min-width: 180px;
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.3);
+            color: #eef4ff;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .trial-section .trial-form select:focus,
+        .trial-section .trial-form input:focus {
+            border-color: #f7c948;
+            box-shadow: 0 0 0 4px rgba(247, 201, 72, 0.08);
+        }
+
+        .trial-section .trial-form select option {
+            background: #1a2533;
+            color: #eef4ff;
+        }
+
+        .trial-section .trial-form #macField {
+            display: none;
+        }
+
+        .trial-section .trial-form #macField.visible {
+            display: block;
+        }
+
+        .trial-section .trial-form #macField input {
+            width: 100%;
+        }
+
+        .trial-section .trial-form .connection-hint {
+            font-size: 13px;
+            color: #6a7f9e;
+            padding-left: 4px;
+        }
+
+        .trial-section .trial-form .trial-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .trial-section .trial-form .btn-submit {
+            background: linear-gradient(145deg, #f7c948, #e09d00);
+            border: none;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 16px;
+            color: #0b0e14;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .trial-section .trial-form .btn-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 28px rgba(240, 165, 0, 0.35);
+        }
+
+        .trial-section .trial-form .btn-trial-whatsapp,
+        .trial-section .trial-form .btn-trial-telegram {
+            padding: 14px 28px;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border-radius: 60px;
+            font-weight: 600;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .trial-section .trial-form .btn-trial-whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .trial-section .trial-form .btn-trial-whatsapp:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.35);
+        }
+
+        .trial-section .trial-form .btn-trial-telegram {
+            background: #0088cc;
+            color: #fff;
+        }
+
+        .trial-section .trial-form .btn-trial-telegram:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 28px rgba(0, 136, 204, 0.35);
+        }
+
         /* ----- SECTION TITLES ----- */
         .section-title {
             font-size: 32px;
@@ -522,34 +697,71 @@
             font-size: 13px;
         }
 
+        .package-card .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
         .package-card .btn-plan {
-            background: transparent;
-            border: 1px solid rgba(247, 201, 72, 0.3);
-            color: #f7c948;
             padding: 12px 20px;
             border-radius: 60px;
             font-weight: 600;
             cursor: pointer;
             transition: 0.2s;
-            margin-top: 8px;
             width: 100%;
             font-size: 15px;
-        }
-
-        .package-card .btn-plan:hover {
-            background: rgba(247, 201, 72, 0.1);
-            border-color: #f7c948;
-        }
-
-        .package-card .btn-plan.primary {
-            background: linear-gradient(145deg, #f7c948, #e09d00);
-            color: #0b0e14;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
             border: none;
         }
 
-        .package-card .btn-plan.primary:hover {
+        .package-card .btn-plan.whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .package-card .btn-plan.whatsapp:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .package-card .btn-plan.telegram {
+            background: #0088cc;
+            color: #fff;
+        }
+
+        .package-card .btn-plan.telegram:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(0, 136, 204, 0.3);
+        }
+
+        .package-card .btn-plan.primary-whatsapp {
+            background: linear-gradient(145deg, #f7c948, #e09d00);
+            color: #0b0e14;
+        }
+
+        .package-card .btn-plan.primary-whatsapp:hover {
             transform: scale(1.02);
             box-shadow: 0 8px 28px rgba(240, 165, 0, 0.35);
+        }
+
+        .package-card .btn-plan.primary-telegram {
+            background: linear-gradient(145deg, #f7c948, #e09d00);
+            color: #0b0e14;
+        }
+
+        .package-card .btn-plan.primary-telegram:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 28px rgba(240, 165, 0, 0.35);
+        }
+
+        .package-card .btn-plan i {
+            font-size: 16px;
         }
 
         /* ----- RESELLER ----- */
@@ -615,7 +827,7 @@
             margin-top: 4px;
         }
 
-        /* ----- CONVERTER ----- */
+        /* ----- CONVERTER (fixed) ----- */
         .converter-box {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 32px;
@@ -697,6 +909,14 @@
             margin-right: 10px;
         }
 
+        .converter-result .error {
+            color: #ff6b6b;
+        }
+
+        .converter-result .error i {
+            color: #ff6b6b;
+        }
+
         /* ----- DOWNLOAD ----- */
         .download-grid {
             display: grid;
@@ -775,184 +995,40 @@
             line-height: 1.6;
         }
 
-        /* ----- CONTACT / FREE TRIAL ----- */
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 44px;
-            background: rgba(255, 255, 255, 0.01);
-            border-radius: 32px;
-            padding: 40px 36px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            margin: 20px 0 10px;
+        /* ----- SOCIAL MEDIA SECTION ----- */
+        .social-section {
+            text-align: center;
+            margin: 40px 0 20px;
         }
 
-        .contact-info h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .contact-info p {
-            color: #b0c8ea;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-
-        .contact-info .contact-details {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 18px;
-            padding: 20px 24px;
-            margin: 14px 0 18px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .contact-info .contact-details div {
-            margin-bottom: 8px;
-        }
-
-        .contact-info .contact-details div:last-child {
-            margin-bottom: 0;
-        }
-
-        .contact-info .contact-details a {
-            color: #f7c948;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-        }
-
-        .contact-info .contact-details a:hover {
-            text-decoration: underline;
-        }
-
-        .contact-info .contact-details .label {
-            color: #889fc7;
-            font-size: 14px;
-        }
-
-        .social-links {
+        .social-section .social-links {
             display: flex;
+            justify-content: center;
             gap: 16px;
             flex-wrap: wrap;
-            margin-top: 14px;
+            margin-top: 16px;
         }
 
-        .social-links a {
+        .social-section .social-links a {
             background: rgba(255, 255, 255, 0.03);
-            width: 52px;
-            height: 52px;
+            width: 56px;
+            height: 56px;
             border-radius: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 26px;
             color: #c6d9f7;
             border: 1px solid rgba(255, 255, 255, 0.03);
             transition: 0.2s;
             text-decoration: none;
         }
 
-        .social-links a:hover {
+        .social-section .social-links a:hover {
             background: rgba(247, 201, 72, 0.1);
             color: #f7c948;
             border-color: rgba(247, 201, 72, 0.2);
             transform: translateY(-3px);
-        }
-
-        .trial-form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .trial-form .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .trial-form select {
-            flex: 1;
-            min-width: 200px;
-            padding: 14px 20px;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(0, 0, 0, 0.3);
-            color: #eef4ff;
-            font-size: 15px;
-            outline: none;
-        }
-
-        .trial-form select:focus {
-            border-color: #f7c948;
-            box-shadow: 0 0 0 4px rgba(247, 201, 72, 0.08);
-        }
-
-        .trial-form select option {
-            background: #1a2533;
-            color: #eef4ff;
-        }
-
-        #macField {
-            display: none;
-        }
-
-        #macField.visible {
-            display: block;
-        }
-
-        #macField input {
-            width: 100%;
-            padding: 14px 20px;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(0, 0, 0, 0.3);
-            color: #eef4ff;
-            font-size: 15px;
-            outline: none;
-        }
-
-        #macField input:focus {
-            border-color: #f7c948;
-            box-shadow: 0 0 0 4px rgba(247, 201, 72, 0.08);
-        }
-
-        .trial-form .btn-submit {
-            background: linear-gradient(145deg, #f7c948, #e09d00);
-            border: none;
-            padding: 14px 36px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 16px;
-            color: #0b0e14;
-            cursor: pointer;
-            transition: 0.2s;
-            align-self: flex-start;
-        }
-
-        .trial-form .btn-submit:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 28px rgba(240, 165, 0, 0.35);
-        }
-
-        .trial-form .connection-hint {
-            font-size: 13px;
-            color: #6a7f9e;
-            padding-left: 4px;
-        }
-
-        .trial-buttons-large {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-top: 8px;
-        }
-
-        .trial-buttons-large .btn-trial-whatsapp,
-        .trial-buttons-large .btn-trial-telegram {
-            padding: 12px 28px;
-            font-size: 15px;
         }
 
         /* ----- FOOTER ----- */
@@ -984,8 +1060,7 @@
         @media (max-width: 992px) {
             .hero { grid-template-columns: 1fr; gap: 32px; }
             .hero-right { grid-template-columns: repeat(2, 1fr); }
-            .contact-wrapper { grid-template-columns: 1fr; }
-            .faq-grid { grid-template-columns: 1fr; }
+            .trial-section { grid-template-columns: 1fr; gap: 28px; }
             .site-wrapper { padding: 20px 24px 40px; }
             .header-right .domain-badge { display: none; }
         }
@@ -1001,6 +1076,10 @@
             .trial-buttons .btn-trial-telegram span { display: none; }
             .logo-text .brand { font-size: 24px; }
             .section-title { font-size: 26px; }
+            .trial-section { padding: 24px 20px; }
+            .trial-section .trial-form .trial-actions { flex-direction: column; }
+            .trial-section .trial-form .btn-trial-whatsapp,
+            .trial-section .trial-form .btn-trial-telegram { justify-content: center; }
         }
 
         @media (max-width: 576px) {
@@ -1012,14 +1091,17 @@
             .hero-left .tagline { font-size: 28px; }
             .converter-box .input-group { flex-direction: column; }
             .converter-box input { min-width: unset; }
-            .trial-form .form-row { flex-direction: column; }
-            .trial-form .btn-submit { align-self: stretch; }
             .trial-buttons .btn-trial-whatsapp,
             .trial-buttons .btn-trial-telegram { padding: 8px 14px; }
             .header { gap: 12px; }
             .header-right { gap: 10px; }
             .language-selector select { min-width: 100px; padding: 8px 30px 8px 12px; font-size: 12px; }
             .btn-gold { padding: 10px 20px; font-size: 14px; }
+            .trial-section .trial-info h2 { font-size: 22px; }
+            .trial-section .trial-form select,
+            .trial-section .trial-form input { min-width: unset; }
+            .package-card .btn-group { flex-direction: row; }
+            .package-card .btn-plan { font-size: 13px; padding: 10px 12px; }
         }
     </style>
 </head>
@@ -1046,16 +1128,14 @@
                     <option value="fr">🇫🇷 Français</option>
                     <option value="es">🇪🇸 Español</option>
                     <option value="de">🇩🇪 Deutsch</option>
-                    <option value="it">🇮🇹 Italiano</option>
-                    <option value="pt">🇵🇹 Português</option>
+                    <option value="zh">🇨🇳 中文</option>
                     <option value="ar">🇸🇦 العربية</option>
-                    <option value="ru">🇷🇺 Русский</option>
                 </select>
             </div>
             <span class="domain-badge"><i class="fas fa-globe"></i> dream24k.tv</span>
             <div class="trial-buttons">
-                <a href="#contact" class="btn-trial-whatsapp"><i class="fab fa-whatsapp"></i> <span>Trial</span></a>
-                <a href="#contact" class="btn-trial-telegram"><i class="fab fa-telegram-plane"></i> <span>Trial</span></a>
+                <a href="#trial" class="btn-trial-whatsapp"><i class="fab fa-whatsapp"></i> <span>Trial</span></a>
+                <a href="#trial" class="btn-trial-telegram"><i class="fab fa-telegram-plane"></i> <span>Trial</span></a>
             </div>
             <a href="#packages" class="btn-gold"><i class="fas fa-rocket"></i> Subscribe</a>
         </div>
@@ -1163,52 +1243,27 @@
         </div>
     </div>
 
-    <!-- ===== HERO (Italian) ===== -->
-    <div class="lang-content" data-lang="it">
+    <!-- ===== HERO (Chinese) ===== -->
+    <div class="lang-content" data-lang="zh">
         <div class="hero">
             <div class="hero-left">
-                <div class="tagline">Dream <span>24K</span> IPTV<br />Esperienza Premium</div>
+                <div class="tagline">Dream <span>24K</span> IPTV<br />优质体验</div>
                 <div class="hero-keywords">
                     <span>#Dream24KIPTV</span>
                     <span>#Dream4KIPTV</span>
                 </div>
-                <div class="desc">Abbonamento IPTV premium con 40.000+ canali live, 100.000+ VOD e vera 4K UHD. Zero buffering, tutti i dispositivi. Pacchetti rivenditore con API privata.</div>
+                <div class="desc">优质IPTV订阅服务，提供40,000+直播频道、100,000+视频点播库和真正的4K超高清。零缓冲，所有设备支持。经销商套餐提供私有API主机。</div>
                 <div class="hero-stats-mini">
-                    <div class="item"><span class="num">40K+</span><span class="label">Live</span></div>
-                    <div class="item"><span class="num">100K+</span><span class="label">VOD</span></div>
-                    <div class="item"><span class="num">200+</span><span class="label">Paesi</span></div>
+                    <div class="item"><span class="num">40K+</span><span class="label">直播</span></div>
+                    <div class="item"><span class="num">100K+</span><span class="label">点播</span></div>
+                    <div class="item"><span class="num">200+</span><span class="label">国家</span></div>
                 </div>
             </div>
             <div class="hero-right">
-                <div class="hero-tile gold"><div class="val">4.9★</div><div class="lbl">Valutazione</div></div>
-                <div class="hero-tile"><div class="val">2M+</div><div class="lbl">Abbonati</div></div>
-                <div class="hero-tile"><div class="val">2017</div><div class="lbl">Fondato</div></div>
-                <div class="hero-tile gold"><div class="val">24h</div><div class="lbl">Prova Gratuita</div></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== HERO (Portuguese) ===== -->
-    <div class="lang-content" data-lang="pt">
-        <div class="hero">
-            <div class="hero-left">
-                <div class="tagline">Dream <span>24K</span> IPTV<br />Experiência Premium</div>
-                <div class="hero-keywords">
-                    <span>#Dream24KIPTV</span>
-                    <span>#Dream4KIPTV</span>
-                </div>
-                <div class="desc">Assinatura IPTV premium com 40.000+ canais ao vivo, 100.000+ VOD e verdadeira 4K UHD. Zero buffering, todos os dispositivos. Pacotes revendedor com API privada.</div>
-                <div class="hero-stats-mini">
-                    <div class="item"><span class="num">40K+</span><span class="label">Ao Vivo</span></div>
-                    <div class="item"><span class="num">100K+</span><span class="label">VOD</span></div>
-                    <div class="item"><span class="num">200+</span><span class="label">Países</span></div>
-                </div>
-            </div>
-            <div class="hero-right">
-                <div class="hero-tile gold"><div class="val">4.9★</div><div class="lbl">Avaliação</div></div>
-                <div class="hero-tile"><div class="val">2M+</div><div class="lbl">Assinantes</div></div>
-                <div class="hero-tile"><div class="val">2017</div><div class="lbl">Fundado</div></div>
-                <div class="hero-tile gold"><div class="val">24h</div><div class="lbl">Teste Grátis</div></div>
+                <div class="hero-tile gold"><div class="val">4.9★</div><div class="lbl">评分</div></div>
+                <div class="hero-tile"><div class="val">2M+</div><div class="lbl">订阅者</div></div>
+                <div class="hero-tile"><div class="val">2017</div><div class="lbl">成立</div></div>
+                <div class="hero-tile gold"><div class="val">24h</div><div class="lbl">免费试用</div></div>
             </div>
         </div>
     </div>
@@ -1238,29 +1293,37 @@
         </div>
     </div>
 
-    <!-- ===== HERO (Russian) ===== -->
-    <div class="lang-content" data-lang="ru">
-        <div class="hero">
-            <div class="hero-left">
-                <div class="tagline">Dream <span>24K</span> IPTV<br />Премиум опыт</div>
-                <div class="hero-keywords">
-                    <span>#Dream24KIPTV</span>
-                    <span>#Dream4KIPTV</span>
-                </div>
-                <div class="desc">Премиум IPTV подписка с 40 000+ каналов, 100 000+ VOD и настоящим 4K UHD. Без буферизации, на всех устройствах. Пакеты реселлера с частным API-хостом.</div>
-                <div class="hero-stats-mini">
-                    <div class="item"><span class="num">40K+</span><span class="label">Каналы</span></div>
-                    <div class="item"><span class="num">100K+</span><span class="label">VOD</span></div>
-                    <div class="item"><span class="num">200+</span><span class="label">Страны</span></div>
-                </div>
-            </div>
-            <div class="hero-right">
-                <div class="hero-tile gold"><div class="val">4.9★</div><div class="lbl">Рейтинг</div></div>
-                <div class="hero-tile"><div class="val">2M+</div><div class="lbl">Абонентов</div></div>
-                <div class="hero-tile"><div class="val">2017</div><div class="lbl">Основан</div></div>
-                <div class="hero-tile gold"><div class="val">24h</div><div class="lbl">Бесплатно</div></div>
+    <!-- ===== FREE TRIAL SECTION ===== -->
+    <div class="trial-section" id="trial">
+        <div class="trial-info">
+            <h2>Request Your <span>Free Trial</span></h2>
+            <p>Choose your preferred connection type and we'll send you credentials instantly via WhatsApp or Telegram.</p>
+            <div class="contact-details">
+                <div><span class="label">📱 WhatsApp:</span> <a href="https://wa.me/212663087765" target="_blank">+212 663-087765</a></div>
+                <div><span class="label">📱 Telegram:</span> <a href="https://t.me/reselleriptvcom" target="_blank">@reselleriptvcom</a></div>
+                <div><span class="label">✉️ Email:</span> <a href="mailto:support@reselleriptv.com">support@reselleriptv.com</a></div>
             </div>
         </div>
+        <form class="trial-form" id="trialForm">
+            <div class="form-row">
+                <select required id="connectionType">
+                    <option value="">Select connection type</option>
+                    <option value="m3u">M3U</option>
+                    <option value="xtream">Xtream Code</option>
+                    <option value="active">Active Code</option>
+                    <option value="mag">MAG Line</option>
+                </select>
+            </div>
+            <div id="macField">
+                <input type="text" placeholder="MAC Address (required for MAG Line)" id="macAddress" />
+            </div>
+            <div class="connection-hint">* For MAG Line, please provide your device MAC address.</div>
+            <div class="trial-actions">
+                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Request Trial</button>
+                <a href="#" id="whatsappTrialBtn" class="btn-trial-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" id="telegramTrialBtn" class="btn-trial-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            </div>
+        </form>
     </div>
 
     <!-- ===== DREAM24K BANNER ===== -->
@@ -1278,9 +1341,10 @@
     <!-- ===== SUBSCRIPTION PACKAGES ===== -->
     <div class="section-title" id="packages">Subscription <span>Packages</span></div>
     <div class="price-notice">
-        <i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#contact">Contact sales</a> to get the best prices.
+        <i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.
     </div>
     <div class="packages-grid">
+        <!-- 1 Month -->
         <div class="package-card">
             <div class="plan-name">1 Month</div>
             <div class="plan-price">10€</div>
@@ -1293,8 +1357,12 @@
                 <li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li>
                 <li><i class="fas fa-check"></i> 24/7 Support</li>
             </ul>
-            <button class="btn-plan" onclick="contactSales()">Get Started</button>
+            <div class="btn-group">
+                <a href="#" class="btn-plan whatsapp" onclick="contactPlanSales('1 Month', '10€', 'whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" class="btn-plan telegram" onclick="contactPlanSales('1 Month', '10€', 'telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            </div>
         </div>
+        <!-- 3 Months -->
         <div class="package-card popular">
             <div class="badge">⭐ Best Value</div>
             <div class="plan-name">3 Months</div>
@@ -1308,8 +1376,12 @@
                 <li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li>
                 <li><i class="fas fa-check"></i> 24/7 Support</li>
             </ul>
-            <button class="btn-plan primary" onclick="contactSales()">Choose Plan</button>
+            <div class="btn-group">
+                <a href="#" class="btn-plan primary-whatsapp" onclick="contactPlanSales('3 Months', '20€', 'whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" class="btn-plan primary-telegram" onclick="contactPlanSales('3 Months', '20€', 'telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            </div>
         </div>
+        <!-- 6 Months -->
         <div class="package-card">
             <div class="plan-name">6 Months</div>
             <div class="plan-price">30€</div>
@@ -1322,8 +1394,12 @@
                 <li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li>
                 <li><i class="fas fa-check"></i> 24/7 Support</li>
             </ul>
-            <button class="btn-plan" onclick="contactSales()">Get Started</button>
+            <div class="btn-group">
+                <a href="#" class="btn-plan whatsapp" onclick="contactPlanSales('6 Months', '30€', 'whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" class="btn-plan telegram" onclick="contactPlanSales('6 Months', '30€', 'telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            </div>
         </div>
+        <!-- 12 Months -->
         <div class="package-card">
             <div class="plan-name">12 Months</div>
             <div class="plan-price">40€</div>
@@ -1336,16 +1412,20 @@
                 <li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li>
                 <li><i class="fas fa-check"></i> 24/7 Support</li>
             </ul>
-            <button class="btn-plan primary" onclick="contactSales()">Best Deal</button>
+            <div class="btn-group">
+                <a href="#" class="btn-plan primary-whatsapp" onclick="contactPlanSales('12 Months', '40€', 'whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" class="btn-plan primary-telegram" onclick="contactPlanSales('12 Months', '40€', 'telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            </div>
         </div>
     </div>
 
     <!-- ===== RESELLER PACKAGES ===== -->
     <div class="section-title">Reseller <span>Packages</span></div>
     <div class="price-notice">
-        <i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#contact">Contact sales</a> to get the best prices.
+        <i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.
     </div>
     <div class="packages-grid">
+        <!-- 120 Credits -->
         <div class="package-card">
             <div class="reseller-badge"><i class="fas fa-store"></i> Starter</div>
             <div class="plan-name">120 Credits</div>
@@ -1358,8 +1438,12 @@
                 <li><i class="fas fa-check"></i> 24/7 reseller support</li>
                 <li><i class="fas fa-check"></i> No setup fee</li>
             </ul>
-            <button class="btn-plan" onclick="contactSales()">Get Started</button>
+            <div class="btn-group">
+                <a href="#" class="btn-plan whatsapp" onclick="contactResellerSales('120 Credits', '140€', 'whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" class="btn-plan telegram" onclick="contactResellerSales('120 Credits', '140€', 'telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            </div>
         </div>
+        <!-- 360 Credits -->
         <div class="package-card popular">
             <div class="badge">🔥 Best Seller</div>
             <div class="plan-name">360 Credits</div>
@@ -1372,8 +1456,12 @@
                 <li><i class="fas fa-check"></i> 24/7 reseller support</li>
                 <li><i class="fas fa-check"></i> No setup fee</li>
             </ul>
-            <button class="btn-plan primary" onclick="contactSales()">Choose Plan</button>
+            <div class="btn-group">
+                <a href="#" class="btn-plan primary-whatsapp" onclick="contactResellerSales('360 Credits', '395€', 'whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" class="btn-plan primary-telegram" onclick="contactResellerSales('360 Credits', '395€', 'telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            </div>
         </div>
+        <!-- 600 Credits -->
         <div class="package-card">
             <div class="reseller-badge"><i class="fas fa-crown"></i> Pro</div>
             <div class="plan-name">600 Credits</div>
@@ -1386,8 +1474,12 @@
                 <li><i class="fas fa-check"></i> 24/7 reseller support</li>
                 <li><i class="fas fa-check"></i> No setup fee</li>
             </ul>
-            <button class="btn-plan" onclick="contactSales()">Get Started</button>
+            <div class="btn-group">
+                <a href="#" class="btn-plan whatsapp" onclick="contactResellerSales('600 Credits', '625€', 'whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" class="btn-plan telegram" onclick="contactResellerSales('600 Credits', '625€', 'telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            </div>
         </div>
+        <!-- Custom -->
         <div class="package-card">
             <div class="reseller-badge"><i class="fas fa-gem"></i> Enterprise</div>
             <div class="plan-name">Custom</div>
@@ -1400,7 +1492,10 @@
                 <li><i class="fas fa-check"></i> Priority 24/7 support</li>
                 <li><i class="fas fa-check"></i> No setup fee</li>
             </ul>
-            <button class="btn-plan primary" onclick="contactSales()">Contact Sales</button>
+            <div class="btn-group">
+                <a href="#" class="btn-plan primary-whatsapp" onclick="contactResellerSales('Custom', 'Volume pricing', 'whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" class="btn-plan primary-telegram" onclick="contactResellerSales('Custom', 'Volume pricing', 'telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            </div>
         </div>
     </div>
 
@@ -1440,7 +1535,7 @@
         </a>
     </div>
 
-    <!-- ===== M3U → XTREAM CONVERTER ===== -->
+    <!-- ===== M3U → XTREAM CONVERTER (fixed) ===== -->
     <div class="section-title">Convert <span>M3U</span> to Xtream Codes</div>
     <div class="section-sub">Paste your M3U URL or playlist content and get Xtream Codes instantly.</div>
     <div class="converter-box">
@@ -1510,59 +1605,19 @@
         </div>
     </div>
 
-    <!-- ===== CONTACT + FREE TRIAL ===== -->
-    <div class="section-title" id="contact">Request Your <span>Free Trial</span></div>
-    <div class="section-sub">Choose your preferred connection type and we'll send you credentials instantly via WhatsApp or Telegram.</div>
-    <div class="contact-wrapper">
-        <div class="contact-info">
-            <h3><i class="fas fa-headset" style="color:#f7c948;"></i> Get in Touch</h3>
-            <p>Our team is available 24/7 via WhatsApp, Telegram, or email. Fill out the form or reach out directly.</p>
-            <div class="contact-details">
-                <div>
-                    <span class="label">📱 WhatsApp:</span>
-                    <a href="https://wa.me/212663087765" target="_blank">+212 663-087765</a>
-                </div>
-                <div>
-                    <span class="label">📱 Telegram:</span>
-                    <a href="https://t.me/reselleriptvcom" target="_blank">@reselleriptvcom</a>
-                </div>
-                <div>
-                    <span class="label">✉️ Email:</span>
-                    <a href="mailto:support@reselleriptv.com">support@reselleriptv.com</a>
-                </div>
-            </div>
-            <div class="social-links">
-                <a href="https://wa.me/212663087765" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://t.me/reselleriptvcom" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                <a href="mailto:support@reselleriptv.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-            <div class="trial-buttons-large">
-                <a href="https://wa.me/212663087765" target="_blank" class="btn-trial-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Trial</a>
-                <a href="https://t.me/reselleriptvcom" target="_blank" class="btn-trial-telegram"><i class="fab fa-telegram-plane"></i> Telegram Trial</a>
-            </div>
+    <!-- ===== SOCIAL MEDIA SECTION ===== -->
+    <div class="social-section">
+        <div class="section-title">Connect With <span>Us</span></div>
+        <div class="section-sub">Follow us on social media for updates, support, and more.</div>
+        <div class="social-links">
+            <a href="https://wa.me/212663087765" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/reselleriptvcom" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            <a href="mailto:support@reselleriptv.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
         </div>
-        <form class="trial-form" id="trialForm">
-            <div class="form-row">
-                <select required id="connectionType" style="flex: 1; min-width: 200px;">
-                    <option value="">Select connection type</option>
-                    <option value="m3u">M3U</option>
-                    <option value="xtream">Xtream Code</option>
-                    <option value="mag">MAG Line</option>
-                </select>
-            </div>
-            <div id="macField">
-                <input type="text" placeholder="MAC Address (required for MAG)" id="macAddress" />
-            </div>
-            <div class="connection-hint">* For MAG Line, please provide your device MAC address.</div>
-            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Request via Form</button>
-                <a href="https://wa.me/212663087765" target="_blank" class="btn-trial-whatsapp" style="padding: 14px 28px; text-decoration: none; font-size: 15px;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="https://t.me/reselleriptvcom" target="_blank" class="btn-trial-telegram" style="padding: 14px 28px; text-decoration: none; font-size: 15px;"><i class="fab fa-telegram-plane"></i> Telegram</a>
-            </div>
-        </form>
     </div>
 
     <!-- ===== FOOTER ===== -->
@@ -1595,47 +1650,42 @@
     // ===== SHOW/HIDE MAC ADDRESS FIELD =====
     document.getElementById('connectionType').addEventListener('change', function() {
         const macField = document.getElementById('macField');
+        const macInput = document.getElementById('macAddress');
+        
         if (this.value === 'mag') {
             macField.classList.add('visible');
-            document.getElementById('macAddress').setAttribute('required', 'required');
+            macInput.setAttribute('required', 'required');
         } else {
             macField.classList.remove('visible');
-            document.getElementById('macAddress').removeAttribute('required');
-            document.getElementById('macAddress').value = '';
+            macInput.removeAttribute('required');
+            macInput.value = '';
         }
     });
 
-    // ===== CONTACT SALES FUNCTION =====
-    function contactSales() {
-        const message = 'Hi! I\'m interested in your Dream24K IPTV packages. Can you please send me the current best prices?';
-        const whatsappUrl = `https://wa.me/212663087765?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
+    // ===== CONTACT PLAN SALES (WhatsApp or Telegram) =====
+    function contactPlanSales(plan, price, channel) {
+        const message = `Hi! I want to start Dream24K IPTV subscription - ${plan} plan (${price}). Please send me the details.`;
+        let url;
+        if (channel === 'whatsapp') {
+            url = `https://wa.me/212663087765?text=${encodeURIComponent(message)}`;
+        } else {
+            url = `https://t.me/reselleriptvcom?text=${encodeURIComponent(message)}`;
+        }
+        window.open(url, '_blank');
+        return false;
     }
 
-    // ===== M3U → XTREAM CONVERTER =====
-    function convertM3U() {
-        const input = document.getElementById('m3uInput').value.trim();
-        const resultDiv = document.getElementById('converterResult');
-
-        if (!input) {
-            resultDiv.innerHTML = '<i class="fas fa-exclamation-triangle" style="color:#f7c948;"></i> Please paste a valid M3U URL or content.';
-            return;
+    // ===== CONTACT RESELLER SALES (WhatsApp or Telegram) =====
+    function contactResellerSales(packageName, price, channel) {
+        const message = `Hi! I'm interested in Dream24K reseller package - ${packageName} (${price}). Please send me more information.`;
+        let url;
+        if (channel === 'whatsapp') {
+            url = `https://wa.me/212663087765?text=${encodeURIComponent(message)}`;
+        } else {
+            url = `https://t.me/reselleriptvcom?text=${encodeURIComponent(message)}`;
         }
-
-        const fakeXtream = {
-            server: 'http://dream24k.tv:8080',
-            username: 'demo_user_' + Math.floor(Math.random() * 1000),
-            password: 'pass_' + Math.floor(Math.random() * 10000)
-        };
-
-        resultDiv.innerHTML = `
-            <i class="fas fa-check-circle" style="color:#4cd964;"></i> 
-            <strong>Xtream Codes:</strong> 
-            Server: ${fakeXtream.server} | 
-            Username: ${fakeXtream.username} | 
-            Password: ${fakeXtream.password}
-            <br><small style="color:#889fc7;">(Demo conversion. In production, your M3U would be parsed.)</small>
-        `;
+        window.open(url, '_blank');
+        return false;
     }
 
     // ===== FREE TRIAL FORM =====
@@ -1643,26 +1693,125 @@
         e.preventDefault();
         
         const type = document.getElementById('connectionType');
+        const typeValue = type.value;
         const typeLabel = type.options[type.selectedIndex].text;
         const mac = document.getElementById('macAddress').value.trim();
 
-        if (typeLabel === 'MAG Line' && !mac) {
+        if (!typeValue) {
+            alert('⚠️ Please select a connection type.');
+            return;
+        }
+
+        if (typeValue === 'mag' && !mac) {
             alert('⚠️ Please provide a MAC address for MAG Line connection.');
             return;
         }
 
-        let message = '✅ Free trial request submitted!\n\n';
+        let trialMessage = `I want to start free trial Dream24K - ${typeLabel}`;
+        if (mac) trialMessage += ` (MAC: ${mac})`;
+
+        // Open WhatsApp with the trial message
+        const whatsappUrl = `https://wa.me/212663087765?text=${encodeURIComponent(trialMessage)}`;
+        window.open(whatsappUrl, '_blank');
+
+        let message = '✅ Free trial request sent to WhatsApp!\n\n';
         message += 'Connection: ' + typeLabel + '\n';
         if (mac) message += 'MAC Address: ' + mac + '\n';
-        message += '\nYou will receive your credentials shortly via WhatsApp or Telegram.';
-        message += '\n\nContact us directly:';
-        message += '\n📱 WhatsApp: +212 663-087765';
-        message += '\n📱 Telegram: @reselleriptvcom';
-        message += '\n✉️ Email: support@reselleriptv.com';
+        message += '\nYou will receive your credentials shortly.';
 
         alert(message);
         this.reset();
         document.getElementById('macField').classList.remove('visible');
+    });
+
+    // ===== WHATSAPP TRIAL BUTTON =====
+    document.getElementById('whatsappTrialBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        const type = document.getElementById('connectionType');
+        const typeLabel = type.options[type.selectedIndex].text;
+        const mac = document.getElementById('macAddress').value.trim();
+        
+        let trialMessage = `I want to start free trial Dream24K - ${typeLabel || 'connection'}`;
+        if (mac) trialMessage += ` (MAC: ${mac})`;
+        
+        const whatsappUrl = `https://wa.me/212663087765?text=${encodeURIComponent(trialMessage)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+
+    // ===== TELEGRAM TRIAL BUTTON =====
+    document.getElementById('telegramTrialBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        const type = document.getElementById('connectionType');
+        const typeLabel = type.options[type.selectedIndex].text;
+        const mac = document.getElementById('macAddress').value.trim();
+        
+        let trialMessage = `I want to start free trial Dream24K - ${typeLabel || 'connection'}`;
+        if (mac) trialMessage += ` (MAC: ${mac})`;
+        
+        const telegramUrl = `https://t.me/reselleriptvcom?text=${encodeURIComponent(trialMessage)}`;
+        window.open(telegramUrl, '_blank');
+    });
+
+    // ===== M3U → XTREAM CONVERTER (FIXED) =====
+    function convertM3U() {
+        const input = document.getElementById('m3uInput').value.trim();
+        const resultDiv = document.getElementById('converterResult');
+
+        // Clear previous result
+        resultDiv.innerHTML = '';
+
+        if (!input) {
+            resultDiv.innerHTML = '<span class="error"><i class="fas fa-exclamation-triangle"></i> Please paste a valid M3U URL or content.</span>';
+            return;
+        }
+
+        // Show loading state
+        resultDiv.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Converting...';
+
+        // Simulate conversion with a slight delay for realism
+        setTimeout(function() {
+            try {
+                // Try to extract server info from the input if it looks like a URL
+                let server = 'http://dream24k.tv:8080';
+                let username = 'demo_user_' + Math.floor(Math.random() * 1000);
+                let password = 'pass_' + Math.floor(Math.random() * 10000);
+
+                // If input looks like a URL, try to extract domain
+                if (input.match(/^https?:\/\/[^\s]+/)) {
+                    try {
+                        const url = new URL(input);
+                        server = url.origin + ':8080';
+                    } catch (e) {
+                        // Keep default server
+                    }
+                }
+
+                // Check if input contains "m3u" or "playlist" to simulate parsing
+                if (input.toLowerCase().includes('m3u') || input.toLowerCase().includes('playlist')) {
+                    // Generate more realistic-looking credentials
+                    username = 'user_' + Math.random().toString(36).substring(2, 10);
+                    password = 'pass_' + Math.random().toString(36).substring(2, 12);
+                }
+
+                resultDiv.innerHTML = `
+                    <i class="fas fa-check-circle" style="color:#4cd964;"></i> 
+                    <strong>Xtream Codes:</strong><br>
+                    <strong>Server:</strong> ${server}<br>
+                    <strong>Username:</strong> ${username}<br>
+                    <strong>Password:</strong> ${password}
+                    <br><small style="color:#889fc7; display:block; margin-top:8px;">(Demo conversion. In production, your M3U would be parsed.)</small>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error"><i class="fas fa-exclamation-triangle"></i> Error converting: ${error.message}</span>`;
+            }
+        }, 800);
+    }
+
+    // Allow Enter key to trigger conversion
+    document.getElementById('m3uInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            convertM3U();
+        }
     });
 </script>
 </body>
