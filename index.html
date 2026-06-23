@@ -134,18 +134,6 @@
             pointer-events: none;
             font-size: 12px;
         }
-        .domain-badge {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 8px 18px;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 215, 0, 0.04);
-            color: #8aa0c8;
-            font-size: 12px;
-        }
-        .domain-badge i {
-            color: #f7c948;
-            margin-right: 6px;
-        }
         .btn-gold {
             background: linear-gradient(145deg, #f7c948, #d4a020);
             border: none;
@@ -1410,9 +1398,6 @@
             .site-wrapper {
                 padding: 16px 20px 30px;
             }
-            .header-right .domain-badge {
-                display: none;
-            }
             .features-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -1556,7 +1541,6 @@
                         <option value="ja">🇯🇵 日本語</option>
                     </select>
                 </div>
-                <span class="domain-badge"><i class="fas fa-globe"></i> dream24k.tv</span>
                 <div class="trial-buttons">
                     <a href="#" class="btn-trial-whatsapp" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> <span>Trial</span></a>
                     <a href="#" class="btn-trial-telegram" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> <span>Trial</span></a>
@@ -2275,12 +2259,10 @@
 
         // ===== SECURITY: Disable Keyboard Shortcuts (F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S) =====
         document.addEventListener('keydown', function(e) {
-            // F12
             if (e.key === 'F12') {
                 e.preventDefault();
                 return false;
             }
-            // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
             if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) {
                 e.preventDefault();
                 return false;
@@ -2289,11 +2271,7 @@
                 e.preventDefault();
                 return false;
             }
-            if (e.ctrlKey && e.key === 's') {
-                e.preventDefault();
-                return false;
-            }
-            if (e.ctrlKey && e.key === 'S') {
+            if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
                 e.preventDefault();
                 return false;
             }
@@ -2418,8 +2396,7 @@
                 contactTitle: 'Get in Touch',
                 contactText: 'Our team is available 24/7 via WhatsApp, Telegram, or email. Fill out the form or reach out directly.',
                 legacyTitle: 'Legacy <span>Pages</span>',
-                legacySub: 'Access our previous versions and archived content.',
-                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
+                legacySub: 'Access our previous versions and archived content.'
             },
             fr: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2447,8 +2424,7 @@
                 contactTitle: 'Entrez en Contact',
                 contactText: 'Notre équipe est disponible 24/7 via WhatsApp, Telegram ou email. Remplissez le formulaire ou contactez-nous directement.',
                 legacyTitle: 'Pages <span>Héritées</span>',
-                legacySub: 'Accédez à nos versions précédentes et au contenu archivé.',
-                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
+                legacySub: 'Accédez à nos versions précédentes et au contenu archivé.'
             },
             es: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2476,8 +2452,7 @@
                 contactTitle: 'Ponte en Contacto',
                 contactText: 'Nuestro equipo está disponible 24/7 vía WhatsApp, Telegram o correo electrónico. Completa el formulario o contáctanos directamente.',
                 legacyTitle: 'Páginas <span>Legado</span>',
-                legacySub: 'Accede a nuestras versiones anteriores y contenido archivado.',
-                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
+                legacySub: 'Accede a nuestras versiones anteriores y contenido archivado.'
             },
             de: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2505,8 +2480,7 @@
                 contactTitle: 'Kontaktieren Sie uns',
                 contactText: 'Unser Team ist rund um die Uhr über WhatsApp, Telegram oder E-Mail erreichbar. Füllen Sie das Formular aus oder kontaktieren Sie uns direkt.',
                 legacyTitle: 'Legacy-<span>Seiten</span>',
-                legacySub: 'Zugriff auf unsere früheren Versionen und archivierte Inhalte.',
-                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
+                legacySub: 'Zugriff auf unsere früheren Versionen und archivierte Inhalte.'
             },
             it: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2534,8 +2508,7 @@
                 contactTitle: 'Mettiti in Contatto',
                 contactText: 'Il nostro team è disponibile 24/7 via WhatsApp, Telegram o email. Compila il modulo o contattaci direttamente.',
                 legacyTitle: 'Pagine <span>Legacy</span>',
-                legacySub: 'Accedi alle nostre versioni precedenti e ai contenuti archiviati.',
-                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
+                legacySub: 'Accedi alle nostre versioni precedenti e ai contenuti archiviati.'
             },
             pt: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2563,8 +2536,7 @@
                 contactTitle: 'Entre em Contato',
                 contactText: 'Nossa equipe está disponível 24/7 via WhatsApp, Telegram ou e-mail. Preencha o formulário ou entre em contato diretamente.',
                 legacyTitle: 'Páginas <span>Legado</span>',
-                legacySub: 'Acesse nossas versões anteriores e conteúdo arquivado.',
-                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
+                legacySub: 'Acesse nossas versões anteriores e conteúdo arquivado.'
             },
             ar: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2592,8 +2564,7 @@
                 contactTitle: 'تواصل معنا',
                 contactText: 'فريقنا متاح 24/7 عبر WhatsApp أو Telegram أو البريد الإلكتروني. املأ النموذج أو تواصل معنا مباشرة.',
                 legacyTitle: 'الصفحات <span>السابقة</span>',
-                legacySub: 'الوصول إلى إصداراتنا السابقة والمحتوى المؤرشف.',
-                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
+                legacySub: 'الوصول إلى إصداراتنا السابقة والمحتوى المؤرشف.'
             },
             ru: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2621,8 +2592,7 @@
                 contactTitle: 'Свяжитесь с нами',
                 contactText: 'Наша команда доступна 24/7 через WhatsApp, Telegram или электронную почту. Заполните форму или свяжитесь с нами напрямую.',
                 legacyTitle: 'Устаревшие <span>страницы</span>',
-                legacySub: 'Доступ к нашим предыдущим версиям и архивированному контенту.',
-                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
+                legacySub: 'Доступ к нашим предыдущим версиям и архивированному контенту.'
             },
             zh: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2650,8 +2620,7 @@
                 contactTitle: '联系我们',
                 contactText: '我们的团队全天候通过WhatsApp、Telegram或电子邮件提供服务。填写表格或直接联系我们。',
                 legacyTitle: '旧版<span>页面</span>',
-                legacySub: '访问我们的先前版本和存档内容。',
-                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
+                legacySub: '访问我们的先前版本和存档内容。'
             },
             ja: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2679,8 +2648,7 @@
                 contactTitle: 'お問い合わせ',
                 contactText: '当社のチームはWhatsApp、Telegram、またはメールで24時間年中無休で対応しています。フォームに記入するか、直接お問い合わせください。',
                 legacyTitle: 'レガシー<span>ページ</span>',
-                legacySub: '以前のバージョンやアーカイブされたコンテンツにアクセスします。',
-                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
+                legacySub: '以前のバージョンやアーカイブされたコンテンツにアクセスします。'
             }
         };
 
@@ -2688,23 +2656,13 @@
             const lang = this.value;
             const t = translations[lang] || translations.en;
 
-            // Update hero
             document.querySelector('.hero-tagline').innerHTML = t.heroTagline;
             document.querySelector('.hero-sub').textContent = t.heroSub;
             document.querySelector('.hero-desc').textContent = t.heroDesc;
-
-            // Update trial
             document.querySelector('#trial').innerHTML = t.trialTitle;
-            document.querySelector('.trial-section .section-sub') ? document.querySelector('.trial-section .section-sub').textContent = t.trialSub : null;
-            document.querySelector('.trial-info h3').innerHTML = '<i class="fas fa-headset"></i> ' + t.contactTitle;
-            document.querySelector('.trial-info p').textContent = t.contactText;
-
-            // Update buttons
             document.querySelector('.btn-gold').innerHTML = `<i class="fas fa-rocket"></i> ${t.subscribe}`;
             document.querySelector('.map-overlay-content .btn-primary').innerHTML = `<i class="fas fa-rocket"></i> ${t.getStarted}`;
             document.querySelector('.map-overlay-content .btn-secondary').innerHTML = `<i class="fas fa-gift"></i> ${t.freeTrial}`;
-
-            // Update page titles
             document.querySelector('#page-subscriptions .section-title').innerHTML = t.packages;
             document.querySelector('#page-reseller .section-title').innerHTML = t.reseller;
             document.querySelector('#page-features .features-title').innerHTML = t.features;
@@ -2712,25 +2670,31 @@
             document.querySelector('#page-faq .section-title').innerHTML = t.faq;
             document.querySelector('#page-support .section-title').innerHTML = t.support;
             document.querySelector('#page-support .section-sub').textContent = t.supportDesc;
-
+            document.querySelector('.cta-banner .cta-title').innerHTML = t.ctaTitle;
+            document.querySelector('.cta-banner .cta-desc').textContent = t.ctaDesc;
+            document.querySelector('.footer').innerHTML = `<i class="fas fa-shield-alt" style="color:#f7c948;"></i> ${t.footer}<div class="keywords"><span>#Dream24KIPTV</span><span>#Dream4KIPTV</span><span>#Dream24KSubscription</span><span>#Dream4KReseller</span></div>`;
+            
             // Update converter
-            document.querySelector('.converter-box + .section-title') ? document.querySelector('.converter-box + .section-title').innerHTML = t.convertTitle : null;
-            document.querySelector('.converter-box + .section-title + .section-sub') ? document.querySelector('.converter-box + .section-title + .section-sub').textContent = t.convertSub : null;
-
+            const converterTitle = document.querySelector('.converter-box + .section-title');
+            const converterSub = document.querySelector('.converter-box + .section-title + .section-sub');
+            if (converterTitle) converterTitle.innerHTML = t.convertTitle;
+            if (converterSub) converterSub.textContent = t.convertSub;
+            
             // Update app section
             document.querySelector('.app-section .app-header h3').innerHTML = '<i class="fas fa-download"></i> ' + t.appTitle;
             document.querySelector('.app-section .app-header span').innerHTML = '<i class="fas fa-code"></i> ' + t.appSub;
-
+            
+            // Update trial section
+            const trialSub = document.querySelector('.section-sub');
+            if (trialSub && document.querySelector('#trial')) trialSub.textContent = t.trialSub;
+            document.querySelector('.trial-info h3').innerHTML = '<i class="fas fa-headset"></i> ' + t.contactTitle;
+            document.querySelector('.trial-info p').textContent = t.contactText;
+            
             // Update legacy
-            document.querySelector('.legacy-grid + .section-title') ? document.querySelector('.legacy-grid + .section-title').innerHTML = t.legacyTitle : null;
-            document.querySelector('.legacy-grid + .section-title + .section-sub') ? document.querySelector('.legacy-grid + .section-title + .section-sub').textContent = t.legacySub : null;
-
-            // Update CTA
-            document.querySelector('.cta-banner .cta-title').innerHTML = t.ctaTitle;
-            document.querySelector('.cta-banner .cta-desc').textContent = t.ctaDesc;
-
-            // Update footer
-            document.querySelector('.footer').innerHTML = `<i class="fas fa-shield-alt" style="color:#f7c948;"></i> ${t.footer}<div class="keywords"><span>#Dream24KIPTV</span><span>#Dream4KIPTV</span><span>#Dream24KSubscription</span><span>#Dream4KReseller</span></div>`;
+            const legacyTitle = document.querySelector('.legacy-grid + .section-title');
+            const legacySub = document.querySelector('.legacy-grid + .section-title + .section-sub');
+            if (legacyTitle) legacyTitle.innerHTML = t.legacyTitle;
+            if (legacySub) legacySub.textContent = t.legacySub;
         });
 
         // ===== SHOW/HIDE MAC ADDRESS FIELD =====
