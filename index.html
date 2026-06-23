@@ -788,11 +788,7 @@
 
     <script>
         // ===== SECURITY =====
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            return false;
-        });
-
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F12') { e.preventDefault(); return false; }
             if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) { e.preventDefault(); return false; }
