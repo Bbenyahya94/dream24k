@@ -12,6 +12,7 @@ Disallow: /api/
 Disallow: /includes/
 Disallow: /config/
 Disallow: /private/
+Disallow: /assets/
 
 # Sitemap location
 Sitemap: https://d24kiptv.com/sitemap.xml
