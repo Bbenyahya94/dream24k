@@ -1,0 +1,147 @@
+# .htaccess for Dream24K IPTV
+# Domain: https://d24kiptv.com/
+# Optimized for security, performance, and SEO
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+    
+    # Redirect www to non-www
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+    
+    # Remove trailing slash
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [R=301,L]
+    
+    # Handle Single Page Application routing
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.html [L]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    # Enable HSTS (Force HTTPS for 1 year)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+    
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Enable XSS protection
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content Security Policy - Customized for d24kiptv.com
+    Header always set Content-Security-Policy "default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://unpkg.com https://d24kiptv.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://d24kiptv.com; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com https://d24kiptv.com; connect-src 'self' https:; frame-ancestors 'self';"
+    
+    # Remove server information
+    Header always unset Server
+    Header always unset X-Powered-By
+</IfModule>
+
+# Gzip Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml application/rss+xml image/svg+xml
+</IfModule>
+
+# Cache Control
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Default cache
+    ExpiresDefault "access plus 1 month"
+    
+    # HTML - 1 day
+    ExpiresByType text/html "access plus 1 day"
+    
+    # CSS, JavaScript - 1 year
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    
+    # Images - 1 year
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/avif "access plus 1 year"
+    
+    # Fonts - 1 year
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    
+    # JSON - 1 hour
+    ExpiresByType application/json "access plus 1 hour"
+    ExpiresByType application/xml "access plus 1 hour"
+</IfModule>
+
+# Cache-Control Headers
+<IfModule mod_headers.c>
+    # Static assets - 1 year
+    <FilesMatch "\.(css|js|jpg|jpeg|png|gif|svg|webp|avif|woff|woff2|ttf|ico)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    
+    # HTML - 1 day
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "public, max-age=86400"
+    </FilesMatch>
+    
+    # JSON - 1 hour
+    <FilesMatch "\.(json|xml)$">
+        Header set Cache-Control "public, max-age=3600"
+    </FilesMatch>
+</IfModule>
+
+# Block bad bots
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_USER_AGENT} (ahrefs|mj12bot|semrushbot|rogerbot|dotbot|spider|scrapy) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "^(\.htaccess|\.htpasswd|\.env|config\.php|composer\.json|package\.json|package-lock\.json|README\.md|robots\.txt|sitemap\.xml)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Allow robots.txt and sitemap.xml
+<FilesMatch "^(robots\.txt|sitemap\.xml)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Block PHP execution in uploads
+<IfModule mod_php7.c>
+    <Directory "uploads/">
+        php_flag engine off
+    </Directory>
+</IfModule>
+
+# Custom error pages
+ErrorDocument 404 /404.html
+ErrorDocument 403 /403.html
+ErrorDocument 500 /500.html
+
+# Redirect old dream4k.tv and dream24k.tv to d24kiptv.com
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_HOST} ^dream4k\.tv$ [NC,OR]
+    RewriteCond %{HTTP_HOST} ^www\.dream4k\.tv$ [NC,OR]
+    RewriteCond %{HTTP_HOST} ^dream24k\.tv$ [NC,OR]
+    RewriteCond %{HTTP_HOST} ^www\.dream24k\.tv$ [NC]
+    RewriteRule ^(.*)$ https://d24kiptv.com/$1 [R=301,L]
+</IfModule>
