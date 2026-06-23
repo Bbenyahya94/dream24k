@@ -7,6 +7,7 @@
     <meta name="description" content="Dream24K IPTV - Premium IPTV subscription with 40,000+ channels, 100,000+ VOD, 4K UHD. Reseller & wholesale panel available." />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
+        /* ----- RESET & BASE ----- */
         * {
             margin: 0;
             padding: 0;
@@ -33,6 +34,66 @@
             border-radius: 0 0 48px 48px;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
             border-bottom: 1px solid rgba(255, 215, 0, 0.06);
+        }
+
+        /* ----- SSL BADGE (top right) ----- */
+        .ssl-badge {
+            position: fixed;
+            top: 16px;
+            right: 20px;
+            z-index: 9999;
+            background: rgba(10, 14, 26, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 8px 18px 8px 14px;
+            border-radius: 60px;
+            border: 1px solid rgba(74, 217, 100, 0.3);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #4cd964;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+        .ssl-badge i {
+            font-size: 18px;
+            color: #4cd964;
+            animation: sslPulse 2s ease-in-out infinite;
+        }
+        @keyframes sslPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 0.8;
+            }
+        }
+        .ssl-badge .ssl-text {
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        .ssl-badge .ssl-detail {
+            font-size: 10px;
+            color: #6a8aaa;
+            font-weight: 400;
+        }
+        @media (max-width: 768px) {
+            .ssl-badge {
+                top: 10px;
+                right: 10px;
+                padding: 5px 12px 5px 10px;
+                font-size: 11px;
+            }
+            .ssl-badge i {
+                font-size: 14px;
+            }
+            .ssl-badge .ssl-detail {
+                display: none;
+            }
         }
 
         /* ----- HEADER ----- */
@@ -204,7 +265,74 @@
             box-shadow: 0 6px 24px rgba(0, 136, 204, 0.3);
         }
 
-        /* ----- HERO SECTION (DREAM 24K / DREAM 4K) ----- */
+        /* ----- PAGE NAVIGATION (tabs) ----- */
+        .page-nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 16px 0 8px;
+            padding: 4px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            justify-content: center;
+        }
+        .page-nav .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 13px;
+            color: #6a8aaa;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .page-nav .nav-btn:hover {
+            color: #b0c8ea;
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .page-nav .nav-btn.active {
+            color: #0a0e1a;
+            background: linear-gradient(145deg, #f7c948, #d4a020);
+            box-shadow: 0 4px 16px rgba(212, 160, 32, 0.2);
+        }
+        .page-nav .nav-btn i {
+            font-size: 14px;
+        }
+        @media (max-width: 600px) {
+            .page-nav .nav-btn {
+                padding: 6px 14px;
+                font-size: 11px;
+            }
+            .page-nav .nav-btn i {
+                font-size: 12px;
+            }
+        }
+
+        /* ----- PAGES (show/hide) ----- */
+        .page-content {
+            display: none;
+            animation: fadePage 0.4s ease;
+        }
+        .page-content.active {
+            display: block;
+        }
+        @keyframes fadePage {
+            0% {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ----- HERO SECTION ----- */
         .hero-wrapper {
             position: relative;
             width: 100%;
@@ -387,7 +515,7 @@
             }
         }
 
-        /* ----- MAP WRAPPER (full screen map with overlay) ----- */
+        /* ----- MAP WRAPPER ----- */
         .map-wrapper {
             position: relative;
             width: 100%;
@@ -1458,6 +1586,13 @@
     </style>
 </head>
 <body>
+    <!-- ===== SSL BADGE (fixed) ===== -->
+    <div class="ssl-badge">
+        <i class="fas fa-lock"></i>
+        <span class="ssl-text">SSL Secure</span>
+        <span class="ssl-detail">· 256-bit encryption</span>
+    </div>
+
     <div class="site-wrapper">
 
         <!-- ===== HEADER ===== -->
@@ -1493,34 +1628,46 @@
             </div>
         </header>
 
-        <!-- ===== HERO SECTION (Dream 24K / Dream 4K) ===== -->
-        <div class="hero-wrapper">
-            <canvas id="heroCanvas"></canvas>
-            <div class="hero-content-overlay">
-                <div class="hero-card">
-                    <div class="hero-tagline">DREAM <span>24K</span> · DREAM <span>4K</span></div>
-                    <div class="hero-sub">Premium IPTV · 40,000+ Channels · 100,000+ VOD</div>
-                    <div class="hero-keywords">
-                        <span>#Dream24K</span> <span>#Dream4K</span> <span>#IPTV</span> <span>#4KUHD</span> <span>#ResellerPanel</span>
-                    </div>
-                    <div class="hero-desc">
-                        Experience the future of television with Dream24K IPTV — the evolution of Dream4K. Ultra-fast servers,
-                        zero buffering, 4K UHD quality, and a global network trusted by resellers and end-users in 120+ countries.
-                        Whether you're a viewer or a reseller, Dream24K delivers the ultimate IPTV experience.
-                    </div>
-                    <div class="hero-badges">
-                        <span><i class="fas fa-bolt"></i> 99.9% Uptime</span>
-                        <span><i class="fas fa-shield-alt"></i> Secure SSL</span>
-                        <span><i class="fas fa-headset"></i> 24/7 Support</span>
-                        <span><i class="fas fa-globe"></i> 120+ Countries</span>
+        <!-- ===== PAGE NAVIGATION ===== -->
+        <nav class="page-nav">
+            <button class="nav-btn active" data-page="home"><i class="fas fa-home"></i> Home</button>
+            <button class="nav-btn" data-page="subscriptions"><i class="fas fa-tv"></i> Subscriptions</button>
+            <button class="nav-btn" data-page="reseller"><i class="fas fa-store"></i> Reseller</button>
+            <button class="nav-btn" data-page="features"><i class="fas fa-cogs"></i> Features</button>
+            <button class="nav-btn" data-page="faq"><i class="fas fa-question-circle"></i> FAQ</button>
+            <button class="nav-btn" data-page="support"><i class="fas fa-headset"></i> Support</button>
+        </nav>
+
+        <!-- ===== PAGE: HOME ===== -->
+        <div id="page-home" class="page-content active">
+            <!-- HERO SECTION -->
+            <div class="hero-wrapper">
+                <canvas id="heroCanvas"></canvas>
+                <div class="hero-content-overlay">
+                    <div class="hero-card">
+                        <div class="hero-tagline">DREAM <span>24K</span> · DREAM <span>4K</span></div>
+                        <div class="hero-sub">Premium IPTV · 40,000+ Channels · 100,000+ VOD</div>
+                        <div class="hero-keywords">
+                            <span>#Dream24K</span> <span>#Dream4K</span> <span>#IPTV</span> <span>#4KUHD</span> <span>#ResellerPanel</span>
+                        </div>
+                        <div class="hero-desc">
+                            Experience the future of television with Dream24K IPTV — the evolution of Dream4K. Ultra-fast servers,
+                            zero buffering, 4K UHD quality, and a global network trusted by resellers and end-users in 120+ countries.
+                            Whether you're a viewer or a reseller, Dream24K delivers the ultimate IPTV experience.
+                        </div>
+                        <div class="hero-badges">
+                            <span><i class="fas fa-bolt"></i> 99.9% Uptime</span>
+                            <span><i class="fas fa-shield-alt"></i> Secure SSL</span>
+                            <span><i class="fas fa-headset"></i> 24/7 Support</span>
+                            <span><i class="fas fa-globe"></i> 120+ Countries</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- ===== 3D MAP WRAPPER ===== -->
-        <div class="map-wrapper">
-            <iframe srcdoc='
+            <!-- MAP with updated stats -->
+            <div class="map-wrapper">
+                <iframe srcdoc='
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -1604,10 +1751,10 @@
                 <div class="logo-text"><div class="brand">DREAM <span>24K</span></div><div class="sub"><i class="fas fa-crown"></i> Premium IPTV Panel</div></div>
             </div>
             <div id="info">
-                <span class="stat"><span class="emoji">🖥️</span> <strong id="serverCount">0</strong> Servers</span>
-                <span class="stat"><span class="emoji">📱</span> <strong id="deviceCount">0</strong> Devices</span>
-                <span class="stat"><span class="emoji">🔗</span> <strong id="linkCount">0</strong> Connections</span>
-                <span class="stat"><span class="emoji">🌍</span> <strong id="countryCount">0</strong> Countries</span>
+                <span class="stat"><span class="emoji">🖥️</span> <strong>15</strong> Servers</span>
+                <span class="stat"><span class="emoji">📱</span> <strong>15</strong> Devices</span>
+                <span class="stat"><span class="emoji">🔗</span> <strong>155</strong> Connections</span>
+                <span class="stat"><span class="emoji">🌍</span> <strong>20</strong> Countries</span>
             </div>
             <script type="importmap">
             {
@@ -1754,11 +1901,6 @@
                 { lat: -33.9249, lon: 18.4241, name: "South Africa" }, { lat: 1.3521, lon: 103.8198, name: "Singapore" },
                 { lat: 19.0760, lon: 72.8777, name: "India" }, { lat: 31.2304, lon: 121.4737, name: "China" },
                 { lat: 37.7749, lon: -122.4194, name: "USA" }, { lat: 41.8781, lon: -87.6298, name: "USA" },
-                { lat: 45.4642, lon: 9.1900, name: "Italy" }, { lat: 50.1109, lon: 8.6821, name: "Germany" },
-                { lat: 34.6937, lon: 135.5023, name: "Japan" }, { lat: 22.5431, lon: 114.0579, name: "China" },
-                { lat: 6.5244, lon: 3.3792, name: "Nigeria" }, { lat: -1.2864, lon: 36.8172, name: "Kenya" },
-                { lat: -12.0464, lon: -77.0428, name: "Peru" }, { lat: 19.4326, lon: -99.1332, name: "Mexico" },
-                { lat: 34.0522, lon: -118.2437, name: "USA" }, { lat: 51.1657, lon: 10.4515, name: "Germany" },
             ];
 
             function latLonToPosition(lat, lon, radius) { radius = radius || 1.015;
@@ -1847,11 +1989,6 @@
                 }
             }
 
-            document.getElementById("serverCount").textContent = nodes.filter(n => n.type.isServer).length;
-            document.getElementById("deviceCount").textContent = nodes.filter(n => !n.type.isServer).length;
-            document.getElementById("linkCount").textContent = connectionLines.length;
-            document.getElementById("countryCount").textContent = countrySet.size;
-
             let time = 0;
 
             function animate() {
@@ -1892,219 +2029,269 @@
         </body>
         </html>
         '></iframe>
-
-            <!-- Overlay content on top of map -->
-            <div class="map-overlay-content">
-                <div class="map-title">Global <span>Server</span> Network</div>
-                <div class="map-desc">
-                    112 servers · 38 countries · 6 continents. Our intelligent routing system delivers ultra-low latency, zero buffering, and crystal-clear 4K streaming worldwide.
+                <div class="map-overlay-content">
+                    <div class="map-title">Global <span>Server</span> Network</div>
+                    <div class="map-desc">
+                        15 servers · 20 countries · 6 continents. Our intelligent routing system delivers ultra-low latency, zero buffering, and crystal-clear 4K streaming worldwide.
+                    </div>
+                    <div class="map-buttons">
+                        <a href="#packages" class="btn-primary"><i class="fas fa-rocket"></i> Get Started</a>
+                        <a href="#trial" class="btn-secondary"><i class="fas fa-gift"></i> Free Trial</a>
+                    </div>
                 </div>
-                <div class="map-buttons">
-                    <a href="#packages" class="btn-primary"><i class="fas fa-rocket"></i> Get Started</a>
-                    <a href="#trial" class="btn-secondary"><i class="fas fa-gift"></i> Free Trial</a>
+            </div>
+
+            <!-- APP PLAYER + CODE DOWNLOADER -->
+            <div class="app-section">
+                <div class="app-header">
+                    <h3><i class="fas fa-download"></i> App Player & Code Downloader</h3>
+                    <span style="color:#6a8aaa; font-size:13px;"><i class="fas fa-code"></i> Copy codes to download</span>
+                </div>
+                <div class="app-grid">
+                    <div class="app-item">
+                        <div class="app-icon"><i class="fas fa-play-circle"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Saga Player 4K</div>
+                            <div class="app-desc">Version 1.0.49 · 3.48 MB</div>
+                        </div>
+                        <div class="app-actions">
+                            <span class="code-display" id="code1">3483955</span>
+                            <button class="btn-copy-code" onclick="copyAppCode('code1')"><i class="fas fa-copy"></i> Copy</button>
+                            <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="app-item">
+                        <div class="app-icon"><i class="fas fa-tv"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Stalker MAG V30</div>
+                            <div class="app-desc">Dream4K · 5.60 MB</div>
+                        </div>
+                        <div class="app-actions">
+                            <span class="code-display" id="code2">5604791</span>
+                            <button class="btn-copy-code" onclick="copyAppCode('code2')"><i class="fas fa-copy"></i> Copy</button>
+                            <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="app-item">
+                        <div class="app-icon"><i class="fas fa-film"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Smarters Player V2.2.2</div>
+                            <div class="app-desc">Dream4K · 8.63 MB</div>
+                        </div>
+                        <div class="app-actions">
+                            <span class="code-display" id="code3">8626673</span>
+                            <button class="btn-copy-code" onclick="copyAppCode('code3')"><i class="fas fa-copy"></i> Copy</button>
+                            <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="app-item">
+                        <div class="app-icon"><i class="fas fa-user-cog"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Platinum User Pass V3.5.7</div>
+                            <div class="app-desc">Dream4K · 3.70 MB</div>
+                        </div>
+                        <div class="app-actions">
+                            <span class="code-display" id="code4">3704716</span>
+                            <button class="btn-copy-code" onclick="copyAppCode('code4')"><i class="fas fa-copy"></i> Copy</button>
+                            <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="app-item">
+                        <div class="app-icon"><i class="fas fa-play"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">IBO Player V3.8</div>
+                            <div class="app-desc">Dream4K · 1.56 MB</div>
+                        </div>
+                        <div class="app-actions">
+                            <span class="code-display" id="code5">1560525</span>
+                            <button class="btn-copy-code" onclick="copyAppCode('code5')"><i class="fas fa-copy"></i> Copy</button>
+                            <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="app-item">
+                        <div class="app-icon"><i class="fas fa-crown"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Platinum Active V3</div>
+                            <div class="app-desc">Dream4K · 5.25 MB</div>
+                        </div>
+                        <div class="app-actions">
+                            <span class="code-display" id="code6">5249980</span>
+                            <button class="btn-copy-code" onclick="copyAppCode('code6')"><i class="fas fa-copy"></i> Copy</button>
+                            <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="app-item">
+                        <div class="app-icon"><i class="fas fa-android"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Dream 4K v2-1.2</div>
+                            <div class="app-desc">Android · 4.50 MB</div>
+                        </div>
+                        <div class="app-actions">
+                            <span class="code-display" id="code7">4496801</span>
+                            <button class="btn-copy-code" onclick="copyAppCode('code7')"><i class="fas fa-copy"></i> Copy</button>
+                            <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                    <div class="app-item">
+                        <div class="app-icon"><i class="fas fa-ethernet"></i></div>
+                        <div class="app-info">
+                            <div class="app-name">Dream 4K v3-1.3 Box Ethernet</div>
+                            <div class="app-desc">Android Box · 9.66 MB</div>
+                        </div>
+                        <div class="app-actions">
+                            <span class="code-display" id="code8">9663676</span>
+                            <button class="btn-copy-code" onclick="copyAppCode('code8')"><i class="fas fa-copy"></i> Copy</button>
+                            <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FREE TRIAL -->
+            <div class="section-title" id="trial">Request Your <span>Free Trial</span></div>
+            <div class="section-sub">Choose your preferred connection type and we'll send you credentials instantly via WhatsApp or Telegram.</div>
+            <div class="trial-section">
+                <div class="trial-info">
+                    <h3><i class="fas fa-headset"></i> Get in Touch</h3>
+                    <p>Our team is available 24/7 via WhatsApp, Telegram, or email. Fill out the form or reach out directly.</p>
+                    <div class="contact-details">
+                        <div><span class="label">📱 WhatsApp:</span> <a href="https://wa.me/212663087765" target="_blank">+212 663-087765</a></div>
+                        <div><span class="label">📱 Telegram:</span> <a href="https://t.me/reselleriptvcom" target="_blank">@reselleriptvcom</a></div>
+                        <div><span class="label">✉️ Email:</span> <a href="mailto:support@reselleriptv.com">support@reselleriptv.com</a></div>
+                    </div>
+                </div>
+                <form class="trial-form" id="trialForm">
+                    <div class="form-row">
+                        <select required id="connectionType">
+                            <option value="">Select connection type</option>
+                            <option value="m3u">M3U</option>
+                            <option value="xtream">Xtream Code</option>
+                            <option value="active">Active Code</option>
+                            <option value="mag">MAG Line</option>
+                        </select>
+                    </div>
+                    <div id="macField">
+                        <input type="text" placeholder="MAC Address (required for MAG Line)" id="macAddress" />
+                    </div>
+                    <div class="connection-hint">* For MAG Line, please provide your device MAC address.</div>
+                    <div class="trial-actions">
+                        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Request Trial</button>
+                        <a href="https://wa.me/212663087765" target="_blank" class="btn-trial-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/reselleriptvcom" target="_blank" class="btn-trial-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- CONVERTER -->
+            <div class="section-title">Convert <span>M3U</span> to Xtream Code</div>
+            <div class="section-sub">Enter your M3U playlist URL to convert it to Xtream Code format instantly.</div>
+            <div class="converter-box">
+                <div class="input-group">
+                    <input type="text" placeholder="Enter your M3U playlist URL..." id="m3uInput" />
+                    <button class="btn-convert" onclick="convertM3U()"><i class="fas fa-exchange-alt"></i> Convert</button>
+                </div>
+                <div class="converter-result" id="converterResult">
+                    <i class="fas fa-info-circle"></i> Enter your M3U URL and click Convert.
                 </div>
             </div>
         </div>
 
-        <!-- ===== APP PLAYER + CODE DOWNLOADER SECTION ===== -->
-        <div class="app-section">
-            <div class="app-header">
-                <h3><i class="fas fa-download"></i> App Player & Code Downloader</h3>
-                <span style="color:#6a8aaa; font-size:13px;"><i class="fas fa-code"></i> Copy codes to download</span>
-            </div>
-            <div class="app-grid">
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-play-circle"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Saga Player 4K</div>
-                        <div class="app-desc">Version 1.0.49 · 3.48 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code1">3483955</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code1')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-tv"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Stalker MAG V30</div>
-                        <div class="app-desc">Dream4K · 5.60 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code2">5604791</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code2')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-film"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Smarters Player V2.2.2</div>
-                        <div class="app-desc">Dream4K · 8.63 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code3">8626673</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code3')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-user-cog"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Platinum User Pass V3.5.7</div>
-                        <div class="app-desc">Dream4K · 3.70 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code4">3704716</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code4')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-play"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">IBO Player V3.8</div>
-                        <div class="app-desc">Dream4K · 1.56 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code5">1560525</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code5')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-crown"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Platinum Active V3</div>
-                        <div class="app-desc">Dream4K · 5.25 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code6">5249980</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code6')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-android"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Dream 4K v2-1.2</div>
-                        <div class="app-desc">Android · 4.50 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code7">4496801</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code7')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-ethernet"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Dream 4K v3-1.3 Box Ethernet</div>
-                        <div class="app-desc">Android Box · 9.66 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code8">9663676</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code8')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
-                </div>
+        <!-- ===== PAGE: SUBSCRIPTIONS ===== -->
+        <div id="page-subscriptions" class="page-content">
+            <div class="section-title">IPTV <span>Subscription</span> Packages</div>
+            <div class="section-sub">Choose the perfect subscription plan for your entertainment needs. All plans include full access to our premium channel library and VOD content.</div>
+            <div class="price-notice"><i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.</div>
+            <div class="packages-grid">
+                <div class="package-card"><div class="plan-name">1 Month</div><div class="plan-price">10€</div><div class="plan-period">billed monthly</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="contactPlanSales('1 Month','10€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="contactPlanSales('1 Month','10€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card popular"><div class="badge">⭐ Best Value</div><div class="plan-name">3 Months</div><div class="plan-price">20€</div><div class="plan-period">€6.67 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="contactPlanSales('3 Months','20€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="contactPlanSales('3 Months','20€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card"><div class="plan-name">6 Months</div><div class="plan-price">30€</div><div class="plan-period">€5.00 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="contactPlanSales('6 Months','30€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="contactPlanSales('6 Months','30€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card"><div class="plan-name">12 Months</div><div class="plan-price">40€</div><div class="plan-period">€3.33 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="contactPlanSales('12 Months','40€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="contactPlanSales('12 Months','40€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
             </div>
         </div>
 
-        <!-- ===== FREE TRIAL SECTION ===== -->
-        <div class="section-title" id="trial">Request Your <span>Free Trial</span></div>
-        <div class="section-sub">Choose your preferred connection type and we'll send you credentials instantly via WhatsApp or Telegram.</div>
-        <div class="trial-section">
-            <div class="trial-info">
-                <h3><i class="fas fa-headset"></i> Get in Touch</h3>
-                <p>Our team is available 24/7 via WhatsApp, Telegram, or email. Fill out the form or reach out directly.</p>
-                <div class="contact-details">
-                    <div><span class="label">📱 WhatsApp:</span> <a href="https://wa.me/212663087765" target="_blank">+212 663-087765</a></div>
-                    <div><span class="label">📱 Telegram:</span> <a href="https://t.me/reselleriptvcom" target="_blank">@reselleriptvcom</a></div>
-                    <div><span class="label">✉️ Email:</span> <a href="mailto:support@reselleriptv.com">support@reselleriptv.com</a></div>
-                </div>
-            </div>
-            <form class="trial-form" id="trialForm">
-                <div class="form-row">
-                    <select required id="connectionType">
-                        <option value="">Select connection type</option>
-                        <option value="m3u">M3U</option>
-                        <option value="xtream">Xtream Code</option>
-                        <option value="active">Active Code</option>
-                        <option value="mag">MAG Line</option>
-                    </select>
-                </div>
-                <div id="macField">
-                    <input type="text" placeholder="MAC Address (required for MAG Line)" id="macAddress" />
-                </div>
-                <div class="connection-hint">* For MAG Line, please provide your device MAC address.</div>
-                <div class="trial-actions">
-                    <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Request Trial</button>
-                    <a href="https://wa.me/212663087765" target="_blank" class="btn-trial-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                    <a href="https://t.me/reselleriptvcom" target="_blank" class="btn-trial-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                </div>
-            </form>
-        </div>
-
-        <!-- ===== CONVERTER ===== -->
-        <div class="section-title">Convert <span>M3U</span> to Xtream Code</div>
-        <div class="section-sub">Enter your M3U playlist URL to convert it to Xtream Code format instantly.</div>
-        <div class="converter-box">
-            <div class="input-group">
-                <input type="text" placeholder="Enter your M3U playlist URL..." id="m3uInput" />
-                <button class="btn-convert" onclick="convertM3U()"><i class="fas fa-exchange-alt"></i> Convert</button>
-            </div>
-            <div class="converter-result" id="converterResult">
-                <i class="fas fa-info-circle"></i> Enter your M3U URL and click Convert.
+        <!-- ===== PAGE: RESELLER ===== -->
+        <div id="page-reseller" class="page-content">
+            <div class="section-title">IPTV <span>Reseller</span> Packages</div>
+            <div class="section-sub">Start your own IPTV business with our white-label reseller plans. Bulk credits at wholesale prices with private API host and full panel access.</div>
+            <div class="price-notice"><i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.</div>
+            <div class="packages-grid">
+                <div class="package-card"><div class="reseller-badge"><i class="fas fa-store"></i> Starter</div><div class="plan-name">120 Credits</div><div class="plan-price">140€</div><div class="plan-period">€1.17 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 120 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="contactResellerSales('120 Credits','140€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="contactResellerSales('120 Credits','140€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card popular"><div class="badge">🔥 Best Seller</div><div class="plan-name">360 Credits</div><div class="plan-price">395€</div><div class="plan-period">€1.10 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 360 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="contactResellerSales('360 Credits','395€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="contactResellerSales('360 Credits','395€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card"><div class="reseller-badge"><i class="fas fa-crown"></i> Pro</div><div class="plan-name">600 Credits</div><div class="plan-price">625€</div><div class="plan-period">€1.04 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 600 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="contactResellerSales('600 Credits','625€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="contactResellerSales('600 Credits','625€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card"><div class="reseller-badge"><i class="fas fa-gem"></i> Enterprise</div><div class="plan-name">Custom</div><div class="plan-price">Contact</div><div class="plan-period">Volume pricing</div><ul class="plan-features"><li><i class="fas fa-check"></i> Custom credit packages</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> Priority 24/7 support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="contactResellerSales('Custom','Volume pricing','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="contactResellerSales('Custom','Volume pricing','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
             </div>
         </div>
 
-        <!-- ===== SUBSCRIPTION PACKAGES ===== -->
-        <div class="section-title" id="packages">IPTV <span>Subscription</span> Packages</div>
-        <div class="section-sub">Choose the perfect subscription plan for your entertainment needs. All plans include full access to our premium channel library and VOD content.</div>
-        <div class="price-notice"><i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.</div>
-        <div class="packages-grid">
-            <div class="package-card"><div class="plan-name">1 Month</div><div class="plan-price">10€</div><div class="plan-period">billed monthly</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="contactPlanSales('1 Month','10€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="contactPlanSales('1 Month','10€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            <div class="package-card popular"><div class="badge">⭐ Best Value</div><div class="plan-name">3 Months</div><div class="plan-price">20€</div><div class="plan-period">€6.67 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="contactPlanSales('3 Months','20€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="contactPlanSales('3 Months','20€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            <div class="package-card"><div class="plan-name">6 Months</div><div class="plan-price">30€</div><div class="plan-period">€5.00 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="contactPlanSales('6 Months','30€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="contactPlanSales('6 Months','30€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            <div class="package-card"><div class="plan-name">12 Months</div><div class="plan-price">40€</div><div class="plan-period">€3.33 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="contactPlanSales('12 Months','40€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="contactPlanSales('12 Months','40€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-        </div>
-
-        <!-- ===== RESELLER PACKAGES ===== -->
-        <div class="section-title">IPTV <span>Reseller</span> Packages</div>
-        <div class="section-sub">Start your own IPTV business with our white-label reseller plans. Bulk credits at wholesale prices with private API host and full panel access.</div>
-        <div class="price-notice"><i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.</div>
-        <div class="packages-grid">
-            <div class="package-card"><div class="reseller-badge"><i class="fas fa-store"></i> Starter</div><div class="plan-name">120 Credits</div><div class="plan-price">140€</div><div class="plan-period">€1.17 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 120 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="contactResellerSales('120 Credits','140€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="contactResellerSales('120 Credits','140€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            <div class="package-card popular"><div class="badge">🔥 Best Seller</div><div class="plan-name">360 Credits</div><div class="plan-price">395€</div><div class="plan-period">€1.10 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 360 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="contactResellerSales('360 Credits','395€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="contactResellerSales('360 Credits','395€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            <div class="package-card"><div class="reseller-badge"><i class="fas fa-crown"></i> Pro</div><div class="plan-name">600 Credits</div><div class="plan-price">625€</div><div class="plan-period">€1.04 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 600 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="contactResellerSales('600 Credits','625€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="contactResellerSales('600 Credits','625€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            <div class="package-card"><div class="reseller-badge"><i class="fas fa-gem"></i> Enterprise</div><div class="plan-name">Custom</div><div class="plan-price">Contact</div><div class="plan-period">Volume pricing</div><ul class="plan-features"><li><i class="fas fa-check"></i> Custom credit packages</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> Priority 24/7 support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="contactResellerSales('Custom','Volume pricing','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="contactResellerSales('Custom','Volume pricing','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-        </div>
-
-        <!-- ===== FEATURES SECTION ===== -->
-        <div class="features-section">
-            <div class="features-title">POWERFUL <span>FEATURES</span></div>
-            <div class="features-sub">Clean, fast and responsive interface for smooth management. Advanced tools to manage your IPTV business easily.</div>
-            <div class="features-grid">
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div><div class="feature-name">Modern Interface</div><div class="feature-desc">Clean, fast and responsive interface for smooth management.</div><span class="feature-badge">NEW</span></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-tools"></i></div><div class="feature-name">Functionalities</div><div class="feature-desc">Advanced tools to manage your IPTV business easily.</div><span class="feature-badge">NEW</span></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-magic"></i></div><div class="feature-name">Auto Generate ProxyPass</div><div class="feature-desc">Automatically generate working ProxyPass links in one click.</div><span class="feature-badge">NEW</span></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-server"></i></div><div class="feature-name">Add Private Hosts</div><div class="feature-desc">Add and manage your own private hosts with total control.</div><span class="feature-badge">NEW</span></div>
+        <!-- ===== PAGE: FEATURES ===== -->
+        <div id="page-features" class="page-content">
+            <div class="features-section">
+                <div class="features-title">POWERFUL <span>FEATURES</span></div>
+                <div class="features-sub">Clean, fast and responsive interface for smooth management. Advanced tools to manage your IPTV business easily.</div>
+                <div class="features-grid">
+                    <div class="feature-card"><div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div><div class="feature-name">Modern Interface</div><div class="feature-desc">Clean, fast and responsive interface for smooth management.</div><span class="feature-badge">NEW</span></div>
+                    <div class="feature-card"><div class="feature-icon"><i class="fas fa-tools"></i></div><div class="feature-name">Functionalities</div><div class="feature-desc">Advanced tools to manage your IPTV business easily.</div><span class="feature-badge">NEW</span></div>
+                    <div class="feature-card"><div class="feature-icon"><i class="fas fa-magic"></i></div><div class="feature-name">Auto Generate ProxyPass</div><div class="feature-desc">Automatically generate working ProxyPass links in one click.</div><span class="feature-badge">NEW</span></div>
+                    <div class="feature-card"><div class="feature-icon"><i class="fas fa-server"></i></div><div class="feature-name">Add Private Hosts</div><div class="feature-desc">Add and manage your own private hosts with total control.</div><span class="feature-badge">NEW</span></div>
+                </div>
+            </div>
+            <div class="section-title">More <span>Advantages</span></div>
+            <div class="advantages-grid">
+                <div class="advantage-item"><i class="fas fa-users-cog"></i><div class="adv-name">Multi-Reseller</div></div>
+                <div class="advantage-item"><i class="fas fa-shield-alt"></i><div class="adv-name">Advanced Security</div></div>
+                <div class="advantage-item"><i class="fas fa-chart-line"></i><div class="adv-name">Real-time Statistics</div></div>
+                <div class="advantage-item"><i class="fas fa-database"></i><div class="adv-name">Automatic Backup</div></div>
+                <div class="advantage-item"><i class="fas fa-headset"></i><div class="adv-name">24/7 Support</div></div>
+                <div class="advantage-item"><i class="fas fa-globe"></i><div class="adv-name">Multi-language</div></div>
+                <div class="advantage-item"><i class="fas fa-sync-alt"></i><div class="adv-name">Regular Updates</div></div>
+                <div class="advantage-item"><i class="fas fa-user-shield"></i><div class="adv-name">Support</div></div>
             </div>
         </div>
 
-        <!-- ===== ADVANTAGES ===== -->
-        <div class="section-title">More <span>Advantages</span></div>
-        <div class="advantages-grid">
-            <div class="advantage-item"><i class="fas fa-users-cog"></i><div class="adv-name">Multi-Reseller</div></div>
-            <div class="advantage-item"><i class="fas fa-shield-alt"></i><div class="adv-name">Advanced Security</div></div>
-            <div class="advantage-item"><i class="fas fa-chart-line"></i><div class="adv-name">Real-time Statistics</div></div>
-            <div class="advantage-item"><i class="fas fa-database"></i><div class="adv-name">Automatic Backup</div></div>
-            <div class="advantage-item"><i class="fas fa-headset"></i><div class="adv-name">24/7 Support</div></div>
-            <div class="advantage-item"><i class="fas fa-globe"></i><div class="adv-name">Multi-language</div></div>
-            <div class="advantage-item"><i class="fas fa-sync-alt"></i><div class="adv-name">Regular Updates</div></div>
-            <div class="advantage-item"><i class="fas fa-user-shield"></i><div class="adv-name">Support</div></div>
+        <!-- ===== PAGE: FAQ ===== -->
+        <div id="page-faq" class="page-content">
+            <div class="section-title">Frequently Asked <span>Questions</span></div>
+            <div class="faq-grid">
+                <div class="faq-item"><div class="question"><i class="fas fa-question-circle"></i> What is Dream24K IPTV?</div><div class="answer">Dream24K is a premium IPTV subscription service delivering 40,000+ live channels, 100,000+ VOD, and true 4K UHD. It's the evolution of Dream4K, founded in 2017.</div></div>
+                <div class="faq-item"><div class="question"><i class="fas fa-sync-alt"></i> Is Dream24K the same as Dream4K?</div><div class="answer">Yes. Dream24K is the rebrand of Dream4K. Same team, same servers, now with more channels and upgraded 4K infrastructure.</div></div>
+                <div class="faq-item"><div class="question"><i class="fas fa-dollar-sign"></i> How much does it cost?</div><div class="answer">Subscription plans: 1 month = 10€, 3 months = 20€, 6 months = 30€, 12 months = 40€. Reseller packages available from 140€.</div></div>
+                <div class="faq-item"><div class="question"><i class="fas fa-tv"></i> What devices are supported?</div><div class="answer">Smart TVs, Firestick, Android, iOS, MAG/STB boxes, Windows, Mac. Any device with IPTV Smarters, TiviMate, or similar.</div></div>
+                <div class="faq-item"><div class="question"><i class="fas fa-gift"></i> Is there a free trial?</div><div class="answer">Yes. Contact us via WhatsApp or Telegram for a 24-hour free trial. No credit card required.</div></div>
+                <div class="faq-item"><div class="question"><i class="fas fa-handshake"></i> How does the reseller program work?</div><div class="answer">Purchase credits in bulk at wholesale prices. Each credit = one 1-month subscription. You get a white-label panel with private API host.</div></div>
+                <div class="faq-item"><div class="question"><i class="fas fa-wifi"></i> Do I need a VPN?</div><div class="answer">No. Dream24K works without a VPN in most regions. VPN is optional for added privacy.</div></div>
+                <div class="faq-item"><div class="question"><i class="fas fa-credit-card"></i> What payment methods are accepted?</div><div class="answer">Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, and cryptocurrency (Bitcoin, USDT, Ethereum).</div></div>
+                <div class="faq-item"><div class="question"><i class="fas fa-undo-alt"></i> What is your refund policy?</div><div class="answer">Every subscription is backed by a 30-day money-back guarantee. Contact our support team for a full refund.</div></div>
+                <div class="faq-item"><div class="question"><i class="fas fa-clock"></i> How long does activation take?</div><div class="answer">Activation is instant. You'll receive your credentials via email within 60 seconds of completing your purchase.</div></div>
+            </div>
+        </div>
+
+        <!-- ===== PAGE: SUPPORT ===== -->
+        <div id="page-support" class="page-content">
+            <div class="section-title">24/7 <span>Support</span></div>
+            <div class="section-sub">Our dedicated support team is available around the clock to help you with any questions or issues.</div>
+            <div class="trial-section" style="grid-template-columns:1fr;">
+                <div class="trial-info">
+                    <h3><i class="fas fa-headset"></i> Contact Support</h3>
+                    <p>Reach out to us via any of the following channels and we'll get back to you within minutes.</p>
+                    <div class="contact-details">
+                        <div><span class="label">📱 WhatsApp:</span> <a href="https://wa.me/212663087765" target="_blank">+212 663-087765</a></div>
+                        <div><span class="label">📱 Telegram:</span> <a href="https://t.me/reselleriptvcom" target="_blank">@reselleriptvcom</a></div>
+                        <div><span class="label">✉️ Email:</span> <a href="mailto:support@reselleriptv.com">support@reselleriptv.com</a></div>
+                        <div><span class="label">🌐 Live Chat:</span> Available on our website 24/7</div>
+                    </div>
+                </div>
+                <div class="social-section" style="margin-top:0;">
+                    <div class="section-title" style="font-size:22px;">Follow <span>Us</span></div>
+                    <div class="social-links">
+                        <a href="https://wa.me/212663087765" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/reselleriptvcom" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="mailto:support@reselleriptv.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- ===== CTA BANNER ===== -->
@@ -2130,36 +2317,6 @@
             <a href="#" class="legacy-item"><i class="fas fa-download"></i><div class="legacy-name">Legacy Apps</div><div class="legacy-desc">Previous app versions</div></a>
         </div>
 
-        <!-- ===== FAQ ===== -->
-        <div class="section-title">Frequently Asked <span>Questions</span></div>
-        <div class="faq-grid">
-            <div class="faq-item"><div class="question"><i class="fas fa-question-circle"></i> What is Dream24K IPTV?</div><div class="answer">Dream24K is a premium IPTV subscription service delivering 40,000+ live channels, 100,000+ VOD, and true 4K UHD. It's the evolution of Dream4K, founded in 2017.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-sync-alt"></i> Is Dream24K the same as Dream4K?</div><div class="answer">Yes. Dream24K is the rebrand of Dream4K. Same team, same servers, now with more channels and upgraded 4K infrastructure.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-dollar-sign"></i> How much does it cost?</div><div class="answer">Subscription plans: 1 month = 10€, 3 months = 20€, 6 months = 30€, 12 months = 40€. Reseller packages available from 140€.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-tv"></i> What devices are supported?</div><div class="answer">Smart TVs, Firestick, Android, iOS, MAG/STB boxes, Windows, Mac. Any device with IPTV Smarters, TiviMate, or similar.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-gift"></i> Is there a free trial?</div><div class="answer">Yes. Contact us via WhatsApp or Telegram for a 24-hour free trial. No credit card required.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-handshake"></i> How does the reseller program work?</div><div class="answer">Purchase credits in bulk at wholesale prices. Each credit = one 1-month subscription. You get a white-label panel with private API host.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-wifi"></i> Do I need a VPN?</div><div class="answer">No. Dream24K works without a VPN in most regions. VPN is optional for added privacy.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-credit-card"></i> What payment methods are accepted?</div><div class="answer">Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, and cryptocurrency (Bitcoin, USDT, Ethereum).</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-undo-alt"></i> What is your refund policy?</div><div class="answer">Every subscription is backed by a 30-day money-back guarantee. Contact our support team for a full refund.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-clock"></i> How long does activation take?</div><div class="answer">Activation is instant. You'll receive your credentials via email within 60 seconds of completing your purchase.</div></div>
-        </div>
-
-        <!-- ===== SOCIAL MEDIA ===== -->
-        <div class="social-section">
-            <div class="section-title">Connect With <span>Us</span></div>
-            <div class="section-sub">Follow us on social media for updates, support, and more.</div>
-            <div class="social-links">
-                <a href="https://wa.me/212663087765" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://t.me/reselleriptvcom" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                <a href="mailto:support@reselleriptv.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-
         <!-- ===== FOOTER ===== -->
         <div class="footer">
             <i class="fas fa-shield-alt" style="color:#f7c948;"></i> Dream 24K IPTV · since 2017 · 40K+ live & 100K+ VOD
@@ -2173,169 +2330,18 @@
     </div>
 
     <script>
-        // ===== LANGUAGE SWITCHER (working with translations) =====
-        const translations = {
-            en: {
-                title: "DREAM 24K · DREAM 4K",
-                subtitle: "Premium IPTV · 40,000+ Channels · 100,000+ VOD",
-                desc: "Experience the future of television with Dream24K IPTV — the evolution of Dream4K. Ultra-fast servers, zero buffering, 4K UHD quality, and a global network trusted by resellers and end-users in 120+ countries. Whether you're a viewer or a reseller, Dream24K delivers the ultimate IPTV experience.",
-                trial: "Request Your Free Trial",
-                subscribe: "Subscribe",
-                getStarted: "Get Started",
-                freeTrial: "Free Trial",
-                packages: "IPTV Subscription Packages",
-                reseller: "IPTV Reseller Packages",
-                features: "POWERFUL FEATURES",
-                advantages: "More Advantages",
-                faq: "Frequently Asked Questions",
-                connect: "Connect With Us",
-                footer: "Dream 24K IPTV · since 2017 · 40K+ live & 100K+ VOD"
-            },
-            fr: {
-                title: "DREAM 24K · DREAM 4K",
-                subtitle: "IPTV Premium · 40 000+ chaînes · 100 000+ VOD",
-                desc: "Découvrez l'avenir de la télévision avec Dream24K IPTV — l'évolution de Dream4K. Serveurs ultra-rapides, zéro buffer, qualité 4K UHD, et un réseau mondial approuvé par les revendeurs et les utilisateurs finaux dans plus de 120 pays.",
-                trial: "Demandez Votre Essai Gratuit",
-                subscribe: "S'abonner",
-                getStarted: "Commencer",
-                freeTrial: "Essai Gratuit",
-                packages: "Forfaits IPTV",
-                reseller: "Forfaits Revendeur IPTV",
-                features: "FONCTIONNALITÉS PUISSANTES",
-                advantages: "Plus d'Avantages",
-                faq: "Questions Fréquentes",
-                connect: "Connectez-vous Avec Nous",
-                footer: "Dream 24K IPTV · depuis 2017 · 40K+ live & 100K+ VOD"
-            },
-            es: {
-                title: "DREAM 24K · DREAM 4K",
-                subtitle: "IPTV Premium · 40,000+ canales · 100,000+ VOD",
-                desc: "Experimenta el futuro de la televisión con Dream24K IPTV — la evolución de Dream4K. Servidores ultrarrápidos, cero buffering, calidad 4K UHD, y una red global confiable por revendedores y usuarios finales en más de 120 países.",
-                trial: "Solicita Tu Prueba Gratuita",
-                subscribe: "Suscribirse",
-                getStarted: "Comenzar",
-                freeTrial: "Prueba Gratuita",
-                packages: "Paquetes de Suscripción IPTV",
-                reseller: "Paquetes Revendedor IPTV",
-                features: "CARACTERÍSTICAS POTENTES",
-                advantages: "Más Ventajas",
-                faq: "Preguntas Frecuentes",
-                connect: "Conéctate Con Nosotros",
-                footer: "Dream 24K IPTV · desde 2017 · 40K+ live & 100K+ VOD"
-            },
-            de: {
-                title: "DREAM 24K · DREAM 4K",
-                subtitle: "Premium IPTV · 40.000+ Kanäle · 100.000+ VOD",
-                desc: "Erleben Sie die Zukunft des Fernsehens mit Dream24K IPTV – der Weiterentwicklung von Dream4K. Ultraschnelle Server, null Pufferung, 4K UHD-Qualität und ein globales Netzwerk, das von Resellern und Endnutzern in über 120 Ländern vertrauen.",
-                trial: "Fordern Sie Ihre kostenlose Testversion an",
-                subscribe: "Abonnieren",
-                getStarted: "Loslegen",
-                freeTrial: "Kostenlose Testversion",
-                packages: "IPTV-Abonnementpakete",
-                reseller: "IPTV-Reseller-Pakete",
-                features: "LEISTUNGSSTARKE FUNKTIONEN",
-                advantages: "Mehr Vorteile",
-                faq: "Häufig gestellte Fragen",
-                connect: "Verbinden Sie sich mit uns",
-                footer: "Dream 24K IPTV · seit 2017 · 40K+ live & 100K+ VOD"
-            },
-            it: {
-                title: "DREAM 24K · DREAM 4K",
-                subtitle: "IPTV Premium · 40.000+ canali · 100.000+ VOD",
-                desc: "Sperimenta il futuro della televisione con Dream24K IPTV — l'evoluzione di Dream4K. Server ultraveloci, zero buffering, qualità 4K UHD e una rete globale affidabile da rivenditori e utenti finali in oltre 120 paesi.",
-                trial: "Richiedi la tua prova gratuita",
-                subscribe: "Abbonati",
-                getStarted: "Inizia",
-                freeTrial: "Prova Gratuita",
-                packages: "Pacchetti Abbonamento IPTV",
-                reseller: "Pacchetti Rivenditore IPTV",
-                features: "FUNZIONALITÀ POTENTI",
-                advantages: "Più Vantaggi",
-                faq: "Domande Frequenti",
-                connect: "Connettiti Con Noi",
-                footer: "Dream 24K IPTV · dal 2017 · 40K+ live & 100K+ VOD"
-            },
-            pt: {
-                title: "DREAM 24K · DREAM 4K",
-                subtitle: "IPTV Premium · 40.000+ canais · 100.000+ VOD",
-                desc: "Experimente o futuro da televisão com Dream24K IPTV — a evolução do Dream4K. Servidores ultrarrápidos, zero buffering, qualidade 4K UHD e uma rede global confiável por revendedores e usuários finais em mais de 120 países.",
-                trial: "Solicite seu teste gratuito",
-                subscribe: "Inscrever-se",
-                getStarted: "Começar",
-                freeTrial: "Teste Gratuito",
-                packages: "Pacotes de Assinatura IPTV",
-                reseller: "Pacotes Revendedor IPTV",
-                features: "RECURSOS PODEROSOS",
-                advantages: "Mais Vantagens",
-                faq: "Perguntas Frequentes",
-                connect: "Conecte-se Conosco",
-                footer: "Dream 24K IPTV · desde 2017 · 40K+ live & 100K+ VOD"
-            },
-            ar: {
-                title: "DREAM 24K · DREAM 4K",
-                subtitle: "IPTV متميز · 40,000+ قناة · 100,000+ VOD",
-                desc: "اختبر مستقبل التلفزيون مع Dream24K IPTV — تطور Dream4K. خوادم فائقة السرعة، بدون تخزين مؤقت، جودة 4K UHD، وشبكة عالمية موثوق بها من قبل الموزعين والمستخدمين النهائيين في أكثر من 120 دولة.",
-                trial: "اطلب نسختك التجريبية المجانية",
-                subscribe: "اشترك",
-                getStarted: "ابدأ",
-                freeTrial: "نسخة تجريبية مجانية",
-                packages: "باقات اشتراك IPTV",
-                reseller: "باقات موزع IPTV",
-                features: "ميزات قوية",
-                advantages: "مزيد من المزايا",
-                faq: "الأسئلة الشائعة",
-                connect: "تواصل معنا",
-                footer: "Dream 24K IPTV · منذ 2017 · 40K+ قناة حية & 100K+ VOD"
-            },
-            ru: {
-                title: "DREAM 24K · DREAM 4K",
-                subtitle: "Премиум IPTV · 40,000+ каналов · 100,000+ VOD",
-                desc: "Испытайте будущее телевидения с Dream24K IPTV — эволюцией Dream4K. Сверхбыстрые серверы, нулевая буферизация, качество 4K UHD и глобальная сеть, которой доверяют реселлеры и конечные пользователи в более чем 120 странах.",
-                trial: "Запросите бесплатную пробную версию",
-                subscribe: "Подписаться",
-                getStarted: "Начать",
-                freeTrial: "Бесплатная пробная версия",
-                packages: "Пакеты подписки IPTV",
-                reseller: "Пакеты реселлера IPTV",
-                features: "МОЩНЫЕ ФУНКЦИИ",
-                advantages: "Больше преимуществ",
-                faq: "Часто задаваемые вопросы",
-                connect: "Свяжитесь с нами",
-                footer: "Dream 24K IPTV · с 2017 · 40K+ live & 100K+ VOD"
-            },
-            zh: {
-                title: "DREAM 24K · DREAM 4K",
-                subtitle: "高级IPTV · 40,000+ 频道 · 100,000+ VOD",
-                desc: "通过Dream24K IPTV体验电视的未来——Dream4K的进化。超快速服务器、零缓冲、4K UHD画质，以及一个受到120多个国家经销商和终端用户信赖的全球网络。",
-                trial: "申请免费试用",
-                subscribe: "订阅",
-                getStarted: "开始",
-                freeTrial: "免费试用",
-                packages: "IPTV订阅套餐",
-                reseller: "IPTV经销商套餐",
-                features: "强大功能",
-                advantages: "更多优势",
-                faq: "常见问题",
-                connect: "联系我们",
-                footer: "Dream 24K IPTV · 始于2017 · 40K+ 直播 & 100K+ VOD"
-            },
-            ja: {
-                title: "DREAM 24K · DREAM 4K",
-                subtitle: "プレミアムIPTV · 40,000+チャンネル · 100,000+ VOD",
-                desc: "Dream24K IPTVでテレビの未来を体験 — Dream4Kの進化版。超高速サーバー、ゼロバッファリング、4K UHD品質、そして120カ国以上のリセラーとエンドユーザーから信頼されるグローバルネットワーク。",
-                trial: "無料トライアルをリクエスト",
-                subscribe: "購読",
-                getStarted: "始める",
-                freeTrial: "無料トライアル",
-                packages: "IPTVサブスクリプションパッケージ",
-                reseller: "IPTVリセラーパッケージ",
-                features: "強力な機能",
-                advantages: "さらに多くの利点",
-                faq: "よくある質問",
-                connect: "お問い合わせ",
-                footer: "Dream 24K IPTV · 2017年から · 40K+ ライブ & 100K+ VOD"
-            }
-        };
+        // ===== PAGE NAVIGATION =====
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const pageId = this.dataset.page;
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+                const targetPage = document.getElementById('page-' + pageId);
+                if (targetPage) targetPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
 
         // ===== CANVAS HERO PARTICLES =====
         (function initCanvas() {
@@ -2399,48 +2405,232 @@
             draw();
         })();
 
-        // ===== LANGUAGE SWITCHER =====
+        // ===== LANGUAGE SWITCHER (FULLY WORKING) =====
+        const translations = {
+            en: {
+                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
+                heroSub: 'Premium IPTV · 40,000+ Channels · 100,000+ VOD',
+                heroDesc: 'Experience the future of television with Dream24K IPTV — the evolution of Dream4K. Ultra-fast servers, zero buffering, 4K UHD quality, and a global network trusted by resellers and end-users in 120+ countries. Whether you\'re a viewer or a reseller, Dream24K delivers the ultimate IPTV experience.',
+                trialTitle: 'Request Your <span>Free Trial</span>',
+                subscribe: 'Subscribe',
+                getStarted: 'Get Started',
+                freeTrial: 'Free Trial',
+                packages: 'IPTV <span>Subscription</span> Packages',
+                reseller: 'IPTV <span>Reseller</span> Packages',
+                features: 'POWERFUL <span>FEATURES</span>',
+                advantages: 'More <span>Advantages</span>',
+                faq: 'Frequently Asked <span>Questions</span>',
+                support: '24/7 <span>Support</span>',
+                supportDesc: 'Our dedicated support team is available around the clock to help you with any questions or issues.',
+                ctaTitle: 'TAKE YOUR IPTV BUSINESS TO <span>THE NEXT LEVEL</span>',
+                ctaDesc: 'DREAM24K · 24K PREMIUM QUALITY — STABLE · SECURE · POWERFUL',
+                footer: 'Dream 24K IPTV · since 2017 · 40K+ live & 100K+ VOD'
+            },
+            fr: {
+                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
+                heroSub: 'IPTV Premium · 40 000+ chaînes · 100 000+ VOD',
+                heroDesc: 'Découvrez l\'avenir de la télévision avec Dream24K IPTV — l\'évolution de Dream4K. Serveurs ultra-rapides, zéro buffer, qualité 4K UHD, et un réseau mondial approuvé par les revendeurs et les utilisateurs finaux dans plus de 120 pays.',
+                trialTitle: 'Demandez Votre <span>Essai Gratuit</span>',
+                subscribe: 'S\'abonner',
+                getStarted: 'Commencer',
+                freeTrial: 'Essai Gratuit',
+                packages: 'Forfaits <span>IPTV</span>',
+                reseller: 'Forfaits <span>Revendeur</span> IPTV',
+                features: 'FONCTIONNALITÉS <span>PUISSANTES</span>',
+                advantages: 'Plus d\'<span>Avantages</span>',
+                faq: 'Questions <span>Fréquentes</span>',
+                support: 'Support <span>24/7</span>',
+                supportDesc: 'Notre équipe de support dédiée est disponible 24h/24 et 7j/7 pour vous aider avec toutes vos questions ou problèmes.',
+                ctaTitle: 'FAITES PASSER VOTRE ACTIVITÉ IPTV AU <span>NIVEAU SUPÉRIEUR</span>',
+                ctaDesc: 'DREAM24K · QUALITÉ PREMIUM 24K — STABLE · SÉCURISÉ · PUISSANT',
+                footer: 'Dream 24K IPTV · depuis 2017 · 40K+ live & 100K+ VOD'
+            },
+            es: {
+                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
+                heroSub: 'IPTV Premium · 40,000+ canales · 100,000+ VOD',
+                heroDesc: 'Experimenta el futuro de la televisión con Dream24K IPTV — la evolución de Dream4K. Servidores ultrarrápidos, cero buffering, calidad 4K UHD, y una red global confiable por revendedores y usuarios finales en más de 120 países.',
+                trialTitle: 'Solicita Tu <span>Prueba Gratuita</span>',
+                subscribe: 'Suscribirse',
+                getStarted: 'Comenzar',
+                freeTrial: 'Prueba Gratuita',
+                packages: 'Paquetes de <span>Suscripción</span> IPTV',
+                reseller: 'Paquetes <span>Revendedor</span> IPTV',
+                features: 'CARACTERÍSTICAS <span>POTENTES</span>',
+                advantages: 'Más <span>Ventajas</span>',
+                faq: 'Preguntas <span>Frecuentes</span>',
+                support: 'Soporte <span>24/7</span>',
+                supportDesc: 'Nuestro equipo de soporte dedicado está disponible las 24 horas del día, los 7 días de la semana, para ayudarte con cualquier pregunta o problema.',
+                ctaTitle: 'LLEVA TU NEGOCIO IPTV AL <span>PRÓXIMO NIVEL</span>',
+                ctaDesc: 'DREAM24K · CALIDAD PREMIUM 24K — ESTABLE · SEGURO · POTENTE',
+                footer: 'Dream 24K IPTV · desde 2017 · 40K+ live & 100K+ VOD'
+            },
+            de: {
+                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
+                heroSub: 'Premium IPTV · 40.000+ Kanäle · 100.000+ VOD',
+                heroDesc: 'Erleben Sie die Zukunft des Fernsehens mit Dream24K IPTV – der Weiterentwicklung von Dream4K. Ultraschnelle Server, null Pufferung, 4K UHD-Qualität und ein globales Netzwerk, das von Resellern und Endnutzern in über 120 Ländern vertrauen.',
+                trialTitle: 'Fordern Sie Ihre <span>kostenlose Testversion</span> an',
+                subscribe: 'Abonnieren',
+                getStarted: 'Loslegen',
+                freeTrial: 'Kostenlose Testversion',
+                packages: 'IPTV-<span>Abonnementpakete</span>',
+                reseller: 'IPTV-<span>Reseller-Pakete</span>',
+                features: 'LEISTUNGSSTARKE <span>FUNKTIONEN</span>',
+                advantages: 'Mehr <span>Vorteile</span>',
+                faq: 'Häufig gestellte <span>Fragen</span>',
+                support: '24/7 <span>Support</span>',
+                supportDesc: 'Unser engagiertes Support-Team ist rund um die Uhr für Sie da, um Ihnen bei Fragen oder Problemen zu helfen.',
+                ctaTitle: 'BRINGEN SIE IHR IPTV-GESCHÄFT AUF <span>DIE NÄCHSTE STUFE</span>',
+                ctaDesc: 'DREAM24K · 24K PREMIUM-QUALITÄT — STABIL · SICHER · LEISTUNGSSTARK',
+                footer: 'Dream 24K IPTV · seit 2017 · 40K+ live & 100K+ VOD'
+            },
+            it: {
+                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
+                heroSub: 'IPTV Premium · 40.000+ canali · 100.000+ VOD',
+                heroDesc: 'Sperimenta il futuro della televisione con Dream24K IPTV — l\'evoluzione di Dream4K. Server ultraveloci, zero buffering, qualità 4K UHD e una rete globale affidabile da rivenditori e utenti finali in oltre 120 paesi.',
+                trialTitle: 'Richiedi la tua <span>Prova Gratuita</span>',
+                subscribe: 'Abbonati',
+                getStarted: 'Inizia',
+                freeTrial: 'Prova Gratuita',
+                packages: 'Pacchetti <span>Abbonamento</span> IPTV',
+                reseller: 'Pacchetti <span>Rivenditore</span> IPTV',
+                features: 'FUNZIONALITÀ <span>POTENTI</span>',
+                advantages: 'Più <span>Vantaggi</span>',
+                faq: 'Domande <span>Frequenti</span>',
+                support: 'Supporto <span>24/7</span>',
+                supportDesc: 'Il nostro team di supporto dedicato è disponibile 24 ore su 24, 7 giorni su 7, per aiutarti con qualsiasi domanda o problema.',
+                ctaTitle: 'PORTA LA TUA ATTIVITÀ IPTV AL <span>LIVELLO SUCCESSIVO</span>',
+                ctaDesc: 'DREAM24K · QUALITÀ PREMIUM 24K — STABILE · SICURO · POTENTE',
+                footer: 'Dream 24K IPTV · dal 2017 · 40K+ live & 100K+ VOD'
+            },
+            pt: {
+                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
+                heroSub: 'IPTV Premium · 40.000+ canais · 100.000+ VOD',
+                heroDesc: 'Experimente o futuro da televisão com Dream24K IPTV — a evolução do Dream4K. Servidores ultrarrápidos, zero buffering, qualidade 4K UHD e uma rede global confiável por revendedores e usuários finais em mais de 120 países.',
+                trialTitle: 'Solicite seu <span>Teste Gratuito</span>',
+                subscribe: 'Inscrever-se',
+                getStarted: 'Começar',
+                freeTrial: 'Teste Gratuito',
+                packages: 'Pacotes de <span>Assinatura</span> IPTV',
+                reseller: 'Pacotes <span>Revendedor</span> IPTV',
+                features: 'RECURSOS <span>PODEROSOS</span>',
+                advantages: 'Mais <span>Vantagens</span>',
+                faq: 'Perguntas <span>Frequentes</span>',
+                support: 'Suporte <span>24/7</span>',
+                supportDesc: 'Nossa equipe de suporte dedicada está disponível 24 horas por dia, 7 dias por semana, para ajudá-lo com qualquer dúvida ou problema.',
+                ctaTitle: 'LEVE SEU NEGÓCIO IPTV PARA O <span>PRÓXIMO NÍVEL</span>',
+                ctaDesc: 'DREAM24K · QUALIDADE PREMIUM 24K — ESTÁVEL · SEGURO · POTENTE',
+                footer: 'Dream 24K IPTV · desde 2017 · 40K+ live & 100K+ VOD'
+            },
+            ar: {
+                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
+                heroSub: 'IPTV متميز · 40,000+ قناة · 100,000+ VOD',
+                heroDesc: 'اختبر مستقبل التلفزيون مع Dream24K IPTV — تطور Dream4K. خوادم فائقة السرعة، بدون تخزين مؤقت، جودة 4K UHD، وشبكة عالمية موثوق بها من قبل الموزعين والمستخدمين النهائيين في أكثر من 120 دولة.',
+                trialTitle: 'اطلب <span>نسختك التجريبية المجانية</span>',
+                subscribe: 'اشترك',
+                getStarted: 'ابدأ',
+                freeTrial: 'نسخة تجريبية مجانية',
+                packages: 'باقات <span>اشتراك</span> IPTV',
+                reseller: 'باقات <span>موزع</span> IPTV',
+                features: 'ميزات <span>قوية</span>',
+                advantages: 'مزيد من <span>المزايا</span>',
+                faq: 'الأسئلة <span>الشائعة</span>',
+                support: 'دعم <span>24/7</span>',
+                supportDesc: 'فريق الدعم المخصص لدينا متاح على مدار الساعة طوال أيام الأسبوع لمساعدتك في أي أسئلة أو مشاكل.',
+                ctaTitle: 'ارفع عملك IPTV إلى <span>المستوى التالي</span>',
+                ctaDesc: 'DREAM24K · جودة متميزة 24K — مستقرة · آمنة · قوية',
+                footer: 'Dream 24K IPTV · منذ 2017 · 40K+ قناة حية & 100K+ VOD'
+            },
+            ru: {
+                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
+                heroSub: 'Премиум IPTV · 40,000+ каналов · 100,000+ VOD',
+                heroDesc: 'Испытайте будущее телевидения с Dream24K IPTV — эволюцией Dream4K. Сверхбыстрые серверы, нулевая буферизация, качество 4K UHD и глобальная сеть, которой доверяют реселлеры и конечные пользователи в более чем 120 странах.',
+                trialTitle: 'Запросите <span>бесплатную пробную версию</span>',
+                subscribe: 'Подписаться',
+                getStarted: 'Начать',
+                freeTrial: 'Бесплатная пробная версия',
+                packages: 'Пакеты <span>подписки</span> IPTV',
+                reseller: 'Пакеты <span>реселлера</span> IPTV',
+                features: 'МОЩНЫЕ <span>ФУНКЦИИ</span>',
+                advantages: 'Больше <span>преимуществ</span>',
+                faq: 'Часто задаваемые <span>вопросы</span>',
+                support: 'Поддержка <span>24/7</span>',
+                supportDesc: 'Наша команда поддержки доступна круглосуточно, чтобы помочь вам с любыми вопросами или проблемами.',
+                ctaTitle: 'ПОДНИМИТЕ СВОЙ IPTV-БИЗНЕС НА <span>СЛЕДУЮЩИЙ УРОВЕНЬ</span>',
+                ctaDesc: 'DREAM24K · ПРЕМИУМ-КАЧЕСТВО 24K — СТАБИЛЬНЫЙ · БЕЗОПАСНЫЙ · МОЩНЫЙ',
+                footer: 'Dream 24K IPTV · с 2017 · 40K+ live & 100K+ VOD'
+            },
+            zh: {
+                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
+                heroSub: '高级IPTV · 40,000+ 频道 · 100,000+ VOD',
+                heroDesc: '通过Dream24K IPTV体验电视的未来——Dream4K的进化。超快速服务器、零缓冲、4K UHD画质，以及一个受到120多个国家经销商和终端用户信赖的全球网络。',
+                trialTitle: '申请<span>免费试用</span>',
+                subscribe: '订阅',
+                getStarted: '开始',
+                freeTrial: '免费试用',
+                packages: 'IPTV<span>订阅套餐</span>',
+                reseller: 'IPTV<span>经销商套餐</span>',
+                features: '强大<span>功能</span>',
+                advantages: '更多<span>优势</span>',
+                faq: '常见<span>问题</span>',
+                support: '24/7<span>支持</span>',
+                supportDesc: '我们的专业支持团队全天候为您服务，帮助您解决任何问题。',
+                ctaTitle: '将您的IPTV业务提升到<span>新水平</span>',
+                ctaDesc: 'DREAM24K · 24K优质品质 — 稳定 · 安全 · 强大',
+                footer: 'Dream 24K IPTV · 始于2017 · 40K+ 直播 & 100K+ VOD'
+            },
+            ja: {
+                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
+                heroSub: 'プレミアムIPTV · 40,000+チャンネル · 100,000+ VOD',
+                heroDesc: 'Dream24K IPTVでテレビの未来を体験 — Dream4Kの進化版。超高速サーバー、ゼロバッファリング、4K UHD品質、そして120カ国以上のリセラーとエンドユーザーから信頼されるグローバルネットワーク。',
+                trialTitle: '<span>無料トライアル</span>をリクエスト',
+                subscribe: '購読',
+                getStarted: '始める',
+                freeTrial: '無料トライアル',
+                packages: 'IPTV<span>サブスクリプションパッケージ</span>',
+                reseller: 'IPTV<span>リセラーパッケージ</span>',
+                features: '強力な<span>機能</span>',
+                advantages: 'さらに多くの<span>利点</span>',
+                faq: 'よくある<span>質問</span>',
+                support: '24/7<span>サポート</span>',
+                supportDesc: '専任のサポートチームが24時間年中無休で、ご質問や問題に対応いたします。',
+                ctaTitle: 'IPTVビジネスを<span>次のレベル</span>へ',
+                ctaDesc: 'DREAM24K · 24Kプレミアム品質 — 安定 · 安全 · 強力',
+                footer: 'Dream 24K IPTV · 2017年から · 40K+ ライブ & 100K+ VOD'
+            }
+        };
+
         document.getElementById('languageSelect').addEventListener('change', function() {
             const lang = this.value;
             const t = translations[lang] || translations.en;
 
-            // Update hero text
-            document.querySelector('.hero-tagline').innerHTML = t.title.replace('·', '<span>·</span>').replace('DREAM 24K', 'DREAM <span>24K</span>').replace('DREAM 4K', 'DREAM <span>4K</span>');
-            document.querySelector('.hero-sub').textContent = t.subtitle;
-            document.querySelector('.hero-desc').textContent = t.desc;
+            // Update hero
+            document.querySelector('.hero-tagline').innerHTML = t.heroTagline;
+            document.querySelector('.hero-sub').textContent = t.heroSub;
+            document.querySelector('.hero-desc').textContent = t.heroDesc;
 
-            // Update section titles
-            document.querySelector('#trial').innerHTML = t.trial.replace('Free Trial', '<span>Free Trial</span>').replace('Your', 'Your <span>');
-            document.querySelector('#packages').innerHTML = t.packages.replace('IPTV', 'IPTV').replace('Subscription', 'Subscription <span>').replace('Packages', 'Packages</span>');
+            // Update trial
+            document.querySelector('#trial').innerHTML = t.trialTitle;
 
-            // Update buttons and other texts
+            // Update buttons
             document.querySelector('.btn-gold').innerHTML = `<i class="fas fa-rocket"></i> ${t.subscribe}`;
             document.querySelector('.map-overlay-content .btn-primary').innerHTML = `<i class="fas fa-rocket"></i> ${t.getStarted}`;
             document.querySelector('.map-overlay-content .btn-secondary').innerHTML = `<i class="fas fa-gift"></i> ${t.freeTrial}`;
 
-            // Update feature section
-            document.querySelector('.features-title').innerHTML = t.features.replace('POWERFUL', 'POWERFUL').replace('FEATURES', '<span>FEATURES</span>');
+            // Update page titles
+            document.querySelector('#page-subscriptions .section-title').innerHTML = t.packages;
+            document.querySelector('#page-reseller .section-title').innerHTML = t.reseller;
+            document.querySelector('#page-features .features-title').innerHTML = t.features;
+            document.querySelector('#page-features .section-title').innerHTML = t.advantages;
+            document.querySelector('#page-faq .section-title').innerHTML = t.faq;
+            document.querySelector('#page-support .section-title').innerHTML = t.support;
+            document.querySelector('#page-support .section-sub').textContent = t.supportDesc;
 
-            // Update advantages
-            document.querySelectorAll('.section-title')[3].innerHTML = t.advantages.replace('More', 'More').replace('Advantages', '<span>Advantages</span>');
-
-            // Update FAQ
-            document.querySelectorAll('.section-title')[4].innerHTML = t.faq.replace('Frequently Asked', 'Frequently Asked').replace('Questions', '<span>Questions</span>');
-
-            // Update social
-            document.querySelectorAll('.section-title')[5].innerHTML = t.connect.replace('Connect With', 'Connect With').replace('Us', '<span>Us</span>');
+            // Update CTA
+            document.querySelector('.cta-banner .cta-title').innerHTML = t.ctaTitle;
+            document.querySelector('.cta-banner .cta-desc').textContent = t.ctaDesc;
 
             // Update footer
             document.querySelector('.footer').innerHTML = `<i class="fas fa-shield-alt" style="color:#f7c948;"></i> ${t.footer}<div class="keywords"><span>#Dream24KIPTV</span><span>#Dream4KIPTV</span><span>#Dream24KSubscription</span><span>#Dream4KReseller</span></div>`;
-
-            // Update trial section title
-            document.querySelectorAll('.section-title')[2].innerHTML = t.trial.replace('Request Your', 'Request Your').replace('Free Trial', '<span>Free Trial</span>');
-
-            // Update reseller section title
-            document.querySelectorAll('.section-title')[4] ? document.querySelectorAll('.section-title')[4].innerHTML = t.reseller.replace('IPTV', 'IPTV').replace('Reseller', 'Reseller <span>').replace('Packages', 'Packages</span>') : null;
-
-            // Update subscribe button in header
-            document.querySelector('.btn-gold').innerHTML = `<i class="fas fa-rocket"></i> ${t.subscribe}`;
         });
 
         // ===== SHOW/HIDE MAC ADDRESS FIELD =====
@@ -2497,7 +2687,8 @@
             let trialMessage = `I want to start free trial Dream24K - ${typeLabel}`;
             if (mac) trialMessage += ` (MAC: ${mac})`;
             window.open(`https://wa.me/212663087765?text=${encodeURIComponent(trialMessage)}`, '_blank');
-            alert('✅ Free trial request sent to WhatsApp!\n\nConnection: ' + typeLabel + (mac ? '\nMAC: ' + mac : '') + '\n\nYou will receive your credentials shortly.');
+            alert('✅ Free trial request sent to WhatsApp!\n\nConnection: ' + typeLabel + (mac ? '\nMAC: ' + mac : '') +
+                '\n\nYou will receive your credentials shortly.');
             this.reset();
             document.getElementById('macField').classList.remove('visible');
         });
