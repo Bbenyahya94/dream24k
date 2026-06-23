@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>404 - Page Not Found | Dream24K IPTV</title>
-    <meta name="description" content="Oops! The page you're looking for doesn't exist. Return to Dream24K IPTV - Premium IPTV subscription with 40,000+ channels." />
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
         * {
@@ -22,9 +22,8 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            overflow-x: hidden;
-            user-select: none;
             padding: 20px;
+            user-select: none;
         }
 
         .bg-particles {
@@ -54,7 +53,7 @@
             100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
         }
 
-        .particle:nth-child(1) { left: 10%; animation-duration: 25s; animation-delay: 0s; }
+        .particle:nth-child(1) { left: 10%; animation-duration: 25s; }
         .particle:nth-child(2) { left: 20%; animation-duration: 30s; animation-delay: 2s; width: 5px; height: 5px; }
         .particle:nth-child(3) { left: 30%; animation-duration: 22s; animation-delay: 4s; width: 2px; height: 2px; }
         .particle:nth-child(4) { left: 40%; animation-duration: 28s; animation-delay: 1s; width: 6px; height: 6px; }
@@ -87,6 +86,7 @@
             justify-content: center;
             gap: 14px;
             margin-bottom: 10px;
+            text-decoration: none;
         }
 
         .logo-icon {
@@ -105,7 +105,6 @@
         .logo-text .brand {
             font-size: 32px;
             font-weight: 800;
-            letter-spacing: -0.3px;
             background: linear-gradient(to right, #ffffff, #c8d4e8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -124,7 +123,6 @@
             color: #7a8aaa;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-top: -2px;
         }
 
         .logo-text .sub i {
@@ -196,28 +194,6 @@
         .btn-primary:hover {
             transform: scale(1.04);
             box-shadow: 0 8px 32px rgba(212, 160, 32, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 14px 36px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 16px;
-            color: #ffffff;
-            cursor: pointer;
-            transition: 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: scale(1.04);
         }
 
         .btn-whatsapp {
@@ -350,7 +326,6 @@
                 font-size: 22px;
             }
             .btn-primary,
-            .btn-secondary,
             .btn-whatsapp,
             .btn-telegram {
                 padding: 12px 24px;
@@ -374,13 +349,13 @@
     </div>
 
     <div class="container">
-        <div class="logo">
+        <a href="/" class="logo">
             <div class="logo-icon"><i class="fas fa-play"></i></div>
             <div class="logo-text">
                 <div class="brand">DREAM <span>24K</span></div>
                 <div class="sub"><i class="fas fa-crown"></i> Premium IPTV Panel</div>
             </div>
-        </div>
+        </a>
 
         <div class="error-number">404</div>
         <h1 class="error-title">Page <span>Not Found</span></h1>
@@ -403,12 +378,12 @@
 
         <div class="quick-links">
             <a href="/"><i class="fas fa-chevron-right"></i> Home</a>
-            <a href="/subscriptions"><i class="fas fa-chevron-right"></i> Subscriptions</a>
-            <a href="/reseller"><i class="fas fa-chevron-right"></i> Reseller</a>
-            <a href="/features"><i class="fas fa-chevron-right"></i> Features</a>
-            <a href="/faq"><i class="fas fa-chevron-right"></i> FAQ</a>
-            <a href="/support"><i class="fas fa-chevron-right"></i> Support</a>
-            <a href="/trial"><i class="fas fa-chevron-right"></i> Free Trial</a>
+            <a href="/#packages"><i class="fas fa-chevron-right"></i> Subscriptions</a>
+            <a href="/#reseller"><i class="fas fa-chevron-right"></i> Reseller</a>
+            <a href="/#features"><i class="fas fa-chevron-right"></i> Features</a>
+            <a href="/#faq"><i class="fas fa-chevron-right"></i> FAQ</a>
+            <a href="/#support"><i class="fas fa-chevron-right"></i> Support</a>
+            <a href="/#trial"><i class="fas fa-chevron-right"></i> Free Trial</a>
         </div>
     </div>
 
@@ -431,6 +406,7 @@
             return false;
         }
 
+        // Security
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             return false;
