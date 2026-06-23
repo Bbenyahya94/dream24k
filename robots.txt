@@ -1,0 +1,33 @@
+# robots.txt for Dream24K IPTV
+# Domain: https://d24kiptv.com/
+
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /panel/
+Disallow: /reseller/
+Disallow: /api/
+Disallow: /includes/
+Disallow: /config/
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://d24kiptv.com/sitemap.xml
+
+# Crawl-delay for aggressive bots
+User-agent: AhrefsBot
+Crawl-delay: 5
+
+User-agent: SemrushBot
+Crawl-delay: 5
+
+User-agent: MJ12bot
+Crawl-delay: 5
+
+User-agent: DotBot
+Crawl-delay: 5
+
+User-agent: rogerbot
+Crawl-delay: 5
