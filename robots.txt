@@ -11,8 +11,6 @@ Disallow: /reseller/
 Disallow: /api/
 Disallow: /includes/
 Disallow: /config/
-Disallow: /private/
-Disallow: /assets/
 
 # Sitemap location
 Sitemap: https://d24kiptv.com/sitemap.xml
@@ -25,10 +23,4 @@ User-agent: SemrushBot
 Crawl-delay: 5
 
 User-agent: MJ12bot
-Crawl-delay: 5
-
-User-agent: DotBot
-Crawl-delay: 5
-
-User-agent: rogerbot
 Crawl-delay: 5
