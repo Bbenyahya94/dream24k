@@ -25,6 +25,10 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
         .site-wrapper {
             max-width: 1400px;
@@ -34,66 +38,6 @@
             border-radius: 0 0 48px 48px;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
             border-bottom: 1px solid rgba(255, 215, 0, 0.06);
-        }
-
-        /* ----- SSL BADGE (top right) ----- */
-        .ssl-badge {
-            position: fixed;
-            top: 16px;
-            right: 20px;
-            z-index: 9999;
-            background: rgba(10, 14, 26, 0.85);
-            backdrop-filter: blur(12px);
-            padding: 8px 18px 8px 14px;
-            border-radius: 60px;
-            border: 1px solid rgba(74, 217, 100, 0.3);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-            color: #4cd964;
-            pointer-events: none;
-            transition: 0.3s;
-        }
-        .ssl-badge i {
-            font-size: 18px;
-            color: #4cd964;
-            animation: sslPulse 2s ease-in-out infinite;
-        }
-        @keyframes sslPulse {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.15);
-                opacity: 0.8;
-            }
-        }
-        .ssl-badge .ssl-text {
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
-        .ssl-badge .ssl-detail {
-            font-size: 10px;
-            color: #6a8aaa;
-            font-weight: 400;
-        }
-        @media (max-width: 768px) {
-            .ssl-badge {
-                top: 10px;
-                right: 10px;
-                padding: 5px 12px 5px 10px;
-                font-size: 11px;
-            }
-            .ssl-badge i {
-                font-size: 14px;
-            }
-            .ssl-badge .ssl-detail {
-                display: none;
-            }
         }
 
         /* ----- HEADER ----- */
@@ -1586,13 +1530,6 @@
     </style>
 </head>
 <body>
-    <!-- ===== SSL BADGE (fixed) ===== -->
-    <div class="ssl-badge">
-        <i class="fas fa-lock"></i>
-        <span class="ssl-text">SSL Secure</span>
-        <span class="ssl-detail">· 256-bit encryption</span>
-    </div>
-
     <div class="site-wrapper">
 
         <!-- ===== HEADER ===== -->
@@ -1621,8 +1558,8 @@
                 </div>
                 <span class="domain-badge"><i class="fas fa-globe"></i> dream24k.tv</span>
                 <div class="trial-buttons">
-                    <a href="#trial" class="btn-trial-whatsapp"><i class="fab fa-whatsapp"></i> <span>Trial</span></a>
-                    <a href="#trial" class="btn-trial-telegram"><i class="fab fa-telegram-plane"></i> <span>Trial</span></a>
+                    <a href="#" class="btn-trial-whatsapp" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> <span>Trial</span></a>
+                    <a href="#" class="btn-trial-telegram" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> <span>Trial</span></a>
                 </div>
                 <a href="#packages" class="btn-gold"><i class="fas fa-rocket"></i> Subscribe</a>
             </div>
@@ -1665,7 +1602,7 @@
                 </div>
             </div>
 
-            <!-- MAP with updated stats -->
+            <!-- MAP -->
             <div class="map-wrapper">
                 <iframe srcdoc='
         <!DOCTYPE html>
@@ -2036,7 +1973,7 @@
                     </div>
                     <div class="map-buttons">
                         <a href="#packages" class="btn-primary"><i class="fas fa-rocket"></i> Get Started</a>
-                        <a href="#trial" class="btn-secondary"><i class="fas fa-gift"></i> Free Trial</a>
+                        <a href="#" class="btn-secondary" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fas fa-gift"></i> Free Trial</a>
                     </div>
                 </div>
             </div>
@@ -2155,8 +2092,8 @@
                     <h3><i class="fas fa-headset"></i> Get in Touch</h3>
                     <p>Our team is available 24/7 via WhatsApp, Telegram, or email. Fill out the form or reach out directly.</p>
                     <div class="contact-details">
-                        <div><span class="label">📱 WhatsApp:</span> <a href="https://wa.me/212663087765" target="_blank">+212 663-087765</a></div>
-                        <div><span class="label">📱 Telegram:</span> <a href="https://t.me/reselleriptvcom" target="_blank">@reselleriptvcom</a></div>
+                        <div><span class="label">📱 WhatsApp:</span> <a href="#" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')">+212 663-087765</a></div>
+                        <div><span class="label">📱 Telegram:</span> <a href="#" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')">@reselleriptvcom</a></div>
                         <div><span class="label">✉️ Email:</span> <a href="mailto:support@reselleriptv.com">support@reselleriptv.com</a></div>
                     </div>
                 </div>
@@ -2176,8 +2113,8 @@
                     <div class="connection-hint">* For MAG Line, please provide your device MAC address.</div>
                     <div class="trial-actions">
                         <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Request Trial</button>
-                        <a href="https://wa.me/212663087765" target="_blank" class="btn-trial-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="https://t.me/reselleriptvcom" target="_blank" class="btn-trial-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                        <a href="#" class="btn-trial-whatsapp" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="#" class="btn-trial-telegram" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a>
                     </div>
                 </form>
             </div>
@@ -2202,10 +2139,10 @@
             <div class="section-sub">Choose the perfect subscription plan for your entertainment needs. All plans include full access to our premium channel library and VOD content.</div>
             <div class="price-notice"><i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.</div>
             <div class="packages-grid">
-                <div class="package-card"><div class="plan-name">1 Month</div><div class="plan-price">10€</div><div class="plan-period">billed monthly</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="contactPlanSales('1 Month','10€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="contactPlanSales('1 Month','10€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-                <div class="package-card popular"><div class="badge">⭐ Best Value</div><div class="plan-name">3 Months</div><div class="plan-price">20€</div><div class="plan-period">€6.67 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="contactPlanSales('3 Months','20€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="contactPlanSales('3 Months','20€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-                <div class="package-card"><div class="plan-name">6 Months</div><div class="plan-price">30€</div><div class="plan-period">€5.00 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="contactPlanSales('6 Months','30€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="contactPlanSales('6 Months','30€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-                <div class="package-card"><div class="plan-name">12 Months</div><div class="plan-price">40€</div><div class="plan-period">€3.33 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="contactPlanSales('12 Months','40€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="contactPlanSales('12 Months','40€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card"><div class="plan-name">1 Month</div><div class="plan-price">10€</div><div class="plan-period">billed monthly</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to subscribe to the 1 Month plan - 10€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to subscribe to the 1 Month plan - 10€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card popular"><div class="badge">⭐ Best Value</div><div class="plan-name">3 Months</div><div class="plan-price">20€</div><div class="plan-period">€6.67 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to subscribe to the 3 Months plan - 20€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to subscribe to the 3 Months plan - 20€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card"><div class="plan-name">6 Months</div><div class="plan-price">30€</div><div class="plan-period">€5.00 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to subscribe to the 6 Months plan - 30€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to subscribe to the 6 Months plan - 30€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card"><div class="plan-name">12 Months</div><div class="plan-price">40€</div><div class="plan-period">€3.33 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to subscribe to the 12 Months plan - 40€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to subscribe to the 12 Months plan - 40€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
             </div>
         </div>
 
@@ -2215,10 +2152,10 @@
             <div class="section-sub">Start your own IPTV business with our white-label reseller plans. Bulk credits at wholesale prices with private API host and full panel access.</div>
             <div class="price-notice"><i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.</div>
             <div class="packages-grid">
-                <div class="package-card"><div class="reseller-badge"><i class="fas fa-store"></i> Starter</div><div class="plan-name">120 Credits</div><div class="plan-price">140€</div><div class="plan-period">€1.17 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 120 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="contactResellerSales('120 Credits','140€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="contactResellerSales('120 Credits','140€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-                <div class="package-card popular"><div class="badge">🔥 Best Seller</div><div class="plan-name">360 Credits</div><div class="plan-price">395€</div><div class="plan-period">€1.10 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 360 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="contactResellerSales('360 Credits','395€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="contactResellerSales('360 Credits','395€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-                <div class="package-card"><div class="reseller-badge"><i class="fas fa-crown"></i> Pro</div><div class="plan-name">600 Credits</div><div class="plan-price">625€</div><div class="plan-period">€1.04 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 600 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="contactResellerSales('600 Credits','625€','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="contactResellerSales('600 Credits','625€','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-                <div class="package-card"><div class="reseller-badge"><i class="fas fa-gem"></i> Enterprise</div><div class="plan-name">Custom</div><div class="plan-price">Contact</div><div class="plan-period">Volume pricing</div><ul class="plan-features"><li><i class="fas fa-check"></i> Custom credit packages</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> Priority 24/7 support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="contactResellerSales('Custom','Volume pricing','whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="contactResellerSales('Custom','Volume pricing','telegram')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card"><div class="reseller-badge"><i class="fas fa-store"></i> Starter</div><div class="plan-name">120 Credits</div><div class="plan-price">140€</div><div class="plan-period">€1.17 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 120 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to start as a reseller with the 120 Credits - 140€ package with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to start as a reseller with the 120 Credits - 140€ package with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card popular"><div class="badge">🔥 Best Seller</div><div class="plan-name">360 Credits</div><div class="plan-price">395€</div><div class="plan-period">€1.10 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 360 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to start as a reseller with the 360 Credits - 395€ package with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to start as a reseller with the 360 Credits - 395€ package with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card"><div class="reseller-badge"><i class="fas fa-crown"></i> Pro</div><div class="plan-name">600 Credits</div><div class="plan-price">625€</div><div class="plan-period">€1.04 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 600 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to start as a reseller with the 600 Credits - 625€ package with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to start as a reseller with the 600 Credits - 625€ package with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                <div class="package-card"><div class="reseller-badge"><i class="fas fa-gem"></i> Enterprise</div><div class="plan-name">Custom</div><div class="plan-price">Contact</div><div class="plan-period">Volume pricing</div><ul class="plan-features"><li><i class="fas fa-check"></i> Custom credit packages</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> Priority 24/7 support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to start as a reseller with a Custom Enterprise package with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to start as a reseller with a Custom Enterprise package with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
             </div>
         </div>
 
@@ -2273,8 +2210,8 @@
                     <h3><i class="fas fa-headset"></i> Contact Support</h3>
                     <p>Reach out to us via any of the following channels and we'll get back to you within minutes.</p>
                     <div class="contact-details">
-                        <div><span class="label">📱 WhatsApp:</span> <a href="https://wa.me/212663087765" target="_blank">+212 663-087765</a></div>
-                        <div><span class="label">📱 Telegram:</span> <a href="https://t.me/reselleriptvcom" target="_blank">@reselleriptvcom</a></div>
+                        <div><span class="label">📱 WhatsApp:</span> <a href="#" onclick="openWhatsApp('I need support with Dream24K IPTV')">+212 663-087765</a></div>
+                        <div><span class="label">📱 Telegram:</span> <a href="#" onclick="openTelegram('I need support with Dream24K IPTV')">@reselleriptvcom</a></div>
                         <div><span class="label">✉️ Email:</span> <a href="mailto:support@reselleriptv.com">support@reselleriptv.com</a></div>
                         <div><span class="label">🌐 Live Chat:</span> Available on our website 24/7</div>
                     </div>
@@ -2282,8 +2219,8 @@
                 <div class="social-section" style="margin-top:0;">
                     <div class="section-title" style="font-size:22px;">Follow <span>Us</span></div>
                     <div class="social-links">
-                        <a href="https://wa.me/212663087765" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://t.me/reselleriptvcom" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" onclick="openWhatsApp('I want to connect with Dream24K IPTV on WhatsApp')"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" onclick="openTelegram('I want to connect with Dream24K IPTV on Telegram')"><i class="fab fa-telegram-plane"></i></a>
                         <a href="mailto:support@reselleriptv.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -2300,8 +2237,8 @@
             <div class="cta-desc">DREAM24K · 24K PREMIUM QUALITY — STABLE · SECURE · POWERFUL</div>
             <div class="cta-buttons">
                 <a href="#packages" class="btn-gold"><i class="fas fa-rocket"></i> Get Started</a>
-                <a href="#trial" class="btn-trial-whatsapp" style="padding:14px 36px; font-size:16px;"><i class="fab fa-whatsapp"></i> Free Trial</a>
-                <a href="#trial" class="btn-trial-telegram" style="padding:14px 36px; font-size:16px;"><i class="fab fa-telegram-plane"></i> Free Trial</a>
+                <a href="#" class="btn-trial-whatsapp" style="padding:14px 36px; font-size:16px;" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> Free Trial</a>
+                <a href="#" class="btn-trial-telegram" style="padding:14px 36px; font-size:16px;" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Free Trial</a>
             </div>
         </div>
 
@@ -2330,6 +2267,54 @@
     </div>
 
     <script>
+        // ===== SECURITY: Disable Right Click =====
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // ===== SECURITY: Disable Keyboard Shortcuts (F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S) =====
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && e.key === 'U') {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && e.key === 'S') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // ===== OPEN WHATSAPP WITH MESSAGE =====
+        function openWhatsApp(message) {
+            const phone = '212663087765';
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+            return false;
+        }
+
+        // ===== OPEN TELEGRAM WITH MESSAGE =====
+        function openTelegram(message) {
+            const username = 'reselleriptvcom';
+            const url = `https://t.me/${username}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+            return false;
+        }
+
         // ===== PAGE NAVIGATION =====
         document.querySelectorAll('.nav-btn').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -2424,7 +2409,17 @@
                 supportDesc: 'Our dedicated support team is available around the clock to help you with any questions or issues.',
                 ctaTitle: 'TAKE YOUR IPTV BUSINESS TO <span>THE NEXT LEVEL</span>',
                 ctaDesc: 'DREAM24K · 24K PREMIUM QUALITY — STABLE · SECURE · POWERFUL',
-                footer: 'Dream 24K IPTV · since 2017 · 40K+ live & 100K+ VOD'
+                footer: 'Dream 24K IPTV · since 2017 · 40K+ live & 100K+ VOD',
+                convertTitle: 'Convert <span>M3U</span> to Xtream Code',
+                convertSub: 'Enter your M3U playlist URL to convert it to Xtream Code format instantly.',
+                appTitle: 'App Player & Code Downloader',
+                appSub: 'Copy codes to download',
+                trialSub: 'Choose your preferred connection type and we\'ll send you credentials instantly via WhatsApp or Telegram.',
+                contactTitle: 'Get in Touch',
+                contactText: 'Our team is available 24/7 via WhatsApp, Telegram, or email. Fill out the form or reach out directly.',
+                legacyTitle: 'Legacy <span>Pages</span>',
+                legacySub: 'Access our previous versions and archived content.',
+                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
             },
             fr: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2443,7 +2438,17 @@
                 supportDesc: 'Notre équipe de support dédiée est disponible 24h/24 et 7j/7 pour vous aider avec toutes vos questions ou problèmes.',
                 ctaTitle: 'FAITES PASSER VOTRE ACTIVITÉ IPTV AU <span>NIVEAU SUPÉRIEUR</span>',
                 ctaDesc: 'DREAM24K · QUALITÉ PREMIUM 24K — STABLE · SÉCURISÉ · PUISSANT',
-                footer: 'Dream 24K IPTV · depuis 2017 · 40K+ live & 100K+ VOD'
+                footer: 'Dream 24K IPTV · depuis 2017 · 40K+ live & 100K+ VOD',
+                convertTitle: 'Convertir <span>M3U</span> en Code Xtream',
+                convertSub: 'Entrez l\'URL de votre playlist M3U pour la convertir instantanément en format Xtream Code.',
+                appTitle: 'Lecteur d\'application et téléchargeur de code',
+                appSub: 'Copiez les codes pour télécharger',
+                trialSub: 'Choisissez votre type de connexion préféré et nous vous enverrons les identifiants instantanément via WhatsApp ou Telegram.',
+                contactTitle: 'Entrez en Contact',
+                contactText: 'Notre équipe est disponible 24/7 via WhatsApp, Telegram ou email. Remplissez le formulaire ou contactez-nous directement.',
+                legacyTitle: 'Pages <span>Héritées</span>',
+                legacySub: 'Accédez à nos versions précédentes et au contenu archivé.',
+                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
             },
             es: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2462,7 +2467,17 @@
                 supportDesc: 'Nuestro equipo de soporte dedicado está disponible las 24 horas del día, los 7 días de la semana, para ayudarte con cualquier pregunta o problema.',
                 ctaTitle: 'LLEVA TU NEGOCIO IPTV AL <span>PRÓXIMO NIVEL</span>',
                 ctaDesc: 'DREAM24K · CALIDAD PREMIUM 24K — ESTABLE · SEGURO · POTENTE',
-                footer: 'Dream 24K IPTV · desde 2017 · 40K+ live & 100K+ VOD'
+                footer: 'Dream 24K IPTV · desde 2017 · 40K+ live & 100K+ VOD',
+                convertTitle: 'Convertir <span>M3U</span> a Código Xtream',
+                convertSub: 'Ingresa la URL de tu lista de reproducción M3U para convertirla instantáneamente al formato Xtream Code.',
+                appTitle: 'Reproductor de aplicaciones y descargador de códigos',
+                appSub: 'Copia los códigos para descargar',
+                trialSub: 'Elige tu tipo de conexión preferido y te enviaremos las credenciales al instante vía WhatsApp o Telegram.',
+                contactTitle: 'Ponte en Contacto',
+                contactText: 'Nuestro equipo está disponible 24/7 vía WhatsApp, Telegram o correo electrónico. Completa el formulario o contáctanos directamente.',
+                legacyTitle: 'Páginas <span>Legado</span>',
+                legacySub: 'Accede a nuestras versiones anteriores y contenido archivado.',
+                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
             },
             de: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2481,7 +2496,17 @@
                 supportDesc: 'Unser engagiertes Support-Team ist rund um die Uhr für Sie da, um Ihnen bei Fragen oder Problemen zu helfen.',
                 ctaTitle: 'BRINGEN SIE IHR IPTV-GESCHÄFT AUF <span>DIE NÄCHSTE STUFE</span>',
                 ctaDesc: 'DREAM24K · 24K PREMIUM-QUALITÄT — STABIL · SICHER · LEISTUNGSSTARK',
-                footer: 'Dream 24K IPTV · seit 2017 · 40K+ live & 100K+ VOD'
+                footer: 'Dream 24K IPTV · seit 2017 · 40K+ live & 100K+ VOD',
+                convertTitle: 'Konvertieren Sie <span>M3U</span> in Xtream-Code',
+                convertSub: 'Geben Sie die URL Ihrer M3U-Playlist ein, um sie sofort in das Xtream-Code-Format zu konvertieren.',
+                appTitle: 'App-Player und Code-Downloader',
+                appSub: 'Kopieren Sie Codes zum Herunterladen',
+                trialSub: 'Wählen Sie Ihren bevorzugten Verbindungstyp und wir senden Ihnen die Zugangsdaten sofort über WhatsApp oder Telegram.',
+                contactTitle: 'Kontaktieren Sie uns',
+                contactText: 'Unser Team ist rund um die Uhr über WhatsApp, Telegram oder E-Mail erreichbar. Füllen Sie das Formular aus oder kontaktieren Sie uns direkt.',
+                legacyTitle: 'Legacy-<span>Seiten</span>',
+                legacySub: 'Zugriff auf unsere früheren Versionen und archivierte Inhalte.',
+                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
             },
             it: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2500,7 +2525,17 @@
                 supportDesc: 'Il nostro team di supporto dedicato è disponibile 24 ore su 24, 7 giorni su 7, per aiutarti con qualsiasi domanda o problema.',
                 ctaTitle: 'PORTA LA TUA ATTIVITÀ IPTV AL <span>LIVELLO SUCCESSIVO</span>',
                 ctaDesc: 'DREAM24K · QUALITÀ PREMIUM 24K — STABILE · SICURO · POTENTE',
-                footer: 'Dream 24K IPTV · dal 2017 · 40K+ live & 100K+ VOD'
+                footer: 'Dream 24K IPTV · dal 2017 · 40K+ live & 100K+ VOD',
+                convertTitle: 'Converti <span>M3U</span> in Codice Xtream',
+                convertSub: 'Inserisci l\'URL della tua playlist M3U per convertirla istantaneamente nel formato Xtream Code.',
+                appTitle: 'Lettore app e downloader di codici',
+                appSub: 'Copia i codici per scaricare',
+                trialSub: 'Scegli il tuo tipo di connessione preferito e ti invieremo le credenziali istantaneamente via WhatsApp o Telegram.',
+                contactTitle: 'Mettiti in Contatto',
+                contactText: 'Il nostro team è disponibile 24/7 via WhatsApp, Telegram o email. Compila il modulo o contattaci direttamente.',
+                legacyTitle: 'Pagine <span>Legacy</span>',
+                legacySub: 'Accedi alle nostre versioni precedenti e ai contenuti archiviati.',
+                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
             },
             pt: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2519,7 +2554,17 @@
                 supportDesc: 'Nossa equipe de suporte dedicada está disponível 24 horas por dia, 7 dias por semana, para ajudá-lo com qualquer dúvida ou problema.',
                 ctaTitle: 'LEVE SEU NEGÓCIO IPTV PARA O <span>PRÓXIMO NÍVEL</span>',
                 ctaDesc: 'DREAM24K · QUALIDADE PREMIUM 24K — ESTÁVEL · SEGURO · POTENTE',
-                footer: 'Dream 24K IPTV · desde 2017 · 40K+ live & 100K+ VOD'
+                footer: 'Dream 24K IPTV · desde 2017 · 40K+ live & 100K+ VOD',
+                convertTitle: 'Converter <span>M3U</span> para Código Xtream',
+                convertSub: 'Insira o URL da sua playlist M3U para convertê-la instantaneamente no formato Xtream Code.',
+                appTitle: 'Player de aplicativos e downloader de códigos',
+                appSub: 'Copie os códigos para baixar',
+                trialSub: 'Escolha seu tipo de conexão preferido e enviaremos as credenciais instantaneamente via WhatsApp ou Telegram.',
+                contactTitle: 'Entre em Contato',
+                contactText: 'Nossa equipe está disponível 24/7 via WhatsApp, Telegram ou e-mail. Preencha o formulário ou entre em contato diretamente.',
+                legacyTitle: 'Páginas <span>Legado</span>',
+                legacySub: 'Acesse nossas versões anteriores e conteúdo arquivado.',
+                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
             },
             ar: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2538,7 +2583,17 @@
                 supportDesc: 'فريق الدعم المخصص لدينا متاح على مدار الساعة طوال أيام الأسبوع لمساعدتك في أي أسئلة أو مشاكل.',
                 ctaTitle: 'ارفع عملك IPTV إلى <span>المستوى التالي</span>',
                 ctaDesc: 'DREAM24K · جودة متميزة 24K — مستقرة · آمنة · قوية',
-                footer: 'Dream 24K IPTV · منذ 2017 · 40K+ قناة حية & 100K+ VOD'
+                footer: 'Dream 24K IPTV · منذ 2017 · 40K+ قناة حية & 100K+ VOD',
+                convertTitle: 'تحويل <span>M3U</span> إلى رمز Xtream',
+                convertSub: 'أدخل عنوان URL لقائمة التشغيل M3U الخاصة بك لتحويلها فورًا إلى تنسيق Xtream Code.',
+                appTitle: 'مشغل التطبيقات ومحمل الكود',
+                appSub: 'انسخ الرموز للتنزيل',
+                trialSub: 'اختر نوع الاتصال المفضل لديك وسنرسل لك بيانات الاعتماد فورًا عبر WhatsApp أو Telegram.',
+                contactTitle: 'تواصل معنا',
+                contactText: 'فريقنا متاح 24/7 عبر WhatsApp أو Telegram أو البريد الإلكتروني. املأ النموذج أو تواصل معنا مباشرة.',
+                legacyTitle: 'الصفحات <span>السابقة</span>',
+                legacySub: 'الوصول إلى إصداراتنا السابقة والمحتوى المؤرشف.',
+                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
             },
             ru: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2557,7 +2612,17 @@
                 supportDesc: 'Наша команда поддержки доступна круглосуточно, чтобы помочь вам с любыми вопросами или проблемами.',
                 ctaTitle: 'ПОДНИМИТЕ СВОЙ IPTV-БИЗНЕС НА <span>СЛЕДУЮЩИЙ УРОВЕНЬ</span>',
                 ctaDesc: 'DREAM24K · ПРЕМИУМ-КАЧЕСТВО 24K — СТАБИЛЬНЫЙ · БЕЗОПАСНЫЙ · МОЩНЫЙ',
-                footer: 'Dream 24K IPTV · с 2017 · 40K+ live & 100K+ VOD'
+                footer: 'Dream 24K IPTV · с 2017 · 40K+ live & 100K+ VOD',
+                convertTitle: 'Конвертировать <span>M3U</span> в код Xtream',
+                convertSub: 'Введите URL-адрес вашего плейлиста M3U, чтобы мгновенно преобразовать его в формат Xtream Code.',
+                appTitle: 'Проигрыватель приложений и загрузчик кодов',
+                appSub: 'Скопируйте коды для скачивания',
+                trialSub: 'Выберите предпочитаемый тип подключения, и мы мгновенно отправим вам учетные данные через WhatsApp или Telegram.',
+                contactTitle: 'Свяжитесь с нами',
+                contactText: 'Наша команда доступна 24/7 через WhatsApp, Telegram или электронную почту. Заполните форму или свяжитесь с нами напрямую.',
+                legacyTitle: 'Устаревшие <span>страницы</span>',
+                legacySub: 'Доступ к нашим предыдущим версиям и архивированному контенту.',
+                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
             },
             zh: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2576,7 +2641,17 @@
                 supportDesc: '我们的专业支持团队全天候为您服务，帮助您解决任何问题。',
                 ctaTitle: '将您的IPTV业务提升到<span>新水平</span>',
                 ctaDesc: 'DREAM24K · 24K优质品质 — 稳定 · 安全 · 强大',
-                footer: 'Dream 24K IPTV · 始于2017 · 40K+ 直播 & 100K+ VOD'
+                footer: 'Dream 24K IPTV · 始于2017 · 40K+ 直播 & 100K+ VOD',
+                convertTitle: '将<span>M3U</span>转换为Xtream代码',
+                convertSub: '输入您的M3U播放列表URL，即时将其转换为Xtream Code格式。',
+                appTitle: '应用播放器和代码下载器',
+                appSub: '复制代码进行下载',
+                trialSub: '选择您喜欢的连接类型，我们将通过WhatsApp或Telegram即时发送您的凭据。',
+                contactTitle: '联系我们',
+                contactText: '我们的团队全天候通过WhatsApp、Telegram或电子邮件提供服务。填写表格或直接联系我们。',
+                legacyTitle: '旧版<span>页面</span>',
+                legacySub: '访问我们的先前版本和存档内容。',
+                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
             },
             ja: {
                 heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
@@ -2595,7 +2670,17 @@
                 supportDesc: '専任のサポートチームが24時間年中無休で、ご質問や問題に対応いたします。',
                 ctaTitle: 'IPTVビジネスを<span>次のレベル</span>へ',
                 ctaDesc: 'DREAM24K · 24Kプレミアム品質 — 安定 · 安全 · 強力',
-                footer: 'Dream 24K IPTV · 2017年から · 40K+ ライブ & 100K+ VOD'
+                footer: 'Dream 24K IPTV · 2017年から · 40K+ ライブ & 100K+ VOD',
+                convertTitle: '<span>M3U</span>をXtreamコードに変換',
+                convertSub: 'M3UプレイリストのURLを入力して、即座にXtream Code形式に変換します。',
+                appTitle: 'アプリプレーヤーとコードダウンローダー',
+                appSub: 'ダウンロード用のコードをコピー',
+                trialSub: '希望の接続タイプを選択すると、WhatsAppまたはTelegramですぐに認証情報が送信されます。',
+                contactTitle: 'お問い合わせ',
+                contactText: '当社のチームはWhatsApp、Telegram、またはメールで24時間年中無休で対応しています。フォームに記入するか、直接お問い合わせください。',
+                legacyTitle: 'レガシー<span>ページ</span>',
+                legacySub: '以前のバージョンやアーカイブされたコンテンツにアクセスします。',
+                keywords: '#Dream24KIPTV #Dream4KIPTV #Dream24KSubscription #Dream4KReseller'
             }
         };
 
@@ -2610,6 +2695,9 @@
 
             // Update trial
             document.querySelector('#trial').innerHTML = t.trialTitle;
+            document.querySelector('.trial-section .section-sub') ? document.querySelector('.trial-section .section-sub').textContent = t.trialSub : null;
+            document.querySelector('.trial-info h3').innerHTML = '<i class="fas fa-headset"></i> ' + t.contactTitle;
+            document.querySelector('.trial-info p').textContent = t.contactText;
 
             // Update buttons
             document.querySelector('.btn-gold').innerHTML = `<i class="fas fa-rocket"></i> ${t.subscribe}`;
@@ -2624,6 +2712,18 @@
             document.querySelector('#page-faq .section-title').innerHTML = t.faq;
             document.querySelector('#page-support .section-title').innerHTML = t.support;
             document.querySelector('#page-support .section-sub').textContent = t.supportDesc;
+
+            // Update converter
+            document.querySelector('.converter-box + .section-title') ? document.querySelector('.converter-box + .section-title').innerHTML = t.convertTitle : null;
+            document.querySelector('.converter-box + .section-title + .section-sub') ? document.querySelector('.converter-box + .section-title + .section-sub').textContent = t.convertSub : null;
+
+            // Update app section
+            document.querySelector('.app-section .app-header h3').innerHTML = '<i class="fas fa-download"></i> ' + t.appTitle;
+            document.querySelector('.app-section .app-header span').innerHTML = '<i class="fas fa-code"></i> ' + t.appSub;
+
+            // Update legacy
+            document.querySelector('.legacy-grid + .section-title') ? document.querySelector('.legacy-grid + .section-title').innerHTML = t.legacyTitle : null;
+            document.querySelector('.legacy-grid + .section-title + .section-sub') ? document.querySelector('.legacy-grid + .section-title + .section-sub').textContent = t.legacySub : null;
 
             // Update CTA
             document.querySelector('.cta-banner .cta-title').innerHTML = t.ctaTitle;
@@ -2647,26 +2747,6 @@
             }
         });
 
-        // ===== CONTACT PLAN SALES =====
-        function contactPlanSales(plan, price, channel) {
-            const message = `Hi! I want to start Dream24K IPTV subscription - ${plan} plan (${price}). Please send me the details.`;
-            let url = channel === 'whatsapp' ?
-                `https://wa.me/212663087765?text=${encodeURIComponent(message)}` :
-                `https://t.me/reselleriptvcom?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-            return false;
-        }
-
-        // ===== CONTACT RESELLER SALES =====
-        function contactResellerSales(packageName, price, channel) {
-            const message = `Hi! I'm interested in Dream24K reseller package - ${packageName} (${price}). Please send me more information.`;
-            let url = channel === 'whatsapp' ?
-                `https://wa.me/212663087765?text=${encodeURIComponent(message)}` :
-                `https://t.me/reselleriptvcom?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-            return false;
-        }
-
         // ===== FREE TRIAL FORM =====
         document.getElementById('trialForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -2684,9 +2764,9 @@
                 return;
             }
 
-            let trialMessage = `I want to start free trial Dream24K - ${typeLabel}`;
+            let trialMessage = `I want to start a free trial with Dream24K IPTV - ${typeLabel}`;
             if (mac) trialMessage += ` (MAC: ${mac})`;
-            window.open(`https://wa.me/212663087765?text=${encodeURIComponent(trialMessage)}`, '_blank');
+            openWhatsApp(trialMessage);
             alert('✅ Free trial request sent to WhatsApp!\n\nConnection: ' + typeLabel + (mac ? '\nMAC: ' + mac : '') +
                 '\n\nYou will receive your credentials shortly.');
             this.reset();
