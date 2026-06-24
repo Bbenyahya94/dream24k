@@ -1,11 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- ===== SEO META TAGS ===== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dream24K IPTV · Premium IPTV Management Panel</title>
-    <meta name="description" content="Dream24K IPTV - Premium IPTV subscription with 40,000+ channels, 100,000+ VOD, 4K UHD. Reseller & wholesale panel available." />
+    <title>Dream 24K IPTV - Premium IPTV Subscription & Reseller Panel | 40,000+ Channels</title>
+    <meta name="description" content="Dream 24K IPTV - Premium IPTV subscription with 40,000+ live channels, 100,000+ VOD, 4K UHD. Best IPTV reseller panel, wholesale prices, multi-device support. Dream4K evolution." />
+    <meta name="keywords" content="Dream 24K IPTV, Dream24K IPTV, Dream 24K IPTV Subscription, Dream 24K IPTV Reseller, Dream4K IPTV, IPTV, IPTV subscription, IPTV reseller, 4K IPTV, premium IPTV, best IPTV, IPTV panel, IPTV wholesale, IPTV provider, IPTV service, IPTV channels, IPTV VOD, IPTV 4K, IPTV UHD, IPTV worldwide, IPTV multi-device, IPTV 24/7 support" />
     <link rel="canonical" href="https://d24kiptv.com/" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dream 24K IPTV - Premium IPTV Subscription & Reseller Panel" />
+    <meta property="og:description" content="40,000+ live channels, 100,000+ VOD, 4K UHD. Best IPTV reseller panel with wholesale prices." />
+    <meta property="og:url" content="https://d24kiptv.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://d24kiptv.com/og-image.jpg" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dream 24K IPTV - Premium IPTV Subscription & Reseller Panel" />
+    <meta name="twitter:description" content="40,000+ live channels, 100,000+ VOD, 4K UHD. Best IPTV reseller panel." />
+    
+    <!-- Geo & Language -->
+    <meta name="geo.region" content="US" />
+    <meta name="geo.placename" content="Global" />
+    <meta name="language" content="en" />
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Dream 24K IPTV",
+        "url": "https://d24kiptv.com/",
+        "description": "Premium IPTV subscription service with 40,000+ channels and 100,000+ VOD in 4K UHD.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://d24kiptv.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Dream 24K IPTV",
+        "alternateName": "Dream24K",
+        "url": "https://d24kiptv.com/",
+        "logo": "https://d24kiptv.com/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+212-663-087765",
+            "contactType": "sales",
+            "availableLanguage": ["English", "French", "Spanish", "German", "Italian", "Portuguese", "Arabic", "Russian", "Chinese", "Japanese"]
+        },
+        "sameAs": [
+            "https://t.me/reselleriptvcom",
+            "https://wa.me/212663087765"
+        ]
+    }
+    </script>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -23,7 +84,7 @@
             </div>
             <div class="header-right">
                 <div class="language-selector">
-                    <select id="languageSelect">
+                    <select id="languageSelect" aria-label="Select language">
                         <option value="en">🇬🇧 English</option>
                         <option value="fr">🇫🇷 Français</option>
                         <option value="es">🇪🇸 Español</option>
@@ -37,16 +98,16 @@
                     </select>
                 </div>
                 <div class="trial-buttons">
-                    <a href="#" class="btn-trial-whatsapp" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> <span>Trial</span></a>
-                    <a href="#" class="btn-trial-telegram" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> <span>Trial</span></a>
+                    <a href="#" class="btn-trial-whatsapp" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')" aria-label="Free trial on WhatsApp"><i class="fab fa-whatsapp"></i> <span>Trial</span></a>
+                    <a href="#" class="btn-trial-telegram" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')" aria-label="Free trial on Telegram"><i class="fab fa-telegram-plane"></i> <span>Trial</span></a>
                 </div>
                 <a href="#packages" class="btn-gold"><i class="fas fa-rocket"></i> Subscribe</a>
             </div>
         </header>
 
         <!-- ===== PAGE NAVIGATION ===== -->
-        <nav class="page-nav">
-            <button class="nav-btn active" data-page="home"><i class="fas fa-home"></i> Home</button>
+        <nav class="page-nav" aria-label="Main navigation">
+            <button class="nav-btn active" data-page="home" aria-current="page"><i class="fas fa-home"></i> Home</button>
             <button class="nav-btn" data-page="subscriptions"><i class="fas fa-tv"></i> Subscriptions</button>
             <button class="nav-btn" data-page="reseller"><i class="fas fa-store"></i> Reseller</button>
             <button class="nav-btn" data-page="features"><i class="fas fa-cogs"></i> Features</button>
@@ -61,23 +122,71 @@
                 <canvas id="heroCanvas"></canvas>
                 <div class="hero-content-overlay">
                     <div class="hero-card">
-                        <div class="hero-tagline">DREAM <span>24K</span> · DREAM <span>4K</span></div>
-                        <div class="hero-sub">Premium IPTV · 40,000+ Channels · 100,000+ VOD</div>
+                        <div class="hero-tagline">DREAM <span>24K</span> IPTV · DREAM <span>4K</span> IPTV</div>
+                        <div class="hero-sub">Premium IPTV · 40,000+ Channels · 100,000+ VOD · 4K UHD</div>
                         <div class="hero-keywords">
-                            <span>#Dream24K</span> <span>#Dream4K</span> <span>#IPTV</span> <span>#4KUHD</span> <span>#ResellerPanel</span>
+                            <span>#Dream24K</span>
+                            <span>#Dream24KIPTV</span>
+                            <span>#Dream24KSubscription</span>
+                            <span>#Dream24KReseller</span>
+                            <span>#IPTV</span>
+                            <span>#4KUHD</span>
+                            <span>#ResellerPanel</span>
+                            <span>#IPTVSubscription</span>
+                            <span>#IPTVReseller</span>
+                            <span>#PremiumIPTV</span>
+                            <span>#BestIPTV</span>
+                            <span>#IPTVProvider</span>
                         </div>
                         <div class="hero-desc">
-                            Experience the future of television with Dream24K IPTV — the evolution of Dream4K. Ultra-fast servers,
-                            zero buffering, 4K UHD quality, and a global network trusted by resellers and end-users in 120+ countries.
-                            Whether you're a viewer or a reseller, Dream24K delivers the ultimate IPTV experience.
+                            <strong>Dream 24K IPTV</strong> is the ultimate evolution of Dream4K IPTV, delivering premium IPTV subscription services with 40,000+ live channels, 100,000+ Video-On-Demand, and true 4K UHD quality. Whether you're looking for a <strong>Dream 24K IPTV subscription</strong>, a <strong>Dream 24K IPTV reseller</strong> panel, or wholesale IPTV solutions, Dream24K offers the most stable, secure, and powerful IPTV experience worldwide. Trusted by resellers and viewers in 120+ countries, Dream 24K IPTV is your gateway to the future of television.
                         </div>
                         <div class="hero-badges">
                             <span><i class="fas fa-bolt"></i> 99.9% Uptime</span>
                             <span><i class="fas fa-shield-alt"></i> Secure SSL</span>
                             <span><i class="fas fa-headset"></i> 24/7 Support</span>
                             <span><i class="fas fa-globe"></i> 120+ Countries</span>
+                            <span><i class="fas fa-tv"></i> 40,000+ Channels</span>
+                            <span><i class="fas fa-film"></i> 100,000+ VOD</span>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- KEYWORDS SECTION -->
+            <div class="keywords-section">
+                <div class="keywords-title">Dream 24K IPTV - All Keywords</div>
+                <div class="keywords-cloud">
+                    <span>Dream 24K IPTV</span>
+                    <span>Dream24K IPTV</span>
+                    <span>Dream 24K IPTV Subscription</span>
+                    <span>Dream 24K IPTV Reseller</span>
+                    <span>Dream 24K IPTV Panel</span>
+                    <span>Dream 24K IPTV 4K</span>
+                    <span>Dream 24K IPTV UHD</span>
+                    <span>Dream 24K IPTV Premium</span>
+                    <span>Dream 24K IPTV Wholesale</span>
+                    <span>Dream 24K IPTV Provider</span>
+                    <span>Dream 4K IPTV</span>
+                    <span>Dream4K IPTV</span>
+                    <span>Dream 4K Subscription</span>
+                    <span>Dream 4K Reseller</span>
+                    <span>IPTV</span>
+                    <span>IPTV Subscription</span>
+                    <span>IPTV Reseller</span>
+                    <span>IPTV Panel</span>
+                    <span>IPTV 4K</span>
+                    <span>IPTV UHD</span>
+                    <span>Premium IPTV</span>
+                    <span>Best IPTV</span>
+                    <span>IPTV Provider</span>
+                    <span>IPTV Service</span>
+                    <span>IPTV Channels</span>
+                    <span>IPTV VOD</span>
+                    <span>IPTV Multi-Device</span>
+                    <span>IPTV 24/7</span>
+                    <span>IPTV Worldwide</span>
+                    <span>IPTV Wholesale</span>
                 </div>
             </div>
 
@@ -164,7 +273,7 @@
         <body>
             <div class="logo-block">
                 <div class="logo-icon"><div class="ring"></div><div class="icon-bg"></div><i class="fas fa-play"></i></div>
-                <div class="logo-text"><div class="brand">DREAM <span>24K</span></div><div class="sub"><i class="fas fa-crown"></i> Premium IPTV Panel</div></div>
+                <div class="logo-text"><div class="brand">DREAM <span>24K</span> IPTV</div><div class="sub"><i class="fas fa-crown"></i> Premium IPTV Panel</div></div>
             </div>
             <div id="info">
                 <span class="stat"><span class="emoji">🖥️</span> <strong>15</strong> Servers</span>
@@ -735,12 +844,21 @@
 
         <!-- ===== FOOTER ===== -->
         <div class="footer">
-            <i class="fas fa-shield-alt" style="color:#f7c948;"></i> Dream 24K IPTV · since 2017 · 40K+ live & 100K+ VOD
+            <i class="fas fa-shield-alt" style="color:#f7c948;"></i> Dream 24K IPTV · since 2017 · 40K+ live & 100K+ VOD · Dream 24K IPTV Subscription · Dream 24K IPTV Reseller
             <div class="keywords">
                 <span>#Dream24KIPTV</span>
                 <span>#Dream4KIPTV</span>
                 <span>#Dream24KSubscription</span>
                 <span>#Dream4KReseller</span>
+                <span>#Dream24KReseller</span>
+                <span>#IPTVSubscription</span>
+                <span>#IPTVReseller</span>
+                <span>#PremiumIPTV</span>
+                <span>#BestIPTV</span>
+                <span>#IPTVProvider</span>
+                <span>#IPTVService</span>
+                <span>#IPTV4K</span>
+                <span>#IPTVUHD</span>
             </div>
         </div>
     </div>
