@@ -3,125 +3,1319 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dream24K IPTV · Premium IPTV Subscription & Reseller</title>
-    <meta name="description" content="Dream24K IPTV - Premium IPTV subscription with 40,000+ channels, 100,000+ VOD, 4K UHD. Reseller & wholesale panel available." />
-    
-    <!-- Google Site Verification -->
-    <meta name="google-site-verification" content="GdlfLxpKEL5jK_MFJ7OVfr6x4DpO0SR7QWE73bKaBAQ" />
-    
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-    <!-- End Google Tag Manager -->
-    
-    <link rel="stylesheet" href="style.css" />
+    <title>Dream24K IPTV · Premium IPTV Subscription & Reseller Panel</title>
+    <meta name="description" content="Dream24K IPTV - Premium IPTV subscription with 40,000+ channels, 100,000+ VOD, 4K UHD. Reseller & wholesale panel for IPTV and OTT distributors worldwide." />
+    <meta property="og:title" content="Dream24K IPTV · Premium IPTV Subscription & Reseller Panel" />
+    <meta property="og:description" content="Dream24K IPTV - Premium IPTV subscription with 40,000+ channels, 100,000+ VOD, 4K UHD. Reseller & wholesale panel for IPTV and OTT distributors worldwide." />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://d24kiptv.com/" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: #0a0e1a;
+            color: #e8edf5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .site-wrapper {
+            max-width: 1400px;
+            width: 100%;
+            padding: 20px 32px 40px;
+            background: radial-gradient(ellipse at 30% 20%, #111d2e, #080c18);
+            border-radius: 0 0 48px 48px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.06);
+        }
+
+        /* ===== LANGUAGE CONTENT ===== */
+        .lang-content {
+            display: none;
+        }
+        .lang-content.active {
+            display: block;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0 16px 0;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.05);
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(145deg, #f7c948, #d4a020);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: #0a0e1a;
+            box-shadow: 0 8px 24px rgba(212, 160, 32, 0.3);
+        }
+        .logo-text .brand {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            background: linear-gradient(to right, #ffffff, #c8d4e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo-text .brand span {
+            font-weight: 300;
+            color: #f7c948;
+            -webkit-text-fill-color: #f7c948;
+            background: none;
+        }
+        .logo-text .sub {
+            font-size: 12px;
+            color: #7a8aaa;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .logo-text .sub i {
+            color: #f7c948;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+        .language-selector select {
+            appearance: none;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 215, 0, 0.06);
+            color: #b0c8ea;
+            padding: 8px 36px 8px 14px;
+            border-radius: 60px;
+            font-size: 13px;
+            cursor: pointer;
+            outline: none;
+            font-weight: 500;
+            min-width: 120px;
+        }
+        .language-selector select option {
+            background: #111d2e;
+            color: #e8edf5;
+        }
+        .language-selector::after {
+            content: "\f0d7";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #f7c948;
+            pointer-events: none;
+            font-size: 12px;
+        }
+
+        .btn-gold {
+            background: linear-gradient(145deg, #f7c948, #d4a020);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #0a0e1a;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(212, 160, 32, 0.25);
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-gold:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 28px rgba(212, 160, 32, 0.4);
+        }
+        .trial-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .btn-trial-whatsapp {
+            background: #25D366;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 13px;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-trial-whatsapp:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.3);
+        }
+        .btn-trial-telegram {
+            background: #0088cc;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 13px;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-trial-telegram:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 24px rgba(0, 136, 204, 0.3);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav-menu {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 16px 0 8px;
+            padding: 4px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            justify-content: center;
+        }
+        .nav-menu .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 13px;
+            color: #6a8aaa;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-menu .nav-btn:hover {
+            color: #b0c8ea;
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .nav-menu .nav-btn.active {
+            color: #0a0e1a;
+            background: linear-gradient(145deg, #f7c948, #d4a020);
+            box-shadow: 0 4px 16px rgba(212, 160, 32, 0.2);
+        }
+        .nav-menu .nav-btn i {
+            font-size: 14px;
+        }
+        @media (max-width: 600px) {
+            .nav-menu .nav-btn {
+                padding: 6px 14px;
+                font-size: 11px;
+            }
+            .nav-menu .nav-btn i {
+                font-size: 12px;
+            }
+        }
+
+        /* ===== PAGES ===== */
+        .page-content {
+            display: none;
+            animation: fadePage 0.4s ease;
+        }
+        .page-content.active {
+            display: block;
+        }
+        @keyframes fadePage {
+            0% {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 480px;
+            border-radius: 24px;
+            overflow: hidden;
+            margin: 20px 0 10px;
+            background: #0a0e1a;
+            border: 1px solid rgba(255, 215, 0, 0.04);
+        }
+        #heroCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: 0;
+        }
+        .hero-content-overlay {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 60px 30px 50px;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-card {
+            background: rgba(10, 14, 26, 0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 44px 40px;
+            border: 1px solid rgba(255, 215, 0, 0.06);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .hero-tagline {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.05;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+        .hero-tagline span {
+            color: #f7c948;
+            background: linear-gradient(145deg, #f7c948, #d4a020);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 20px;
+            font-weight: 300;
+            color: #8aa0c8;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+        .hero-keywords {
+            display: flex;
+            justify-content: center;
+            gap: 10px 16px;
+            flex-wrap: wrap;
+            margin: 14px 0 12px;
+        }
+        .hero-keywords span {
+            background: rgba(247, 201, 72, 0.06);
+            border: 1px solid rgba(247, 201, 72, 0.08);
+            padding: 5px 16px;
+            border-radius: 60px;
+            font-size: 13px;
+            color: #f7c948;
+            font-weight: 500;
+            transition: 0.2s;
+            cursor: default;
+        }
+        .hero-keywords span:hover {
+            background: rgba(247, 201, 72, 0.1);
+            border-color: rgba(247, 201, 72, 0.15);
+            transform: translateY(-2px);
+        }
+        .hero-desc {
+            font-size: 17px;
+            color: #b0c8ea;
+            max-width: 720px;
+            margin: 6px auto 0;
+            line-height: 1.8;
+        }
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+        .hero-badges span {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px 22px;
+            border-radius: 60px;
+            font-size: 14px;
+            color: #f7c948;
+            border: 1px solid rgba(255, 215, 0, 0.06);
+            font-weight: 500;
+            transition: 0.2s;
+            cursor: default;
+        }
+        .hero-badges span:hover {
+            background: rgba(247, 201, 72, 0.06);
+            border-color: rgba(247, 201, 72, 0.15);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-wrapper {
+                min-height: 380px;
+            }
+            .hero-content-overlay {
+                padding: 30px 16px;
+                min-height: 380px;
+            }
+            .hero-card {
+                padding: 24px 18px;
+            }
+            .hero-tagline {
+                font-size: 32px;
+            }
+            .hero-sub {
+                font-size: 18px;
+            }
+            .hero-keywords span {
+                font-size: 11px;
+                padding: 4px 12px;
+            }
+            .hero-desc {
+                font-size: 15px;
+            }
+            .hero-badges span {
+                font-size: 12px;
+                padding: 6px 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-wrapper {
+                min-height: 320px;
+            }
+            .hero-content-overlay {
+                padding: 20px 12px;
+                min-height: 320px;
+            }
+            .hero-card {
+                padding: 18px 12px;
+                border-radius: 16px;
+            }
+            .hero-tagline {
+                font-size: 24px;
+            }
+            .hero-sub {
+                font-size: 15px;
+            }
+            .hero-keywords {
+                gap: 6px 8px;
+            }
+            .hero-keywords span {
+                font-size: 10px;
+                padding: 3px 10px;
+            }
+            .hero-desc {
+                font-size: 13px;
+            }
+            .hero-badges {
+                gap: 8px;
+            }
+            .hero-badges span {
+                font-size: 10px;
+                padding: 4px 12px;
+            }
+        }
+
+        /* ===== MAP WRAPPER ===== */
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            margin: 20px 0 30px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(247, 201, 72, 0.06);
+            background: #050510;
+        }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .map-overlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            pointer-events: none;
+            width: 90%;
+            max-width: 700px;
+        }
+        .map-overlay-content .map-title {
+            font-size: 38px;
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 80px rgba(0, 0, 0, 0.5);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+        .map-overlay-content .map-title span {
+            color: #f7c948;
+            text-shadow: 0 0 40px rgba(247, 201, 72, 0.3);
+        }
+        .map-overlay-content .map-desc {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.85);
+            text-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+            max-width: 650px;
+            margin: 0 auto 24px;
+            line-height: 1.7;
+        }
+        .map-overlay-content .map-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            pointer-events: auto;
+        }
+        .map-overlay-content .map-buttons .btn-primary {
+            background: linear-gradient(145deg, #f7c948, #d4a020);
+            border: none;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 16px;
+            color: #0a0e1a;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 30px rgba(212, 160, 32, 0.3);
+        }
+        .map-overlay-content .map-buttons .btn-primary:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 40px rgba(212, 160, 32, 0.4);
+        }
+        .map-overlay-content .map-buttons .btn-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 16px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(8px);
+        }
+        .map-overlay-content .map-buttons .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: scale(1.04);
+        }
+
+        @media (max-width: 768px) {
+            .map-wrapper {
+                height: 500px;
+            }
+            .map-overlay-content .map-title {
+                font-size: 28px;
+            }
+            .map-overlay-content .map-desc {
+                font-size: 14px;
+                padding: 0 16px;
+            }
+            .map-overlay-content .map-buttons .btn-primary,
+            .map-overlay-content .map-buttons .btn-secondary {
+                padding: 10px 24px;
+                font-size: 14px;
+            }
+        }
+        @media (max-width: 576px) {
+            .map-wrapper {
+                height: 420px;
+            }
+            .map-overlay-content .map-title {
+                font-size: 22px;
+            }
+            .map-overlay-content .map-desc {
+                font-size: 12px;
+            }
+            .map-overlay-content .map-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .map-overlay-content .map-buttons .btn-primary,
+            .map-overlay-content .map-buttons .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ===== APP PLAYER + CODE DOWNLOADER ===== */
+        .app-section {
+            margin: 20px 0 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 24px;
+            padding: 28px 32px;
+            border: 1px solid rgba(247, 201, 72, 0.04);
+        }
+        .app-section .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .app-section .app-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .app-section .app-header h3 i {
+            color: #f7c948;
+        }
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+        .app-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 18px;
+            padding: 18px 22px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .app-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(247, 201, 72, 0.06);
+            transform: translateY(-2px);
+        }
+        .app-item .app-icon {
+            font-size: 30px;
+            color: #f7c948;
+            min-width: 44px;
+            text-align: center;
+        }
+        .app-item .app-info {
+            flex: 1;
+        }
+        .app-item .app-info .app-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: #ffffff;
+        }
+        .app-item .app-info .app-desc {
+            font-size: 12px;
+            color: #6a8aaa;
+        }
+        .app-item .app-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .app-item .app-actions .btn-download-app {
+            background: rgba(247, 201, 72, 0.08);
+            border: 1px solid rgba(247, 201, 72, 0.06);
+            color: #f7c948;
+            padding: 6px 14px;
+            border-radius: 60px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .app-item .app-actions .btn-download-app:hover {
+            background: rgba(247, 201, 72, 0.15);
+            border-color: rgba(247, 201, 72, 0.15);
+        }
+        .app-item .app-actions .btn-copy-code {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            color: #8aa0c8;
+            padding: 6px 14px;
+            border-radius: 60px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .app-item .app-actions .btn-copy-code:hover {
+            background: rgba(247, 201, 72, 0.08);
+            color: #f7c948;
+            border-color: rgba(247, 201, 72, 0.08);
+        }
+        .app-item .app-actions .code-display {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 12px;
+            border-radius: 60px;
+            font-size: 11px;
+            color: #4a5a7a;
+            font-family: monospace;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ===== FREE TRIAL SECTION ===== */
+        .trial-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 24px;
+            padding: 32px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            margin: 10px 0 20px;
+        }
+        .trial-section .trial-info h3 {
+            font-size: 20px;
+            margin-bottom: 14px;
+        }
+        .trial-section .trial-info h3 i {
+            color: #f7c948;
+        }
+        .trial-section .trial-info p {
+            color: #8aa0c8;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+        .trial-section .trial-info .contact-details {
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            padding: 16px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .trial-section .trial-info .contact-details div {
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+        .trial-section .trial-info .contact-details div:last-child {
+            margin-bottom: 0;
+        }
+        .trial-section .trial-info .contact-details .label {
+            color: #6a8aaa;
+        }
+        .trial-section .trial-info .contact-details a {
+            color: #f7c948;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .trial-section .trial-info .contact-details a:hover {
+            text-decoration: underline;
+        }
+        .trial-section .trial-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .trial-section .trial-form .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .trial-section .trial-form select,
+        .trial-section .trial-form input {
+            flex: 1;
+            min-width: 180px;
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(0, 0, 0, 0.2);
+            color: #e8edf5;
+            font-size: 14px;
+            outline: none;
+            transition: 0.2s;
+        }
+        .trial-section .trial-form select:focus,
+        .trial-section .trial-form input:focus {
+            border-color: #f7c948;
+            box-shadow: 0 0 0 3px rgba(247, 201, 72, 0.06);
+        }
+        .trial-section .trial-form select option {
+            background: #111d2e;
+            color: #e8edf5;
+        }
+        .trial-section .trial-form #macField {
+            display: none;
+        }
+        .trial-section .trial-form #macField.visible {
+            display: block;
+        }
+        .trial-section .trial-form #macField input {
+            width: 100%;
+        }
+        .trial-section .trial-form .connection-hint {
+            font-size: 12px;
+            color: #4a5a7a;
+            padding-left: 4px;
+        }
+        .trial-section .trial-form .trial-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+        .trial-section .trial-form .btn-submit {
+            background: linear-gradient(145deg, #f7c948, #d4a020);
+            border: none;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 15px;
+            color: #0a0e1a;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .trial-section .trial-form .btn-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 24px rgba(212, 160, 32, 0.3);
+        }
+        .trial-section .trial-form .btn-trial-whatsapp,
+        .trial-section .trial-form .btn-trial-telegram {
+            padding: 14px 28px;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border-radius: 60px;
+            font-weight: 600;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .trial-section .trial-form .btn-trial-whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+        .trial-section .trial-form .btn-trial-whatsapp:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.3);
+        }
+        .trial-section .trial-form .btn-trial-telegram {
+            background: #0088cc;
+            color: #fff;
+        }
+        .trial-section .trial-form .btn-trial-telegram:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 24px rgba(0, 136, 204, 0.3);
+        }
+
+        /* ===== CONVERTER ===== */
+        .converter-box {
+            background: rgba(255, 255, 255, 0.015);
+            border-radius: 24px;
+            padding: 30px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            margin: 10px 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .converter-box .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            width: 100%;
+            max-width: 750px;
+            justify-content: center;
+        }
+        .converter-box input {
+            flex: 1;
+            min-width: 240px;
+            padding: 14px 22px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(0, 0, 0, 0.3);
+            color: #e8edf5;
+            font-size: 14px;
+            outline: none;
+            transition: 0.2s;
+        }
+        .converter-box input:focus {
+            border-color: #f7c948;
+            box-shadow: 0 0 0 3px rgba(247, 201, 72, 0.06);
+        }
+        .converter-box input::placeholder {
+            color: #4a5a7a;
+        }
+        .converter-box .btn-convert {
+            background: linear-gradient(145deg, #f7c948, #d4a020);
+            border: none;
+            padding: 14px 34px;
+            border-radius: 60px;
+            font-weight: 700;
+            color: #0a0e1a;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .converter-box .btn-convert:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 24px rgba(212, 160, 32, 0.25);
+        }
+        .converter-result {
+            margin-top: 16px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 14px 24px;
+            border-radius: 60px;
+            color: #8aa0c8;
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            width: 100%;
+            max-width: 750px;
+            text-align: center;
+            word-break: break-all;
+            position: relative;
+        }
+        .converter-result .copy-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            color: #8aa0c8;
+            padding: 4px 14px;
+            border-radius: 60px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-left: 10px;
+        }
+        .converter-result .copy-btn:hover {
+            background: rgba(247, 201, 72, 0.1);
+            color: #f7c948;
+            border-color: rgba(247, 201, 72, 0.2);
+        }
+        .converter-result i {
+            color: #4cd964;
+            margin-right: 8px;
+        }
+        .converter-result .error {
+            color: #ff6b6b;
+        }
+
+        /* ===== PACKAGES ===== */
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 40px 0 8px;
+            text-align: center;
+        }
+        .section-title span {
+            color: #f7c948;
+        }
+        .section-sub {
+            text-align: center;
+            color: #6a8aaa;
+            font-size: 15px;
+            max-width: 650px;
+            margin: 0 auto 28px;
+            line-height: 1.6;
+        }
+        .price-notice {
+            background: rgba(247, 201, 72, 0.04);
+            border: 1px solid rgba(247, 201, 72, 0.06);
+            border-radius: 16px;
+            padding: 12px 24px;
+            margin: -6px 0 20px;
+            text-align: center;
+            color: #f7c948;
+            font-size: 14px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .price-notice i {
+            margin-right: 8px;
+        }
+        .price-notice a {
+            color: #f7c948;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 16px 0 10px;
+        }
+        .package-card {
+            background: rgba(255, 255, 255, 0.015);
+            border-radius: 24px;
+            padding: 24px 18px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .package-card:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(247, 201, 72, 0.06);
+            transform: translateY(-3px);
+        }
+        .package-card.popular {
+            border-color: rgba(247, 201, 72, 0.15);
+            background: rgba(247, 201, 72, 0.03);
+        }
+        .package-card .badge {
+            background: #f7c948;
+            color: #0a0e1a;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 14px;
+            border-radius: 60px;
+            display: inline-block;
+            margin-bottom: 12px;
+            align-self: center;
+        }
+        .package-card .plan-name {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .package-card .plan-price {
+            font-size: 36px;
+            font-weight: 700;
+            color: #f7c948;
+            margin: 10px 0 2px;
+        }
+        .package-card .plan-period {
+            color: #6a8aaa;
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+        .package-card .plan-features {
+            list-style: none;
+            margin: 10px 0 16px;
+            text-align: left;
+            padding: 0 4px;
+            flex: 1;
+        }
+        .package-card .plan-features li {
+            padding: 5px 0;
+            color: #8aa0c8;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .package-card .plan-features li:last-child {
+            border-bottom: none;
+        }
+        .package-card .plan-features li i {
+            color: #f7c948;
+            width: 16px;
+            font-size: 12px;
+        }
+        .package-card .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .package-card .btn-plan {
+            padding: 11px 16px;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            border: none;
+        }
+        .package-card .btn-plan.whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+        .package-card .btn-plan.whatsapp:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        }
+        .package-card .btn-plan.telegram {
+            background: #0088cc;
+            color: #fff;
+        }
+        .package-card .btn-plan.telegram:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(0, 136, 204, 0.3);
+        }
+        .package-card .btn-plan.primary-whatsapp {
+            background: linear-gradient(145deg, #f7c948, #d4a020);
+            color: #0a0e1a;
+        }
+        .package-card .btn-plan.primary-whatsapp:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 24px rgba(212, 160, 32, 0.3);
+        }
+        .package-card .btn-plan.primary-telegram {
+            background: linear-gradient(145deg, #f7c948, #d4a020);
+            color: #0a0e1a;
+        }
+        .package-card .btn-plan.primary-telegram:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 24px rgba(212, 160, 32, 0.3);
+        }
+        .reseller-badge {
+            background: rgba(247, 201, 72, 0.06);
+            color: #f7c948;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 14px;
+            border-radius: 60px;
+            display: inline-block;
+            margin-bottom: 12px;
+            align-self: center;
+            border: 1px solid rgba(247, 201, 72, 0.06);
+        }
+        .package-card .plan-features .highlight {
+            color: #f7c948;
+            font-weight: 600;
+        }
+
+        /* ===== FEATURES ===== */
+        .features-section {
+            margin: 30px 0 20px;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 24px;
+            padding: 28px 32px;
+            border: 1px solid rgba(255, 215, 0, 0.03);
+        }
+        .features-section .features-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .features-section .features-title span {
+            color: #f7c948;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 16px;
+        }
+        .feature-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 20px 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: 0.2s;
+        }
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.035);
+            border-color: rgba(247, 201, 72, 0.04);
+            transform: translateY(-2px);
+        }
+        .feature-item i {
+            font-size: 30px;
+            color: #f7c948;
+            margin-bottom: 10px;
+        }
+        .feature-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .feature-item p {
+            font-size: 13px;
+            color: #6a8aaa;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 40px;
+            padding: 24px 0 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 13px;
+            color: #4a5a7a;
+        }
+        .footer a {
+            color: #6a8aaa;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer a:hover {
+            color: #f7c948;
+        }
+        .footer .socials {
+            display: flex;
+            gap: 14px;
+        }
+        .footer .socials a {
+            font-size: 18px;
+        }
+
+        @media (max-width: 992px) {
+            .packages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .trial-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 576px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            .site-wrapper {
+                padding: 12px 16px 30px;
+            }
+            .header-right {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
     <div class="site-wrapper">
+        <!-- ===== LANGUAGE CONTENT (default EN) ===== -->
+        <div class="lang-content active" data-lang="en">
+            <!-- ===== HEADER ===== -->
+            <header class="header">
+                <div class="logo-block">
+                    <div class="logo-icon"><i class="fas fa-play"></i></div>
+                    <div class="logo-text">
+                        <div class="brand">DREAM <span>24K</span></div>
+                        <div class="sub"><i class="fas fa-crown"></i> Premium IPTV Panel</div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="language-selector">
+                        <select id="langSelect" aria-label="Language">
+                            <option value="en" selected>🇬🇧 English</option>
+                            <option value="es">🇪🇸 Español</option>
+                            <option value="fr">🇫🇷 Français</option>
+                            <option value="de">🇩🇪 Deutsch</option>
+                            <option value="it">🇮🇹 Italiano</option>
+                            <option value="pt">🇵🇹 Português</option>
+                            <option value="ar">🇸🇦 العربية</option>
+                            <option value="ru">🇷🇺 Русский</option>
+                            <option value="zh">🇨🇳 中文</option>
+                            <option value="ja">🇯🇵 日本語</option>
+                        </select>
+                    </div>
+                    <div class="trial-buttons">
+                        <a href="#" class="btn-trial-whatsapp" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> Trial</a>
+                        <a href="#" class="btn-trial-telegram" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Trial</a>
+                    </div>
+                    <a href="#packages" class="btn-gold"><i class="fas fa-rocket"></i> Subscribe</a>
+                </div>
+            </header>
 
-        <!-- ===== NEW CLEAN HEADER ===== -->
-        <header class="header">
-            <div class="logo-block">
-                <div class="logo-icon"><i class="fas fa-play"></i></div>
-                <div class="logo-text">
-                    <div class="brand">DREAM <span>24K</span></div>
-                    <div class="sub"><i class="fas fa-crown"></i> Premium IPTV</div>
-                </div>
-            </div>
-            
-            <nav class="nav-menu" id="navMenu">
-                <a href="#why" class="nav-link active">Why</a>
-                <a href="#plans" class="nav-link">Subscriptions</a>
-                <a href="#reseller" class="nav-link">Reseller</a>
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#support" class="nav-link">Contact</a>
-                <div class="language-selector">
-                    <select id="languageSelect">
-                        <option value="en">🇬🇧 EN</option>
-                        <option value="fr">🇫🇷 FR</option>
-                        <option value="es">🇪🇸 ES</option>
-                        <option value="de">🇩🇪 DE</option>
-                        <option value="it">🇮🇹 IT</option>
-                        <option value="pt">🇵🇹 PT</option>
-                        <option value="ar">🇸🇦 AR</option>
-                        <option value="ru">🇷🇺 RU</option>
-                        <option value="zh">🇨🇳 ZH</option>
-                        <option value="ja">🇯🇵 JA</option>
-                    </select>
-                </div>
-                <div class="mobile-social">
-                    <a href="#" class="btn-mobile-whatsapp" onclick="openWhatsApp('I want to start with Dream24K IPTV')">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="#" class="btn-mobile-telegram" onclick="openTelegram('I want to start with Dream24K IPTV')">
-                        <i class="fab fa-telegram-plane"></i> Telegram
-                    </a>
-                </div>
+            <!-- ===== NAVIGATION ===== -->
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-page="home"><i class="fas fa-home"></i> Home</button>
+                <button class="nav-btn" data-page="subscriptions"><i class="fas fa-tv"></i> Subscriptions</button>
+                <button class="nav-btn" data-page="reseller"><i class="fas fa-store"></i> Reseller</button>
+                <button class="nav-btn" data-page="features"><i class="fas fa-cogs"></i> Features</button>
+                <button class="nav-btn" data-page="faq"><i class="fas fa-question-circle"></i> FAQ</button>
+                <button class="nav-btn" data-page="support"><i class="fas fa-headset"></i> Support</button>
             </nav>
-            
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            
-            <div class="header-right">
-                <div class="get-started-dropdown">
-                    <button class="btn-get-started">
-                        <i class="fas fa-rocket"></i> Get Started <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#" onclick="openWhatsApp('I want to start with Dream24K IPTV via WhatsApp')">
-                            <i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp
-                        </a>
-                        <a href="#" onclick="openTelegram('I want to start with Dream24K IPTV via Telegram')">
-                            <i class="fab fa-telegram-plane" style="color:#0088cc;"></i> Telegram
-                        </a>
-                        <a href="#plans">
-                            <i class="fas fa-tv" style="color:#f7c948;"></i> Subscribe Now
-                        </a>
+
+            <!-- ===== PAGE: HOME ===== -->
+            <div id="page-home" class="page-content active">
+                <!-- HERO -->
+                <div class="hero-wrapper">
+                    <canvas id="heroCanvas"></canvas>
+                    <div class="hero-content-overlay">
+                        <div class="hero-card">
+                            <div class="hero-tagline">DREAM <span>24K</span> · DREAM <span>4K</span></div>
+                            <div class="hero-sub">Premium IPTV · 40,000+ Channels · 100,000+ VOD</div>
+                            <div class="hero-keywords">
+                                <span>#Dream24K</span> <span>#Dream4K</span> <span>#IPTV</span> <span>#4KUHD</span> <span>#ResellerPanel</span>
+                            </div>
+                            <div class="hero-desc">
+                                Experience the future of television with Dream24K IPTV — the evolution of Dream4K. Ultra-fast servers,
+                                zero buffering, 4K UHD quality, and a global network trusted by resellers and end-users in 120+ countries.
+                                Whether you're a viewer or a reseller, Dream24K delivers the ultimate IPTV experience.
+                            </div>
+                            <div class="hero-badges">
+                                <span><i class="fas fa-bolt"></i> 99.9% Uptime</span>
+                                <span><i class="fas fa-shield-alt"></i> Secure SSL</span>
+                                <span><i class="fas fa-headset"></i> 24/7 Support</span>
+                                <span><i class="fas fa-globe"></i> 120+ Countries</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </header>
 
-        <!-- ===== WHY SECTION ===== -->
-        <section id="why" class="hero-wrapper">
-            <canvas id="heroCanvas"></canvas>
-            <div class="hero-content-overlay">
-                <div class="hero-card">
-                    <div class="hero-tagline">DREAM <span>24K</span> · DREAM <span>4K</span></div>
-                    <div class="hero-sub">Premium IPTV · 40,000+ Channels · 100,000+ VOD</div>
-                    <div class="hero-keywords">
-                        <span>#Dream24K</span> <span>#Dream4K</span> <span>#IPTV</span> <span>#4KUHD</span> <span>#ResellerPanel</span>
-                    </div>
-                    <div class="hero-desc">
-                        Experience the future of television with Dream24K IPTV — the evolution of Dream4K. Ultra-fast servers,
-                        zero buffering, 4K UHD quality, and a global network trusted by resellers and end-users in 120+ countries.
-                        Whether you're a viewer or a reseller, Dream24K delivers the ultimate IPTV experience.
-                    </div>
-                    <div class="hero-badges">
-                        <span><i class="fas fa-bolt"></i> 99.9% Uptime</span>
-                        <span><i class="fas fa-shield-alt"></i> Secure SSL</span>
-                        <span><i class="fas fa-headset"></i> 24/7 Support</span>
-                        <span><i class="fas fa-globe"></i> 120+ Countries</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MAP -->
-        <div class="map-wrapper">
-            <iframe srcdoc='
+                <!-- MAP -->
+                <div class="map-wrapper">
+                    <iframe srcdoc='
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -486,541 +1680,371 @@
         </body>
         </html>
         '></iframe>
-            <div class="map-overlay-content">
-                <div class="map-title">Dream 24K IPTV | <span>Stable Global Servers</span> & Instant Activation</div>
-                <div class="map-desc">
-                    Dream 24K IPTV offers stable worldwide servers, instant activation, premium live TV, sports, movies, and series. Includes reseller options and a 24-hour free trial.
+                    <div class="map-overlay-content">
+                        <div class="map-title">Dream 24K IPTV | <span>Stable Global Servers</span> & Instant Activation</div>
+                        <div class="map-desc">
+                            Dream 24K IPTV offers stable worldwide servers, instant activation, premium live TV, sports, movies, and series. Includes reseller options and a 24-hour free trial.
+                        </div>
+                        <div class="map-buttons">
+                            <a href="#packages" class="btn-primary"><i class="fas fa-rocket"></i> Get Started</a>
+                            <a href="#" class="btn-secondary" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fas fa-gift"></i> Free Trial</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="map-buttons">
-                    <a href="#plans" class="btn-primary"><i class="fas fa-rocket"></i> Get Started</a>
-                    <a href="#" class="btn-secondary" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fas fa-gift"></i> Free Trial</a>
+
+                <!-- APP PLAYER + CODE DOWNLOADER -->
+                <div class="app-section">
+                    <div class="app-header">
+                        <h3><i class="fas fa-download"></i> App Player & Code Downloader</h3>
+                        <span style="color:#6a8aaa; font-size:13px;"><i class="fas fa-code"></i> Copy codes to download</span>
+                    </div>
+                    <div class="app-grid">
+                        <div class="app-item">
+                            <div class="app-icon"><i class="fas fa-play-circle"></i></div>
+                            <div class="app-info">
+                                <div class="app-name">Saga Player 4K</div>
+                                <div class="app-desc">Version 1.0.49 · 3.48 MB</div>
+                            </div>
+                            <div class="app-actions">
+                                <span class="code-display" id="code1">3483955</span>
+                                <button class="btn-copy-code" onclick="copyAppCode('code1')"><i class="fas fa-copy"></i> Copy</button>
+                                <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                        <div class="app-item">
+                            <div class="app-icon"><i class="fas fa-tv"></i></div>
+                            <div class="app-info">
+                                <div class="app-name">Stalker MAG V30</div>
+                                <div class="app-desc">Dream4K · 5.60 MB</div>
+                            </div>
+                            <div class="app-actions">
+                                <span class="code-display" id="code2">5604791</span>
+                                <button class="btn-copy-code" onclick="copyAppCode('code2')"><i class="fas fa-copy"></i> Copy</button>
+                                <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                        <div class="app-item">
+                            <div class="app-icon"><i class="fas fa-film"></i></div>
+                            <div class="app-info">
+                                <div class="app-name">Smarters Player V2.2.2</div>
+                                <div class="app-desc">Dream4K · 8.63 MB</div>
+                            </div>
+                            <div class="app-actions">
+                                <span class="code-display" id="code3">8626673</span>
+                                <button class="btn-copy-code" onclick="copyAppCode('code3')"><i class="fas fa-copy"></i> Copy</button>
+                                <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                        <div class="app-item">
+                            <div class="app-icon"><i class="fas fa-user-cog"></i></div>
+                            <div class="app-info">
+                                <div class="app-name">Platinum User Pass V3.5.7</div>
+                                <div class="app-desc">Dream4K · 3.70 MB</div>
+                            </div>
+                            <div class="app-actions">
+                                <span class="code-display" id="code4">3704716</span>
+                                <button class="btn-copy-code" onclick="copyAppCode('code4')"><i class="fas fa-copy"></i> Copy</button>
+                                <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                        <div class="app-item">
+                            <div class="app-icon"><i class="fas fa-play"></i></div>
+                            <div class="app-info">
+                                <div class="app-name">IBO Player V3.8</div>
+                                <div class="app-desc">Dream4K · 1.56 MB</div>
+                            </div>
+                            <div class="app-actions">
+                                <span class="code-display" id="code5">1560525</span>
+                                <button class="btn-copy-code" onclick="copyAppCode('code5')"><i class="fas fa-copy"></i> Copy</button>
+                                <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                        <div class="app-item">
+                            <div class="app-icon"><i class="fas fa-crown"></i></div>
+                            <div class="app-info">
+                                <div class="app-name">Platinum Active V3</div>
+                                <div class="app-desc">Dream4K · 5.25 MB</div>
+                            </div>
+                            <div class="app-actions">
+                                <span class="code-display" id="code6">5249980</span>
+                                <button class="btn-copy-code" onclick="copyAppCode('code6')"><i class="fas fa-copy"></i> Copy</button>
+                                <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                        <div class="app-item">
+                            <div class="app-icon"><i class="fas fa-android"></i></div>
+                            <div class="app-info">
+                                <div class="app-name">Dream 4K v2-1.2</div>
+                                <div class="app-desc">Android · 4.50 MB</div>
+                            </div>
+                            <div class="app-actions">
+                                <span class="code-display" id="code7">4496801</span>
+                                <button class="btn-copy-code" onclick="copyAppCode('code7')"><i class="fas fa-copy"></i> Copy</button>
+                                <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                        <div class="app-item">
+                            <div class="app-icon"><i class="fas fa-ethernet"></i></div>
+                            <div class="app-info">
+                                <div class="app-name">Dream 4K v3-1.3 Box Ethernet</div>
+                                <div class="app-desc">Android Box · 9.66 MB</div>
+                            </div>
+                            <div class="app-actions">
+                                <span class="code-display" id="code8">9663676</span>
+                                <button class="btn-copy-code" onclick="copyAppCode('code8')"><i class="fas fa-copy"></i> Copy</button>
+                                <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FREE TRIAL -->
+                <div class="section-title" id="trial">Request Your <span>Free Trial</span></div>
+                <div class="section-sub">Choose your preferred connection type and we'll send you credentials instantly via WhatsApp or Telegram.</div>
+                <div class="trial-section">
+                    <div class="trial-info">
+                        <h3><i class="fas fa-headset"></i> Get in Touch</h3>
+                        <p>Our team is available 24/7 via WhatsApp, Telegram, or email. Fill out the form or reach out directly.</p>
+                        <div class="contact-details">
+                            <div><span class="label">📱 WhatsApp:</span> <a href="#" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')">+212 663-087765</a></div>
+                            <div><span class="label">📱 Telegram:</span> <a href="#" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')">@reselleriptvcom</a></div>
+                            <div><span class="label">✉️ Email:</span> <a href="mailto:support@reselleriptv.com">support@reselleriptv.com</a></div>
+                        </div>
+                    </div>
+                    <form class="trial-form" id="trialForm">
+                        <div class="form-row">
+                            <select required id="connectionType">
+                                <option value="">Select connection type</option>
+                                <option value="m3u">M3U</option>
+                                <option value="xtream">Xtream Code</option>
+                                <option value="active">Active Code</option>
+                                <option value="mag">MAG Line</option>
+                            </select>
+                        </div>
+                        <div id="macField">
+                            <input type="text" placeholder="MAC Address (required for MAG Line)" id="macAddress" />
+                        </div>
+                        <div class="connection-hint">* For MAG Line, please provide your device MAC address.</div>
+                        <div class="trial-actions">
+                            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Request Trial</button>
+                            <a href="#" class="btn-trial-whatsapp" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                            <a href="#" class="btn-trial-telegram" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- CONVERTER -->
+                <div class="section-title">Convert <span>M3U</span> to Xtream Code</div>
+                <div class="section-sub">Enter your M3U playlist URL to convert it to Xtream Code format instantly.</div>
+                <div class="converter-box">
+                    <div class="input-group">
+                        <input type="text" placeholder="Enter your M3U playlist URL..." id="m3uInput" />
+                        <button class="btn-convert" onclick="convertM3U()"><i class="fas fa-exchange-alt"></i> Convert</button>
+                    </div>
+                    <div class="converter-result" id="converterResult">
+                        <i class="fas fa-info-circle"></i> Enter your M3U URL and click Convert.
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- APP PLAYER + CODE DOWNLOADER -->
-        <div class="app-section">
-            <div class="app-header">
-                <h3><i class="fas fa-download"></i> App Player & Code Downloader</h3>
-                <span style="color:#6a8aaa; font-size:13px;"><i class="fas fa-code"></i> Copy codes to download</span>
+            <!-- ===== PAGE: SUBSCRIPTIONS ===== -->
+            <div id="page-subscriptions" class="page-content">
+                <div class="section-title">IPTV <span>Subscription</span> Packages</div>
+                <div class="section-sub">Choose the perfect subscription plan for your entertainment needs. All plans include full access to our premium channel library and VOD content.</div>
+                <div class="price-notice"><i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.</div>
+                <div class="packages-grid">
+                    <div class="package-card"><div class="plan-name">1 Month</div><div class="plan-price">10€</div><div class="plan-period">billed monthly</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to subscribe to the 1 Month plan - 10€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to subscribe to the 1 Month plan - 10€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                    <div class="package-card popular"><div class="badge">⭐ Best Value</div><div class="plan-name">3 Months</div><div class="plan-price">20€</div><div class="plan-period">€6.67 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to subscribe to the 3 Months plan - 20€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to subscribe to the 3 Months plan - 20€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                    <div class="package-card"><div class="plan-name">6 Months</div><div class="plan-price">30€</div><div class="plan-period">€5.00 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to subscribe to the 6 Months plan - 30€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to subscribe to the 6 Months plan - 30€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                    <div class="package-card"><div class="plan-name">12 Months</div><div class="plan-price">40€</div><div class="plan-period">€3.33 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to subscribe to the 12 Months plan - 40€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to subscribe to the 12 Months plan - 40€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                </div>
             </div>
-            <div class="app-grid">
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-play-circle"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Saga Player 4K</div>
-                        <div class="app-desc">Version 1.0.49 · 3.48 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code1">3483955</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code1')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+
+            <!-- ===== PAGE: RESELLER ===== -->
+            <div id="page-reseller" class="page-content">
+                <div class="section-title">IPTV <span>Reseller</span> Packages</div>
+                <div class="section-sub">Start your own IPTV business with our white-label reseller plans. Bulk credits at wholesale prices with private API host and full panel access.</div>
+                <div class="price-notice"><i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.</div>
+                <div class="packages-grid">
+                    <div class="package-card"><div class="reseller-badge"><i class="fas fa-store"></i> Starter</div><div class="plan-name">120 Credits</div><div class="plan-price">140€</div><div class="plan-period">€1.17 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 120 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to start as a reseller with the 120 Credits - 140€ package with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to start as a reseller with the 120 Credits - 140€ package with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                    <div class="package-card popular"><div class="badge">🔥 Best Seller</div><div class="plan-name">360 Credits</div><div class="plan-price">395€</div><div class="plan-period">€1.10 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 360 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to start as a reseller with the 360 Credits - 395€ package with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to start as a reseller with the 360 Credits - 395€ package with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                    <div class="package-card"><div class="reseller-badge"><i class="fas fa-crown"></i> Pro</div><div class="plan-name">600 Credits</div><div class="plan-price">625€</div><div class="plan-period">€1.04 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 600 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to start as a reseller with the 600 Credits - 625€ package with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to start as a reseller with the 600 Credits - 625€ package with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                    <div class="package-card"><div class="reseller-badge"><i class="fas fa-gem"></i> Enterprise</div><div class="plan-name">Custom</div><div class="plan-price">Contact</div><div class="plan-period">Volume pricing</div><ul class="plan-features"><li><i class="fas fa-check"></i> Custom credit packages</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> Priority 24/7 support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to start as a reseller with a Custom Enterprise package with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to start as a reseller with a Custom Enterprise package with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
+                </div>
+            </div>
+
+            <!-- ===== PAGE: FEATURES ===== -->
+            <div id="page-features" class="page-content">
+                <div class="features-section">
+                    <div class="features-title">POWERFUL <span>FEATURES</span></div>
+                    <div class="features-sub">Clean, fast and responsive interface for smooth management. Advanced tools to manage your IPTV business easily.</div>
+                    <div class="features-grid">
+                        <div class="feature-card"><div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div><div class="feature-name">Modern Interface</div><div class="feature-desc">Clean, fast and responsive interface for smooth management.</div><span class="feature-badge">NEW</span></div>
+                        <div class="feature-card"><div class="feature-icon"><i class="fas fa-tools"></i></div><div class="feature-name">Functionalities</div><div class="feature-desc">Advanced tools to manage your IPTV business easily.</div><span class="feature-badge">NEW</span></div>
+                        <div class="feature-card"><div class="feature-icon"><i class="fas fa-magic"></i></div><div class="feature-name">Auto Generate ProxyPass</div><div class="feature-desc">Automatically generate working ProxyPass links in one click.</div><span class="feature-badge">NEW</span></div>
+                        <div class="feature-card"><div class="feature-icon"><i class="fas fa-server"></i></div><div class="feature-name">Add Private Hosts</div><div class="feature-desc">Add and manage your own private hosts with total control.</div><span class="feature-badge">NEW</span></div>
                     </div>
                 </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-tv"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Stalker MAG V30</div>
-                        <div class="app-desc">Dream4K · 5.60 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code2">5604791</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code2')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
+                <div class="section-title">More <span>Advantages</span></div>
+                <div class="advantages-grid">
+                    <div class="advantage-item"><i class="fas fa-users-cog"></i><div class="adv-name">Multi-Reseller</div></div>
+                    <div class="advantage-item"><i class="fas fa-shield-alt"></i><div class="adv-name">Advanced Security</div></div>
+                    <div class="advantage-item"><i class="fas fa-chart-line"></i><div class="adv-name">Real-time Statistics</div></div>
+                    <div class="advantage-item"><i class="fas fa-database"></i><div class="adv-name">Automatic Backup</div></div>
+                    <div class="advantage-item"><i class="fas fa-headset"></i><div class="adv-name">24/7 Support</div></div>
+                    <div class="advantage-item"><i class="fas fa-globe"></i><div class="adv-name">Multi-language</div></div>
+                    <div class="advantage-item"><i class="fas fa-sync-alt"></i><div class="adv-name">Regular Updates</div></div>
+                    <div class="advantage-item"><i class="fas fa-user-shield"></i><div class="adv-name">Support</div></div>
                 </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-film"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Smarters Player V2.2.2</div>
-                        <div class="app-desc">Dream4K · 8.63 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code3">8626673</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code3')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
+            </div>
+
+            <!-- ===== PAGE: FAQ ===== -->
+            <div id="page-faq" class="page-content">
+                <div class="section-title">Frequently Asked <span>Questions</span></div>
+                <div class="faq-grid">
+                    <div class="faq-item"><div class="question"><i class="fas fa-question-circle"></i> What is Dream24K IPTV?</div><div class="answer">Dream24K is a premium IPTV subscription service delivering 40,000+ live channels, 100,000+ VOD, and true 4K UHD. It's the evolution of Dream4K, founded in 2017.</div></div>
+                    <div class="faq-item"><div class="question"><i class="fas fa-sync-alt"></i> Is Dream24K the same as Dream4K?</div><div class="answer">Yes. Dream24K is the rebrand of Dream4K. Same team, same servers, now with more channels and upgraded 4K infrastructure.</div></div>
+                    <div class="faq-item"><div class="question"><i class="fas fa-dollar-sign"></i> How much does it cost?</div><div class="answer">Subscription plans: 1 month = 10€, 3 months = 20€, 6 months = 30€, 12 months = 40€. Reseller packages available from 140€.</div></div>
+                    <div class="faq-item"><div class="question"><i class="fas fa-tv"></i> What devices are supported?</div><div class="answer">Smart TVs, Firestick, Android, iOS, MAG/STB boxes, Windows, Mac. Any device with IPTV Smarters, TiviMate, or similar.</div></div>
+                    <div class="faq-item"><div class="question"><i class="fas fa-gift"></i> Is there a free trial?</div><div class="answer">Yes. Contact us via WhatsApp or Telegram for a 24-hour free trial. No credit card required.</div></div>
+                    <div class="faq-item"><div class="question"><i class="fas fa-handshake"></i> How does the reseller program work?</div><div class="answer">Purchase credits in bulk at wholesale prices. Each credit = one 1-month subscription. You get a white-label panel with private API host.</div></div>
+                    <div class="faq-item"><div class="question"><i class="fas fa-wifi"></i> Do I need a VPN?</div><div class="answer">No. Dream24K works without a VPN in most regions. VPN is optional for added privacy.</div></div>
+                    <div class="faq-item"><div class="question"><i class="fas fa-credit-card"></i> What payment methods are accepted?</div><div class="answer">Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, and cryptocurrency (Bitcoin, USDT, Ethereum).</div></div>
+                    <div class="faq-item"><div class="question"><i class="fas fa-undo-alt"></i> What is your refund policy?</div><div class="answer">Every subscription is backed by a 30-day money-back guarantee. Contact our support team for a full refund.</div></div>
+                    <div class="faq-item"><div class="question"><i class="fas fa-clock"></i> How long does activation take?</div><div class="answer">Activation is instant. You'll receive your credentials via email within 60 seconds of completing your purchase.</div></div>
                 </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-user-cog"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Platinum User Pass V3.5.7</div>
-                        <div class="app-desc">Dream4K · 3.70 MB</div>
+            </div>
+
+            <!-- ===== PAGE: SUPPORT ===== -->
+            <div id="page-support" class="page-content">
+                <div class="section-title">24/7 <span>Support</span></div>
+                <div class="section-sub">Our dedicated support team is available around the clock to help you with any questions or issues.</div>
+                <div class="trial-section" style="grid-template-columns:1fr;">
+                    <div class="trial-info">
+                        <h3><i class="fas fa-headset"></i> Contact Support</h3>
+                        <p>Reach out to us via any of the following channels and we'll get back to you within minutes.</p>
+                        <div class="contact-details">
+                            <div><span class="label">📱 WhatsApp:</span> <a href="#" onclick="openWhatsApp('I need support with Dream24K IPTV')">+212 663-087765</a></div>
+                            <div><span class="label">📱 Telegram:</span> <a href="#" onclick="openTelegram('I need support with Dream24K IPTV')">@reselleriptvcom</a></div>
+                            <div><span class="label">✉️ Email:</span> <a href="mailto:support@reselleriptv.com">support@reselleriptv.com</a></div>
+                            <div><span class="label">🌐 Live Chat:</span> Available on our website 24/7</div>
+                        </div>
                     </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code4">3704716</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code4')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-play"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">IBO Player V3.8</div>
-                        <div class="app-desc">Dream4K · 1.56 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code5">1560525</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code5')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-crown"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Platinum Active V3</div>
-                        <div class="app-desc">Dream4K · 5.25 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code6">5249980</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code6')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-android"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Dream 4K v2-1.2</div>
-                        <div class="app-desc">Android · 4.50 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code7">4496801</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code7')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon"><i class="fas fa-ethernet"></i></div>
-                    <div class="app-info">
-                        <div class="app-name">Dream 4K v3-1.3 Box Ethernet</div>
-                        <div class="app-desc">Android Box · 9.66 MB</div>
-                    </div>
-                    <div class="app-actions">
-                        <span class="code-display" id="code8">9663676</span>
-                        <button class="btn-copy-code" onclick="copyAppCode('code8')"><i class="fas fa-copy"></i> Copy</button>
-                        <a href="#" class="btn-download-app"><i class="fas fa-download"></i> Download</a>
+                    <div class="social-section" style="margin-top:0;">
+                        <div class="section-title" style="font-size:22px;">Follow <span>Us</span></div>
+                        <div class="social-links">
+                            <a href="#" onclick="openWhatsApp('I want to connect with Dream24K IPTV on WhatsApp')"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#" onclick="openTelegram('I want to connect with Dream24K IPTV on Telegram')"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="mailto:support@reselleriptv.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- SUBSCRIPTION PLANS -->
-        <div class="section-title" id="plans">IPTV <span>Subscription</span> Plans</div>
-        <div class="section-sub">Choose the perfect subscription plan for your entertainment needs. All plans include full access to our premium channel library and VOD content.</div>
-        <div class="price-notice"><i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.</div>
-        <div class="packages-grid">
-            <div class="package-card"><div class="plan-name">1 Month</div><div class="plan-price">10€</div><div class="plan-period">billed monthly</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to subscribe to the 1 Month plan - 10€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to subscribe to the 1 Month plan - 10€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            <div class="package-card popular"><div class="badge">⭐ Best Value</div><div class="plan-name">3 Months</div><div class="plan-price">20€</div><div class="plan-period">€6.67 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to subscribe to the 3 Months plan - 20€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to subscribe to the 3 Months plan - 20€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            <div class="package-card"><div class="plan-name">6 Months</div><div class="plan-price">30€</div><div class="plan-period">€5.00 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to subscribe to the 6 Months plan - 30€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to subscribe to the 6 Months plan - 30€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            <div class="package-card"><div class="plan-name">12 Months</div><div class="plan-price">40€</div><div class="plan-period">€3.33 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to subscribe to the 12 Months plan - 40€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to subscribe to the 12 Months plan - 40€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-        </div>
-
-        <!-- RESELLER PLANS -->
-        <div class="section-title" id="reseller">IPTV <span>Reseller</span> Plans</div>
-        <div class="section-sub">Start your own IPTV business with our white-label reseller plans. Bulk credits at wholesale prices with private API host and full panel access.</div>
-        <div class="price-notice"><i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.</div>
-        <div class="packages-grid">
-            <div class="package-card"><div class="reseller-badge"><i class="fas fa-store"></i> Starter</div><div class="plan-name">120 Credits</div><div class="plan-price">140€</div><div class="plan-period">€1.17 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 120 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to start as a reseller with the 120 Credits - 140€ package with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to start as a reseller with the 120 Credits - 140€ package with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            <div class="package-card popular"><div class="badge">🔥 Best Seller</div><div class="plan-name">360 Credits</div><div class="plan-price">395€</div><div class="plan-period">€1.10 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 360 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to start as a reseller with the 360 Credits - 395€ package with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to start as a reseller with the 360 Credits - 395€ package with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            <div class="package-card"><div class="reseller-badge"><i class="fas fa-crown"></i> Pro</div><div class="plan-name">600 Credits</div><div class="plan-price">625€</div><div class="plan-period">€1.04 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 600 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> 24/7 reseller support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to start as a reseller with the 600 Credits - 625€ package with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to start as a reseller with the 600 Credits - 625€ package with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            <div class="package-card"><div class="reseller-badge"><i class="fas fa-gem"></i> Enterprise</div><div class="plan-name">Custom</div><div class="plan-price">Contact</div><div class="plan-period">Volume pricing</div><ul class="plan-features"><li><i class="fas fa-check"></i> Custom credit packages</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li><li><i class="fas fa-check"></i> Priority 24/7 support</li><li><i class="fas fa-check"></i> No setup fee</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to start as a reseller with a Custom Enterprise package with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to start as a reseller with a Custom Enterprise package with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-        </div>
-
-        <!-- FEATURES -->
-        <div class="features-section" id="features">
-            <div class="features-title">POWERFUL <span>FEATURES</span></div>
-            <div class="features-sub">Clean, fast and responsive interface for smooth management. Advanced tools to manage your IPTV business easily.</div>
-            <div class="features-grid">
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div><div class="feature-name">Modern Interface</div><div class="feature-desc">Clean, fast and responsive interface for smooth management.</div><span class="feature-badge">NEW</span></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-tools"></i></div><div class="feature-name">Functionalities</div><div class="feature-desc">Advanced tools to manage your IPTV business easily.</div><span class="feature-badge">NEW</span></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-magic"></i></div><div class="feature-name">Auto Generate ProxyPass</div><div class="feature-desc">Automatically generate working ProxyPass links in one click.</div><span class="feature-badge">NEW</span></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-server"></i></div><div class="feature-name">Add Private Hosts</div><div class="feature-desc">Add and manage your own private hosts with total control.</div><span class="feature-badge">NEW</span></div>
-            </div>
-        </div>
-
-        <div class="section-title">More <span>Advantages</span></div>
-        <div class="advantages-grid">
-            <div class="advantage-item"><i class="fas fa-users-cog"></i><div class="adv-name">Multi-Reseller</div></div>
-            <div class="advantage-item"><i class="fas fa-shield-alt"></i><div class="adv-name">Advanced Security</div></div>
-            <div class="advantage-item"><i class="fas fa-chart-line"></i><div class="adv-name">Real-time Statistics</div></div>
-            <div class="advantage-item"><i class="fas fa-database"></i><div class="adv-name">Automatic Backup</div></div>
-            <div class="advantage-item"><i class="fas fa-headset"></i><div class="adv-name">24/7 Support</div></div>
-            <div class="advantage-item"><i class="fas fa-globe"></i><div class="adv-name">Multi-language</div></div>
-            <div class="advantage-item"><i class="fas fa-sync-alt"></i><div class="adv-name">Regular Updates</div></div>
-            <div class="advantage-item"><i class="fas fa-user-shield"></i><div class="adv-name">Support</div></div>
-        </div>
-
-        <!-- FREE TRIAL -->
-        <div class="section-title" id="trial">Request Your <span>Free Trial</span></div>
-        <div class="section-sub">Choose your preferred connection type and we'll send you credentials instantly via WhatsApp or Telegram.</div>
-        <div class="trial-section">
-            <div class="trial-info">
-                <h3><i class="fas fa-headset"></i> Get in Touch</h3>
-                <p>Our team is available 24/7 via WhatsApp, Telegram, or email. Fill out the form or reach out directly.</p>
-                <div class="contact-details">
-                    <div><span class="label">📱 WhatsApp:</span> <a href="#" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')">+212 663-087765</a></div>
-                    <div><span class="label">📱 Telegram:</span> <a href="#" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')">@reselleriptvcom</a></div>
-                    <div><span class="label">✉️ Email:</span> <a href="mailto:support@reselleriptv.com">support@reselleriptv.com</a></div>
+            <!-- ===== CTA BANNER ===== -->
+            <div class="cta-banner">
+                <div class="cta-title">TAKE YOUR IPTV BUSINESS TO <span>THE NEXT LEVEL</span></div>
+                <div class="cta-desc">DREAM24K · 24K PREMIUM QUALITY — STABLE · SECURE · POWERFUL</div>
+                <div class="cta-buttons">
+                    <a href="#packages" class="btn-gold"><i class="fas fa-rocket"></i> Get Started</a>
+                    <a href="#" class="btn-trial-whatsapp" style="padding:14px 36px; font-size:16px;" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> Free Trial</a>
+                    <a href="#" class="btn-trial-telegram" style="padding:14px 36px; font-size:16px;" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Free Trial</a>
                 </div>
             </div>
-            <form class="trial-form" id="trialForm">
-                <div class="form-row">
-                    <select required id="connectionType">
-                        <option value="">Select connection type</option>
-                        <option value="m3u">M3U</option>
-                        <option value="xtream">Xtream Code</option>
-                        <option value="active">Active Code</option>
-                        <option value="mag">MAG Line</option>
-                    </select>
-                </div>
-                <div id="macField">
-                    <input type="text" placeholder="MAC Address (required for MAG Line)" id="macAddress" />
-                </div>
-                <div class="connection-hint">* For MAG Line, please provide your device MAC address.</div>
-                <div class="trial-actions">
-                    <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Request Trial</button>
-                    <a href="#" class="btn-trial-whatsapp" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                    <a href="#" class="btn-trial-telegram" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                </div>
-            </form>
-        </div>
 
-        <!-- CONVERTER -->
-        <div class="section-title">Convert <span>M3U</span> to Xtream Code</div>
-        <div class="section-sub">Enter your M3U playlist URL to convert it to Xtream Code format instantly.</div>
-        <div class="converter-box">
-            <div class="input-group">
-                <input type="text" placeholder="Enter your M3U playlist URL..." id="m3uInput" />
-                <button class="btn-convert" onclick="convertM3U()"><i class="fas fa-exchange-alt"></i> Convert</button>
+            <!-- ===== LEGACY PAGES ===== -->
+            <div class="section-title">Legacy <span>Pages</span></div>
+            <div class="section-sub">Access our previous versions and archived content.</div>
+            <div class="legacy-grid">
+                <a href="#" class="legacy-item"><i class="fas fa-history"></i><div class="legacy-name">Dream4K (2017)</div><div class="legacy-desc">Original platform</div></a>
+                <a href="#" class="legacy-item"><i class="fas fa-archive"></i><div class="legacy-name">V1 Dashboard</div><div class="legacy-desc">Classic control panel</div></a>
+                <a href="#" class="legacy-item"><i class="fas fa-tv"></i><div class="legacy-name">MAG Portal</div><div class="legacy-desc">Legacy MAG interface</div></a>
+                <a href="#" class="legacy-item"><i class="fas fa-code"></i><div class="legacy-name">API Docs v1</div><div class="legacy-desc">Original API reference</div></a>
+                <a href="#" class="legacy-item"><i class="fas fa-file-alt"></i><div class="legacy-name">Old Knowledge Base</div><div class="legacy-desc">Archived guides</div></a>
+                <a href="#" class="legacy-item"><i class="fas fa-download"></i><div class="legacy-name">Legacy Apps</div><div class="legacy-desc">Previous app versions</div></a>
             </div>
-            <div class="converter-result" id="converterResult">
-                <i class="fas fa-info-circle"></i> Enter your M3U URL and click Convert.
-            </div>
-        </div>
 
-        <!-- FAQ -->
-        <div class="section-title" id="faq">Frequently Asked <span>Questions</span></div>
-        <div class="faq-grid">
-            <div class="faq-item"><div class="question"><i class="fas fa-question-circle"></i> What is Dream24K IPTV?</div><div class="answer">Dream24K is a premium IPTV subscription service delivering 40,000+ live channels, 100,000+ VOD, and true 4K UHD. It's the evolution of Dream4K, founded in 2017.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-sync-alt"></i> Is Dream24K the same as Dream4K?</div><div class="answer">Yes. Dream24K is the rebrand of Dream4K. Same team, same servers, now with more channels and upgraded 4K infrastructure.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-dollar-sign"></i> How much does it cost?</div><div class="answer">Subscription plans: 1 month = 10€, 3 months = 20€, 6 months = 30€, 12 months = 40€. Reseller packages available from 140€.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-tv"></i> What devices are supported?</div><div class="answer">Smart TVs, Firestick, Android, iOS, MAG/STB boxes, Windows, Mac. Any device with IPTV Smarters, TiviMate, or similar.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-gift"></i> Is there a free trial?</div><div class="answer">Yes. Contact us via WhatsApp or Telegram for a 24-hour free trial. No credit card required.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-handshake"></i> How does the reseller program work?</div><div class="answer">Purchase credits in bulk at wholesale prices. Each credit = one 1-month subscription. You get a white-label panel with private API host.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-wifi"></i> Do I need a VPN?</div><div class="answer">No. Dream24K works without a VPN in most regions. VPN is optional for added privacy.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-credit-card"></i> What payment methods are accepted?</div><div class="answer">Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, and cryptocurrency (Bitcoin, USDT, Ethereum).</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-undo-alt"></i> What is your refund policy?</div><div class="answer">Every subscription is backed by a 30-day money-back guarantee. Contact our support team for a full refund.</div></div>
-            <div class="faq-item"><div class="question"><i class="fas fa-clock"></i> How long does activation take?</div><div class="answer">Activation is instant. You'll receive your credentials via email within 60 seconds of completing your purchase.</div></div>
-        </div>
-
-        <!-- SUPPORT / CONTACT -->
-        <div class="section-title" id="support">24/7 <span>Support</span></div>
-        <div class="section-sub">Our dedicated support team is available around the clock to help you with any questions or issues.</div>
-        <div class="trial-section" style="grid-template-columns:1fr;">
-            <div class="trial-info">
-                <h3><i class="fas fa-headset"></i> Contact Support</h3>
-                <p>Reach out to us via any of the following channels and we'll get back to you within minutes.</p>
-                <div class="contact-details">
-                    <div><span class="label">📱 WhatsApp:</span> <a href="#" onclick="openWhatsApp('I need support with Dream24K IPTV')">+212 663-087765</a></div>
-                    <div><span class="label">📱 Telegram:</span> <a href="#" onclick="openTelegram('I need support with Dream24K IPTV')">@reselleriptvcom</a></div>
-                    <div><span class="label">✉️ Email:</span> <a href="mailto:support@reselleriptv.com">support@reselleriptv.com</a></div>
-                    <div><span class="label">🌐 Live Chat:</span> Available on our website 24/7</div>
-                </div>
-            </div>
-            <div class="social-section" style="margin-top:0;">
-                <div class="section-title" style="font-size:22px;">Follow <span>Us</span></div>
-                <div class="social-links">
-                    <a href="#" onclick="openWhatsApp('I want to connect with Dream24K IPTV on WhatsApp')"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" onclick="openTelegram('I want to connect with Dream24K IPTV on Telegram')"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="mailto:support@reselleriptv.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <!-- ===== FOOTER ===== -->
+            <footer class="footer">
+                <span>© 2025 Dream24K IPTV · All rights reserved</span>
+                <span><i class="fas fa-shield-alt" style="color:#f7c948;"></i> Protected by SSL</span>
+                <div class="socials">
+                    <a href="#" onclick="openWhatsApp('I want to connect with Dream24K IPTV')"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" onclick="openTelegram('I want to connect with Dream24K IPTV')"><i class="fab fa-telegram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
-            </div>
+            </footer>
         </div>
+        <!-- end EN -->
 
-        <!-- CTA BANNER -->
-        <div class="cta-banner">
-            <div class="cta-title">TAKE YOUR IPTV BUSINESS TO <span>THE NEXT LEVEL</span></div>
-            <div class="cta-desc">DREAM24K · 24K PREMIUM QUALITY — STABLE · SECURE · POWERFUL</div>
-            <div class="cta-buttons">
-                <a href="#plans" class="btn-gold"><i class="fas fa-rocket"></i> Get Started</a>
-                <a href="#" class="btn-trial-whatsapp" style="padding:14px 36px; font-size:16px;" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> Free Trial</a>
-                <a href="#" class="btn-trial-telegram" style="padding:14px 36px; font-size:16px;" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Free Trial</a>
-            </div>
+        <!-- ===== OTHER LANGUAGES (placeholder) ===== -->
+        <div class="lang-content" data-lang="es">
+            <h2 style="text-align:center; padding:60px 0;">Dream24K IPTV · Español</h2>
+            <p style="text-align:center; color:#6a8aaa;">Contenido en español disponible próximamente.</p>
         </div>
-
-        <!-- LEGACY PAGES -->
-        <div class="section-title">Legacy <span>Pages</span></div>
-        <div class="section-sub">Access our previous versions and archived content.</div>
-        <div class="legacy-grid">
-            <a href="#" class="legacy-item"><i class="fas fa-history"></i><div class="legacy-name">Dream4K (2017)</div><div class="legacy-desc">Original platform</div></a>
-            <a href="#" class="legacy-item"><i class="fas fa-archive"></i><div class="legacy-name">V1 Dashboard</div><div class="legacy-desc">Classic control panel</div></a>
-            <a href="#" class="legacy-item"><i class="fas fa-tv"></i><div class="legacy-name">MAG Portal</div><div class="legacy-desc">Legacy MAG interface</div></a>
-            <a href="#" class="legacy-item"><i class="fas fa-code"></i><div class="legacy-name">API Docs v1</div><div class="legacy-desc">Original API reference</div></a>
-            <a href="#" class="legacy-item"><i class="fas fa-file-alt"></i><div class="legacy-name">Old Knowledge Base</div><div class="legacy-desc">Archived guides</div></a>
-            <a href="#" class="legacy-item"><i class="fas fa-download"></i><div class="legacy-name">Legacy Apps</div><div class="legacy-desc">Previous app versions</div></a>
+        <div class="lang-content" data-lang="fr">
+            <h2 style="text-align:center; padding:60px 0;">Dream24K IPTV · Français</h2>
+            <p style="text-align:center; color:#6a8aaa;">Contenu français bientôt disponible.</p>
         </div>
-
-        <!-- FOOTER -->
-        <div class="footer">
-            <i class="fas fa-shield-alt" style="color:#f7c948;"></i> Dream 24K IPTV · since 2017 · 40K+ live & 100K+ VOD
-            <div class="keywords">
-                <span>#Dream24KIPTV</span>
-                <span>#Dream4KIPTV</span>
-                <span>#Dream24KSubscription</span>
-                <span>#Dream4KReseller</span>
-            </div>
+        <div class="lang-content" data-lang="de">
+            <h2 style="text-align:center; padding:60px 0;">Dream24K IPTV · Deutsch</h2>
+            <p style="text-align:center; color:#6a8aaa;">Deutscher Inhalt folgt in Kürze.</p>
+        </div>
+        <div class="lang-content" data-lang="it">
+            <h2 style="text-align:center; padding:60px 0;">Dream24K IPTV · Italiano</h2>
+            <p style="text-align:center; color:#6a8aaa;">Contenuto italiano disponibile a breve.</p>
+        </div>
+        <div class="lang-content" data-lang="pt">
+            <h2 style="text-align:center; padding:60px 0;">Dream24K IPTV · Português</h2>
+            <p style="text-align:center; color:#6a8aaa;">Conteúdo em português em breve.</p>
+        </div>
+        <div class="lang-content" data-lang="ar">
+            <h2 style="text-align:center; padding:60px 0;">Dream24K IPTV · العربية</h2>
+            <p style="text-align:center; color:#6a8aaa;">المحتوى العربي قريباً.</p>
+        </div>
+        <div class="lang-content" data-lang="ru">
+            <h2 style="text-align:center; padding:60px 0;">Dream24K IPTV · Русский</h2>
+            <p style="text-align:center; color:#6a8aaa;">Русский контент скоро появится.</p>
+        </div>
+        <div class="lang-content" data-lang="zh">
+            <h2 style="text-align:center; padding:60px 0;">Dream24K IPTV · 中文</h2>
+            <p style="text-align:center; color:#6a8aaa;">中文内容即将推出。</p>
+        </div>
+        <div class="lang-content" data-lang="ja">
+            <h2 style="text-align:center; padding:60px 0;">Dream24K IPTV · 日本語</h2>
+            <p style="text-align:center; color:#6a8aaa;">日本語のコンテンツが近日公開予定。</p>
         </div>
     </div>
 
     <script>
-        // ===== DROPDOWN MENU =====
-        document.querySelector('.btn-get-started').addEventListener('click', function(e) {
-            e.stopPropagation();
-            const dropdown = this.parentElement;
-            dropdown.classList.toggle('active');
+        // ===== LANGUAGE SWITCHER =====
+        document.getElementById('langSelect').addEventListener('change', function(e) {
+            const lang = e.target.value;
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            const target = document.querySelector(`.lang-content[data-lang="${lang}"]`);
+            if (target) target.classList.add('active');
         });
 
-        document.addEventListener('click', function() {
-            document.querySelectorAll('.get-started-dropdown').forEach(d => d.classList.remove('active'));
-        });
-
-        // ===== MOBILE MENU TOGGLE =====
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-
-        menuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+        // ===== PAGE NAVIGATION =====
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const pageId = this.dataset.page;
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+                const targetPage = document.getElementById('page-' + pageId);
+                if (targetPage) targetPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
 
-        // ===== SECURITY =====
-        document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12') { e.preventDefault(); return false; }
-            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) { e.preventDefault(); return false; }
-            if (e.ctrlKey && e.key === 'U') { e.preventDefault(); return false; }
-            if (e.ctrlKey && (e.key === 's' || e.key === 'S')) { e.preventDefault(); return false; }
-        });
-
-        // ===== OPEN WHATSAPP =====
-        function openWhatsApp(message) {
-            const phone = '212663087765';
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-            return false;
-        }
-
-        // ===== OPEN TELEGRAM =====
-        function openTelegram(message) {
-            const username = 'reselleriptvcom';
-            window.open(`https://t.me/${username}?text=${encodeURIComponent(message)}`, '_blank');
-            return false;
-        }
-
-        // ===== CANVAS PARTICLES =====
-        (function initCanvas() {
-            const canvas = document.getElementById('heroCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            let w, h;
-            function resize() {
-                const rect = canvas.parentElement.getBoundingClientRect();
-                w = rect.width;
-                h = rect.height;
-                canvas.width = w;
-                canvas.height = h;
-            }
-            window.addEventListener('resize', resize);
-            resize();
-            const particles = [];
-            const count = Math.min(80, Math.floor(w * h / 15000));
-            for (let i = 0; i < count; i++) {
-                particles.push({
-                    x: Math.random() * w,
-                    y: Math.random() * h,
-                    r: Math.random() * 2 + 0.5,
-                    dx: (Math.random() - 0.5) * 0.5,
-                    dy: (Math.random() - 0.5) * 0.5,
-                    c: `hsla(${40 + Math.random() * 20}, 80%, 70%, ${0.2 + Math.random() * 0.3})`
-                });
-            }
-            function draw() {
-                ctx.clearRect(0, 0, w, h);
-                particles.forEach(p => {
-                    p.x += p.dx;
-                    p.y += p.dy;
-                    if (p.x < 0 || p.x > w) p.dx *= -1;
-                    if (p.y < 0 || p.y > h) p.dy *= -1;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = p.c;
-                    ctx.fill();
-                });
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 120) {
-                            ctx.beginPath();
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = `rgba(247,201,72,${0.06 * (1 - dist / 120)})`;
-                            ctx.lineWidth = 0.4;
-                            ctx.stroke();
-                        }
-                    }
-                }
-                requestAnimationFrame(draw);
-            }
-            draw();
-        })();
-
-        // ===== LANGUAGE SWITCHER =====
-        const translations = {
-            en: {
-                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
-                heroSub: 'Premium IPTV · 40,000+ Channels · 100,000+ VOD',
-                heroDesc: 'Experience the future of television with Dream24K IPTV — the evolution of Dream4K. Ultra-fast servers, zero buffering, 4K UHD quality, and a global network trusted by resellers and end-users in 120+ countries.',
-                trialTitle: 'Request Your <span>Free Trial</span>',
-                subscribe: 'Subscribe',
-                getStarted: 'Get Started',
-                freeTrial: 'Free Trial',
-                packages: 'IPTV <span>Subscription</span> Plans',
-                reseller: 'IPTV <span>Reseller</span> Plans',
-                features: 'POWERFUL <span>FEATURES</span>',
-                advantages: 'More <span>Advantages</span>',
-                faq: 'Frequently Asked <span>Questions</span>',
-                support: '24/7 <span>Support</span>',
-                supportDesc: 'Our dedicated support team is available around the clock to help you with any questions or issues.',
-                ctaTitle: 'TAKE YOUR IPTV BUSINESS TO <span>THE NEXT LEVEL</span>',
-                ctaDesc: 'DREAM24K · 24K PREMIUM QUALITY — STABLE · SECURE · POWERFUL',
-                footer: 'Dream 24K IPTV · since 2017 · 40K+ live & 100K+ VOD',
-                convertTitle: 'Convert <span>M3U</span> to Xtream Code',
-                convertSub: 'Enter your M3U playlist URL to convert it to Xtream Code format instantly.',
-                appTitle: 'App Player & Code Downloader',
-                appSub: 'Copy codes to download',
-                trialSub: 'Choose your preferred connection type and we\'ll send you credentials instantly via WhatsApp or Telegram.',
-                contactTitle: 'Get in Touch',
-                contactText: 'Our team is available 24/7 via WhatsApp, Telegram, or email. Fill out the form or reach out directly.',
-                legacyTitle: 'Legacy <span>Pages</span>',
-                legacySub: 'Access our previous versions and archived content.',
-                mapTitle: 'Dream 24K IPTV | <span>Stable Global Servers</span> & Instant Activation',
-                mapDesc: 'Dream 24K IPTV offers stable worldwide servers, instant activation, premium live TV, sports, movies, and series. Includes reseller options and a 24-hour free trial.'
-            },
-            fr: {
-                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
-                heroSub: 'IPTV Premium · 40 000+ chaînes · 100 000+ VOD',
-                heroDesc: 'Découvrez l\'avenir de la télévision avec Dream24K IPTV — l\'évolution de Dream4K. Serveurs ultra-rapides, zéro buffer, qualité 4K UHD, et un réseau mondial approuvé par les revendeurs et les utilisateurs finaux dans plus de 120 pays.',
-                trialTitle: 'Demandez Votre <span>Essai Gratuit</span>',
-                subscribe: 'S\'abonner',
-                getStarted: 'Commencer',
-                freeTrial: 'Essai Gratuit',
-                packages: 'Forfaits <span>IPTV</span>',
-                reseller: 'Forfaits <span>Revendeur</span> IPTV',
-                features: 'FONCTIONNALITÉS <span>PUISSANTES</span>',
-                advantages: 'Plus d\'<span>Avantages</span>',
-                faq: 'Questions <span>Fréquentes</span>',
-                support: 'Support <span>24/7</span>',
-                supportDesc: 'Notre équipe de support dédiée est disponible 24h/24 et 7j/7 pour vous aider avec toutes vos questions ou problèmes.',
-                ctaTitle: 'FAITES PASSER VOTRE ACTIVITÉ IPTV AU <span>NIVEAU SUPÉRIEUR</span>',
-                ctaDesc: 'DREAM24K · QUALITÉ PREMIUM 24K — STABLE · SÉCURISÉ · PUISSANT',
-                footer: 'Dream 24K IPTV · depuis 2017 · 40K+ live & 100K+ VOD',
-                convertTitle: 'Convertir <span>M3U</span> en Code Xtream',
-                convertSub: 'Entrez l\'URL de votre playlist M3U pour la convertir instantanément en format Xtream Code.',
-                appTitle: 'Lecteur d\'application et téléchargeur de code',
-                appSub: 'Copiez les codes pour télécharger',
-                trialSub: 'Choisissez votre type de connexion préféré et nous vous enverrons les identifiants instantanément via WhatsApp ou Telegram.',
-                contactTitle: 'Entrez en Contact',
-                contactText: 'Notre équipe est disponible 24/7 via WhatsApp, Telegram ou email. Remplissez le formulaire ou contactez-nous directement.',
-                legacyTitle: 'Pages <span>Héritées</span>',
-                legacySub: 'Accédez à nos versions précédentes et au contenu archivé.',
-                mapTitle: 'Dream 24K IPTV | <span>Serveurs Globaux Stables</span> & Activation Instantanée',
-                mapDesc: 'Dream 24K IPTV offre des serveurs stables dans le monde entier, une activation instantanée, des chaînes TV premium, des sports, des films et des séries. Inclut des options de revendeur et un essai gratuit de 24 heures.'
-            },
-            es: {
-                heroTagline: 'DREAM <span>24K</span> · DREAM <span>4K</span>',
-                heroSub: 'IPTV Premium · 40,000+ canales · 100,000+ VOD',
-                heroDesc: 'Experimenta el futuro de la televisión con Dream24K IPTV — la evolución de Dream4K. Servidores ultrarrápidos, cero buffering, calidad 4K UHD, y una red global confiable por revendedores y usuarios finales en más de 120 países.',
-                trialTitle: 'Solicita Tu <span>Prueba Gratuita</span>',
-                subscribe: 'Suscribirse',
-                getStarted: 'Comenzar',
-                freeTrial: 'Prueba Gratuita',
-                packages: 'Paquetes de <span>Suscripción</span> IPTV',
-                reseller: 'Paquetes <span>Revendedor</span> IPTV',
-                features: 'CARACTERÍSTICAS <span>POTENTES</span>',
-                advantages: 'Más <span>Ventajas</span>',
-                faq: 'Preguntas <span>Frecuentes</span>',
-                support: 'Soporte <span>24/7</span>',
-                supportDesc: 'Nuestro equipo de soporte dedicado está disponible las 24 horas del día, los 7 días de la semana, para ayudarte con cualquier pregunta o problema.',
-                ctaTitle: 'LLEVA TU NEGOCIO IPTV AL <span>PRÓXIMO NIVEL</span>',
-                ctaDesc: 'DREAM24K · CALIDAD PREMIUM 24K — ESTABLE · SEGURO · POTENTE',
-                footer: 'Dream 24K IPTV · desde 2017 · 40K+ live & 100K+ VOD',
-                convertTitle: 'Convertir <span>M3U</span> a Código Xtream',
-                convertSub: 'Ingresa la URL de tu lista de reproducción M3U para convertirla instantáneamente al formato Xtream Code.',
-                appTitle: 'Reproductor de aplicaciones y descargador de códigos',
-                appSub: 'Copia los códigos para descargar',
-                trialSub: 'Elige tu tipo de conexión preferido y te enviaremos las credenciales al instante vía WhatsApp o Telegram.',
-                contactTitle: 'Ponte en Contacto',
-                contactText: 'Nuestro equipo está disponible 24/7 vía WhatsApp, Telegram o correo electrónico. Completa el formulario o contáctanos directamente.',
-                legacyTitle: 'Páginas <span>Legado</span>',
-                legacySub: 'Accede a nuestras versiones anteriores y contenido archivado.',
-                mapTitle: 'Dream 24K IPTV | <span>Servidores Globales Estables</span> & Activación Instantánea',
-                mapDesc: 'Dream 24K IPTV ofrece servidores estables en todo el mundo, activación instantánea, TV en vivo premium, deportes, películas y series. Incluye opciones de revendedor y una prueba gratuita de 24 horas.'
-            }
-        };
-
-        document.getElementById('languageSelect').addEventListener('change', function() {
-            const lang = this.value;
-            const t = translations[lang] || translations.en;
-
-            document.querySelector('.hero-tagline').innerHTML = t.heroTagline;
-            document.querySelector('.hero-sub').textContent = t.heroSub;
-            document.querySelector('.hero-desc').textContent = t.heroDesc;
-            document.querySelector('#trial').innerHTML = t.trialTitle;
-            document.querySelector('.btn-get-started').innerHTML = `<i class="fas fa-rocket"></i> ${t.getStarted} <i class="fas fa-chevron-down"></i>`;
-            document.querySelector('.map-overlay-content .btn-primary').innerHTML = `<i class="fas fa-rocket"></i> ${t.getStarted}`;
-            document.querySelector('.map-overlay-content .btn-secondary').innerHTML = `<i class="fas fa-gift"></i> ${t.freeTrial}`;
-            document.querySelector('.map-overlay-content .map-title').innerHTML = t.mapTitle;
-            document.querySelector('.map-overlay-content .map-desc').textContent = t.mapDesc;
-            document.querySelector('#plans').innerHTML = t.packages;
-            document.querySelector('#reseller').innerHTML = t.reseller;
-            document.querySelector('#features .features-title').innerHTML = t.features;
-            document.querySelector('.section-title:nth-of-type(5)').innerHTML = t.advantages;
-            document.querySelector('#faq').innerHTML = t.faq;
-            document.querySelector('#support').innerHTML = t.support;
-            document.querySelector('#support + .section-sub').textContent = t.supportDesc;
-            document.querySelector('.cta-banner .cta-title').innerHTML = t.ctaTitle;
-            document.querySelector('.cta-banner .cta-desc').textContent = t.ctaDesc;
-            document.querySelector('.footer').innerHTML = `<i class="fas fa-shield-alt" style="color:#f7c948;"></i> ${t.footer}<div class="keywords"><span>#Dream24KIPTV</span><span>#Dream4KIPTV</span><span>#Dream24KSubscription</span><span>#Dream4KReseller</span></div>`;
-            
-            const converterTitle = document.querySelector('.converter-box + .section-title');
-            const converterSub = document.querySelector('.converter-box + .section-title + .section-sub');
-            if (converterTitle) converterTitle.innerHTML = t.convertTitle;
-            if (converterSub) converterSub.textContent = t.convertSub;
-            document.querySelector('.app-section .app-header h3').innerHTML = '<i class="fas fa-download"></i> ' + t.appTitle;
-            document.querySelector('.app-section .app-header span').innerHTML = '<i class="fas fa-code"></i> ' + t.appSub;
-            const trialSub = document.querySelector('.section-sub');
-            if (trialSub && document.querySelector('#trial')) trialSub.textContent = t.trialSub;
-            document.querySelector('.trial-info h3').innerHTML = '<i class="fas fa-headset"></i> ' + t.contactTitle;
-            document.querySelector('.trial-info p').textContent = t.contactText;
-            const legacyTitle = document.querySelector('.legacy-grid + .section-title');
-            const legacySub = document.querySelector('.legacy-grid + .section-title + .section-sub');
-            if (legacyTitle) legacyTitle.innerHTML = t.legacyTitle;
-            if (legacySub) legacySub.textContent = t.legacySub;
-        });
-
-        // ===== SHOW/HIDE MAC =====
+        // ===== TOGGLE MAC FIELD =====
         document.getElementById('connectionType').addEventListener('change', function() {
             const macField = document.getElementById('macField');
             const macInput = document.getElementById('macAddress');
@@ -1110,6 +2134,82 @@
                 setTimeout(() => { btn.innerHTML = originalText; }, 2000);
             }).catch(() => { alert('Code: ' + code); });
         }
+
+        // ===== OPEN WHATSAPP =====
+        function openWhatsApp(message) {
+            const phone = '212663087765';
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+            return false;
+        }
+
+        // ===== OPEN TELEGRAM =====
+        function openTelegram(message) {
+            const username = 'reselleriptvcom';
+            window.open(`https://t.me/${username}?text=${encodeURIComponent(message)}`, '_blank');
+            return false;
+        }
+
+        // ===== CANVAS PARTICLES =====
+        (function initCanvas() {
+            const canvas = document.getElementById('heroCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let w, h;
+
+            function resize() {
+                const rect = canvas.parentElement.getBoundingClientRect();
+                w = rect.width;
+                h = rect.height;
+                canvas.width = w;
+                canvas.height = h;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            const particles = [];
+            const count = Math.min(80, Math.floor(w * h / 15000));
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    r: Math.random() * 2 + 0.5,
+                    dx: (Math.random() - 0.5) * 0.5,
+                    dy: (Math.random() - 0.5) * 0.5,
+                    c: `hsla(${40 + Math.random() * 20}, 80%, 70%, ${0.2 + Math.random() * 0.3})`
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, w, h);
+                particles.forEach(p => {
+                    p.x += p.dx;
+                    p.y += p.dy;
+                    if (p.x < 0 || p.x > w) p.dx *= -1;
+                    if (p.y < 0 || p.y > h) p.dy *= -1;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = p.c;
+                    ctx.fill();
+                });
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(247,201,72,${0.06 * (1 - dist / 120)})`;
+                            ctx.lineWidth = 0.4;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
 
         document.getElementById('m3uInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') convertM3U();
