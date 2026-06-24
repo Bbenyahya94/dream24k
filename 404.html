@@ -1,40 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Dream 24K IPTV | Page Not Found</title>
+    <meta name="description" content="Dream 24K IPTV - Page not found. Return to our premium IPTV subscription and reseller panel." />
+    <link rel="stylesheet" href="style.css" />
     <style>
         .error-page {
             text-align: center;
             padding: 100px 20px;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         .error-page h1 {
-            font-size: 100px;
-            color: #0088cc;
+            font-size: 120px;
+            color: #ffd700;
+            font-weight: 900;
+            text-shadow: 0 0 60px rgba(255, 215, 0, 0.2);
+            margin: 0;
         }
         .error-page h2 {
-            font-size: 32px;
-            margin: 20px 0;
+            font-size: 36px;
+            color: #fff;
+            margin: 10px 0;
         }
         .error-page p {
             color: #888;
             font-size: 18px;
+            max-width: 500px;
+            margin: 10px auto;
         }
-        .error-page a {
+        .error-page .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .error-page .keywords span {
+            background: rgba(255, 215, 0, 0.05);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #666;
+            border: 1px solid rgba(255, 215, 0, 0.05);
+        }
+        .error-page .btn-home {
             display: inline-block;
             margin-top: 30px;
-            padding: 15px 40px;
-            background: #0088cc;
-            color: white;
+            padding: 16px 50px;
+            background: linear-gradient(135deg, #ffd700, #f0a500);
+            color: #0a0a0a;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background 0.3s;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s;
         }
-        .error-page a:hover {
-            background: #006699;
+        .error-page .btn-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+        }
+        .error-page .contact-links {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .error-page .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #fff;
+            transition: all 0.3s;
+        }
+        .error-page .contact-links a:hover {
+            transform: translateY(-2px);
+        }
+        .error-page .contact-links .wa {
+            background: #25D366;
+        }
+        .error-page .contact-links .tg {
+            background: #0088cc;
+        }
+        @media (max-width: 768px) {
+            .error-page h1 { font-size: 80px; }
+            .error-page h2 { font-size: 24px; }
         }
     </style>
 </head>
@@ -42,8 +102,21 @@
     <div class="error-page">
         <h1>404</h1>
         <h2>Page Not Found</h2>
-        <p>Oops! The page you're looking for doesn't exist.</p>
-        <a href="/">Go Home</a>
+        <p>Oops! The Dream 24K IPTV page you're looking for doesn't exist.</p>
+        <div class="keywords">
+            <span>Dream 24K IPTV</span>
+            <span>Dream24K IPTV</span>
+            <span>Dream 24K IPTV Subscription</span>
+            <span>Dream 24K IPTV Reseller</span>
+            <span>IPTV</span>
+            <span>4K IPTV</span>
+        </div>
+        <a href="/" class="btn-home"><i class="fas fa-home"></i> Go Home</a>
+        <div class="contact-links">
+            <a href="#" class="wa" onclick="openWhatsApp('I need help finding a page on Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#" class="tg" onclick="openTelegram('I need help finding a page on Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a>
+        </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
