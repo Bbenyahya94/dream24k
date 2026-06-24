@@ -96,14 +96,26 @@ body {
     color: #f7c948;
 }
 
-.header-right {
+/* ----- NAV MENU (like TREXIPTV) ----- */
+.nav-menu {
     display: flex;
     align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    gap: 28px;
 }
 
-/* ----- LANGUAGE SELECTOR ----- */
+.nav-link {
+    color: #b0c8ea;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s;
+    letter-spacing: 0.3px;
+}
+
+.nav-link:hover {
+    color: #f7c948;
+}
+
 .language-selector {
     position: relative;
     display: inline-block;
@@ -111,16 +123,14 @@ body {
 
 .language-selector select {
     appearance: none;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 215, 0, 0.06);
+    background: transparent;
+    border: none;
     color: #b0c8ea;
-    padding: 8px 36px 8px 14px;
-    border-radius: 60px;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
     outline: none;
-    font-weight: 500;
-    min-width: 120px;
+    padding-right: 20px;
 }
 
 .language-selector select option {
@@ -133,12 +143,19 @@ body {
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     position: absolute;
-    right: 12px;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     color: #f7c948;
     pointer-events: none;
-    font-size: 12px;
+    font-size: 10px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 /* ----- BUTTONS ----- */
@@ -204,60 +221,6 @@ body {
 .btn-trial-telegram:hover {
     transform: scale(1.04);
     box-shadow: 0 6px 24px rgba(0, 136, 204, 0.3);
-}
-
-/* ----- PAGE NAVIGATION ----- */
-.page-nav {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin: 16px 0 8px;
-    padding: 4px;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 60px;
-    border: 1px solid rgba(255, 255, 255, 0.02);
-    justify-content: center;
-}
-
-.page-nav .nav-btn {
-    background: transparent;
-    border: none;
-    padding: 8px 22px;
-    border-radius: 60px;
-    font-weight: 600;
-    font-size: 13px;
-    color: #6a8aaa;
-    cursor: pointer;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.page-nav .nav-btn:hover {
-    color: #b0c8ea;
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.page-nav .nav-btn.active {
-    color: #0a0e1a;
-    background: linear-gradient(145deg, #f7c948, #d4a020);
-    box-shadow: 0 4px 16px rgba(212, 160, 32, 0.2);
-}
-
-/* ----- PAGES ----- */
-.page-content {
-    display: none;
-    animation: fadePage 0.4s ease;
-}
-
-.page-content.active {
-    display: block;
-}
-
-@keyframes fadePage {
-    0% { opacity: 0; transform: translateY(8px); }
-    100% { opacity: 1; transform: translateY(0); }
 }
 
 /* ----- HERO SECTION ----- */
@@ -1421,6 +1384,8 @@ body {
     .features-grid { grid-template-columns: 1fr 1fr; }
     .faq-grid { grid-template-columns: 1fr; }
     .app-grid { grid-template-columns: 1fr; }
+    .nav-menu { gap: 16px; }
+    .nav-link { font-size: 13px; }
 }
 
 @media (max-width: 768px) {
@@ -1428,6 +1393,10 @@ body {
     .packages-grid { grid-template-columns: 1fr 1fr; }
     .legacy-grid { grid-template-columns: repeat(2, 1fr); }
     .features-grid { grid-template-columns: 1fr; }
+    .header { flex-wrap: wrap; }
+    .nav-menu { order: 3; width: 100%; justify-content: center; flex-wrap: wrap; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(255,215,0,0.05); }
+    .header-right { order: 2; }
+    .logo-block { order: 1; }
     .trial-buttons .btn-trial-whatsapp span,
     .trial-buttons .btn-trial-telegram span { display: none; }
     .logo-text .brand { font-size: 22px; }
@@ -1452,7 +1421,7 @@ body {
     .trial-buttons .btn-trial-telegram { padding: 8px 12px; font-size: 12px; }
     .header { gap: 10px; }
     .header-right { gap: 8px; }
-    .language-selector select { min-width: 90px; padding: 6px 28px 6px 10px; font-size: 11px; }
+    .language-selector select { min-width: 50px; font-size: 12px; padding-right: 16px; }
     .btn-gold { padding: 8px 16px; font-size: 12px; }
     .features-section { padding: 16px; }
     .features-grid { grid-template-columns: 1fr; }
@@ -1461,4 +1430,6 @@ body {
     .trial-section .trial-form select,
     .trial-section .trial-form input { min-width: unset; }
     .app-item .app-actions .code-display { font-size: 10px; }
+    .nav-menu { gap: 10px; }
+    .nav-link { font-size: 12px; }
 }
