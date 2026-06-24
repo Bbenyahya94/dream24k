@@ -1,7 +1,5 @@
-# robots.txt for Dream24K IPTV
 User-agent: *
 Allow: /
 Disallow: /admin/
-Disallow: /panel/
-Disallow: /api/
+Disallow: /private/
 Sitemap: https://d24kiptv.com/sitemap.xml
