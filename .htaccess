@@ -1,0 +1,130 @@
+# ============================================================
+# DREAM 24K IPTV - .htaccess
+# Version: 1.0
+# Description: Apache configuration for SEO, security, and 404
+# ============================================================
+
+# ============================================================
+# CUSTOM 404 ERROR PAGE
+# ============================================================
+# Redirect all 404 errors to the custom 404 page
+ErrorDocument 404 /404.html
+
+# Also handle 403, 500 errors gracefully
+ErrorDocument 403 /404.html
+ErrorDocument 500 /404.html
+
+# ============================================================
+# FORCE HTTPS (SSL)
+# ============================================================
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# ============================================================
+# REDIRECT NON-WWW TO WWW (or vice versa)
+# ============================================================
+# Choose ONE of the following:
+
+# Option A: Redirect non-www to www (recommended)
+RewriteCond %{HTTP_HOST} ^d24kiptv\.com [NC]
+RewriteRule ^(.*)$ https://www.d24kiptv.com/$1 [R=301,L]
+
+# Option B: Redirect www to non-www (uncomment to use)
+# RewriteCond %{HTTP_HOST} ^www\.d24kiptv\.com [NC]
+# RewriteRule ^(.*)$ https://d24kiptv.com/$1 [R=301,L]
+
+# ============================================================
+# REMOVE TRAILING SLASH
+# ============================================================
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [R=301,L]
+
+# ============================================================
+# CACHE CONTROL FOR STATIC FILES
+# ============================================================
+<FilesMatch "\.(css|js|jpg|jpeg|png|gif|ico|svg|webp|woff|woff2|ttf|eot)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
+</FilesMatch>
+
+<FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "max-age=3600, public"
+</FilesMatch>
+
+# ============================================================
+# GZIP COMPRESSION
+# ============================================================
+<IfModule mod_deflate.c>
+    # Compress HTML, CSS, JavaScript, Text, XML, JSON
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml text/javascript application/javascript application/json application/xml application/rss+xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+    
+    # Remove browser bugs (only needed for really old browsers)
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+    Header append Vary User-Agent
+</IfModule>
+
+# ============================================================
+# BROWSER SECURITY HEADERS
+# ============================================================
+<IfModule mod_headers.c>
+    # Prevent MIME type sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Enable XSS protection
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Prevent clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Referrer policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Permissions policy (features)
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ============================================================
+# PREVENT DIRECT ACCESS TO SENSITIVE FILES
+# ============================================================
+<FilesMatch "^(\.htaccess|\.htpasswd|\.env|\.git|composer\.json|package\.json|config\.php)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# ============================================================
+# PREVENT DIRECTORY BROWSING
+# ============================================================
+Options -Indexes
+
+# ============================================================
+# CUSTOM 404 PAGE DIRECT ACCESS
+# ============================================================
+# Allow direct access to 404.html (for testing)
+<Files "404.html">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# ============================================================
+# REDIRECT OLD URLS (if you have any)
+# ============================================================
+# Example: Redirect old page to new page
+# Redirect 301 /old-page.html https://www.d24kiptv.com/new-page
+
+# ============================================================
+# BLOCK BAD BOTS / SCRAPERS
+# ============================================================
+# Uncomment to block known bad bots
+# SetEnvIfNoCase User-Agent ".*(Ahrefs|Semrush|MJM|MJ12).*" bad_bot
+# Order Allow,Deny
+# Allow from all
+# Deny from env=bad_bot
+
+# ============================================================
+# CUSTOM ERROR LOG (optional)
+# ============================================================
+# ErrorLog /var/log/apache2/d24kiptv-error.log
+# CustomLog /var/log/apache2/d24kiptv-access.log combined
