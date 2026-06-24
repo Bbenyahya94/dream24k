@@ -28,67 +28,89 @@
 
     <div class="site-wrapper">
 
-        <!-- ===== HEADER ===== -->
+        <!-- ===== HEADER WITH MOBILE MENU ===== -->
         <header class="header">
             <div class="logo-block">
                 <div class="logo-icon"><i class="fas fa-play"></i></div>
                 <div class="logo-text">
                     <div class="brand">DREAM <span>24K</span></div>
-                    <div class="sub"><i class="fas fa-crown"></i> Premium IPTV Panel</div>
+                    <div class="sub"><i class="fas fa-crown"></i> Premium IPTV</div>
                 </div>
             </div>
-            <nav class="nav-menu">
-                <a href="#why" class="nav-link">Why</a>
-                <a href="#packages" class="nav-link">Plans</a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="nav-menu" id="navMenu">
+                <a href="#why" class="nav-link active">Why</a>
+                <a href="#plans" class="nav-link">Plans</a>
                 <a href="#reseller" class="nav-link">Reseller</a>
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#support" class="nav-link">Support</a>
                 <div class="language-selector">
                     <select id="languageSelect">
-                        <option value="en">🇬🇧 EN</option>
-                        <option value="fr">🇫🇷 FR</option>
-                        <option value="es">🇪🇸 ES</option>
-                        <option value="de">🇩🇪 DE</option>
-                        <option value="it">🇮🇹 IT</option>
-                        <option value="pt">🇵🇹 PT</option>
-                        <option value="ar">🇸🇦 AR</option>
-                        <option value="ru">🇷🇺 RU</option>
-                        <option value="zh">🇨🇳 ZH</option>
-                        <option value="ja">🇯🇵 JA</option>
+                        <option value="en">EN</option>
+                        <option value="fr">FR</option>
+                        <option value="es">ES</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                        <option value="pt">PT</option>
+                        <option value="ar">AR</option>
+                        <option value="ru">RU</option>
+                        <option value="zh">ZH</option>
+                        <option value="ja">JA</option>
                     </select>
                 </div>
-            </nav>
-            <div class="header-right">
-                <div class="trial-buttons">
-                    <a href="#" class="btn-trial-whatsapp" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> <span>Trial</span></a>
-                    <a href="#" class="btn-trial-telegram" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> <span>Trial</span></a>
+                <!-- Mobile Social Buttons (hidden on desktop) -->
+                <div class="mobile-social">
+                    <a href="#" class="btn-mobile-whatsapp" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="#" class="btn-mobile-telegram" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')">
+                        <i class="fab fa-telegram-plane"></i> Telegram
+                    </a>
                 </div>
-                <a href="#packages" class="btn-gold"><i class="fas fa-rocket"></i> Subscribe</a>
+            </nav>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            
+            <!-- Desktop Right Buttons -->
+            <div class="header-right">
+                <a href="#" class="btn-trial" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')">
+                    <i class="fab fa-whatsapp"></i> Trial
+                </a>
+                <a href="#" class="btn-trial-telegram-header" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')">
+                    <i class="fab fa-telegram-plane"></i> Trial
+                </a>
+                <a href="#plans" class="btn-subscribe">
+                    <i class="fas fa-rocket"></i> Subscribe
+                </a>
             </div>
         </header>
 
         <!-- ===== WHY SECTION ===== -->
-        <section id="why" class="why-section">
-            <div class="hero-wrapper">
-                <canvas id="heroCanvas"></canvas>
-                <div class="hero-content-overlay">
-                    <div class="hero-card">
-                        <div class="hero-tagline">DREAM <span>24K</span> · DREAM <span>4K</span></div>
-                        <div class="hero-sub">Premium IPTV · 40,000+ Channels · 100,000+ VOD</div>
-                        <div class="hero-keywords">
-                            <span>#Dream24K</span> <span>#Dream4K</span> <span>#IPTV</span> <span>#4KUHD</span> <span>#ResellerPanel</span>
-                        </div>
-                        <div class="hero-desc">
-                            Experience the future of television with Dream24K IPTV — the evolution of Dream4K. Ultra-fast servers,
-                            zero buffering, 4K UHD quality, and a global network trusted by resellers and end-users in 120+ countries.
-                            Whether you're a viewer or a reseller, Dream24K delivers the ultimate IPTV experience.
-                        </div>
-                        <div class="hero-badges">
-                            <span><i class="fas fa-bolt"></i> 99.9% Uptime</span>
-                            <span><i class="fas fa-shield-alt"></i> Secure SSL</span>
-                            <span><i class="fas fa-headset"></i> 24/7 Support</span>
-                            <span><i class="fas fa-globe"></i> 120+ Countries</span>
-                        </div>
+        <section id="why" class="hero-wrapper">
+            <canvas id="heroCanvas"></canvas>
+            <div class="hero-content-overlay">
+                <div class="hero-card">
+                    <div class="hero-tagline">DREAM <span>24K</span> · DREAM <span>4K</span></div>
+                    <div class="hero-sub">Premium IPTV · 40,000+ Channels · 100,000+ VOD</div>
+                    <div class="hero-keywords">
+                        <span>#Dream24K</span> <span>#Dream4K</span> <span>#IPTV</span> <span>#4KUHD</span> <span>#ResellerPanel</span>
+                    </div>
+                    <div class="hero-desc">
+                        Experience the future of television with Dream24K IPTV — the evolution of Dream4K. Ultra-fast servers,
+                        zero buffering, 4K UHD quality, and a global network trusted by resellers and end-users in 120+ countries.
+                        Whether you're a viewer or a reseller, Dream24K delivers the ultimate IPTV experience.
+                    </div>
+                    <div class="hero-badges">
+                        <span><i class="fas fa-bolt"></i> 99.9% Uptime</span>
+                        <span><i class="fas fa-shield-alt"></i> Secure SSL</span>
+                        <span><i class="fas fa-headset"></i> 24/7 Support</span>
+                        <span><i class="fas fa-globe"></i> 120+ Countries</span>
                     </div>
                 </div>
             </div>
@@ -467,7 +489,7 @@
                     Dream 24K IPTV offers stable worldwide servers, instant activation, premium live TV, sports, movies, and series. Includes reseller options and a 24-hour free trial.
                 </div>
                 <div class="map-buttons">
-                    <a href="#packages" class="btn-primary"><i class="fas fa-rocket"></i> Get Started</a>
+                    <a href="#plans" class="btn-primary"><i class="fas fa-rocket"></i> Get Started</a>
                     <a href="#" class="btn-secondary" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fas fa-gift"></i> Free Trial</a>
                 </div>
             </div>
@@ -580,7 +602,7 @@
         </div>
 
         <!-- SUBSCRIPTION PLANS -->
-        <div class="section-title" id="packages">IPTV <span>Subscription</span> Plans</div>
+        <div class="section-title" id="plans">IPTV <span>Subscription</span> Plans</div>
         <div class="section-sub">Choose the perfect subscription plan for your entertainment needs. All plans include full access to our premium channel library and VOD content.</div>
         <div class="price-notice"><i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.</div>
         <div class="packages-grid">
@@ -590,7 +612,7 @@
             <div class="package-card"><div class="plan-name">12 Months</div><div class="plan-price">40€</div><div class="plan-period">€3.33 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> Stable & Fast Servers</li><li><i class="fas fa-check"></i> Sports, Movies & Series</li><li><i class="fas fa-check"></i> Easy Setup & Instant Activation</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to subscribe to the 12 Months plan - 40€ with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to subscribe to the 12 Months plan - 40€ with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
         </div>
 
-        <!-- RESELLER PACKAGES -->
+        <!-- RESELLER PLANS -->
         <div class="section-title" id="reseller">IPTV <span>Reseller</span> Plans</div>
         <div class="section-sub">Start your own IPTV business with our white-label reseller plans. Bulk credits at wholesale prices with private API host and full panel access.</div>
         <div class="price-notice"><i class="fas fa-info-circle"></i> Prices vary from time to time. <a href="#trial">Contact sales</a> to get the best prices.</div>
@@ -721,7 +743,7 @@
             <div class="cta-title">TAKE YOUR IPTV BUSINESS TO <span>THE NEXT LEVEL</span></div>
             <div class="cta-desc">DREAM24K · 24K PREMIUM QUALITY — STABLE · SECURE · POWERFUL</div>
             <div class="cta-buttons">
-                <a href="#packages" class="btn-gold"><i class="fas fa-rocket"></i> Get Started</a>
+                <a href="#plans" class="btn-gold"><i class="fas fa-rocket"></i> Get Started</a>
                 <a href="#" class="btn-trial-whatsapp" style="padding:14px 36px; font-size:16px;" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> Free Trial</a>
                 <a href="#" class="btn-trial-telegram" style="padding:14px 36px; font-size:16px;" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> Free Trial</a>
             </div>
@@ -752,6 +774,23 @@
     </div>
 
     <script>
+        // ===== MOBILE MENU TOGGLE =====
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
         // ===== SECURITY =====
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
         document.addEventListener('keydown', function(e) {
@@ -936,12 +975,12 @@
             document.querySelector('.hero-sub').textContent = t.heroSub;
             document.querySelector('.hero-desc').textContent = t.heroDesc;
             document.querySelector('#trial').innerHTML = t.trialTitle;
-            document.querySelector('.btn-gold').innerHTML = `<i class="fas fa-rocket"></i> ${t.subscribe}`;
+            document.querySelector('.btn-subscribe').innerHTML = `<i class="fas fa-rocket"></i> ${t.subscribe}`;
             document.querySelector('.map-overlay-content .btn-primary').innerHTML = `<i class="fas fa-rocket"></i> ${t.getStarted}`;
             document.querySelector('.map-overlay-content .btn-secondary').innerHTML = `<i class="fas fa-gift"></i> ${t.freeTrial}`;
             document.querySelector('.map-overlay-content .map-title').innerHTML = t.mapTitle;
             document.querySelector('.map-overlay-content .map-desc').textContent = t.mapDesc;
-            document.querySelector('#packages').innerHTML = t.packages;
+            document.querySelector('#plans').innerHTML = t.packages;
             document.querySelector('#reseller').innerHTML = t.reseller;
             document.querySelector('#features .features-title').innerHTML = t.features;
             document.querySelector('.section-title:nth-of-type(5)').innerHTML = t.advantages;
