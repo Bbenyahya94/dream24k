@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>404 - Signal Lost | DREAM 24K IPTV</title>
     <meta name="description" content="Page not found. Return to DREAM 24K IPTV - Premium 4K & 8K Streaming Service." />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://d24kiptv.com/" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
         * {
@@ -24,7 +26,6 @@
             overflow: hidden;
         }
 
-        /* Animated background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -79,7 +80,6 @@
             75% { transform: translate(30px, -20px) scale(1.05); }
         }
 
-        /* Stars */
         .stars {
             position: fixed;
             top: 0;
@@ -104,7 +104,6 @@
             50% { opacity: 0.8; }
         }
 
-        /* 404 Content */
         .error-container {
             position: relative;
             z-index: 10;
@@ -115,14 +114,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .error-icon {
@@ -221,7 +214,6 @@
             color: #f7b731;
         }
 
-        /* Glitch effect on 404 */
         .glitch {
             position: relative;
             display: inline-block;
@@ -260,49 +252,28 @@
             80% { transform: translate(-2px, 4px); }
         }
 
-        /* Responsive */
         @media (max-width: 600px) {
-            .error-code {
-                font-size: 5rem;
-            }
-            .error-title {
-                font-size: 1.8rem;
-            }
-            .error-icon {
-                font-size: 3.5rem;
-            }
-            .error-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            .btn-home,
-            .btn-support {
-                width: 100%;
-                justify-content: center;
-            }
+            .error-code { font-size: 5rem; }
+            .error-title { font-size: 1.8rem; }
+            .error-icon { font-size: 3.5rem; }
+            .error-actions { flex-direction: column; align-items: center; }
+            .btn-home, .btn-support { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Animation -->
     <div class="bg-animation">
         <div class="orb"></div>
         <div class="orb"></div>
         <div class="orb"></div>
     </div>
 
-    <!-- Stars -->
     <div class="stars" id="stars"></div>
 
-    <!-- 404 Content -->
     <div class="error-container">
-        <div class="error-icon">
-            <i class="fas fa-satellite-dish"></i>
-        </div>
-
+        <div class="error-icon"><i class="fas fa-satellite-dish"></i></div>
         <div class="error-code glitch">404</div>
-
         <h1 class="error-title">Signal Lost</h1>
         <p class="error-subtitle">The page you're looking for has drifted away</p>
         <p class="error-desc">
@@ -311,12 +282,8 @@
         </p>
 
         <div class="error-actions">
-            <a href="/" class="btn-home">
-                <i class="fas fa-home"></i> Back to DREAM 24K
-            </a>
-            <a href="#" class="btn-support" id="supportBtn">
-                <i class="fas fa-headset"></i> Contact Support
-            </a>
+            <a href="/" class="btn-home"><i class="fas fa-home"></i> Back to DREAM 24K</a>
+            <a href="#" class="btn-support" id="supportBtn"><i class="fas fa-headset"></i> Contact Support</a>
         </div>
 
         <div style="margin-top: 2rem; font-size: 0.8rem; color: #2d3348;">
@@ -325,15 +292,10 @@
     </div>
 
     <script>
-        // ============================================================
-        // 404.html - Full interactive 404 page
-        // ============================================================
-
-        // --- Generate stars ---
-        (function createStars() {
+        (function() {
+            // Stars
             const container = document.getElementById('stars');
-            const count = 150;
-            for (let i = 0; i < count; i++) {
+            for (let i = 0; i < 150; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.left = Math.random() * 100 + '%';
@@ -344,43 +306,38 @@
                 star.style.animationDelay = (Math.random() * 5) + 's';
                 container.appendChild(star);
             }
-        })();
 
-        // --- Countdown redirect ---
-        let seconds = 10;
-        const countdownEl = document.getElementById('countdown');
+            // Countdown redirect
+            let seconds = 10;
+            const countdownEl = document.getElementById('countdown');
+            const redirectTimer = setInterval(() => {
+                seconds--;
+                if (countdownEl) countdownEl.textContent = seconds;
+                if (seconds <= 0) {
+                    clearInterval(redirectTimer);
+                    window.location.href = '/';
+                }
+            }, 1000);
 
-        const redirectTimer = setInterval(() => {
-            seconds--;
-            if (countdownEl) {
-                countdownEl.textContent = seconds;
-            }
-            if (seconds <= 0) {
-                clearInterval(redirectTimer);
+            // Support button
+            document.getElementById('supportBtn').addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('📱 DREAM 24K IPTV Support\n\n' +
+                    'Phone: +212 663-087765\n' +
+                    'Telegram: @reselleriptvcom\n' +
+                    'Email: support@reselleriptv.com\n\n' +
+                    'We\'re available 24/7 to help you!');
+            });
+
+            // Home button
+            document.querySelector('.btn-home').addEventListener('click', (e) => {
+                e.preventDefault();
                 window.location.href = '/';
-            }
-        }, 1000);
+            });
 
-        // --- Support button ---
-        document.getElementById('supportBtn').addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('📱 DREAM 24K IPTV Support\n\n' +
-                'Phone: +212 663-087765\n' +
-                'Telegram: @reselleriptvcom\n' +
-                'Email: support@reselleriptv.com\n\n' +
-                'We\'re available 24/7 to help you!');
-        });
-
-        // --- Home button - prevent default and redirect ---
-        document.querySelector('.btn-home').addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = '/';
-        });
-
-        // --- Console info ---
-        console.log('📡 404 - Signal Lost');
-        console.log('🔄 Redirecting to homepage in 10 seconds...');
-        console.log('💡 DREAM 24K IPTV - Premium 4K & 8K Streaming');
+            console.log('📡 404 - Signal Lost');
+            console.log('🔄 Redirecting to homepage in 10 seconds...');
+        })();
     </script>
 
 </body>
