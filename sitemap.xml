@@ -1,45 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    
     <url>
         <loc>https://d24kiptv.com/</loc>
-        <lastmod>2026-06-23</lastmod>
+        <lastmod>2026-06-24</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://d24kiptv.com/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://d24kiptv.com/fr/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://d24kiptv.com/es/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://d24kiptv.com/de/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://d24kiptv.com/it/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://d24kiptv.com/pt/"/>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://d24kiptv.com/ar/"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://d24kiptv.com/ru/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://d24kiptv.com/zh/"/>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://d24kiptv.com/ja/"/>
     </url>
+    
     <url>
-        <loc>https://d24kiptv.com/subscriptions</loc>
-        <lastmod>2026-06-23</lastmod>
+        <loc>https://d24kiptv.com/#packages</loc>
+        <lastmod>2026-06-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
+    
     <url>
-        <loc>https://d24kiptv.com/reseller</loc>
-        <lastmod>2026-06-23</lastmod>
+        <loc>https://d24kiptv.com/#reseller</loc>
+        <lastmod>2026-06-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    
     <url>
-        <loc>https://d24kiptv.com/features</loc>
-        <lastmod>2026-06-23</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://d24kiptv.com/faq</loc>
-        <lastmod>2026-06-23</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://d24kiptv.com/support</loc>
-        <lastmod>2026-06-23</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://d24kiptv.com/trial</loc>
-        <lastmod>2026-06-23</lastmod>
+        <loc>https://d24kiptv.com/#trial</loc>
+        <lastmod>2026-06-24</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
+    
+    <url>
+        <loc>https://d24kiptv.com/#faq</loc>
+        <lastmod>2026-06-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://d24kiptv.com/#support</loc>
+        <lastmod>2026-06-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
 </urlset>
