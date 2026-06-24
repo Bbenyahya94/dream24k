@@ -28,7 +28,7 @@
 
     <div class="site-wrapper">
 
-        <!-- ===== HEADER WITH MOBILE MENU ===== -->
+        <!-- ===== NEW CLEAN HEADER ===== -->
         <header class="header">
             <div class="logo-block">
                 <div class="logo-icon"><i class="fas fa-play"></i></div>
@@ -38,56 +38,59 @@
                 </div>
             </div>
             
-            <!-- Desktop Navigation -->
             <nav class="nav-menu" id="navMenu">
                 <a href="#why" class="nav-link active">Why</a>
-                <a href="#plans" class="nav-link">Plans</a>
+                <a href="#plans" class="nav-link">Subscriptions</a>
                 <a href="#reseller" class="nav-link">Reseller</a>
                 <a href="#features" class="nav-link">Features</a>
-                <a href="#support" class="nav-link">Support</a>
+                <a href="#support" class="nav-link">Contact</a>
                 <div class="language-selector">
                     <select id="languageSelect">
-                        <option value="en">EN</option>
-                        <option value="fr">FR</option>
-                        <option value="es">ES</option>
-                        <option value="de">DE</option>
-                        <option value="it">IT</option>
-                        <option value="pt">PT</option>
-                        <option value="ar">AR</option>
-                        <option value="ru">RU</option>
-                        <option value="zh">ZH</option>
-                        <option value="ja">JA</option>
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="es">🇪🇸 ES</option>
+                        <option value="de">🇩🇪 DE</option>
+                        <option value="it">🇮🇹 IT</option>
+                        <option value="pt">🇵🇹 PT</option>
+                        <option value="ar">🇸🇦 AR</option>
+                        <option value="ru">🇷🇺 RU</option>
+                        <option value="zh">🇨🇳 ZH</option>
+                        <option value="ja">🇯🇵 JA</option>
                     </select>
                 </div>
-                <!-- Mobile Social Buttons (hidden on desktop) -->
                 <div class="mobile-social">
-                    <a href="#" class="btn-mobile-whatsapp" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')">
+                    <a href="#" class="btn-mobile-whatsapp" onclick="openWhatsApp('I want to start with Dream24K IPTV')">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
-                    <a href="#" class="btn-mobile-telegram" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')">
+                    <a href="#" class="btn-mobile-telegram" onclick="openTelegram('I want to start with Dream24K IPTV')">
                         <i class="fab fa-telegram-plane"></i> Telegram
                     </a>
                 </div>
             </nav>
             
-            <!-- Mobile Menu Toggle -->
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
             
-            <!-- Desktop Right Buttons -->
             <div class="header-right">
-                <a href="#" class="btn-trial" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')">
-                    <i class="fab fa-whatsapp"></i> Trial
-                </a>
-                <a href="#" class="btn-trial-telegram-header" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')">
-                    <i class="fab fa-telegram-plane"></i> Trial
-                </a>
-                <a href="#plans" class="btn-subscribe">
-                    <i class="fas fa-rocket"></i> Subscribe
-                </a>
+                <div class="get-started-dropdown">
+                    <button class="btn-get-started">
+                        <i class="fas fa-rocket"></i> Get Started <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="openWhatsApp('I want to start with Dream24K IPTV via WhatsApp')">
+                            <i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp
+                        </a>
+                        <a href="#" onclick="openTelegram('I want to start with Dream24K IPTV via Telegram')">
+                            <i class="fab fa-telegram-plane" style="color:#0088cc;"></i> Telegram
+                        </a>
+                        <a href="#plans">
+                            <i class="fas fa-tv" style="color:#f7c948;"></i> Subscribe Now
+                        </a>
+                    </div>
+                </div>
             </div>
         </header>
 
@@ -710,7 +713,7 @@
             <div class="faq-item"><div class="question"><i class="fas fa-clock"></i> How long does activation take?</div><div class="answer">Activation is instant. You'll receive your credentials via email within 60 seconds of completing your purchase.</div></div>
         </div>
 
-        <!-- SUPPORT -->
+        <!-- SUPPORT / CONTACT -->
         <div class="section-title" id="support">24/7 <span>Support</span></div>
         <div class="section-sub">Our dedicated support team is available around the clock to help you with any questions or issues.</div>
         <div class="trial-section" style="grid-template-columns:1fr;">
@@ -774,6 +777,17 @@
     </div>
 
     <script>
+        // ===== DROPDOWN MENU =====
+        document.querySelector('.btn-get-started').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const dropdown = this.parentElement;
+            dropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.get-started-dropdown').forEach(d => d.classList.remove('active'));
+        });
+
         // ===== MOBILE MENU TOGGLE =====
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
@@ -783,7 +797,6 @@
             navMenu.classList.toggle('active');
         });
 
-        // Close menu when clicking a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
@@ -975,7 +988,7 @@
             document.querySelector('.hero-sub').textContent = t.heroSub;
             document.querySelector('.hero-desc').textContent = t.heroDesc;
             document.querySelector('#trial').innerHTML = t.trialTitle;
-            document.querySelector('.btn-subscribe').innerHTML = `<i class="fas fa-rocket"></i> ${t.subscribe}`;
+            document.querySelector('.btn-get-started').innerHTML = `<i class="fas fa-rocket"></i> ${t.getStarted} <i class="fas fa-chevron-down"></i>`;
             document.querySelector('.map-overlay-content .btn-primary').innerHTML = `<i class="fas fa-rocket"></i> ${t.getStarted}`;
             document.querySelector('.map-overlay-content .btn-secondary').innerHTML = `<i class="fas fa-gift"></i> ${t.freeTrial}`;
             document.querySelector('.map-overlay-content .map-title').innerHTML = t.mapTitle;
