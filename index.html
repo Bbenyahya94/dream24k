@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DREAM 24K IPTV · Premium 4K & 8K Streaming</title>
     <meta name="description" content="DREAM 24K IPTV offers premium 4K & 8K streaming with 40,000+ channels, VOD, and reseller plans. Subscribe now for the ultimate IPTV experience." />
+    <meta name="keywords" content="DREAM 24K IPTV, DREAM 24K IPTV subscription, DREAM 24K IPTV reseller, 8K stream, 4K streaming, IPTV, premium IPTV" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://d24kiptv.com/" />
+    <meta property="og:title" content="DREAM 24K IPTV · Premium 4K & 8K Streaming" />
+    <meta property="og:description" content="DREAM 24K IPTV offers premium 4K & 8K streaming with 40,000+ channels, VOD, and reseller plans." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://d24kiptv.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DREAM 24K IPTV · Premium 4K & 8K Streaming" />
+    <meta name="twitter:description" content="DREAM 24K IPTV offers premium 4K & 8K streaming with 40,000+ channels, VOD, and reseller plans." />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
         /* ===== RESET & BASE ===== */
@@ -12,6 +22,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -22,6 +36,223 @@
             overflow-x: hidden;
         }
 
+        /* ===== HEADER / NAVBAR ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 13, 21, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.08);
+            padding: 0 2rem;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(11, 13, 21, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .header .logo-icon {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header .logo-icon .ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top-color: #ffd700;
+            border-right-color: #ffaa00;
+            animation: spinRing 3s linear infinite;
+        }
+
+        .header .logo-icon .ring::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            border: 1.5px solid transparent;
+            border-bottom-color: rgba(255, 215, 0, 0.3);
+            border-left-color: rgba(255, 215, 0, 0.3);
+            animation: spinRing 4s linear infinite reverse;
+        }
+
+        .header .logo-icon i {
+            position: relative;
+            z-index: 2;
+            font-size: 16px;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            margin-left: 2px;
+        }
+
+        .header .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .header .logo-text .brand {
+            font-size: 18px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .header .logo-text .brand span {
+            color: #ffd700;
+        }
+
+        .header .logo-text .sub {
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        .header .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+        }
+
+        .header .nav-links a {
+            color: #cbd5e0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .header .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #f7b731;
+            transition: width 0.3s ease;
+        }
+
+        .header .nav-links a:hover {
+            color: #f7b731;
+        }
+
+        .header .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .header .nav-links .btn-nav {
+            background: #f7b731;
+            color: #0b0d15;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .header .nav-links .btn-nav:hover {
+            background: #e8a820;
+            transform: scale(1.03);
+        }
+
+        .header .nav-links .btn-nav::after {
+            display: none;
+        }
+
+        /* Language selector */
+        .header .lang-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .header .lang-selector select {
+            background: transparent;
+            color: #cbd5e0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .header .lang-selector select:hover {
+            border-color: #f7b731;
+            color: #f7b731;
+        }
+
+        .header .lang-selector select option {
+            background: #141824;
+            color: #eef2f6;
+        }
+
+        /* Mobile menu toggle */
+        .header .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .header .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2.5px;
+            background: #eef2f6;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .header .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .header .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .header .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @keyframes spinRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* ===== 3D EARTH CONTAINER ===== */
         #earth-container {
             position: relative;
@@ -30,6 +261,7 @@
             min-height: 600px;
             background: #050510;
             overflow: hidden;
+            margin-top: 70px;
         }
 
         #earth-container canvas {
@@ -38,7 +270,7 @@
             height: 100% !important;
         }
 
-        /* ===== MAP OVERLAY TITLE & DESCRIPTION (animated) ===== */
+        /* ===== MAP OVERLAY ===== */
         .map-overlay {
             position: absolute;
             top: 50%;
@@ -84,172 +316,13 @@
         }
 
         @keyframes mapTitlePulse {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.02);
-                opacity: 0.95;
-            }
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.95; }
         }
 
         @keyframes mapDescFade {
-            0%,
-            100% {
-                opacity: 0.7;
-                transform: translateY(0);
-            }
-            50% {
-                opacity: 1;
-                transform: translateY(-3px);
-            }
-        }
-
-        /* ===== LOGO BLOCK (overlay on 3D) ===== */
-        .logo-block {
-            position: absolute;
-            top: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            z-index: 30;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(16px);
-            padding: 10px 28px 10px 18px;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 215, 0, 0.25);
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.08), inset 0 0 60px rgba(255, 215, 0, 0.03);
-            pointer-events: none;
-            animation: logoFloat 3s ease-in-out infinite;
-        }
-        @keyframes logoFloat {
-            0%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            50% {
-                transform: translateX(-50%) translateY(-4px);
-            }
-        }
-
-        .logo-icon {
-            position: relative;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .logo-icon .ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            border-top-color: #ffd700;
-            border-right-color: #ffaa00;
-            animation: spinRing 3s linear infinite;
-        }
-        .logo-icon .ring::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 1.5px solid transparent;
-            border-bottom-color: rgba(255, 215, 0, 0.3);
-            border-left-color: rgba(255, 215, 0, 0.3);
-            animation: spinRing 4s linear infinite reverse;
-        }
-        @keyframes spinRing {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .logo-icon .icon-bg {
-            position: absolute;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 40% 35%, #ffd70022, #ff880011);
-            animation: pulseGlow 2s ease-in-out infinite;
-        }
-        @keyframes pulseGlow {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.6;
-            }
-            50% {
-                transform: scale(1.15);
-                opacity: 1;
-            }
-        }
-
-        .logo-icon i {
-            position: relative;
-            z-index: 2;
-            font-size: 20px;
-            color: #ffd700;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            animation: pulseIcon 1.8s ease-in-out infinite;
-            margin-left: 3px;
-        }
-        @keyframes pulseIcon {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.12);
-            }
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-        .logo-text .brand {
-            font-size: 22px;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 1.5px;
-        }
-        .logo-text .brand span {
-            color: #ffd700;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-            animation: goldPulse 2.5s ease-in-out infinite;
-        }
-        @keyframes goldPulse {
-            0%,
-            100% {
-                text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-            }
-            50% {
-                text-shadow: 0 0 40px rgba(255, 215, 0, 0.6), 0 0 80px rgba(255, 215, 0, 0.2);
-            }
-        }
-        .logo-text .sub {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.5);
-            letter-spacing: 2px;
-            font-weight: 300;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .logo-text .sub i {
-            color: #ffd700;
-            font-size: 10px;
+            0%, 100% { opacity: 0.7; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-3px); }
         }
 
         /* ===== HINT TEXT ===== */
@@ -275,7 +348,7 @@
             margin: 0 6px;
         }
 
-        /* ===== SCROLL DOWN INDICATOR ===== */
+        /* ===== SCROLL INDICATOR ===== */
         .scroll-indicator {
             position: absolute;
             bottom: 80px;
@@ -295,18 +368,11 @@
             font-size: 20px;
         }
         @keyframes bounceDown {
-            0%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-                opacity: 0.4;
-            }
-            50% {
-                transform: translateX(-50%) translateY(8px);
-                opacity: 1;
-            }
+            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
+            50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
         }
 
-        /* ===== MAIN CONTENT (below 3D) ===== */
+        /* ===== MAIN CONTENT ===== */
         .main-content {
             background: #0b0d15;
             padding: 3rem 0 2rem;
@@ -365,7 +431,6 @@
             margin: 1.5rem 0 0.5rem;
         }
 
-        /* ===== SECTION SUBTITLES (exactly 160 chars) ===== */
         .section-sub {
             color: #94a3b8;
             margin-bottom: 2.8rem;
@@ -383,7 +448,6 @@
             line-height: 1.8;
         }
 
-        /* ===== HERO (separate from map) ===== */
         .hero-section {
             text-align: center;
             padding: 2rem 0 1rem;
@@ -397,13 +461,19 @@
             line-height: 1.8;
         }
 
-        /* ===== ACTIVATION PANEL (Trial + Codes) ===== */
+        /* ===== ACTIVATION PANEL ===== */
         .activation-panel {
             background: linear-gradient(145deg, #141824, #1a1f2e);
             border-radius: 32px;
             padding: 2.5rem 2.8rem;
             margin: 2rem 0 3.5rem;
             border: 1px solid #2d3348;
+            transition: all 0.5s ease;
+        }
+
+        .activation-panel.highlight {
+            border-color: #f7b731;
+            box-shadow: 0 0 40px rgba(247, 183, 49, 0.15);
         }
 
         .activation-panel .panel-grid {
@@ -561,7 +631,7 @@
             }
         }
 
-        /* ===== CARDS (subscription & reseller) ===== */
+        /* ===== CARDS ===== */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -911,42 +981,27 @@
                 align-items: flex-start;
                 padding: 2rem 1.5rem;
             }
-            .logo-block {
-                top: 12px;
-                padding: 6px 16px 6px 12px;
-                gap: 10px;
-                border-radius: 40px;
+            .header .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(11, 13, 21, 0.98);
+                padding: 1.5rem 2rem;
+                border-bottom: 1px solid rgba(255, 215, 0, 0.08);
+                gap: 1.2rem;
+                align-items: flex-start;
             }
-            .logo-icon {
-                width: 36px;
-                height: 36px;
+            .header .nav-links.open {
+                display: flex;
             }
-            .logo-icon .icon-bg {
-                width: 28px;
-                height: 28px;
+            .header .menu-toggle {
+                display: flex;
             }
-            .logo-icon i {
-                font-size: 15px;
-            }
-            .logo-text .brand {
-                font-size: 16px;
-            }
-            .logo-text .sub {
-                font-size: 8px;
-            }
-            #hint {
-                font-size: 9px;
-                padding: 5px 14px;
-                bottom: 16px;
-            }
-            .scroll-indicator {
-                bottom: 60px;
-            }
-            .activation-panel {
-                padding: 1.5rem;
-            }
-            .hero-section p {
-                font-size: 1.05rem;
+            .header {
+                padding: 0 1rem;
             }
             .map-overlay h2 {
                 font-size: 1.5rem;
@@ -954,6 +1009,16 @@
             .map-overlay p {
                 font-size: 0.8rem;
                 padding: 0.3rem 0.8rem;
+            }
+            #earth-container {
+                margin-top: 60px;
+            }
+            .header {
+                height: 60px;
+            }
+            .header .lang-selector select {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
             }
         }
 
@@ -964,6 +1029,8 @@
             padding: 6rem 2rem;
             min-height: 70vh;
             background: #0b0d15;
+            position: relative;
+            z-index: 10;
         }
 
         .error-page .big {
@@ -998,6 +1065,8 @@
             border-radius: 60px;
             text-decoration: none;
             transition: 0.3s;
+            cursor: pointer;
+            border: none;
         }
 
         .error-page .btn-home:hover {
@@ -1016,10 +1085,7 @@
             display: block;
         }
 
-        .main-content.hidden {
-            display: none;
-        }
-
+        .main-content.hidden,
         #earth-container.hidden {
             display: none;
         }
@@ -1027,12 +1093,49 @@
 </head>
 <body>
 
+    <!-- ===== HEADER / NAVBAR ===== -->
+    <header class="header" id="mainHeader">
+        <a href="#" class="logo" id="logoHome">
+            <div class="logo-icon">
+                <div class="ring"></div>
+                <i class="fas fa-play"></i>
+            </div>
+            <div class="logo-text">
+                <span class="brand">DREAM <span>24K</span></span>
+                <span class="sub">PREMIUM IPTV PANEL</span>
+            </div>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#subscriptions" data-section="subscriptions" data-key="nav_packages">Packages</a>
+            <a href="#reseller" data-section="reseller" data-key="nav_reseller">Reseller</a>
+            <a href="#features" data-section="features" data-key="nav_features">Features</a>
+            <a href="#faq" data-section="faq" data-key="nav_faq">FAQ</a>
+            <a href="#" id="supportLink" data-key="nav_support"><i class="fas fa-headset"></i> <span>Support</span></a>
+            <button class="btn-nav" id="headerTrialBtn" data-key="nav_trial"><i class="fas fa-gift"></i> <span>Free Trial</span></button>
+            <div class="lang-selector">
+                <select id="languageSelect" aria-label="Language selector">
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="fr">🇫🇷 FR</option>
+                    <option value="es">🇪🇸 ES</option>
+                    <option value="de">🇩🇪 DE</option>
+                    <option value="ar">🇸🇦 AR</option>
+                </select>
+            </div>
+        </nav>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
     <!-- ===== 3D EARTH WITH OVERLAY ===== -->
     <div id="earth-container">
-        <!-- MAP OVERLAY TITLE & DESCRIPTION (animated) -->
         <div class="map-overlay">
-            <h2>🌍 DREAM 24K IPTV · Global Network</h2>
-            <p>
+            <h2 data-key="map_title">🌍 DREAM 24K IPTV · Global Network</h2>
+            <p data-key="map_desc">
                 <span class="highlight">40,000+</span> live channels · 
                 <span class="highlight">100,000+</span> VOD · 
                 <span class="highlight">4K/8K</span> streaming · 
@@ -1040,28 +1143,13 @@
             </p>
         </div>
 
-        <!-- LOGO ANIMATION -->
-        <div class="logo-block">
-            <div class="logo-icon">
-                <div class="ring"></div>
-                <div class="icon-bg"></div>
-                <i class="fas fa-play"></i>
-            </div>
-            <div class="logo-text">
-                <div class="brand">DREAM <span>24K</span></div>
-                <div class="sub"><i class="fas fa-crown"></i> Premium IPTV Panel</div>
-            </div>
+        <div id="hint" data-key="hint_text">
+            <i class="fas fa-mouse"></i> drag to rotate · double-click to toggle auto-rotate
         </div>
 
-        <!-- HINT TEXT -->
-        <div id="hint">
-            <i class="fas fa-mouse"></i> drag to rotate · scroll to zoom · double-click to toggle auto-rotate
-        </div>
-
-        <!-- SCROLL INDICATOR -->
         <div class="scroll-indicator">
             <i class="fas fa-chevron-down"></i>
-            <span>Explore</span>
+            <span data-key="scroll_explore">Explore</span>
         </div>
     </div>
 
@@ -1069,10 +1157,10 @@
     <div class="main-content" id="mainContent">
         <div class="container">
 
-            <!-- ===== HERO SECTION (separate from map) ===== -->
+            <!-- ===== HERO SECTION ===== -->
             <section class="hero-section">
-                <h1>DREAM 24K IPTV Service</h1>
-                <p class="section-sub-hero">
+                <h1 data-key="hero_title">DREAM 24K IPTV Service</h1>
+                <p class="section-sub-hero" data-key="hero_desc">
                     Experience the future of television with <span class="keyword-highlight">DREAM 24K IPTV</span>.
                     Enjoy 40,000+ live channels, 100,000+ VOD, and true <span class="keyword-highlight">4K streaming</span>
                     with <span class="keyword-highlight">8K stream</span> capabilities.
@@ -1080,57 +1168,55 @@
                 </p>
             </section>
 
-            <!-- ===== ACTIVATION PANEL (Trial + Codes) ===== -->
+            <!-- ===== ACTIVATION PANEL ===== -->
             <section>
-                <h2>Get Your Free Trial — DREAM 24K IPTV</h2>
-                <p class="section-sub">
+                <h2 data-key="trial_title">Get Your Free Trial — DREAM 24K IPTV</h2>
+                <p class="section-sub" data-key="trial_desc">
                     Choose your preferred way to activate. Select the code type and contact us via
                     WhatsApp or Telegram to receive your <strong>DREAM 24K IPTV subscription</strong> trial.
                     Experience <strong>4K streaming</strong> and <strong>8K stream</strong> quality instantly.
                 </p>
 
-                <div class="activation-panel">
+                <div class="activation-panel" id="activationPanel">
                     <div class="panel-grid">
-                        <!-- Left: Code Type Selection -->
                         <div>
-                            <div class="panel-title">
+                            <div class="panel-title" data-key="panel_code_title">
                                 <i class="fas fa-qrcode"></i> Choose Your Code Type
                             </div>
                             <div class="form-group">
-                                <label><i class="fas fa-code"></i> Activation Code Type</label>
-                                <select>
-                                    <option value="m3u">M3U Active Code</option>
-                                    <option value="xtream">Xtream Code</option>
-                                    <option value="mac">MAC Address</option>
+                                <label data-key="panel_code_label"><i class="fas fa-code"></i> Activation Code Type</label>
+                                <select id="codeTypeSelect">
+                                    <option value="m3u" data-key="option_m3u">M3U Active Code</option>
+                                    <option value="xtream" data-key="option_xtream">Xtream Code</option>
+                                    <option value="mac" data-key="option_mac">MAC Address</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label><i class="fas fa-hashtag"></i> Your Code / MAC</label>
-                                <input type="text" placeholder="Enter your code or MAC address" value="DREAM24K-TRIAL-2026" />
+                                <label data-key="panel_code_input"><i class="fas fa-hashtag"></i> Your Code / MAC</label>
+                                <input type="text" placeholder="Enter your code or MAC address" id="codeInput" value="DREAM24K-TRIAL-2026" />
                             </div>
-                            <div class="code-hint">
+                            <div class="code-hint" data-key="panel_code_hint">
                                 <i class="fas fa-info-circle"></i> We support M3U, Xtream, and MAC activation
                             </div>
                         </div>
 
-                        <!-- Right: Contact for Trial -->
                         <div class="divider">
-                            <div class="panel-title">
+                            <div class="panel-title" data-key="panel_trial_title">
                                 <i class="fas fa-gift"></i> Request Free Trial
                             </div>
-                            <p style="color:#94a3b8; margin-bottom:1.2rem; font-size:0.95rem;">
+                            <p style="color:#94a3b8; margin-bottom:1.2rem; font-size:0.95rem;" data-key="panel_trial_desc">
                                 Contact our support team via WhatsApp or Telegram to activate your
                                 24-hour free trial. Choose your preferred channel below.
                             </p>
                             <div class="trial-buttons">
                                 <button class="trial-btn" id="whatsappTrial">
-                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                    <i class="fab fa-whatsapp"></i> <span data-key="btn_whatsapp">WhatsApp</span>
                                 </button>
                                 <button class="trial-btn" id="telegramTrial">
-                                    <i class="fab fa-telegram-plane"></i> Telegram
+                                    <i class="fab fa-telegram-plane"></i> <span data-key="btn_telegram">Telegram</span>
                                 </button>
                             </div>
-                            <div class="code-hint" style="margin-top:1rem;">
+                            <div class="code-hint" style="margin-top:1rem;" data-key="panel_trial_hint">
                                 <i class="fas fa-clock"></i> 24-hour trial · All channels included
                             </div>
                         </div>
@@ -1140,8 +1226,8 @@
 
             <!-- ===== SUBSCRIPTIONS ===== -->
             <section id="subscriptions">
-                <h2>IPTV DREAM 24K IPTV Subscription Packages —</h2>
-                <p class="section-sub">
+                <h2 data-key="sub_title">IPTV DREAM 24K IPTV Subscription Packages —</h2>
+                <p class="section-sub" data-key="sub_desc">
                     Choose your ideal <strong>DREAM 24K IPTV subscription</strong> plan.
                     Enjoy premium 4K streaming, 8K-ready channels, and 24/7 support.
                     Flexible monthly or yearly options for every viewer.
@@ -1149,106 +1235,106 @@
                 <div class="card-grid">
                     <div class="card">
                         <div class="price">10€</div>
-                        <div class="period">billed monthly</div>
+                        <div class="period" data-key="sub_period_monthly">billed monthly</div>
                         <ul>
-                            <li><i class="fas fa-check"></i> Full HD / 4K / 8K Quality</li>
-                            <li><i class="fas fa-check"></i> All Devices Supported</li>
-                            <li><i class="fas fa-check"></i> 24/7 Support</li>
+                            <li><i class="fas fa-check"></i> <span data-key="sub_quality">Full HD / 4K / 8K Quality</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="sub_devices">All Devices Supported</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="sub_support">24/7 Support</span></li>
                         </ul>
-                        <button class="btn-primary">Subscribe</button>
+                        <button class="btn-primary subscribe-btn" data-key="btn_subscribe">Subscribe</button>
                     </div>
                     <div class="card">
-                        <span class="badge-best">⭐ Best Value</span>
+                        <span class="badge-best" data-key="badge_best">⭐ Best Value</span>
                         <div class="price">20€</div>
-                        <div class="period">€6.67 / month</div>
+                        <div class="period" data-key="sub_period_3">€6.67 / month</div>
                         <ul>
-                            <li><i class="fas fa-check"></i> Full HD / 4K / 8K Quality</li>
-                            <li><i class="fas fa-check"></i> All Devices Supported</li>
-                            <li><i class="fas fa-check"></i> 24/7 Support</li>
+                            <li><i class="fas fa-check"></i> <span data-key="sub_quality">Full HD / 4K / 8K Quality</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="sub_devices">All Devices Supported</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="sub_support">24/7 Support</span></li>
                         </ul>
-                        <button class="btn-primary">Subscribe</button>
+                        <button class="btn-primary subscribe-btn" data-key="btn_subscribe">Subscribe</button>
                     </div>
                     <div class="card">
                         <div class="price">30€</div>
-                        <div class="period">€5.00 / month</div>
+                        <div class="period" data-key="sub_period_6">€5.00 / month</div>
                         <ul>
-                            <li><i class="fas fa-check"></i> Full HD / 4K / 8K Quality</li>
-                            <li><i class="fas fa-check"></i> All Devices Supported</li>
-                            <li><i class="fas fa-check"></i> 24/7 Support</li>
+                            <li><i class="fas fa-check"></i> <span data-key="sub_quality">Full HD / 4K / 8K Quality</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="sub_devices">All Devices Supported</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="sub_support">24/7 Support</span></li>
                         </ul>
-                        <button class="btn-primary">Subscribe</button>
+                        <button class="btn-primary subscribe-btn" data-key="btn_subscribe">Subscribe</button>
                     </div>
                     <div class="card">
                         <div class="price">40€</div>
-                        <div class="period">€3.33 / month</div>
+                        <div class="period" data-key="sub_period_12">€3.33 / month</div>
                         <ul>
-                            <li><i class="fas fa-check"></i> Full HD / 4K / 8K Quality</li>
-                            <li><i class="fas fa-check"></i> All Devices Supported</li>
-                            <li><i class="fas fa-check"></i> 24/7 Support</li>
+                            <li><i class="fas fa-check"></i> <span data-key="sub_quality">Full HD / 4K / 8K Quality</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="sub_devices">All Devices Supported</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="sub_support">24/7 Support</span></li>
                         </ul>
-                        <button class="btn-primary">Subscribe</button>
+                        <button class="btn-primary subscribe-btn" data-key="btn_subscribe">Subscribe</button>
                     </div>
                 </div>
             </section>
 
             <!-- ===== RESELLER ===== -->
             <section id="reseller">
-                <h2>IPTV DREAM 24K IPTV Reseller Packages —</h2>
-                <p class="section-sub">
+                <h2 data-key="reseller_title">IPTV DREAM 24K IPTV Reseller Packages —</h2>
+                <p class="section-sub" data-key="reseller_desc">
                     Start your own business with our <strong>DREAM 24K IPTV reseller</strong> program.
                     White-label panel, private API host, and bulk credits at wholesale prices.
                     Perfect for entrepreneurs and existing providers.
                 </p>
                 <div class="reseller-grid">
                     <div class="reseller-card">
-                        <div class="credit">120 Credits</div>
-                        <div class="price">140€ <small>€1.17 / credit</small></div>
+                        <div class="credit" data-key="reseller_credits_120">120 Credits</div>
+                        <div class="price">140€ <small data-key="reseller_price_120">€1.17 / credit</small></div>
                         <ul>
-                            <li><i class="fas fa-check"></i> 120 x 1-month subscriptions</li>
-                            <li><i class="fas fa-check"></i> White-label panel access</li>
-                            <li><i class="fas fa-check"></i> Private API host</li>
+                            <li><i class="fas fa-check"></i> <span data-key="reseller_sub_120">120 x 1-month subscriptions</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="reseller_panel">White-label panel access</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="reseller_api">Private API host</span></li>
                         </ul>
-                        <button class="btn-outline-gold">Get Starter</button>
+                        <button class="btn-outline-gold reseller-btn" data-key="btn_get_starter">Get Starter</button>
                     </div>
                     <div class="reseller-card" style="border-color: #f7b73170;">
-                        <span class="badge-best" style="background:#f7b731; color:#0b0d15;">🔥 Best Seller</span>
-                        <div class="credit">360 Credits</div>
-                        <div class="price">395€ <small>€1.10 / credit</small></div>
+                        <span class="badge-best" style="background:#f7b731; color:#0b0d15;" data-key="badge_bestseller">🔥 Best Seller</span>
+                        <div class="credit" data-key="reseller_credits_360">360 Credits</div>
+                        <div class="price">395€ <small data-key="reseller_price_360">€1.10 / credit</small></div>
                         <ul>
-                            <li><i class="fas fa-check"></i> 360 x 1-month subscriptions</li>
-                            <li><i class="fas fa-check"></i> White-label panel access</li>
-                            <li><i class="fas fa-check"></i> Private API host</li>
+                            <li><i class="fas fa-check"></i> <span data-key="reseller_sub_360">360 x 1-month subscriptions</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="reseller_panel">White-label panel access</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="reseller_api">Private API host</span></li>
                         </ul>
-                        <button class="btn-outline-gold">Get Business</button>
+                        <button class="btn-outline-gold reseller-btn" data-key="btn_get_business">Get Business</button>
                     </div>
                     <div class="reseller-card">
-                        <div class="credit">600 Credits</div>
-                        <div class="price">625€ <small>€1.04 / credit</small></div>
+                        <div class="credit" data-key="reseller_credits_600">600 Credits</div>
+                        <div class="price">625€ <small data-key="reseller_price_600">€1.04 / credit</small></div>
                         <ul>
-                            <li><i class="fas fa-check"></i> 600 x 1-month subscriptions</li>
-                            <li><i class="fas fa-check"></i> White-label panel access</li>
-                            <li><i class="fas fa-check"></i> Private API host</li>
+                            <li><i class="fas fa-check"></i> <span data-key="reseller_sub_600">600 x 1-month subscriptions</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="reseller_panel">White-label panel access</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="reseller_api">Private API host</span></li>
                         </ul>
-                        <button class="btn-outline-gold">Get Pro</button>
+                        <button class="btn-outline-gold reseller-btn" data-key="btn_get_pro">Get Pro</button>
                     </div>
                     <div class="reseller-card">
-                        <div class="credit">Enterprise</div>
-                        <div class="price">Custom</div>
-                        <p style="color:#94a3b8; margin: 0.2rem 0 0.5rem;">Volume pricing</p>
+                        <div class="credit" data-key="reseller_enterprise">Enterprise</div>
+                        <div class="price" data-key="reseller_custom">Custom</div>
+                        <p style="color:#94a3b8; margin: 0.2rem 0 0.5rem;" data-key="reseller_volume">Volume pricing</p>
                         <ul>
-                            <li><i class="fas fa-check"></i> Custom credit packages</li>
-                            <li><i class="fas fa-check"></i> White-label panel access</li>
-                            <li><i class="fas fa-check"></i> Private API host</li>
+                            <li><i class="fas fa-check"></i> <span data-key="reseller_custom_packages">Custom credit packages</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="reseller_panel">White-label panel access</span></li>
+                            <li><i class="fas fa-check"></i> <span data-key="reseller_api">Private API host</span></li>
                         </ul>
-                        <button class="btn-outline-gold">Contact</button>
+                        <button class="btn-outline-gold reseller-btn" data-key="btn_contact">Contact</button>
                     </div>
                 </div>
             </section>
 
             <!-- ===== FEATURES ===== -->
             <section id="features">
-                <h2>Powerful Features — DREAM 24K IPTV</h2>
-                <p class="section-sub">
+                <h2 data-key="features_title">Powerful Features — DREAM 24K IPTV</h2>
+                <p class="section-sub" data-key="features_desc">
                     Built for <strong>8K stream</strong> and <strong>4K streaming</strong> excellence.
                     Modern tools for resellers and subscribers alike. Auto ProxyPass,
                     private hosts, and advanced management.
@@ -1256,59 +1342,59 @@
                 <div class="features-grid">
                     <div class="feature-item">
                         <i class="fas fa-laptop-code"></i>
-                        <h4>Modern Interface</h4>
-                        <p>Clean, fast, responsive UI for all devices.</p>
+                        <h4 data-key="feature_interface">Modern Interface</h4>
+                        <p data-key="feature_interface_desc">Clean, fast, responsive UI for all devices.</p>
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-tools"></i>
-                        <h4>Advanced Tools</h4>
-                        <p>Complete management for your IPTV business.</p>
+                        <h4 data-key="feature_tools">Advanced Tools</h4>
+                        <p data-key="feature_tools_desc">Complete management for your IPTV business.</p>
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-share-alt"></i>
-                        <h4>Auto ProxyPass</h4>
-                        <p>Generate ProxyPass links in one click.</p>
+                        <h4 data-key="feature_proxy">Auto ProxyPass</h4>
+                        <p data-key="feature_proxy_desc">Generate ProxyPass links in one click.</p>
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-server"></i>
-                        <h4>Private Hosts</h4>
-                        <p>Add and manage your own private hosts.</p>
+                        <h4 data-key="feature_hosts">Private Hosts</h4>
+                        <p data-key="feature_hosts_desc">Add and manage your own private hosts.</p>
                     </div>
                 </div>
             </section>
 
             <!-- ===== FAQ ===== -->
             <section id="faq">
-                <h2>Frequently Asked Questions — DREAM 24K</h2>
-                <p class="section-sub">
+                <h2 data-key="faq_title">Frequently Asked Questions — DREAM 24K</h2>
+                <p class="section-sub" data-key="faq_desc">
                     Everything you need to know about <strong>DREAM 24K IPTV subscription</strong>,
                     reseller plans, <strong>4K streaming</strong>, and <strong>8K stream</strong>
                     capabilities. Find answers to the most common questions.
                 </p>
                 <div class="faq-grid">
                     <div class="faq-item">
-                        <strong>What is DREAM 24K IPTV?</strong>
-                        <p>DREAM 24K is a premium IPTV service with 40,000+ live channels, 100,000+ VOD, and true 4K/8K UHD. Founded in 2017.</p>
+                        <strong data-key="faq_q1">What is DREAM 24K IPTV?</strong>
+                        <p data-key="faq_a1">DREAM 24K is a premium IPTV service with 40,000+ live channels, 100,000+ VOD, and true 4K/8K UHD. Founded in 2017.</p>
                     </div>
                     <div class="faq-item">
-                        <strong>How much does a subscription cost?</strong>
-                        <p>Plans: 1 month = 10€, 3 months = 20€, 6 months = 30€, 12 months = 40€. All include 4K &amp; 8K streaming.</p>
+                        <strong data-key="faq_q2">How much does a subscription cost?</strong>
+                        <p data-key="faq_a2">Plans: 1 month = 10€, 3 months = 20€, 6 months = 30€, 12 months = 40€. All include 4K &amp; 8K streaming.</p>
                     </div>
                     <div class="faq-item">
-                        <strong>Which devices are supported?</strong>
-                        <p>Smart TVs, Firestick, Android, iOS, MAG/STB boxes, Windows, Mac — all devices with 4K/8K support.</p>
+                        <strong data-key="faq_q3">Which devices are supported?</strong>
+                        <p data-key="faq_a3">Smart TVs, Firestick, Android, iOS, MAG/STB boxes, Windows, Mac — all devices with 4K/8K support.</p>
                     </div>
                     <div class="faq-item">
-                        <strong>Is there a free trial?</strong>
-                        <p>Yes. Contact us via WhatsApp or Telegram for a 24-hour free trial of our 4K/8K service.</p>
+                        <strong data-key="faq_q4">Is there a free trial?</strong>
+                        <p data-key="faq_a4">Yes. Contact us via WhatsApp or Telegram for a 24-hour free trial of our 4K/8K service.</p>
                     </div>
                     <div class="faq-item">
-                        <strong>How does the reseller program work?</strong>
-                        <p>Buy credits in bulk at wholesale prices. Each credit = one 1-month subscription. Perfect for resellers.</p>
+                        <strong data-key="faq_q5">How does the reseller program work?</strong>
+                        <p data-key="faq_a5">Buy credits in bulk at wholesale prices. Each credit = one 1-month subscription. Perfect for resellers.</p>
                     </div>
                     <div class="faq-item">
-                        <strong>What payment methods are accepted?</strong>
-                        <p>Visa, Mastercard, PayPal, Apple Pay, Google Pay, and cryptocurrency.</p>
+                        <strong data-key="faq_q6">What payment methods are accepted?</strong>
+                        <p data-key="faq_a6">Visa, Mastercard, PayPal, Apple Pay, Google Pay, and cryptocurrency.</p>
                     </div>
                 </div>
             </section>
@@ -1316,17 +1402,17 @@
             <!-- ===== CTA ===== -->
             <div class="cta-section">
                 <div>
-                    <h2 style="font-size:2.1rem;">24/7 Support</h2>
-                    <p>
+                    <h2 style="font-size:2.1rem;" data-key="cta_title">24/7 Support</h2>
+                    <p data-key="cta_desc">
                         Our dedicated team is available around the clock via WhatsApp, Telegram, or email.
                     </p>
                     <div class="contact-buttons">
-                        <a href="#" class="contact-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="#" class="contact-btn"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                        <a href="#" class="contact-btn contact-support"><i class="fab fa-whatsapp"></i> <span data-key="btn_whatsapp">WhatsApp</span></a>
+                        <a href="#" class="contact-btn contact-support"><i class="fab fa-telegram-plane"></i> <span data-key="btn_telegram">Telegram</span></a>
                     </div>
                 </div>
                 <div>
-                    <p style="color:#94a3b8; margin-bottom:0.5rem;">Contact Information</p>
+                    <p style="color:#94a3b8; margin-bottom:0.5rem;" data-key="contact_info">Contact Information</p>
                     <div style="display:flex; flex-wrap:wrap; gap: 0.8rem;">
                         <span style="background:#1e2230; padding:0.3rem 1.2rem; border-radius:40px;">
                             <i class="fas fa-phone-alt" style="color:#f7b731;"></i> +212 663-087765
@@ -1343,12 +1429,13 @@
 
             <!-- ===== FOOTER ===== -->
             <footer class="footer">
-                <div>© 2026 DREAM 24K · Premium IPTV · 4K &amp; 8K Streaming</div>
+                <div data-key="footer_copyright">© 2026 DREAM 24K · Premium IPTV · 4K &amp; 8K Streaming</div>
                 <div class="footer-links">
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="#"><i class="fas fa-envelope"></i></a>
-                    <a href="#">Privacy</a>
+                    <a href="#" class="footer-support"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="footer-support"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#" class="footer-support"><i class="fas fa-envelope"></i></a>
+                    <a href="#" id="footerPrivacy" data-key="footer_privacy">Privacy</a>
+                    <a href="#" id="footer404">404 Test</a>
                 </div>
             </footer>
 
@@ -1359,12 +1446,12 @@
     <div class="error-page" id="errorPage">
         <div class="error-icon"><i class="fas fa-satellite-dish"></i></div>
         <div class="big">404</div>
-        <h2>Signal Lost</h2>
-        <p>The page you're looking for is not available. Please check the URL or return to our homepage.</p>
-        <a href="#" class="btn-home" id="goHome"><i class="fas fa-home"></i> Back to DREAM 24K</a>
+        <h2 data-key="error_title">Signal Lost</h2>
+        <p data-key="error_desc">The page you're looking for is not available. Please check the URL or return to our homepage.</p>
+        <button class="btn-home" id="goHome" data-key="error_btn"><i class="fas fa-home"></i> Back to DREAM 24K</button>
     </div>
 
-    <!-- ===== 3D EARTH SCRIPT (Three.js) ===== -->
+    <!-- ===== 3D EARTH SCRIPT ===== -->
     <script type="importmap">
         {
             "imports": {
@@ -1381,7 +1468,6 @@
 
         const container = document.getElementById('earth-container');
 
-        // --- scene ---
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x050510);
 
@@ -1401,7 +1487,6 @@
         labelRenderer.domElement.style.pointerEvents = 'none';
         container.appendChild(labelRenderer.domElement);
 
-        // --- controls (zoom disabled) ---
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
         controls.dampingFactor = 0.05;
@@ -1409,11 +1494,10 @@
         controls.autoRotate = true;
         controls.autoRotateSpeed = 0.4;
         controls.minDistance = 3.2;
-        controls.maxDistance = 3.2; // Lock zoom by setting min=max
+        controls.maxDistance = 3.2;
         controls.target.set(0, 0, 0);
-        controls.enableZoom = false; // Disable zoom entirely
+        controls.enableZoom = false;
 
-        // --- lighting ---
         scene.add(new THREE.AmbientLight(0x334466, 0.5));
         const sun = new THREE.DirectionalLight(0xffeedd, 1.2);
         sun.position.set(2, 3, 4);
@@ -1425,7 +1509,6 @@
         rim.position.set(-1, 2, -3);
         scene.add(rim);
 
-        // --- Earth ---
         const textureLoader = new THREE.TextureLoader();
         const earthMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
         const cloudMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png');
@@ -1455,7 +1538,6 @@
         const clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
         scene.add(clouds);
 
-        // --- glow atmosphere ---
         const glowGeo = new THREE.SphereGeometry(1.02, 48, 48);
         const glowMat = new THREE.MeshPhongMaterial({
             color: 0x88aaff,
@@ -1465,7 +1547,6 @@
         });
         scene.add(new THREE.Mesh(glowGeo, glowMat));
 
-        // --- golden ring (Dream 24K) ---
         const ringGeo = new THREE.TorusGeometry(1.12, 0.003, 32, 100);
         const ringMat = new THREE.MeshBasicMaterial({
             color: 0xffd700,
@@ -1488,7 +1569,6 @@
         ring2m.rotation.z = -0.4;
         scene.add(ring2m);
 
-        // --- stars ---
         const starsGeometry = new THREE.BufferGeometry();
         const starsCount = 4000;
         const starPositions = new Float32Array(starsCount * 3);
@@ -1510,19 +1590,17 @@
         });
         scene.add(new THREE.Points(starsGeometry, starsMaterial));
 
-        // --- Device types ---
         const DEVICE_TYPES = [
-            { emoji: '🖥️', color: '#4fc3f7', glow: '#4fc3f7', size: 0.07, isServer: true },
-            { emoji: '📡', color: '#4dd0e1', glow: '#4dd0e1', size: 0.06, isServer: true },
-            { emoji: '☁️', color: '#90caf9', glow: '#90caf9', size: 0.08, isServer: true },
-            { emoji: '📺', color: '#f06292', glow: '#f06292', size: 0.06, isServer: false },
-            { emoji: '📱', color: '#81c784', glow: '#81c784', size: 0.055, isServer: false },
-            { emoji: '📋', color: '#ffb74d', glow: '#ffb74d', size: 0.055, isServer: false },
-            { emoji: '💻', color: '#ce93d8', glow: '#ce93d8', size: 0.06, isServer: false },
-            { emoji: '🛰️', color: '#b39ddb', glow: '#b39ddb', size: 0.065, isServer: true },
+            { color: '#4fc3f7', size: 0.07 },
+            { color: '#4dd0e1', size: 0.06 },
+            { color: '#90caf9', size: 0.08 },
+            { color: '#f06292', size: 0.06 },
+            { color: '#81c784', size: 0.055 },
+            { color: '#ffb74d', size: 0.055 },
+            { color: '#ce93d8', size: 0.06 },
+            { color: '#b39ddb', size: 0.065 },
         ];
 
-        // --- Country data ---
         const countries = [
             { lat: 40.7128, lon: -74.0060, name: 'USA' },
             { lat: 51.5074, lon: -0.1278, name: 'UK' },
@@ -1566,7 +1644,6 @@
             );
         }
 
-        // --- Create nodes ---
         const nodes = [];
         const connectionLines = [];
 
@@ -1574,10 +1651,8 @@
             const typeIdx = index % DEVICE_TYPES.length;
             const type = DEVICE_TYPES[typeIdx];
             const pos = latLonToPosition(country.lat, country.lon, 1.015);
-
             nodes.push({ pos, type, country: country.name });
 
-            // Glowing dot
             const canvas = document.createElement('canvas');
             canvas.width = 64;
             canvas.height = 64;
@@ -1606,7 +1681,6 @@
             sprite.scale.set(scale, scale, 1);
             scene.add(sprite);
 
-            // Label
             const div = document.createElement('div');
             div.textContent = country.name;
             div.style.color = 'rgba(255,255,255,0.7)';
@@ -1626,7 +1700,6 @@
             label.position.copy(labelPos);
             scene.add(label);
 
-            // Ring
             if (index % 3 === 0) {
                 const ringGeo2 = new THREE.RingGeometry(0.02, 0.035, 16);
                 const ringMat2 = new THREE.MeshBasicMaterial({
@@ -1644,7 +1717,6 @@
             }
         });
 
-        // --- Connection lines ---
         for (let i = 0; i < nodes.length; i++) {
             for (let j = i + 1; j < nodes.length; j++) {
                 const a = nodes[i].pos;
@@ -1671,7 +1743,6 @@
             }
         }
 
-        // --- Animation ---
         let time = 0;
 
         function animate() {
@@ -1704,7 +1775,6 @@
 
         animate();
 
-        // --- Resize ---
         window.addEventListener('resize', () => {
             const w = container.clientWidth;
             const h = container.clientHeight;
@@ -1714,7 +1784,6 @@
             labelRenderer.setSize(w, h);
         });
 
-        // --- Toggle auto-rotate ---
         renderer.domElement.addEventListener('dblclick', () => {
             controls.autoRotate = !controls.autoRotate;
         });
@@ -1726,93 +1795,752 @@
         console.log('✨ DREAM 24K IPTV · Global Network with animated overlay & zoom locked!');
     </script>
 
-    <!-- ===== INTERACTION SCRIPT ===== -->
+    <!-- ===== TRANSLATIONS & INTERACTION ===== -->
     <script>
+        // ============================================================
+        // FULL TRANSLATION DICTIONARY
+        // ============================================================
+        const translations = {
+            en: {
+                // Nav
+                nav_packages: 'Packages',
+                nav_reseller: 'Reseller',
+                nav_features: 'Features',
+                nav_faq: 'FAQ',
+                nav_support: 'Support',
+                nav_trial: 'Free Trial',
+                // Map
+                map_title: '🌍 DREAM 24K IPTV · Global Network',
+                map_desc: '<span class="highlight">40,000+</span> live channels · <span class="highlight">100,000+</span> VOD · <span class="highlight">4K/8K</span> streaming · <span class="highlight">200+</span> countries connected',
+                hint_text: 'drag to rotate · double-click to toggle auto-rotate',
+                scroll_explore: 'Explore',
+                // Hero
+                hero_title: 'DREAM 24K IPTV Service',
+                hero_desc: 'Experience the future of television with <span class="keyword-highlight">DREAM 24K IPTV</span>. Enjoy 40,000+ live channels, 100,000+ VOD, and true <span class="keyword-highlight">4K streaming</span> with <span class="keyword-highlight">8K stream</span> capabilities. Founded in 2017, we deliver premium entertainment worldwide.',
+                // Trial
+                trial_title: 'Get Your Free Trial — DREAM 24K IPTV',
+                trial_desc: 'Choose your preferred way to activate. Select the code type and contact us via WhatsApp or Telegram to receive your <strong>DREAM 24K IPTV subscription</strong> trial. Experience <strong>4K streaming</strong> and <strong>8K stream</strong> quality instantly.',
+                panel_code_title: 'Choose Your Code Type',
+                panel_code_label: 'Activation Code Type',
+                option_m3u: 'M3U Active Code',
+                option_xtream: 'Xtream Code',
+                option_mac: 'MAC Address',
+                panel_code_input: 'Your Code / MAC',
+                panel_code_hint: 'We support M3U, Xtream, and MAC activation',
+                panel_trial_title: 'Request Free Trial',
+                panel_trial_desc: 'Contact our support team via WhatsApp or Telegram to activate your 24-hour free trial. Choose your preferred channel below.',
+                btn_whatsapp: 'WhatsApp',
+                btn_telegram: 'Telegram',
+                panel_trial_hint: '24-hour trial · All channels included',
+                // Subscription
+                sub_title: 'IPTV DREAM 24K IPTV Subscription Packages —',
+                sub_desc: 'Choose your ideal <strong>DREAM 24K IPTV subscription</strong> plan. Enjoy premium 4K streaming, 8K-ready channels, and 24/7 support. Flexible monthly or yearly options for every viewer.',
+                sub_period_monthly: 'billed monthly',
+                sub_period_3: '€6.67 / month',
+                sub_period_6: '€5.00 / month',
+                sub_period_12: '€3.33 / month',
+                sub_quality: 'Full HD / 4K / 8K Quality',
+                sub_devices: 'All Devices Supported',
+                sub_support: '24/7 Support',
+                btn_subscribe: 'Subscribe',
+                badge_best: '⭐ Best Value',
+                // Reseller
+                reseller_title: 'IPTV DREAM 24K IPTV Reseller Packages —',
+                reseller_desc: 'Start your own business with our <strong>DREAM 24K IPTV reseller</strong> program. White-label panel, private API host, and bulk credits at wholesale prices. Perfect for entrepreneurs and existing providers.',
+                reseller_credits_120: '120 Credits',
+                reseller_price_120: '€1.17 / credit',
+                reseller_sub_120: '120 x 1-month subscriptions',
+                reseller_panel: 'White-label panel access',
+                reseller_api: 'Private API host',
+                btn_get_starter: 'Get Starter',
+                badge_bestseller: '🔥 Best Seller',
+                reseller_credits_360: '360 Credits',
+                reseller_price_360: '€1.10 / credit',
+                reseller_sub_360: '360 x 1-month subscriptions',
+                btn_get_business: 'Get Business',
+                reseller_credits_600: '600 Credits',
+                reseller_price_600: '€1.04 / credit',
+                reseller_sub_600: '600 x 1-month subscriptions',
+                btn_get_pro: 'Get Pro',
+                reseller_enterprise: 'Enterprise',
+                reseller_custom: 'Custom',
+                reseller_volume: 'Volume pricing',
+                reseller_custom_packages: 'Custom credit packages',
+                btn_contact: 'Contact',
+                // Features
+                features_title: 'Powerful Features — DREAM 24K IPTV',
+                features_desc: 'Built for <strong>8K stream</strong> and <strong>4K streaming</strong> excellence. Modern tools for resellers and subscribers alike. Auto ProxyPass, private hosts, and advanced management.',
+                feature_interface: 'Modern Interface',
+                feature_interface_desc: 'Clean, fast, responsive UI for all devices.',
+                feature_tools: 'Advanced Tools',
+                feature_tools_desc: 'Complete management for your IPTV business.',
+                feature_proxy: 'Auto ProxyPass',
+                feature_proxy_desc: 'Generate ProxyPass links in one click.',
+                feature_hosts: 'Private Hosts',
+                feature_hosts_desc: 'Add and manage your own private hosts.',
+                // FAQ
+                faq_title: 'Frequently Asked Questions — DREAM 24K',
+                faq_desc: 'Everything you need to know about <strong>DREAM 24K IPTV subscription</strong>, reseller plans, <strong>4K streaming</strong>, and <strong>8K stream</strong> capabilities. Find answers to the most common questions.',
+                faq_q1: 'What is DREAM 24K IPTV?',
+                faq_a1: 'DREAM 24K is a premium IPTV service with 40,000+ live channels, 100,000+ VOD, and true 4K/8K UHD. Founded in 2017.',
+                faq_q2: 'How much does a subscription cost?',
+                faq_a2: 'Plans: 1 month = 10€, 3 months = 20€, 6 months = 30€, 12 months = 40€. All include 4K & 8K streaming.',
+                faq_q3: 'Which devices are supported?',
+                faq_a3: 'Smart TVs, Firestick, Android, iOS, MAG/STB boxes, Windows, Mac — all devices with 4K/8K support.',
+                faq_q4: 'Is there a free trial?',
+                faq_a4: 'Yes. Contact us via WhatsApp or Telegram for a 24-hour free trial of our 4K/8K service.',
+                faq_q5: 'How does the reseller program work?',
+                faq_a5: 'Buy credits in bulk at wholesale prices. Each credit = one 1-month subscription. Perfect for resellers.',
+                faq_q6: 'What payment methods are accepted?',
+                faq_a6: 'Visa, Mastercard, PayPal, Apple Pay, Google Pay, and cryptocurrency.',
+                // CTA
+                cta_title: '24/7 Support',
+                cta_desc: 'Our dedicated team is available around the clock via WhatsApp, Telegram, or email.',
+                contact_info: 'Contact Information',
+                // Footer
+                footer_copyright: '© 2026 DREAM 24K · Premium IPTV · 4K & 8K Streaming',
+                footer_privacy: 'Privacy',
+                // 404
+                error_title: 'Signal Lost',
+                error_desc: 'The page you\'re looking for is not available. Please check the URL or return to our homepage.',
+                error_btn: 'Back to DREAM 24K',
+            },
+            fr: {
+                nav_packages: 'Forfaits',
+                nav_reseller: 'Revendeur',
+                nav_features: 'Fonctionnalités',
+                nav_faq: 'FAQ',
+                nav_support: 'Assistance',
+                nav_trial: 'Essai Gratuit',
+                map_title: '🌍 DREAM 24K IPTV · Réseau Mondial',
+                map_desc: '<span class="highlight">40 000+</span> chaînes live · <span class="highlight">100 000+</span> VOD · streaming <span class="highlight">4K/8K</span> · <span class="highlight">200+</span> pays connectés',
+                hint_text: 'faites glisser pour tourner · double-cliquez pour activer la rotation auto',
+                scroll_explore: 'Explorer',
+                hero_title: 'Service IPTV DREAM 24K',
+                hero_desc: 'Découvrez le futur de la télévision avec <span class="keyword-highlight">DREAM 24K IPTV</span>. Profitez de 40 000+ chaînes live, 100 000+ VOD, et du véritable <span class="keyword-highlight">streaming 4K</span> avec des capacités <span class="keyword-highlight">8K</span>. Fondé en 2017, nous offrons un divertissement premium dans le monde entier.',
+                trial_title: 'Obtenez Votre Essai Gratuit — DREAM 24K IPTV',
+                trial_desc: 'Choisissez votre méthode d\'activation préférée. Sélectionnez le type de code et contactez-nous via WhatsApp ou Telegram pour recevoir votre essai <strong>DREAM 24K IPTV</strong>. Expérimentez la qualité <strong>4K</strong> et <strong>8K</strong> instantanément.',
+                panel_code_title: 'Choisissez Votre Type de Code',
+                panel_code_label: 'Type de code d\'activation',
+                option_m3u: 'Code M3U Actif',
+                option_xtream: 'Code Xtream',
+                option_mac: 'Adresse MAC',
+                panel_code_input: 'Votre Code / MAC',
+                panel_code_hint: 'Nous supportons les activations M3U, Xtream et MAC',
+                panel_trial_title: 'Demander un Essai Gratuit',
+                panel_trial_desc: 'Contactez notre équipe via WhatsApp ou Telegram pour activer votre essai gratuit de 24 heures. Choisissez votre canal préféré ci-dessous.',
+                btn_whatsapp: 'WhatsApp',
+                btn_telegram: 'Telegram',
+                panel_trial_hint: 'Essai de 24 heures · Toutes les chaînes incluses',
+                sub_title: 'Forfaits DREAM 24K IPTV —',
+                sub_desc: 'Choisissez le plan <strong>DREAM 24K IPTV</strong> idéal. Profitez du streaming 4K premium, des chaînes 8K et du support 24/7. Des options mensuelles ou annuelles flexibles pour tous.',
+                sub_period_monthly: 'facturé mensuellement',
+                sub_period_3: '6,67€ / mois',
+                sub_period_6: '5,00€ / mois',
+                sub_period_12: '3,33€ / mois',
+                sub_quality: 'Qualité Full HD / 4K / 8K',
+                sub_devices: 'Tous les appareils supportés',
+                sub_support: 'Support 24/7',
+                btn_subscribe: 'S\'abonner',
+                badge_best: '⭐ Meilleure Offre',
+                reseller_title: 'Forfaits Revendeur DREAM 24K IPTV —',
+                reseller_desc: 'Créez votre propre entreprise avec notre programme <strong>revendeur DREAM 24K IPTV</strong>. Panel white-label, hôte API privé, et crédits en gros à prix de gros. Parfait pour les entrepreneurs.',
+                reseller_credits_120: '120 Crédits',
+                reseller_price_120: '1,17€ / crédit',
+                reseller_sub_120: '120 abonnements d\'1 mois',
+                reseller_panel: 'Accès panel white-label',
+                reseller_api: 'Hôte API privé',
+                btn_get_starter: 'Démarrer',
+                badge_bestseller: '🔥 Meilleure Vente',
+                reseller_credits_360: '360 Crédits',
+                reseller_price_360: '1,10€ / crédit',
+                reseller_sub_360: '360 abonnements d\'1 mois',
+                btn_get_business: 'Business',
+                reseller_credits_600: '600 Crédits',
+                reseller_price_600: '1,04€ / crédit',
+                reseller_sub_600: '600 abonnements d\'1 mois',
+                btn_get_pro: 'Pro',
+                reseller_enterprise: 'Entreprise',
+                reseller_custom: 'Personnalisé',
+                reseller_volume: 'Tarification volume',
+                reseller_custom_packages: 'Forfaits personnalisés',
+                btn_contact: 'Contacter',
+                features_title: 'Fonctionnalités Puissantes — DREAM 24K IPTV',
+                features_desc: 'Conçu pour l\'excellence <strong>8K</strong> et <strong>4K</strong>. Des outils modernes pour revendeurs et abonnés. ProxyPass automatique, hôtes privés et gestion avancée.',
+                feature_interface: 'Interface Moderne',
+                feature_interface_desc: 'UI épurée, rapide et responsive pour tous les appareils.',
+                feature_tools: 'Outils Avancés',
+                feature_tools_desc: 'Gestion complète de votre activité IPTV.',
+                feature_proxy: 'Auto ProxyPass',
+                feature_proxy_desc: 'Générez des liens ProxyPass en un clic.',
+                feature_hosts: 'Hôtes Privés',
+                feature_hosts_desc: 'Ajoutez et gérez vos propres hôtes privés.',
+                faq_title: 'Questions Fréquentes — DREAM 24K',
+                faq_desc: 'Tout ce que vous devez savoir sur <strong>DREAM 24K IPTV</strong>, les forfaits revendeur, le <strong>streaming 4K</strong> et <strong>8K</strong>.',
+                faq_q1: 'Qu\'est-ce que DREAM 24K IPTV ?',
+                faq_a1: 'DREAM 24K est un service IPTV premium avec 40 000+ chaînes, 100 000+ VOD, et vrai 4K/8K. Fondé en 2017.',
+                faq_q2: 'Combien coûte un abonnement ?',
+                faq_a2: 'Forfaits : 1 mois = 10€, 3 mois = 20€, 6 mois = 30€, 12 mois = 40€. Tous incluent 4K & 8K.',
+                faq_q3: 'Quels appareils sont supportés ?',
+                faq_a3: 'TV connectées, Firestick, Android, iOS, MAG/STB, Windows, Mac — tous avec support 4K/8K.',
+                faq_q4: 'Y a-t-il un essai gratuit ?',
+                faq_a4: 'Oui. Contactez-nous via WhatsApp ou Telegram pour un essai gratuit de 24 heures.',
+                faq_q5: 'Comment fonctionne le programme revendeur ?',
+                faq_a5: 'Achetez des crédits en gros. Chaque crédit = un abonnement d\'1 mois. Parfait pour les revendeurs.',
+                faq_q6: 'Quels modes de paiement acceptez-vous ?',
+                faq_a6: 'Visa, Mastercard, PayPal, Apple Pay, Google Pay et crypto-monnaies.',
+                cta_title: 'Support 24/7',
+                cta_desc: 'Notre équipe est disponible 24/7 via WhatsApp, Telegram ou email.',
+                contact_info: 'Informations de Contact',
+                footer_copyright: '© 2026 DREAM 24K · IPTV Premium · 4K & 8K',
+                footer_privacy: 'Confidentialité',
+                error_title: 'Signal Perdu',
+                error_desc: 'La page que vous cherchez n\'est pas disponible. Vérifiez l\'URL ou retournez à l\'accueil.',
+                error_btn: 'Retour à DREAM 24K',
+            },
+            es: {
+                nav_packages: 'Paquetes',
+                nav_reseller: 'Revendedor',
+                nav_features: 'Características',
+                nav_faq: 'FAQ',
+                nav_support: 'Soporte',
+                nav_trial: 'Prueba Gratuita',
+                map_title: '🌍 DREAM 24K IPTV · Red Global',
+                map_desc: '<span class="highlight">40,000+</span> canales · <span class="highlight">100,000+</span> VOD · streaming <span class="highlight">4K/8K</span> · <span class="highlight">200+</span> países conectados',
+                hint_text: 'arrastra para girar · doble clic para activar rotación automática',
+                scroll_explore: 'Explorar',
+                hero_title: 'Servicio IPTV DREAM 24K',
+                hero_desc: 'Experimente el futuro de la televisión con <span class="keyword-highlight">DREAM 24K IPTV</span>. Disfrute de 40,000+ canales, 100,000+ VOD y verdadero <span class="keyword-highlight">streaming 4K</span> con capacidades <span class="keyword-highlight">8K</span>. Fundado en 2017, ofrecemos entretenimiento premium en todo el mundo.',
+                trial_title: 'Obtenga su Prueba Gratuita — DREAM 24K IPTV',
+                trial_desc: 'Elija su método de activación. Seleccione el tipo de código y contáctenos vía WhatsApp o Telegram para recibir su prueba <strong>DREAM 24K IPTV</strong>. Experimente <strong>4K</strong> y <strong>8K</strong> al instante.',
+                panel_code_title: 'Elija su Tipo de Código',
+                panel_code_label: 'Tipo de código de activación',
+                option_m3u: 'Código M3U Activo',
+                option_xtream: 'Código Xtream',
+                option_mac: 'Dirección MAC',
+                panel_code_input: 'Su Código / MAC',
+                panel_code_hint: 'Soportamos activación M3U, Xtream y MAC',
+                panel_trial_title: 'Solicitar Prueba Gratuita',
+                panel_trial_desc: 'Contacte a nuestro equipo vía WhatsApp o Telegram para activar su prueba gratuita de 24 horas. Elija su canal preferido.',
+                btn_whatsapp: 'WhatsApp',
+                btn_telegram: 'Telegram',
+                panel_trial_hint: 'Prueba de 24 horas · Todos los canales incluidos',
+                sub_title: 'Paquetes de Suscripción DREAM 24K IPTV —',
+                sub_desc: 'Elija el plan <strong>DREAM 24K IPTV</strong> ideal. Disfrute de streaming 4K premium, canales 8K y soporte 24/7. Opciones flexibles mensuales o anuales.',
+                sub_period_monthly: 'facturado mensualmente',
+                sub_period_3: '€6.67 / mes',
+                sub_period_6: '€5.00 / mes',
+                sub_period_12: '€3.33 / mes',
+                sub_quality: 'Calidad Full HD / 4K / 8K',
+                sub_devices: 'Todos los dispositivos soportados',
+                sub_support: 'Soporte 24/7',
+                btn_subscribe: 'Suscribirse',
+                badge_best: '⭐ Mejor Valor',
+                reseller_title: 'Paquetes Revendedor DREAM 24K IPTV —',
+                reseller_desc: 'Inicie su propio negocio con nuestro programa <strong>revendedor DREAM 24K IPTV</strong>. Panel white-label, host API privado y créditos al por mayor.',
+                reseller_credits_120: '120 Créditos',
+                reseller_price_120: '€1.17 / crédito',
+                reseller_sub_120: '120 suscripciones de 1 mes',
+                reseller_panel: 'Acceso panel white-label',
+                reseller_api: 'Host API privado',
+                btn_get_starter: 'Comenzar',
+                badge_bestseller: '🔥 Más Vendido',
+                reseller_credits_360: '360 Créditos',
+                reseller_price_360: '€1.10 / crédito',
+                reseller_sub_360: '360 suscripciones de 1 mes',
+                btn_get_business: 'Negocio',
+                reseller_credits_600: '600 Créditos',
+                reseller_price_600: '€1.04 / crédito',
+                reseller_sub_600: '600 suscripciones de 1 mes',
+                btn_get_pro: 'Pro',
+                reseller_enterprise: 'Empresa',
+                reseller_custom: 'Personalizado',
+                reseller_volume: 'Precios por volumen',
+                reseller_custom_packages: 'Paquetes personalizados',
+                btn_contact: 'Contactar',
+                features_title: 'Características Potentes — DREAM 24K IPTV',
+                features_desc: 'Diseñado para la excelencia <strong>8K</strong> y <strong>4K</strong>. Herramientas modernas para revendedores y suscriptores. ProxyPass automático, hosts privados y gestión avanzada.',
+                feature_interface: 'Interfaz Moderna',
+                feature_interface_desc: 'UI limpia, rápida y responsive.',
+                feature_tools: 'Herramientas Avanzadas',
+                feature_tools_desc: 'Gestión completa de su negocio IPTV.',
+                feature_proxy: 'Auto ProxyPass',
+                feature_proxy_desc: 'Genere enlaces ProxyPass en un clic.',
+                feature_hosts: 'Hosts Privados',
+                feature_hosts_desc: 'Añada y gestione sus propios hosts privados.',
+                faq_title: 'Preguntas Frecuentes — DREAM 24K',
+                faq_desc: 'Todo lo que necesita saber sobre <strong>DREAM 24K IPTV</strong>, paquetes revendedor, <strong>streaming 4K</strong> y <strong>8K</strong>.',
+                faq_q1: '¿Qué es DREAM 24K IPTV?',
+                faq_a1: 'DREAM 24K es un servicio IPTV premium con 40,000+ canales, 100,000+ VOD y 4K/8K real. Fundado en 2017.',
+                faq_q2: '¿Cuánto cuesta una suscripción?',
+                faq_a2: 'Planes: 1 mes = 10€, 3 meses = 20€, 6 meses = 30€, 12 meses = 40€. Incluyen 4K y 8K.',
+                faq_q3: '¿Qué dispositivos son soportados?',
+                faq_a3: 'Smart TVs, Firestick, Android, iOS, MAG/STB, Windows, Mac — todos con soporte 4K/8K.',
+                faq_q4: '¿Hay prueba gratuita?',
+                faq_a4: 'Sí. Contáctenos vía WhatsApp o Telegram para una prueba gratuita de 24 horas.',
+                faq_q5: '¿Cómo funciona el programa revendedor?',
+                faq_a5: 'Compre créditos al por mayor. Cada crédito = una suscripción de 1 mes.',
+                faq_q6: '¿Qué métodos de pago aceptan?',
+                faq_a6: 'Visa, Mastercard, PayPal, Apple Pay, Google Pay y criptomonedas.',
+                cta_title: 'Soporte 24/7',
+                cta_desc: 'Nuestro equipo está disponible 24/7 vía WhatsApp, Telegram o email.',
+                contact_info: 'Información de Contacto',
+                footer_copyright: '© 2026 DREAM 24K · IPTV Premium · 4K y 8K',
+                footer_privacy: 'Privacidad',
+                error_title: 'Señal Perdida',
+                error_desc: 'La página que busca no está disponible. Verifique la URL o vuelva al inicio.',
+                error_btn: 'Volver a DREAM 24K',
+            },
+            de: {
+                nav_packages: 'Pakete',
+                nav_reseller: 'Wiederverkäufer',
+                nav_features: 'Funktionen',
+                nav_faq: 'FAQ',
+                nav_support: 'Support',
+                nav_trial: 'Kostenlos Testen',
+                map_title: '🌍 DREAM 24K IPTV · Globales Netzwerk',
+                map_desc: '<span class="highlight">40.000+</span> Live-Sender · <span class="highlight">100.000+</span> VOD · <span class="highlight">4K/8K</span> Streaming · <span class="highlight">200+</span> Länder verbunden',
+                hint_text: 'ziehen zum Drehen · Doppelklick für Auto-Rotation',
+                scroll_explore: 'Entdecken',
+                hero_title: 'DREAM 24K IPTV Service',
+                hero_desc: 'Erleben Sie die Zukunft des Fernsehens mit <span class="keyword-highlight">DREAM 24K IPTV</span>. Genießen Sie 40.000+ Live-Sender, 100.000+ VOD und echtes <span class="keyword-highlight">4K Streaming</span> mit <span class="keyword-highlight">8K</span>-Fähigkeiten. Gegründet 2017.',
+                trial_title: 'Kostenlose Testversion — DREAM 24K IPTV',
+                trial_desc: 'Wählen Sie Ihre bevorzugte Aktivierungsmethode. Kontaktieren Sie uns via WhatsApp oder Telegram für Ihre <strong>DREAM 24K IPTV</strong>-Testversion. Erleben Sie <strong>4K</strong> und <strong>8K</strong> sofort.',
+                panel_code_title: 'Wählen Sie Ihren Codetyp',
+                panel_code_label: 'Aktivierungscodetyp',
+                option_m3u: 'M3U Aktiver Code',
+                option_xtream: 'Xtream Code',
+                option_mac: 'MAC-Adresse',
+                panel_code_input: 'Ihr Code / MAC',
+                panel_code_hint: 'Wir unterstützen M3U-, Xtream- und MAC-Aktivierung',
+                panel_trial_title: 'Kostenlose Testversion anfordern',
+                panel_trial_desc: 'Kontaktieren Sie unser Support-Team via WhatsApp oder Telegram, um Ihre 24-stündige Testversion zu aktivieren.',
+                btn_whatsapp: 'WhatsApp',
+                btn_telegram: 'Telegram',
+                panel_trial_hint: '24-Stunden-Test · Alle Sender inklusive',
+                sub_title: 'DREAM 24K IPTV Abo-Pakete —',
+                sub_desc: 'Wählen Sie den idealen <strong>DREAM 24K IPTV</strong>-Plan. Genießen Sie Premium-4K-Streaming, 8K-Sender und 24/7-Support.',
+                sub_period_monthly: 'monatlich abgerechnet',
+                sub_period_3: '€6.67 / Monat',
+                sub_period_6: '€5.00 / Monat',
+                sub_period_12: '€3.33 / Monat',
+                sub_quality: 'Full HD / 4K / 8K Qualität',
+                sub_devices: 'Alle Geräte unterstützt',
+                sub_support: '24/7 Support',
+                btn_subscribe: 'Abonnieren',
+                badge_best: '⭐ Bestes Angebot',
+                reseller_title: 'DREAM 24K IPTV Wiederverkäufer-Pakete —',
+                reseller_desc: 'Starten Sie Ihr eigenes Geschäft mit unserem <strong>DREAM 24K IPTV Reseller</strong>-Programm. White-Label-Panel, private API-Hosts und Großhandelskredite.',
+                reseller_credits_120: '120 Credits',
+                reseller_price_120: '€1.17 / Credit',
+                reseller_sub_120: '120 x 1-Monats-Abos',
+                reseller_panel: 'White-Label-Panel-Zugang',
+                reseller_api: 'Private API-Hosts',
+                btn_get_starter: 'Starter',
+                badge_bestseller: '🔥 Bestseller',
+                reseller_credits_360: '360 Credits',
+                reseller_price_360: '€1.10 / Credit',
+                reseller_sub_360: '360 x 1-Monats-Abos',
+                btn_get_business: 'Business',
+                reseller_credits_600: '600 Credits',
+                reseller_price_600: '€1.04 / Credit',
+                reseller_sub_600: '600 x 1-Monats-Abos',
+                btn_get_pro: 'Pro',
+                reseller_enterprise: 'Enterprise',
+                reseller_custom: 'Individuell',
+                reseller_volume: 'Mengenpreise',
+                reseller_custom_packages: 'Individuelle Pakete',
+                btn_contact: 'Kontakt',
+                features_title: 'Leistungsstarke Funktionen — DREAM 24K IPTV',
+                features_desc: 'Entwickelt für <strong>8K</strong>- und <strong>4K</strong>-Exzellenz. Moderne Tools für Wiederverkäufer und Abonnenten. Auto-ProxyPass, private Hosts und erweiterte Verwaltung.',
+                feature_interface: 'Moderne Oberfläche',
+                feature_interface_desc: 'Saubere, schnelle, responsive UI.',
+                feature_tools: 'Erweiterte Tools',
+                feature_tools_desc: 'Komplette Verwaltung Ihres IPTV-Geschäfts.',
+                feature_proxy: 'Auto ProxyPass',
+                feature_proxy_desc: 'Generieren Sie ProxyPass-Links mit einem Klick.',
+                feature_hosts: 'Private Hosts',
+                feature_hosts_desc: 'Fügen Sie eigene private Hosts hinzu und verwalten Sie sie.',
+                faq_title: 'Häufig gestellte Fragen — DREAM 24K',
+                faq_desc: 'Alles über <strong>DREAM 24K IPTV</strong>, Reseller-Pläne, <strong>4K-Streaming</strong> und <strong>8K</strong>.',
+                faq_q1: 'Was ist DREAM 24K IPTV?',
+                faq_a1: 'DREAM 24K ist ein Premium-IPTV-Dienst mit 40.000+ Sendern, 100.000+ VOD und echtem 4K/8K. Gegründet 2017.',
+                faq_q2: 'Was kostet ein Abonnement?',
+                faq_a2: 'Pläne: 1 Monat = 10€, 3 Monate = 20€, 6 Monate = 30€, 12 Monate = 40€. Alle mit 4K & 8K.',
+                faq_q3: 'Welche Geräte werden unterstützt?',
+                faq_a3: 'Smart-TVs, Firestick, Android, iOS, MAG/STB, Windows, Mac — alle mit 4K/8K.',
+                faq_q4: 'Gibt es eine kostenlose Testversion?',
+                faq_a4: 'Ja. Kontaktieren Sie uns via WhatsApp oder Telegram für eine 24-stündige Testversion.',
+                faq_q5: 'Wie funktioniert das Reseller-Programm?',
+                faq_a5: 'Kaufen Sie Credits in Großhandelspreisen. Jeder Credit = ein 1-Monats-Abo.',
+                faq_q6: 'Welche Zahlungsmethoden werden akzeptiert?',
+                faq_a6: 'Visa, Mastercard, PayPal, Apple Pay, Google Pay und Kryptowährungen.',
+                cta_title: '24/7 Support',
+                cta_desc: 'Unser Team ist rund um die Uhr via WhatsApp, Telegram oder E-Mail verfügbar.',
+                contact_info: 'Kontaktinformationen',
+                footer_copyright: '© 2026 DREAM 24K · Premium IPTV · 4K & 8K',
+                footer_privacy: 'Datenschutz',
+                error_title: 'Signal Verloren',
+                error_desc: 'Die gesuchte Seite ist nicht verfügbar. Überprüfen Sie die URL oder kehren Sie zur Startseite zurück.',
+                error_btn: 'Zurück zu DREAM 24K',
+            },
+            ar: {
+                nav_packages: 'الباقات',
+                nav_reseller: 'الموزع',
+                nav_features: 'الميزات',
+                nav_faq: 'الأسئلة الشائعة',
+                nav_support: 'الدعم',
+                nav_trial: 'تجربة مجانية',
+                map_title: '🌍 DREAM 24K IPTV · شبكة عالمية',
+                map_desc: '<span class="highlight">40,000+</span> قناة مباشرة · <span class="highlight">100,000+</span> VOD · بث <span class="highlight">4K/8K</span> · <span class="highlight">200+</span> دولة متصلة',
+                hint_text: 'اسحب للتدوير · انقر مرتين لتبديل الدوران التلقائي',
+                scroll_explore: 'استكشف',
+                hero_title: 'خدمة DREAM 24K IPTV',
+                hero_desc: 'اختبر مستقبل التلفزيون مع <span class="keyword-highlight">DREAM 24K IPTV</span>. استمتع بأكثر من 40,000 قناة مباشرة، 100,000+ VOD، وبث <span class="keyword-highlight">4K</span> حقيقي مع إمكانيات <span class="keyword-highlight">8K</span>. تأسست في 2017.',
+                trial_title: 'احصل على تجربتك المجانية — DREAM 24K IPTV',
+                trial_desc: 'اختر طريقة التفعيل المفضلة. حدد نوع الكود وتواصل معنا عبر واتساب أو تيليجرام للحصول على تجربة <strong>DREAM 24K IPTV</strong>. استمتع بجودة <strong>4K</strong> و <strong>8K</strong> فوراً.',
+                panel_code_title: 'اختر نوع الكود',
+                panel_code_label: 'نوع كود التفعيل',
+                option_m3u: 'كود M3U النشط',
+                option_xtream: 'كود Xtream',
+                option_mac: 'عنوان MAC',
+                panel_code_input: 'كودك / MAC',
+                panel_code_hint: 'ندعم تفعيل M3U و Xtream و MAC',
+                panel_trial_title: 'طلب تجربة مجانية',
+                panel_trial_desc: 'تواصل مع فريق الدعم عبر واتساب أو تيليجرام لتفعيل تجربتك المجانية لمدة 24 ساعة.',
+                btn_whatsapp: 'واتساب',
+                btn_telegram: 'تيليجرام',
+                panel_trial_hint: 'تجربة 24 ساعة · جميع القنوات مشمولة',
+                sub_title: 'باقات اشتراك DREAM 24K IPTV —',
+                sub_desc: 'اختر خطة <strong>DREAM 24K IPTV</strong> المثالية. استمتع ببث 4K متميز، قنوات 8K، ودعم 24/7. خيارات شهرية أو سنوية مرنة.',
+                sub_period_monthly: 'فوترة شهرية',
+                sub_period_3: '€6.67 / شهرياً',
+                sub_period_6: '€5.00 / شهرياً',
+                sub_period_12: '€3.33 / شهرياً',
+                sub_quality: 'جودة Full HD / 4K / 8K',
+                sub_devices: 'جميع الأجهزة مدعومة',
+                sub_support: 'دعم 24/7',
+                btn_subscribe: 'اشتراك',
+                badge_best: '⭐ أفضل قيمة',
+                reseller_title: 'باقات موزع DREAM 24K IPTV —',
+                reseller_desc: 'ابدأ عملك الخاص مع برنامج <strong>موزع DREAM 24K IPTV</strong>. لوحة تحكم بيضاء، مضيف API خاص، وائتمانات بالجملة.',
+                reseller_credits_120: '120 رصيد',
+                reseller_price_120: '€1.17 / رصيد',
+                reseller_sub_120: '120 اشتراك لمدة شهر',
+                reseller_panel: 'الوصول إلى لوحة التحكم البيضاء',
+                reseller_api: 'مضيف API خاص',
+                btn_get_starter: 'ابدأ',
+                badge_bestseller: '🔥 الأكثر مبيعاً',
+                reseller_credits_360: '360 رصيد',
+                reseller_price_360: '€1.10 / رصيد',
+                reseller_sub_360: '360 اشتراك لمدة شهر',
+                btn_get_business: 'الأعمال',
+                reseller_credits_600: '600 رصيد',
+                reseller_price_600: '€1.04 / رصيد',
+                reseller_sub_600: '600 اشتراك لمدة شهر',
+                btn_get_pro: 'احترافي',
+                reseller_enterprise: 'مؤسسي',
+                reseller_custom: 'مخصص',
+                reseller_volume: 'تسعير حسب الحجم',
+                reseller_custom_packages: 'باقات مخصصة',
+                btn_contact: 'اتصل',
+                features_title: 'ميزات قوية — DREAM 24K IPTV',
+                features_desc: 'مصمم لإتقان <strong>8K</strong> و <strong>4K</strong>. أدوات حديثة للموزعين والمشتركين. ProxyPass تلقائي، مضيفين خاصين وإدارة متقدمة.',
+                feature_interface: 'واجهة حديثة',
+                feature_interface_desc: 'واجهة نظيفة وسريعة ومتجاوبة.',
+                feature_tools: 'أدوات متقدمة',
+                feature_tools_desc: 'إدارة كاملة لأعمال IPTV الخاصة بك.',
+                feature_proxy: 'Auto ProxyPass',
+                feature_proxy_desc: 'أنشئ روابط ProxyPass بنقرة واحدة.',
+                feature_hosts: 'مضيفين خاصين',
+                feature_hosts_desc: 'أضف وأدر مضيفيك الخاصين.',
+                faq_title: 'الأسئلة الشائعة — DREAM 24K',
+                faq_desc: 'كل ما تريد معرفته عن <strong>DREAM 24K IPTV</strong>، خطط الموزع، <strong>بث 4K</strong> و <strong>8K</strong>.',
+                faq_q1: 'ما هو DREAM 24K IPTV؟',
+                faq_a1: 'DREAM 24K هي خدمة IPTV متميزة مع 40,000+ قناة، 100,000+ VOD، و 4K/8K حقيقي. تأسست في 2017.',
+                faq_q2: 'كم تكلفة الاشتراك؟',
+                faq_a2: 'الخطط: شهر = 10€، 3 أشهر = 20€، 6 أشهر = 30€، 12 شهر = 40€. جميعها تتضمن 4K و 8K.',
+                faq_q3: 'ما هي الأجهزة المدعومة؟',
+                faq_a3: 'التلفزيونات الذكية، Firestick، Android، iOS، MAG/STB، Windows، Mac — جميعها تدعم 4K/8K.',
+                faq_q4: 'هل هناك تجربة مجانية؟',
+                faq_a4: 'نعم. تواصل معنا عبر واتساب أو تيليجرام للحصول على تجربة مجانية لمدة 24 ساعة.',
+                faq_q5: 'كيف يعمل برنامج الموزع؟',
+                faq_a5: 'اشترِ ائتمانات بالجملة. كل ائتمان = اشتراك لمدة شهر. مثالي للموزعين.',
+                faq_q6: 'ما هي طرق الدفع المقبولة؟',
+                faq_a6: 'Visa، Mastercard، PayPal، Apple Pay، Google Pay، والعملات المشفرة.',
+                cta_title: 'دعم 24/7',
+                cta_desc: 'فريق الدعم متاح على مدار الساعة عبر واتساب، تيليجرام، أو البريد الإلكتروني.',
+                contact_info: 'معلومات الاتصال',
+                footer_copyright: '© 2026 DREAM 24K · IPTV المتميز · 4K و 8K',
+                footer_privacy: 'الخصوصية',
+                error_title: 'فقدان الإشارة',
+                error_desc: 'الصفحة التي تبحث عنها غير متوفرة. تحقق من الرابط أو عد إلى الصفحة الرئيسية.',
+                error_btn: 'العودة إلى DREAM 24K',
+            }
+        };
+
+        // ============================================================
+        // LANGUAGE SWITCHER
+        // ============================================================
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            const lang = this.value;
+            applyTranslations(lang);
+            // Store preference
+            localStorage.setItem('preferred_lang', lang);
+        });
+
+        function applyTranslations(lang) {
+            const dict = translations[lang];
+            if (!dict) return;
+
+            // All elements with data-key attribute
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (dict[key] !== undefined) {
+                    // For elements with HTML content (like map_desc, hero_desc)
+                    if (key === 'map_desc' || key === 'hero_desc' || key === 'trial_desc' || key === 'sub_desc' ||
+                        key === 'reseller_desc' || key === 'features_desc' || key === 'faq_desc' ||
+                        key === 'cta_desc' || key === 'error_desc') {
+                        el.innerHTML = dict[key];
+                    } else {
+                        el.textContent = dict[key];
+                    }
+                }
+            });
+
+            // Handle special cases: select options with data-key
+            document.querySelectorAll('select option[data-key]').forEach(opt => {
+                const key = opt.getAttribute('data-key');
+                if (dict[key] !== undefined) {
+                    opt.textContent = dict[key];
+                }
+            });
+
+            // Update placeholder for code input
+            const codeInput = document.getElementById('codeInput');
+            if (codeInput) {
+                const placeholders = {
+                    en: 'Enter your code or MAC address',
+                    fr: 'Entrez votre code ou adresse MAC',
+                    es: 'Ingrese su código o dirección MAC',
+                    de: 'Geben Sie Ihren Code oder MAC-Adresse ein',
+                    ar: 'أدخل الكود أو عنوان MAC الخاص بك'
+                };
+                codeInput.placeholder = placeholders[lang] || placeholders.en;
+            }
+
+            // Update document lang attribute
+            document.documentElement.lang = lang;
+
+            console.log(`🌐 Language switched to: ${lang}`);
+        }
+
+        // ============================================================
+        // RESTORE PREFERRED LANGUAGE
+        // ============================================================
+        (function restoreLanguage() {
+            const saved = localStorage.getItem('preferred_lang');
+            if (saved && translations[saved]) {
+                document.getElementById('languageSelect').value = saved;
+                applyTranslations(saved);
+            }
+        })();
+
+        // ============================================================
+        // ALL OTHER INTERACTIONS
+        // ============================================================
         (function() {
             console.log('✨ DREAM 24K · Premium IPTV · 4K & 8K Streaming');
 
-            // Dynamic footer year
-            const footer = document.querySelector('.footer');
-            if (footer) {
-                const yearSpan = footer.querySelector('div');
-                if (yearSpan) {
-                    const currentYear = new Date().getFullYear();
-                    yearSpan.textContent = `© ${currentYear} DREAM 24K · Premium IPTV · 4K & 8K Streaming`;
-                }
-            }
+            // --- Mobile menu toggle ---
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
 
-            // Trial buttons - WhatsApp
-            document.getElementById('whatsappTrial')?.addEventListener('click', (e) => {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navLinks.classList.toggle('open');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('open');
+                });
+            });
+
+            // --- Header scroll effect ---
+            const header = document.getElementById('mainHeader');
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                if (currentScroll > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // --- Logo home button ---
+            document.getElementById('logoHome').addEventListener('click', (e) => {
                 e.preventDefault();
-                const codeType = document.querySelector('.activation-panel select')?.value || 'M3U';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (document.getElementById('errorPage').classList.contains('active')) {
+                    window.goHome();
+                }
+            });
+
+            // --- Navigation links (smooth scroll) ---
+            document.querySelectorAll('.nav-links a[data-section]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('data-section');
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // --- Support link ---
+            document.getElementById('supportLink').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector('.cta-section')?.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // --- Header Trial button ---
+            document.getElementById('headerTrialBtn').addEventListener('click', (e) => {
+                e.preventDefault();
+                const panel = document.getElementById('activationPanel');
+                panel?.scrollIntoView({ behavior: 'smooth' });
+                if (panel) {
+                    panel.classList.add('highlight');
+                    setTimeout(() => panel.classList.remove('highlight'), 2000);
+                }
+            });
+
+            // --- Trial buttons ---
+            document.getElementById('whatsappTrial').addEventListener('click', (e) => {
+                e.preventDefault();
+                const codeType = document.getElementById('codeTypeSelect').value.toUpperCase();
+                const code = document.getElementById('codeInput').value;
                 alert('📱 WhatsApp Trial Request\n\n' +
                     'Contact us on WhatsApp to activate your 24-hour trial.\n' +
-                    'Code Type: ' + codeType.toUpperCase() + '\n' +
+                    'Code Type: ' + codeType + '\n' +
+                    'Your Code: ' + code + '\n' +
                     'Phone: +212 663-087765\n\n' +
                     'Send us your code to get started!');
             });
 
-            // Trial buttons - Telegram
-            document.getElementById('telegramTrial')?.addEventListener('click', (e) => {
+            document.getElementById('telegramTrial').addEventListener('click', (e) => {
                 e.preventDefault();
-                const codeType = document.querySelector('.activation-panel select')?.value || 'M3U';
+                const codeType = document.getElementById('codeTypeSelect').value.toUpperCase();
+                const code = document.getElementById('codeInput').value;
                 alert('📱 Telegram Trial Request\n\n' +
                     'Contact us on Telegram to activate your 24-hour trial.\n' +
-                    'Code Type: ' + codeType.toUpperCase() + '\n' +
+                    'Code Type: ' + codeType + '\n' +
+                    'Your Code: ' + code + '\n' +
                     'Username: @reselleriptvcom\n\n' +
                     'Send us your code to get started!');
             });
 
-            // Subscribe buttons
-            document.querySelectorAll('.btn-primary').forEach(btn => {
+            // --- Subscribe buttons ---
+            document.querySelectorAll('.subscribe-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    alert('📺 DREAM 24K IPTV — Subscription selected.\nProceed to payment gateway.');
+                    const card = btn.closest('.card');
+                    const price = card?.querySelector('.price')?.textContent?.trim() || 'selected plan';
+                    alert('📺 DREAM 24K IPTV — Subscription ' + price + ' selected.\nProceed to payment gateway.');
                 });
             });
 
-            // Reseller buttons
-            document.querySelectorAll('.btn-outline-gold').forEach(btn => {
+            // --- Reseller buttons ---
+            document.querySelectorAll('.reseller-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    alert('🚀 DREAM 24K IPTV Reseller — Contact our sales team for details.');
+                    const card = btn.closest('.reseller-card');
+                    const credit = card?.querySelector('.credit')?.textContent?.trim() || 'selected package';
+                    alert('🚀 DREAM 24K IPTV Reseller — ' + credit + ' package selected.\nContact our sales team for details.');
                 });
             });
 
-            // Contact buttons
-            document.querySelectorAll('.contact-btn').forEach(btn => {
+            // --- Contact buttons ---
+            document.querySelectorAll('.contact-support').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    alert('📱 Contact DREAM 24K IPTV support via ' + btn.textContent.trim());
+                    alert('📱 Contact DREAM 24K IPTV support via ' + btn.textContent.trim() + '\n\n' +
+                        'Phone: +212 663-087765\n' +
+                        'Telegram: @reselleriptvcom\n' +
+                        'Email: support@reselleriptv.com');
                 });
             });
 
-            // Feature items
+            // --- Footer support buttons ---
+            document.querySelectorAll('.footer-support').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('📱 Contact DREAM 24K IPTV support\n\n' +
+                        'Phone: +212 663-087765\n' +
+                        'Telegram: @reselleriptvcom\n' +
+                        'Email: support@reselleriptv.com');
+                });
+            });
+
+            // --- Footer Privacy ---
+            document.getElementById('footerPrivacy').addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('🔒 Privacy Policy\n\n' +
+                    'DREAM 24K IPTV respects your privacy. We collect minimal data to provide our service.\n' +
+                    'For full details, please contact our support team.');
+            });
+
+            // --- Footer 404 test ---
+            document.getElementById('footer404').addEventListener('click', (e) => {
+                e.preventDefault();
+                window.show404();
+            });
+
+            // --- Feature items ---
             document.querySelectorAll('.feature-item').forEach(item => {
                 item.addEventListener('click', () => {
                     alert('✨ DREAM 24K IPTV feature: ' + item.querySelector('h4')?.textContent || '');
                 });
             });
 
-            // 404 page demo
+            // --- 404 page functions ---
             window.show404 = function() {
                 document.getElementById('earth-container').classList.add('hidden');
                 document.getElementById('mainContent').classList.add('hidden');
                 document.getElementById('errorPage').classList.add('active');
+                document.querySelector('.header').style.position = 'relative';
+                document.querySelector('.header').style.background = 'rgba(11,13,21,0.98)';
             };
 
             window.goHome = function() {
                 document.getElementById('earth-container').classList.remove('hidden');
                 document.getElementById('mainContent').classList.remove('hidden');
                 document.getElementById('errorPage').classList.remove('active');
+                document.querySelector('.header').style.position = 'fixed';
+                document.querySelector('.header').style.background = 'rgba(11,13,21,0.85)';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             };
 
-            document.getElementById('goHome')?.addEventListener('click', (e) => {
+            document.getElementById('goHome').addEventListener('click', (e) => {
                 e.preventDefault();
                 window.goHome();
             });
 
-            console.log('✅ DREAM 24K IPTV — All sections loaded.');
+            // --- Dynamic footer year ---
+            const footerYear = document.querySelector('.footer div:first-child');
+            if (footerYear) {
+                const currentYear = new Date().getFullYear();
+                // We set via translation, but keep year dynamic
+                const lang = document.getElementById('languageSelect').value;
+                const dict = translations[lang];
+                if (dict && dict.footer_copyright) {
+                    footerYear.textContent = dict.footer_copyright.replace('2026', currentYear);
+                }
+            }
+
+            console.log('✅ DREAM 24K IPTV — All sections loaded. Multi-language enabled.');
             console.log('🔑 Keywords: DREAM 24K IPTV, DREAM 24K IPTV subscription, DREAM 24K IPTV reseller, 8K stream, 4K streaming.');
             console.log('💡 Type "show404()" in console to see the 404 page.');
         })();
