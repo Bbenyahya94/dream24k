@@ -3,285 +3,1820 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dream 24K IPTV - Premium IPTV Subscription & Reseller Panel</title>
-    <meta name="description" content="Dream 24K IPTV - Premium IPTV subscription with 40,000+ channels, 100,000+ VOD, 4K UHD. Best IPTV reseller panel worldwide." />
-    <meta name="keywords" content="Dream 24K IPTV, Dream24K IPTV, IPTV Subscription, IPTV Reseller, Premium IPTV, 4K IPTV, IPTV Panel" />
-    <link rel="canonical" href="https://d24kiptv.com/" />
+    <title>DREAM 24K IPTV · Premium 4K & 8K Streaming</title>
+    <meta name="description" content="DREAM 24K IPTV offers premium 4K & 8K streaming with 40,000+ channels, VOD, and reseller plans. Subscribe now for the ultimate IPTV experience." />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #0b0d15;
+            color: #eef2f6;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== 3D EARTH CONTAINER ===== */
+        #earth-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            background: #050510;
+            overflow: hidden;
+        }
+
+        #earth-container canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* ===== MAP OVERLAY TITLE & DESCRIPTION (animated) ===== */
+        .map-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 15;
+            text-align: center;
+            pointer-events: none;
+            width: 90%;
+            max-width: 700px;
+        }
+
+        .map-overlay h2 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(145deg, #ffffff 20%, #f7b731);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+            animation: mapTitlePulse 4s ease-in-out infinite;
+            text-shadow: 0 0 60px rgba(247, 183, 49, 0.15);
+        }
+
+        .map-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            animation: mapDescFade 5s ease-in-out infinite;
+            backdrop-filter: blur(2px);
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .map-overlay .highlight {
+            color: #f7b731;
+            -webkit-text-fill-color: #f7b731;
+            font-weight: 700;
+        }
+
+        @keyframes mapTitlePulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.02);
+                opacity: 0.95;
+            }
+        }
+
+        @keyframes mapDescFade {
+            0%,
+            100% {
+                opacity: 0.7;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-3px);
+            }
+        }
+
+        /* ===== LOGO BLOCK (overlay on 3D) ===== */
+        .logo-block {
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 30;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(16px);
+            padding: 10px 28px 10px 18px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.08), inset 0 0 60px rgba(255, 215, 0, 0.03);
+            pointer-events: none;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+        @keyframes logoFloat {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-4px);
+            }
+        }
+
+        .logo-icon {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .logo-icon .ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top-color: #ffd700;
+            border-right-color: #ffaa00;
+            animation: spinRing 3s linear infinite;
+        }
+        .logo-icon .ring::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1.5px solid transparent;
+            border-bottom-color: rgba(255, 215, 0, 0.3);
+            border-left-color: rgba(255, 215, 0, 0.3);
+            animation: spinRing 4s linear infinite reverse;
+        }
+        @keyframes spinRing {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .logo-icon .icon-bg {
+            position: absolute;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 40% 35%, #ffd70022, #ff880011);
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
+
+        .logo-icon i {
+            position: relative;
+            z-index: 2;
+            font-size: 20px;
+            color: #ffd700;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: pulseIcon 1.8s ease-in-out infinite;
+            margin-left: 3px;
+        }
+        @keyframes pulseIcon {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        .logo-text .brand {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+        }
+        .logo-text .brand span {
+            color: #ffd700;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            animation: goldPulse 2.5s ease-in-out infinite;
+        }
+        @keyframes goldPulse {
+            0%,
+            100% {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(255, 215, 0, 0.6), 0 0 80px rgba(255, 215, 0, 0.2);
+            }
+        }
+        .logo-text .sub {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 2px;
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .logo-text .sub i {
+            color: #ffd700;
+            font-size: 10px;
+        }
+
+        /* ===== HINT TEXT ===== */
+        #hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 12px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 24px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            pointer-events: none;
+            z-index: 20;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+        #hint i {
+            color: rgba(255, 215, 0, 0.3);
+            margin: 0 6px;
+        }
+
+        /* ===== SCROLL DOWN INDICATOR ===== */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 25;
+            color: rgba(255, 215, 0, 0.4);
+            font-size: 14px;
+            animation: bounceDown 2s ease-in-out infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            pointer-events: none;
+        }
+        .scroll-indicator i {
+            font-size: 20px;
+        }
+        @keyframes bounceDown {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translateX(-50%) translateY(8px);
+                opacity: 1;
+            }
+        }
+
+        /* ===== MAIN CONTENT (below 3D) ===== */
+        .main-content {
+            background: #0b0d15;
+            padding: 3rem 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.8rem;
+        }
+
+        /* ===== H1, H2, H3, H4 ===== */
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(145deg, #ffffff 20%, #b0c4de);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.2rem;
+        }
+
+        h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin: 4rem 0 1rem;
+            letter-spacing: -0.5px;
+            position: relative;
+            color: #eef2f6;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #f7b731;
+            margin-top: 0.5rem;
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f7b731;
+            margin: 2rem 0 0.8rem;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #eef2f6;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        /* ===== SECTION SUBTITLES (exactly 160 chars) ===== */
+        .section-sub {
+            color: #94a3b8;
+            margin-bottom: 2.8rem;
+            font-size: 1.1rem;
+            max-width: 720px;
+            line-height: 1.7;
+        }
+
+        .section-sub-hero {
+            color: #a0aec0;
+            font-size: 1.25rem;
+            max-width: 680px;
+            margin: 0 auto 2.2rem;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* ===== HERO (separate from map) ===== */
+        .hero-section {
+            text-align: center;
+            padding: 2rem 0 1rem;
+        }
+
+        .hero-section p {
+            color: #a0aec0;
+            font-size: 1.25rem;
+            max-width: 680px;
+            margin: 0 auto 2.2rem;
+            line-height: 1.8;
+        }
+
+        /* ===== ACTIVATION PANEL (Trial + Codes) ===== */
+        .activation-panel {
+            background: linear-gradient(145deg, #141824, #1a1f2e);
+            border-radius: 32px;
+            padding: 2.5rem 2.8rem;
+            margin: 2rem 0 3.5rem;
+            border: 1px solid #2d3348;
+        }
+
+        .activation-panel .panel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .activation-panel .panel-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f7b731;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .activation-panel .panel-title i {
+            font-size: 1.6rem;
+        }
+
+        .activation-panel .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .activation-panel label {
+            display: block;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.5px;
+        }
+
+        .activation-panel select,
+        .activation-panel input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid #2d3348;
+            background: #0b0d15;
+            color: #eef2f6;
+            font-size: 0.95rem;
+            transition: border 0.3s;
+            outline: none;
+        }
+
+        .activation-panel select:focus,
+        .activation-panel input:focus {
+            border-color: #f7b731;
+            box-shadow: 0 0 0 3px rgba(247, 183, 49, 0.15);
+        }
+
+        .activation-panel select option {
+            background: #141824;
+        }
+
+        .activation-panel .btn-gold {
+            background: #f7b731;
+            color: #0b0d15;
+            font-weight: 700;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .activation-panel .btn-gold:hover {
+            background: #e8a820;
+            transform: scale(0.98);
+        }
+
+        .activation-panel .code-hint {
+            color: #64748b;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .activation-panel .code-hint i {
+            color: #f7b731;
+        }
+
+        .activation-panel .divider {
+            border-left: 1px solid #2d3348;
+            padding-left: 2.5rem;
+        }
+
+        .trial-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .trial-btn {
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 600;
+            border: 1px solid #2d3348;
+            background: #1e2230;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .trial-btn i {
+            color: #f7b731;
+        }
+
+        .trial-btn:hover {
+            background: #f7b731;
+            color: #0b0d15;
+            border-color: #f7b731;
+        }
+
+        .trial-btn:hover i {
+            color: #0b0d15;
+        }
+
+        @media (max-width: 860px) {
+            .activation-panel .panel-grid {
+                grid-template-columns: 1fr;
+            }
+            .activation-panel .divider {
+                border-left: none;
+                padding-left: 0;
+                border-top: 1px solid #2d3348;
+                padding-top: 2rem;
+            }
+            .activation-panel {
+                padding: 1.8rem;
+            }
+            .trial-buttons {
+                flex-direction: column;
+            }
+            .map-overlay h2 {
+                font-size: 1.8rem;
+            }
+            .map-overlay p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ===== CARDS (subscription & reseller) ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .card {
+            background: #141824;
+            border-radius: 28px;
+            padding: 2rem 1.6rem;
+            border: 1px solid #262d44;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #f7b73160;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .card .price {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: white;
+            margin: 0.5rem 0 0.2rem;
+        }
+
+        .card .price small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #94a3b8;
+            margin-left: 0.2rem;
+        }
+
+        .card .period {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #262d44;
+            padding-bottom: 1rem;
+        }
+
+        .card ul {
+            list-style: none;
+            margin: 1.2rem 0 1.8rem;
+        }
+
+        .card ul li {
+            padding: 0.35rem 0;
+            color: #cbd5e0;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.95rem;
+        }
+
+        .card ul li i {
+            color: #f7b731;
+            width: 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .badge-best {
+            background: #f7b731;
+            color: #0b0d15;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #f7b731;
+            color: #0b0d15;
+            font-weight: 700;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: #e8a820;
+            transform: scale(0.97);
+        }
+
+        /* ===== RESELLER CARDS ===== */
+        .reseller-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 3.5rem;
+        }
+
+        .reseller-card {
+            background: #141824;
+            border-radius: 28px;
+            padding: 2rem 1.6rem;
+            border: 1px solid #262d44;
+            transition: 0.25s ease;
+        }
+
+        .reseller-card:hover {
+            border-color: #f7b73180;
+            transform: translateY(-4px);
+        }
+
+        .reseller-card .credit {
+            font-size: 1.9rem;
+            font-weight: 700;
+        }
+
+        .reseller-card .price {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .reseller-card .price small {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            font-weight: 400;
+        }
+
+        .reseller-card ul {
+            list-style: none;
+            margin: 1.2rem 0 1.5rem;
+        }
+
+        .reseller-card ul li {
+            padding: 0.3rem 0;
+            color: #cbd5e0;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.9rem;
+        }
+
+        .reseller-card ul li i {
+            color: #f7b731;
+            width: 1.2rem;
+        }
+
+        .btn-outline-gold {
+            border: 1px solid #f7b731;
+            color: #f7b731;
+            background: transparent;
+            padding: 0.6rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+            transition: 0.2s;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-outline-gold:hover {
+            background: #f7b731;
+            color: #0b0d15;
+        }
+
+        /* ===== FEATURES ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0 3.5rem;
+        }
+
+        .feature-item {
+            background: #141824;
+            padding: 2rem 1.2rem;
+            border-radius: 28px;
+            text-align: center;
+            border: 1px solid #262d44;
+            transition: 0.2s;
+            cursor: default;
+        }
+
+        .feature-item:hover {
+            border-color: #f7b73160;
+        }
+
+        .feature-item i {
+            font-size: 2.4rem;
+            color: #f7b731;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 2.5rem;
+            margin: 2rem 0 3.5rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #262d44;
+            padding: 1rem 0;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+            color: #eef2f6;
+        }
+
+        .faq-item p {
+            color: #a0aec0;
+            font-size: 0.95rem;
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            background: linear-gradient(145deg, #141824, #1a1f2e);
+            border-radius: 48px;
+            padding: 3rem 2.8rem;
+            margin: 3rem 0;
+            border: 1px solid #2d3348;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .cta-section h2 {
+            margin: 0;
+        }
+
+        .cta-section h2::after {
+            display: none;
+        }
+
+        .cta-section p {
+            color: #a0aec0;
+            max-width: 460px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-btn {
+            background: #1e2230;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            border: 1px solid #2d3348;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .contact-btn i {
+            color: #f7b731;
+        }
+
+        .contact-btn:hover {
+            background: #f7b731;
+            color: #0b0d15;
+            border-color: #f7b731;
+        }
+
+        .contact-btn:hover i {
+            color: #0b0d15;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid #1e2230;
+            padding: 2.5rem 0 1.8rem;
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #f7b731;
+        }
+
+        .keyword-highlight {
+            color: #f7b731;
+            font-weight: 600;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 760px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+            h2 {
+                font-size: 1.9rem;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-section {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem 1.5rem;
+            }
+            .logo-block {
+                top: 12px;
+                padding: 6px 16px 6px 12px;
+                gap: 10px;
+                border-radius: 40px;
+            }
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+            }
+            .logo-icon .icon-bg {
+                width: 28px;
+                height: 28px;
+            }
+            .logo-icon i {
+                font-size: 15px;
+            }
+            .logo-text .brand {
+                font-size: 16px;
+            }
+            .logo-text .sub {
+                font-size: 8px;
+            }
+            #hint {
+                font-size: 9px;
+                padding: 5px 14px;
+                bottom: 16px;
+            }
+            .scroll-indicator {
+                bottom: 60px;
+            }
+            .activation-panel {
+                padding: 1.5rem;
+            }
+            .hero-section p {
+                font-size: 1.05rem;
+            }
+            .map-overlay h2 {
+                font-size: 1.5rem;
+            }
+            .map-overlay p {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.8rem;
+            }
+        }
+
+        /* ===== 404 PAGE ===== */
+        .error-page {
+            display: none;
+            text-align: center;
+            padding: 6rem 2rem;
+            min-height: 70vh;
+            background: #0b0d15;
+        }
+
+        .error-page .big {
+            font-size: 8rem;
+            font-weight: 800;
+            color: #f7b731;
+            text-shadow: 0 0 60px rgba(247, 183, 49, 0.2);
+        }
+
+        .error-page h2 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+        }
+
+        .error-page h2::after {
+            display: none;
+        }
+
+        .error-page p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .error-page .btn-home {
+            display: inline-block;
+            background: #f7b731;
+            color: #0b0d15;
+            font-weight: 700;
+            padding: 0.8rem 2.5rem;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .error-page .btn-home:hover {
+            background: #e8a820;
+            transform: scale(1.02);
+        }
+
+        .error-page .error-icon {
+            font-size: 4rem;
+            color: #f7b731;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .error-page.active {
+            display: block;
+        }
+
+        .main-content.hidden {
+            display: none;
+        }
+
+        #earth-container.hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="site-wrapper">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo-block">
-                <div class="logo-icon"><i class="fas fa-play"></i></div>
-                <div class="logo-text">
-                    <div class="brand">DREAM <span>24K</span></div>
-                    <div class="sub"><i class="fas fa-crown"></i> Premium IPTV Panel</div>
-                </div>
-            </div>
-            <div class="header-right">
-                <div class="trial-buttons">
-                    <a href="#" class="btn-trial-whatsapp" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-whatsapp"></i> <span>Trial</span></a>
-                    <a href="#" class="btn-trial-telegram" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')"><i class="fab fa-telegram-plane"></i> <span>Trial</span></a>
-                </div>
-                <a href="#packages" class="btn-gold"><i class="fas fa-rocket"></i> Subscribe</a>
-            </div>
-        </header>
 
-        <!-- Navigation -->
-        <nav class="page-nav">
-            <button class="nav-btn active" data-page="home"><i class="fas fa-home"></i> Home</button>
-            <button class="nav-btn" data-page="subscriptions"><i class="fas fa-tv"></i> Subscriptions</button>
-            <button class="nav-btn" data-page="reseller"><i class="fas fa-store"></i> Reseller</button>
-            <button class="nav-btn" data-page="features"><i class="fas fa-cogs"></i> Features</button>
-            <button class="nav-btn" data-page="faq"><i class="fas fa-question-circle"></i> FAQ</button>
-            <button class="nav-btn" data-page="support"><i class="fas fa-headset"></i> Support</button>
-        </nav>
+    <!-- ===== 3D EARTH WITH OVERLAY ===== -->
+    <div id="earth-container">
+        <!-- MAP OVERLAY TITLE & DESCRIPTION (animated) -->
+        <div class="map-overlay">
+            <h2>🌍 DREAM 24K IPTV · Global Network</h2>
+            <p>
+                <span class="highlight">40,000+</span> live channels · 
+                <span class="highlight">100,000+</span> VOD · 
+                <span class="highlight">4K/8K</span> streaming · 
+                <span class="highlight">200+</span> countries connected
+            </p>
+        </div>
 
-        <!-- Page: Home -->
-        <div id="page-home" class="page-content active">
-            <!-- Hero Section -->
-            <div class="hero-wrapper">
-                <canvas id="heroCanvas"></canvas>
-                <div class="hero-content-overlay">
-                    <div class="hero-card">
-                        <h1 class="hero-tagline">DREAM <span>24K</span> · DREAM <span>4K</span></h1>
-                        <div class="hero-sub">Premium IPTV · 40,000+ Channels · 100,000+ VOD · 4K UHD</div>
-                        <div class="hero-keywords">
-                            <span>#Dream24K</span> <span>#Dream4K</span> <span>#IPTV</span> <span>#4KUHD</span> <span>#ResellerPanel</span>
-                        </div>
-                        <div class="hero-desc">
-                            <strong>Dream 24K IPTV</strong> is the ultimate evolution of Dream4K IPTV, delivering premium IPTV subscription services with 40,000+ live channels, 100,000+ Video-On-Demand, and true 4K UHD quality. Trusted by resellers and viewers in 120+ countries.
-                        </div>
-                        <div class="hero-badges">
-                            <span><i class="fas fa-bolt"></i> 99.9% Uptime</span>
-                            <span><i class="fas fa-shield-alt"></i> Secure SSL</span>
-                            <span><i class="fas fa-headset"></i> 24/7 Support</span>
-                            <span><i class="fas fa-globe"></i> 120+ Countries</span>
-                        </div>
-                    </div>
-                </div>
+        <!-- LOGO ANIMATION -->
+        <div class="logo-block">
+            <div class="logo-icon">
+                <div class="ring"></div>
+                <div class="icon-bg"></div>
+                <i class="fas fa-play"></i>
             </div>
-
-            <!-- Packages Section -->
-            <div class="section-title" id="packages">IPTV <span>Subscription</span> Packages</div>
-            <div class="section-sub">Choose the perfect subscription plan for your entertainment needs.</div>
-            <div class="packages-grid">
-                <div class="package-card">
-                    <div class="plan-name">1 Month</div>
-                    <div class="plan-price">10€</div>
-                    <div class="plan-period">billed monthly</div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> Full HD / 4K Quality</li>
-                        <li><i class="fas fa-check"></i> All Devices Supported</li>
-                        <li><i class="fas fa-check"></i> 24/7 Support</li>
-                    </ul>
-                    <div class="btn-group">
-                        <a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to subscribe to the 1 Month plan - 10€')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="#" class="btn-plan telegram" onclick="openTelegram('I want to subscribe to the 1 Month plan - 10€')"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                    </div>
-                </div>
-                <div class="package-card popular">
-                    <div class="badge">⭐ Best Value</div>
-                    <div class="plan-name">3 Months</div>
-                    <div class="plan-price">20€</div>
-                    <div class="plan-period">€6.67 / month</div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> Full HD / 4K Quality</li>
-                        <li><i class="fas fa-check"></i> All Devices Supported</li>
-                        <li><i class="fas fa-check"></i> 24/7 Support</li>
-                    </ul>
-                    <div class="btn-group">
-                        <a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to subscribe to the 3 Months plan - 20€')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to subscribe to the 3 Months plan - 20€')"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                    </div>
-                </div>
-                <div class="package-card">
-                    <div class="plan-name">6 Months</div>
-                    <div class="plan-price">30€</div>
-                    <div class="plan-period">€5.00 / month</div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> Full HD / 4K Quality</li>
-                        <li><i class="fas fa-check"></i> All Devices Supported</li>
-                        <li><i class="fas fa-check"></i> 24/7 Support</li>
-                    </ul>
-                    <div class="btn-group">
-                        <a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to subscribe to the 6 Months plan - 30€')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="#" class="btn-plan telegram" onclick="openTelegram('I want to subscribe to the 6 Months plan - 30€')"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                    </div>
-                </div>
-                <div class="package-card">
-                    <div class="plan-name">12 Months</div>
-                    <div class="plan-price">40€</div>
-                    <div class="plan-period">€3.33 / month</div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> Full HD / 4K Quality</li>
-                        <li><i class="fas fa-check"></i> All Devices Supported</li>
-                        <li><i class="fas fa-check"></i> 24/7 Support</li>
-                    </ul>
-                    <div class="btn-group">
-                        <a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to subscribe to the 12 Months plan - 40€')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to subscribe to the 12 Months plan - 40€')"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Reseller Packages -->
-            <div class="section-title">IPTV <span>Reseller</span> Packages</div>
-            <div class="section-sub">Start your own IPTV business with our white-label reseller plans.</div>
-            <div class="packages-grid">
-                <div class="package-card">
-                    <div class="reseller-badge"><i class="fas fa-store"></i> Starter</div>
-                    <div class="plan-name">120 Credits</div>
-                    <div class="plan-price">140€</div>
-                    <div class="plan-period">€1.17 / credit</div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 120 x 1-month subscriptions</li>
-                        <li><i class="fas fa-check"></i> White-label panel access</li>
-                        <li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li>
-                    </ul>
-                    <div class="btn-group">
-                        <a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to start as a reseller with 120 Credits - 140€')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="#" class="btn-plan telegram" onclick="openTelegram('I want to start as a reseller with 120 Credits - 140€')"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                    </div>
-                </div>
-                <div class="package-card popular">
-                    <div class="badge">🔥 Best Seller</div>
-                    <div class="reseller-badge"><i class="fas fa-rocket"></i> Business</div>
-                    <div class="plan-name">360 Credits</div>
-                    <div class="plan-price">395€</div>
-                    <div class="plan-period">€1.10 / credit</div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 360 x 1-month subscriptions</li>
-                        <li><i class="fas fa-check"></i> White-label panel access</li>
-                        <li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li>
-                    </ul>
-                    <div class="btn-group">
-                        <a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to start as a reseller with 360 Credits - 395€')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to start as a reseller with 360 Credits - 395€')"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                    </div>
-                </div>
-                <div class="package-card">
-                    <div class="reseller-badge"><i class="fas fa-crown"></i> Pro</div>
-                    <div class="plan-name">600 Credits</div>
-                    <div class="plan-price">625€</div>
-                    <div class="plan-period">€1.04 / credit</div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 600 x 1-month subscriptions</li>
-                        <li><i class="fas fa-check"></i> White-label panel access</li>
-                        <li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li>
-                    </ul>
-                    <div class="btn-group">
-                        <a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to start as a reseller with 600 Credits - 625€')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="#" class="btn-plan telegram" onclick="openTelegram('I want to start as a reseller with 600 Credits - 625€')"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                    </div>
-                </div>
-                <div class="package-card">
-                    <div class="reseller-badge"><i class="fas fa-gem"></i> Enterprise</div>
-                    <div class="plan-name">Custom</div>
-                    <div class="plan-price">Contact</div>
-                    <div class="plan-period">Volume pricing</div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> Custom credit packages</li>
-                        <li><i class="fas fa-check"></i> White-label panel access</li>
-                        <li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li>
-                    </ul>
-                    <div class="btn-group">
-                        <a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to start as a reseller with a Custom Enterprise package')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to start as a reseller with a Custom Enterprise package')"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Free Trial -->
-            <div class="section-title" id="trial">Request Your <span>Free Trial</span></div>
-            <div class="section-sub">Contact us via WhatsApp or Telegram for a 24-hour free trial.</div>
-            <div class="trial-section">
-                <div class="trial-info">
-                    <h3><i class="fas fa-headset"></i> Get in Touch</h3>
-                    <p>Our team is available 24/7 via WhatsApp, Telegram, or email.</p>
-                    <div class="contact-details">
-                        <div><span class="label">📱 WhatsApp:</span> <a href="#" onclick="openWhatsApp('I want to start a free trial with Dream24K IPTV')">+212 663-087765</a></div>
-                        <div><span class="label">📱 Telegram:</span> <a href="#" onclick="openTelegram('I want to start a free trial with Dream24K IPTV')">@reselleriptvcom</a></div>
-                        <div><span class="label">✉️ Email:</span> <a href="mailto:support@reselleriptv.com">support@reselleriptv.com</a></div>
-                    </div>
-                </div>
+            <div class="logo-text">
+                <div class="brand">DREAM <span>24K</span></div>
+                <div class="sub"><i class="fas fa-crown"></i> Premium IPTV Panel</div>
             </div>
         </div>
 
-        <!-- Page: Subscriptions -->
-        <div id="page-subscriptions" class="page-content">
-            <div class="section-title">IPTV <span>Subscription</span> Packages</div>
-            <div class="section-sub">Choose the perfect subscription plan for your entertainment needs.</div>
-            <div class="packages-grid">
-                <div class="package-card"><div class="plan-name">1 Month</div><div class="plan-price">10€</div><div class="plan-period">billed monthly</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to subscribe to the 1 Month plan - 10€')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to subscribe to the 1 Month plan - 10€')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-                <div class="package-card popular"><div class="badge">⭐ Best Value</div><div class="plan-name">3 Months</div><div class="plan-price">20€</div><div class="plan-period">€6.67 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to subscribe to the 3 Months plan - 20€')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to subscribe to the 3 Months plan - 20€')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-                <div class="package-card"><div class="plan-name">6 Months</div><div class="plan-price">30€</div><div class="plan-period">€5.00 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to subscribe to the 6 Months plan - 30€')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to subscribe to the 6 Months plan - 30€')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-                <div class="package-card"><div class="plan-name">12 Months</div><div class="plan-price">40€</div><div class="plan-period">€3.33 / month</div><ul class="plan-features"><li><i class="fas fa-check"></i> Full HD / 4K Quality</li><li><i class="fas fa-check"></i> All Devices Supported</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to subscribe to the 12 Months plan - 40€')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to subscribe to the 12 Months plan - 40€')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            </div>
+        <!-- HINT TEXT -->
+        <div id="hint">
+            <i class="fas fa-mouse"></i> drag to rotate · scroll to zoom · double-click to toggle auto-rotate
         </div>
 
-        <!-- Page: Reseller -->
-        <div id="page-reseller" class="page-content">
-            <div class="section-title">IPTV <span>Reseller</span> Packages</div>
-            <div class="section-sub">Start your own IPTV business with our white-label reseller plans.</div>
-            <div class="packages-grid">
-                <div class="package-card"><div class="reseller-badge"><i class="fas fa-store"></i> Starter</div><div class="plan-name">120 Credits</div><div class="plan-price">140€</div><div class="plan-period">€1.17 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 120 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to start as a reseller with 120 Credits - 140€')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to start as a reseller with 120 Credits - 140€')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-                <div class="package-card popular"><div class="badge">🔥 Best Seller</div><div class="reseller-badge"><i class="fas fa-rocket"></i> Business</div><div class="plan-name">360 Credits</div><div class="plan-price">395€</div><div class="plan-period">€1.10 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 360 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to start as a reseller with 360 Credits - 395€')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to start as a reseller with 360 Credits - 395€')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-                <div class="package-card"><div class="reseller-badge"><i class="fas fa-crown"></i> Pro</div><div class="plan-name">600 Credits</div><div class="plan-price">625€</div><div class="plan-period">€1.04 / credit</div><ul class="plan-features"><li><i class="fas fa-check"></i> 600 x 1-month subscriptions</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li></ul><div class="btn-group"><a href="#" class="btn-plan whatsapp" onclick="openWhatsApp('I want to start as a reseller with 600 Credits - 625€')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan telegram" onclick="openTelegram('I want to start as a reseller with 600 Credits - 625€')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-                <div class="package-card"><div class="reseller-badge"><i class="fas fa-gem"></i> Enterprise</div><div class="plan-name">Custom</div><div class="plan-price">Contact</div><div class="plan-period">Volume pricing</div><ul class="plan-features"><li><i class="fas fa-check"></i> Custom credit packages</li><li><i class="fas fa-check"></i> White-label panel access</li><li><i class="fas fa-check"></i> <span class="highlight">Private API host</span></li></ul><div class="btn-group"><a href="#" class="btn-plan primary-whatsapp" onclick="openWhatsApp('I want to start as a reseller with a Custom Enterprise package')"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="#" class="btn-plan primary-telegram" onclick="openTelegram('I want to start as a reseller with a Custom Enterprise package')"><i class="fab fa-telegram-plane"></i> Telegram</a></div></div>
-            </div>
-        </div>
-
-        <!-- Page: Features -->
-        <div id="page-features" class="page-content">
-            <div class="section-title">Powerful <span>Features</span></div>
-            <div class="features-grid">
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div><div class="feature-name">Modern Interface</div><div class="feature-desc">Clean, fast and responsive interface.</div></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-tools"></i></div><div class="feature-name">Advanced Tools</div><div class="feature-desc">Manage your IPTV business easily.</div></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-magic"></i></div><div class="feature-name">Auto ProxyPass</div><div class="feature-desc">Generate ProxyPass links in one click.</div></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-server"></i></div><div class="feature-name">Private Hosts</div><div class="feature-desc">Add and manage your own private hosts.</div></div>
-            </div>
-        </div>
-
-        <!-- Page: FAQ -->
-        <div id="page-faq" class="page-content">
-            <div class="section-title">Frequently Asked <span>Questions</span></div>
-            <div class="faq-grid">
-                <div class="faq-item"><div class="question"><i class="fas fa-question-circle"></i> What is Dream24K IPTV?</div><div class="answer">Dream24K is a premium IPTV subscription service delivering 40,000+ live channels, 100,000+ VOD, and true 4K UHD. Founded in 2017.</div></div>
-                <div class="faq-item"><div class="question"><i class="fas fa-dollar-sign"></i> How much does it cost?</div><div class="answer">Subscription plans: 1 month = 10€, 3 months = 20€, 6 months = 30€, 12 months = 40€.</div></div>
-                <div class="faq-item"><div class="question"><i class="fas fa-tv"></i> What devices are supported?</div><div class="answer">Smart TVs, Firestick, Android, iOS, MAG/STB boxes, Windows, Mac.</div></div>
-                <div class="faq-item"><div class="question"><i class="fas fa-gift"></i> Is there a free trial?</div><div class="answer">Yes. Contact us via WhatsApp or Telegram for a 24-hour free trial.</div></div>
-                <div class="faq-item"><div class="question"><i class="fas fa-handshake"></i> How does the reseller program work?</div><div class="answer">Purchase credits in bulk at wholesale prices. Each credit = one 1-month subscription.</div></div>
-                <div class="faq-item"><div class="question"><i class="fas fa-credit-card"></i> What payment methods are accepted?</div><div class="answer">Visa, Mastercard, PayPal, Apple Pay, Google Pay, and cryptocurrency.</div></div>
-            </div>
-        </div>
-
-        <!-- Page: Support -->
-        <div id="page-support" class="page-content">
-            <div class="section-title">24/7 <span>Support</span></div>
-            <div class="section-sub">Our dedicated support team is available around the clock.</div>
-            <div class="support-grid">
-                <div class="support-card"><i class="fab fa-whatsapp" style="font-size:40px;color:#25D366;"></i><h3>WhatsApp</h3><p>+212 663-087765</p><a href="#" class="btn-support" onclick="openWhatsApp('I need support with Dream24K IPTV')">Chat Now</a></div>
-                <div class="support-card"><i class="fab fa-telegram-plane" style="font-size:40px;color:#0088cc;"></i><h3>Telegram</h3><p>@reselleriptvcom</p><a href="#" class="btn-support" onclick="openTelegram('I need support with Dream24K IPTV')">Chat Now</a></div>
-                <div class="support-card"><i class="fas fa-envelope" style="font-size:40px;color:#f7c948;"></i><h3>Email</h3><p>support@reselleriptv.com</p><a href="mailto:support@reselleriptv.com" class="btn-support">Send Email</a></div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <p><i class="fas fa-shield-alt" style="color:#f7c948;"></i> Dream 24K IPTV · since 2017 · 40K+ live & 100K+ VOD</p>
-            <div class="footer-keywords">
-                <span>#Dream24KIPTV</span>
-                <span>#Dream4KIPTV</span>
-                <span>#IPTVSubscription</span>
-                <span>#IPTVReseller</span>
-            </div>
+        <!-- SCROLL INDICATOR -->
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+            <span>Explore</span>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="main-content" id="mainContent">
+        <div class="container">
+
+            <!-- ===== HERO SECTION (separate from map) ===== -->
+            <section class="hero-section">
+                <h1>DREAM 24K IPTV Service</h1>
+                <p class="section-sub-hero">
+                    Experience the future of television with <span class="keyword-highlight">DREAM 24K IPTV</span>.
+                    Enjoy 40,000+ live channels, 100,000+ VOD, and true <span class="keyword-highlight">4K streaming</span>
+                    with <span class="keyword-highlight">8K stream</span> capabilities.
+                    Founded in 2017, we deliver premium entertainment worldwide.
+                </p>
+            </section>
+
+            <!-- ===== ACTIVATION PANEL (Trial + Codes) ===== -->
+            <section>
+                <h2>Get Your Free Trial — DREAM 24K IPTV</h2>
+                <p class="section-sub">
+                    Choose your preferred way to activate. Select the code type and contact us via
+                    WhatsApp or Telegram to receive your <strong>DREAM 24K IPTV subscription</strong> trial.
+                    Experience <strong>4K streaming</strong> and <strong>8K stream</strong> quality instantly.
+                </p>
+
+                <div class="activation-panel">
+                    <div class="panel-grid">
+                        <!-- Left: Code Type Selection -->
+                        <div>
+                            <div class="panel-title">
+                                <i class="fas fa-qrcode"></i> Choose Your Code Type
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-code"></i> Activation Code Type</label>
+                                <select>
+                                    <option value="m3u">M3U Active Code</option>
+                                    <option value="xtream">Xtream Code</option>
+                                    <option value="mac">MAC Address</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-hashtag"></i> Your Code / MAC</label>
+                                <input type="text" placeholder="Enter your code or MAC address" value="DREAM24K-TRIAL-2026" />
+                            </div>
+                            <div class="code-hint">
+                                <i class="fas fa-info-circle"></i> We support M3U, Xtream, and MAC activation
+                            </div>
+                        </div>
+
+                        <!-- Right: Contact for Trial -->
+                        <div class="divider">
+                            <div class="panel-title">
+                                <i class="fas fa-gift"></i> Request Free Trial
+                            </div>
+                            <p style="color:#94a3b8; margin-bottom:1.2rem; font-size:0.95rem;">
+                                Contact our support team via WhatsApp or Telegram to activate your
+                                24-hour free trial. Choose your preferred channel below.
+                            </p>
+                            <div class="trial-buttons">
+                                <button class="trial-btn" id="whatsappTrial">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </button>
+                                <button class="trial-btn" id="telegramTrial">
+                                    <i class="fab fa-telegram-plane"></i> Telegram
+                                </button>
+                            </div>
+                            <div class="code-hint" style="margin-top:1rem;">
+                                <i class="fas fa-clock"></i> 24-hour trial · All channels included
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== SUBSCRIPTIONS ===== -->
+            <section id="subscriptions">
+                <h2>IPTV DREAM 24K IPTV Subscription Packages —</h2>
+                <p class="section-sub">
+                    Choose your ideal <strong>DREAM 24K IPTV subscription</strong> plan.
+                    Enjoy premium 4K streaming, 8K-ready channels, and 24/7 support.
+                    Flexible monthly or yearly options for every viewer.
+                </p>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="price">10€</div>
+                        <div class="period">billed monthly</div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Full HD / 4K / 8K Quality</li>
+                            <li><i class="fas fa-check"></i> All Devices Supported</li>
+                            <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        </ul>
+                        <button class="btn-primary">Subscribe</button>
+                    </div>
+                    <div class="card">
+                        <span class="badge-best">⭐ Best Value</span>
+                        <div class="price">20€</div>
+                        <div class="period">€6.67 / month</div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Full HD / 4K / 8K Quality</li>
+                            <li><i class="fas fa-check"></i> All Devices Supported</li>
+                            <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        </ul>
+                        <button class="btn-primary">Subscribe</button>
+                    </div>
+                    <div class="card">
+                        <div class="price">30€</div>
+                        <div class="period">€5.00 / month</div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Full HD / 4K / 8K Quality</li>
+                            <li><i class="fas fa-check"></i> All Devices Supported</li>
+                            <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        </ul>
+                        <button class="btn-primary">Subscribe</button>
+                    </div>
+                    <div class="card">
+                        <div class="price">40€</div>
+                        <div class="period">€3.33 / month</div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Full HD / 4K / 8K Quality</li>
+                            <li><i class="fas fa-check"></i> All Devices Supported</li>
+                            <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        </ul>
+                        <button class="btn-primary">Subscribe</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== RESELLER ===== -->
+            <section id="reseller">
+                <h2>IPTV DREAM 24K IPTV Reseller Packages —</h2>
+                <p class="section-sub">
+                    Start your own business with our <strong>DREAM 24K IPTV reseller</strong> program.
+                    White-label panel, private API host, and bulk credits at wholesale prices.
+                    Perfect for entrepreneurs and existing providers.
+                </p>
+                <div class="reseller-grid">
+                    <div class="reseller-card">
+                        <div class="credit">120 Credits</div>
+                        <div class="price">140€ <small>€1.17 / credit</small></div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 120 x 1-month subscriptions</li>
+                            <li><i class="fas fa-check"></i> White-label panel access</li>
+                            <li><i class="fas fa-check"></i> Private API host</li>
+                        </ul>
+                        <button class="btn-outline-gold">Get Starter</button>
+                    </div>
+                    <div class="reseller-card" style="border-color: #f7b73170;">
+                        <span class="badge-best" style="background:#f7b731; color:#0b0d15;">🔥 Best Seller</span>
+                        <div class="credit">360 Credits</div>
+                        <div class="price">395€ <small>€1.10 / credit</small></div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 360 x 1-month subscriptions</li>
+                            <li><i class="fas fa-check"></i> White-label panel access</li>
+                            <li><i class="fas fa-check"></i> Private API host</li>
+                        </ul>
+                        <button class="btn-outline-gold">Get Business</button>
+                    </div>
+                    <div class="reseller-card">
+                        <div class="credit">600 Credits</div>
+                        <div class="price">625€ <small>€1.04 / credit</small></div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 600 x 1-month subscriptions</li>
+                            <li><i class="fas fa-check"></i> White-label panel access</li>
+                            <li><i class="fas fa-check"></i> Private API host</li>
+                        </ul>
+                        <button class="btn-outline-gold">Get Pro</button>
+                    </div>
+                    <div class="reseller-card">
+                        <div class="credit">Enterprise</div>
+                        <div class="price">Custom</div>
+                        <p style="color:#94a3b8; margin: 0.2rem 0 0.5rem;">Volume pricing</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Custom credit packages</li>
+                            <li><i class="fas fa-check"></i> White-label panel access</li>
+                            <li><i class="fas fa-check"></i> Private API host</li>
+                        </ul>
+                        <button class="btn-outline-gold">Contact</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== FEATURES ===== -->
+            <section id="features">
+                <h2>Powerful Features — DREAM 24K IPTV</h2>
+                <p class="section-sub">
+                    Built for <strong>8K stream</strong> and <strong>4K streaming</strong> excellence.
+                    Modern tools for resellers and subscribers alike. Auto ProxyPass,
+                    private hosts, and advanced management.
+                </p>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-laptop-code"></i>
+                        <h4>Modern Interface</h4>
+                        <p>Clean, fast, responsive UI for all devices.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-tools"></i>
+                        <h4>Advanced Tools</h4>
+                        <p>Complete management for your IPTV business.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-share-alt"></i>
+                        <h4>Auto ProxyPass</h4>
+                        <p>Generate ProxyPass links in one click.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-server"></i>
+                        <h4>Private Hosts</h4>
+                        <p>Add and manage your own private hosts.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== FAQ ===== -->
+            <section id="faq">
+                <h2>Frequently Asked Questions — DREAM 24K</h2>
+                <p class="section-sub">
+                    Everything you need to know about <strong>DREAM 24K IPTV subscription</strong>,
+                    reseller plans, <strong>4K streaming</strong>, and <strong>8K stream</strong>
+                    capabilities. Find answers to the most common questions.
+                </p>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <strong>What is DREAM 24K IPTV?</strong>
+                        <p>DREAM 24K is a premium IPTV service with 40,000+ live channels, 100,000+ VOD, and true 4K/8K UHD. Founded in 2017.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>How much does a subscription cost?</strong>
+                        <p>Plans: 1 month = 10€, 3 months = 20€, 6 months = 30€, 12 months = 40€. All include 4K &amp; 8K streaming.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>Which devices are supported?</strong>
+                        <p>Smart TVs, Firestick, Android, iOS, MAG/STB boxes, Windows, Mac — all devices with 4K/8K support.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>Is there a free trial?</strong>
+                        <p>Yes. Contact us via WhatsApp or Telegram for a 24-hour free trial of our 4K/8K service.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>How does the reseller program work?</strong>
+                        <p>Buy credits in bulk at wholesale prices. Each credit = one 1-month subscription. Perfect for resellers.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>What payment methods are accepted?</strong>
+                        <p>Visa, Mastercard, PayPal, Apple Pay, Google Pay, and cryptocurrency.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== CTA ===== -->
+            <div class="cta-section">
+                <div>
+                    <h2 style="font-size:2.1rem;">24/7 Support</h2>
+                    <p>
+                        Our dedicated team is available around the clock via WhatsApp, Telegram, or email.
+                    </p>
+                    <div class="contact-buttons">
+                        <a href="#" class="contact-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="#" class="contact-btn"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                    </div>
+                </div>
+                <div>
+                    <p style="color:#94a3b8; margin-bottom:0.5rem;">Contact Information</p>
+                    <div style="display:flex; flex-wrap:wrap; gap: 0.8rem;">
+                        <span style="background:#1e2230; padding:0.3rem 1.2rem; border-radius:40px;">
+                            <i class="fas fa-phone-alt" style="color:#f7b731;"></i> +212 663-087765
+                        </span>
+                        <span style="background:#1e2230; padding:0.3rem 1.2rem; border-radius:40px;">
+                            <i class="fab fa-telegram" style="color:#f7b731;"></i> @reselleriptvcom
+                        </span>
+                    </div>
+                    <div style="margin-top:0.8rem;">
+                        <i class="fas fa-envelope" style="color:#f7b731;"></i> support@reselleriptv.com
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== FOOTER ===== -->
+            <footer class="footer">
+                <div>© 2026 DREAM 24K · Premium IPTV · 4K &amp; 8K Streaming</div>
+                <div class="footer-links">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                    <a href="#">Privacy</a>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- ===== 404 PAGE ===== -->
+    <div class="error-page" id="errorPage">
+        <div class="error-icon"><i class="fas fa-satellite-dish"></i></div>
+        <div class="big">404</div>
+        <h2>Signal Lost</h2>
+        <p>The page you're looking for is not available. Please check the URL or return to our homepage.</p>
+        <a href="#" class="btn-home" id="goHome"><i class="fas fa-home"></i> Back to DREAM 24K</a>
+    </div>
+
+    <!-- ===== 3D EARTH SCRIPT (Three.js) ===== -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.126.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.126.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+        const container = document.getElementById('earth-container');
+
+        // --- scene ---
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x050510);
+
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.set(0, 0.3, 3.2);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        const labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(container.clientWidth, container.clientHeight);
+        labelRenderer.domElement.style.position = 'absolute';
+        labelRenderer.domElement.style.top = '0';
+        labelRenderer.domElement.style.left = '0';
+        labelRenderer.domElement.style.pointerEvents = 'none';
+        container.appendChild(labelRenderer.domElement);
+
+        // --- controls (zoom disabled) ---
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.rotateSpeed = 0.6;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.4;
+        controls.minDistance = 3.2;
+        controls.maxDistance = 3.2; // Lock zoom by setting min=max
+        controls.target.set(0, 0, 0);
+        controls.enableZoom = false; // Disable zoom entirely
+
+        // --- lighting ---
+        scene.add(new THREE.AmbientLight(0x334466, 0.5));
+        const sun = new THREE.DirectionalLight(0xffeedd, 1.2);
+        sun.position.set(2, 3, 4);
+        scene.add(sun);
+        const fill = new THREE.DirectionalLight(0x4488ff, 0.4);
+        fill.position.set(-3, -1, -2);
+        scene.add(fill);
+        const rim = new THREE.DirectionalLight(0xffccaa, 0.3);
+        rim.position.set(-1, 2, -3);
+        scene.add(rim);
+
+        // --- Earth ---
+        const textureLoader = new THREE.TextureLoader();
+        const earthMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
+        const cloudMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png');
+        const specularMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_specular_2048.jpg');
+        const normalMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_normal_2048.jpg');
+
+        const earthGeometry = new THREE.SphereGeometry(1, 64, 64);
+        const earthMaterial = new THREE.MeshPhongMaterial({
+            map: earthMap,
+            specularMap: specularMap,
+            specular: new THREE.Color('grey'),
+            shininess: 10,
+            normalMap: normalMap,
+            normalScale: new THREE.Vector2(0.8, 0.8),
+        });
+        const earth = new THREE.Mesh(earthGeometry, earthMaterial);
+        scene.add(earth);
+
+        const cloudGeometry = new THREE.SphereGeometry(1.008, 64, 64);
+        const cloudMaterial = new THREE.MeshPhongMaterial({
+            map: cloudMap,
+            transparent: true,
+            opacity: 0.2,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+        });
+        const clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
+        scene.add(clouds);
+
+        // --- glow atmosphere ---
+        const glowGeo = new THREE.SphereGeometry(1.02, 48, 48);
+        const glowMat = new THREE.MeshPhongMaterial({
+            color: 0x88aaff,
+            transparent: true,
+            opacity: 0.06,
+            side: THREE.BackSide,
+        });
+        scene.add(new THREE.Mesh(glowGeo, glowMat));
+
+        // --- golden ring (Dream 24K) ---
+        const ringGeo = new THREE.TorusGeometry(1.12, 0.003, 32, 100);
+        const ringMat = new THREE.MeshBasicMaterial({
+            color: 0xffd700,
+            transparent: true,
+            opacity: 0.3,
+        });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.x = Math.PI / 2.5;
+        ring.rotation.z = 0.3;
+        scene.add(ring);
+
+        const ring2 = new THREE.TorusGeometry(1.18, 0.002, 32, 100);
+        const ringMat2 = new THREE.MeshBasicMaterial({
+            color: 0xffaa00,
+            transparent: true,
+            opacity: 0.15,
+        });
+        const ring2m = new THREE.Mesh(ring2, ringMat2);
+        ring2m.rotation.x = Math.PI / 3;
+        ring2m.rotation.z = -0.4;
+        scene.add(ring2m);
+
+        // --- stars ---
+        const starsGeometry = new THREE.BufferGeometry();
+        const starsCount = 4000;
+        const starPositions = new Float32Array(starsCount * 3);
+        for (let i = 0; i < starsCount * 3; i += 3) {
+            const radius = 50 + Math.random() * 60;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos((Math.random() * 2) - 1);
+            starPositions[i] = radius * Math.sin(phi) * Math.cos(theta);
+            starPositions[i + 1] = radius * Math.cos(phi);
+            starPositions[i + 2] = radius * Math.sin(phi) * Math.sin(theta);
+        }
+        starsGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+        const starsMaterial = new THREE.PointsMaterial({
+            color: 0xffffff,
+            size: 0.05,
+            transparent: true,
+            opacity: 0.7,
+            blending: THREE.AdditiveBlending,
+        });
+        scene.add(new THREE.Points(starsGeometry, starsMaterial));
+
+        // --- Device types ---
+        const DEVICE_TYPES = [
+            { emoji: '🖥️', color: '#4fc3f7', glow: '#4fc3f7', size: 0.07, isServer: true },
+            { emoji: '📡', color: '#4dd0e1', glow: '#4dd0e1', size: 0.06, isServer: true },
+            { emoji: '☁️', color: '#90caf9', glow: '#90caf9', size: 0.08, isServer: true },
+            { emoji: '📺', color: '#f06292', glow: '#f06292', size: 0.06, isServer: false },
+            { emoji: '📱', color: '#81c784', glow: '#81c784', size: 0.055, isServer: false },
+            { emoji: '📋', color: '#ffb74d', glow: '#ffb74d', size: 0.055, isServer: false },
+            { emoji: '💻', color: '#ce93d8', glow: '#ce93d8', size: 0.06, isServer: false },
+            { emoji: '🛰️', color: '#b39ddb', glow: '#b39ddb', size: 0.065, isServer: true },
+        ];
+
+        // --- Country data ---
+        const countries = [
+            { lat: 40.7128, lon: -74.0060, name: 'USA' },
+            { lat: 51.5074, lon: -0.1278, name: 'UK' },
+            { lat: 48.8566, lon: 2.3522, name: 'France' },
+            { lat: 55.7558, lon: 37.6173, name: 'Russia' },
+            { lat: 39.9042, lon: 116.4074, name: 'China' },
+            { lat: 35.6895, lon: 139.6917, name: 'Japan' },
+            { lat: 28.6139, lon: 77.2090, name: 'India' },
+            { lat: -23.5505, lon: -46.6333, name: 'Brazil' },
+            { lat: -33.8688, lon: 151.2093, name: 'Australia' },
+            { lat: 25.2048, lon: 55.2708, name: 'UAE' },
+            { lat: 41.9028, lon: 12.4964, name: 'Italy' },
+            { lat: 52.5200, lon: 13.4050, name: 'Germany' },
+            { lat: 40.4168, lon: -3.7038, name: 'Spain' },
+            { lat: 30.0444, lon: 31.2357, name: 'Egypt' },
+            { lat: -33.9249, lon: 18.4241, name: 'South Africa' },
+            { lat: 1.3521, lon: 103.8198, name: 'Singapore' },
+            { lat: 19.0760, lon: 72.8777, name: 'India' },
+            { lat: 31.2304, lon: 121.4737, name: 'China' },
+            { lat: 37.7749, lon: -122.4194, name: 'USA' },
+            { lat: 41.8781, lon: -87.6298, name: 'USA' },
+            { lat: 45.4642, lon: 9.1900, name: 'Italy' },
+            { lat: 50.1109, lon: 8.6821, name: 'Germany' },
+            { lat: 34.6937, lon: 135.5023, name: 'Japan' },
+            { lat: 22.5431, lon: 114.0579, name: 'China' },
+            { lat: 6.5244, lon: 3.3792, name: 'Nigeria' },
+            { lat: -1.2864, lon: 36.8172, name: 'Kenya' },
+            { lat: -12.0464, lon: -77.0428, name: 'Peru' },
+            { lat: 19.4326, lon: -99.1332, name: 'Mexico' },
+            { lat: 34.0522, lon: -118.2437, name: 'USA' },
+            { lat: 51.1657, lon: 10.4515, name: 'Germany' },
+        ];
+
+        function latLonToPosition(lat, lon, radius = 1.015) {
+            const phi = (90 - lat) * Math.PI / 180;
+            const theta = lon * Math.PI / 180;
+            return new THREE.Vector3(
+                radius * Math.sin(phi) * Math.cos(theta),
+                radius * Math.cos(phi),
+                radius * Math.sin(phi) * Math.sin(theta)
+            );
+        }
+
+        // --- Create nodes ---
+        const nodes = [];
+        const connectionLines = [];
+
+        countries.forEach((country, index) => {
+            const typeIdx = index % DEVICE_TYPES.length;
+            const type = DEVICE_TYPES[typeIdx];
+            const pos = latLonToPosition(country.lat, country.lon, 1.015);
+
+            nodes.push({ pos, type, country: country.name });
+
+            // Glowing dot
+            const canvas = document.createElement('canvas');
+            canvas.width = 64;
+            canvas.height = 64;
+            const ctx = canvas.getContext('2d');
+            const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+            gradient.addColorStop(0, type.color + 'ff');
+            gradient.addColorStop(0.4, type.color + '88');
+            gradient.addColorStop(1, type.color + '00');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 64, 64);
+            ctx.fillStyle = 'rgba(255,215,0,0.3)';
+            ctx.beginPath();
+            ctx.arc(32 + Math.random() * 20 - 10, 32 + Math.random() * 20 - 10, 8, 0, Math.PI * 2);
+            ctx.fill();
+
+            const texture = new THREE.CanvasTexture(canvas);
+            const material = new THREE.SpriteMaterial({
+                map: texture,
+                blending: THREE.AdditiveBlending,
+                depthTest: true,
+                depthWrite: false,
+            });
+            const sprite = new THREE.Sprite(material);
+            sprite.position.copy(pos);
+            const scale = type.size * 2.0 + 0.2;
+            sprite.scale.set(scale, scale, 1);
+            scene.add(sprite);
+
+            // Label
+            const div = document.createElement('div');
+            div.textContent = country.name;
+            div.style.color = 'rgba(255,255,255,0.7)';
+            div.style.fontSize = window.innerWidth < 600 ? '6px' : '8px';
+            div.style.fontWeight = '400';
+            div.style.textShadow = '0 0 12px rgba(0,0,0,0.9)';
+            div.style.background = 'rgba(0,0,0,0.3)';
+            div.style.padding = '1px 8px';
+            div.style.borderRadius = '10px';
+            div.style.border = '1px solid ' + type.color + '33';
+            div.style.backdropFilter = 'blur(2px)';
+            div.style.pointerEvents = 'none';
+            div.style.whiteSpace = 'nowrap';
+
+            const label = new CSS2DObject(div);
+            const labelPos = pos.clone().multiplyScalar(1.08);
+            label.position.copy(labelPos);
+            scene.add(label);
+
+            // Ring
+            if (index % 3 === 0) {
+                const ringGeo2 = new THREE.RingGeometry(0.02, 0.035, 16);
+                const ringMat2 = new THREE.MeshBasicMaterial({
+                    color: type.color,
+                    transparent: true,
+                    opacity: 0.3,
+                    side: THREE.DoubleSide,
+                    depthWrite: false,
+                });
+                const ringMesh = new THREE.Mesh(ringGeo2, ringMat2);
+                ringMesh.position.copy(pos);
+                ringMesh.lookAt(camera.position);
+                ringMesh.userData = { baseScale: 1, phase: Math.random() * Math.PI * 2 };
+                scene.add(ringMesh);
+            }
+        });
+
+        // --- Connection lines ---
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                const a = nodes[i].pos;
+                const b = nodes[j].pos;
+                const dist = a.distanceTo(b);
+                if (dist < 1.2 && dist > 0.3) {
+                    const points = [a, b];
+                    const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                    const material = new THREE.LineBasicMaterial({
+                        transparent: true,
+                        opacity: 0.1 + Math.random() * 0.15,
+                        color: 0x4488ff,
+                    });
+                    const line = new THREE.Line(geometry, material);
+                    line.userData = {
+                        intensity: 0.3 + Math.random() * 0.7,
+                        phase: Math.random() * Math.PI * 2,
+                        a: a,
+                        b: b,
+                    };
+                    scene.add(line);
+                    connectionLines.push(line);
+                }
+            }
+        }
+
+        // --- Animation ---
+        let time = 0;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.01;
+
+            earth.rotation.y += 0.0002;
+            clouds.rotation.y += 0.0005;
+            ring.rotation.z += 0.001;
+            ring2m.rotation.z -= 0.0008;
+
+            connectionLines.forEach((line) => {
+                const pulse = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(time * 0.8 + line.userData.phase));
+                line.material.opacity = 0.05 + pulse * 0.15;
+            });
+
+            scene.children.forEach(child => {
+                if (child.isMesh && child.geometry.type === 'RingGeometry') {
+                    const scale = 1 + 0.3 * Math.sin(time * 1.2 + child.userData.phase);
+                    child.scale.set(scale, scale, scale);
+                    child.material.opacity = 0.15 + 0.2 * (0.5 + 0.5 * Math.sin(time * 0.9 + child.userData.phase));
+                    child.lookAt(camera.position);
+                }
+            });
+
+            controls.update();
+            renderer.render(scene, camera);
+            labelRenderer.render(scene, camera);
+        }
+
+        animate();
+
+        // --- Resize ---
+        window.addEventListener('resize', () => {
+            const w = container.clientWidth;
+            const h = container.clientHeight;
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+            renderer.setSize(w, h);
+            labelRenderer.setSize(w, h);
+        });
+
+        // --- Toggle auto-rotate ---
+        renderer.domElement.addEventListener('dblclick', () => {
+            controls.autoRotate = !controls.autoRotate;
+        });
+
+        renderer.domElement.addEventListener('mousedown', () => {
+            controls.autoRotate = false;
+        });
+
+        console.log('✨ DREAM 24K IPTV · Global Network with animated overlay & zoom locked!');
+    </script>
+
+    <!-- ===== INTERACTION SCRIPT ===== -->
+    <script>
+        (function() {
+            console.log('✨ DREAM 24K · Premium IPTV · 4K & 8K Streaming');
+
+            // Dynamic footer year
+            const footer = document.querySelector('.footer');
+            if (footer) {
+                const yearSpan = footer.querySelector('div');
+                if (yearSpan) {
+                    const currentYear = new Date().getFullYear();
+                    yearSpan.textContent = `© ${currentYear} DREAM 24K · Premium IPTV · 4K & 8K Streaming`;
+                }
+            }
+
+            // Trial buttons - WhatsApp
+            document.getElementById('whatsappTrial')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                const codeType = document.querySelector('.activation-panel select')?.value || 'M3U';
+                alert('📱 WhatsApp Trial Request\n\n' +
+                    'Contact us on WhatsApp to activate your 24-hour trial.\n' +
+                    'Code Type: ' + codeType.toUpperCase() + '\n' +
+                    'Phone: +212 663-087765\n\n' +
+                    'Send us your code to get started!');
+            });
+
+            // Trial buttons - Telegram
+            document.getElementById('telegramTrial')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                const codeType = document.querySelector('.activation-panel select')?.value || 'M3U';
+                alert('📱 Telegram Trial Request\n\n' +
+                    'Contact us on Telegram to activate your 24-hour trial.\n' +
+                    'Code Type: ' + codeType.toUpperCase() + '\n' +
+                    'Username: @reselleriptvcom\n\n' +
+                    'Send us your code to get started!');
+            });
+
+            // Subscribe buttons
+            document.querySelectorAll('.btn-primary').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('📺 DREAM 24K IPTV — Subscription selected.\nProceed to payment gateway.');
+                });
+            });
+
+            // Reseller buttons
+            document.querySelectorAll('.btn-outline-gold').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('🚀 DREAM 24K IPTV Reseller — Contact our sales team for details.');
+                });
+            });
+
+            // Contact buttons
+            document.querySelectorAll('.contact-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('📱 Contact DREAM 24K IPTV support via ' + btn.textContent.trim());
+                });
+            });
+
+            // Feature items
+            document.querySelectorAll('.feature-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    alert('✨ DREAM 24K IPTV feature: ' + item.querySelector('h4')?.textContent || '');
+                });
+            });
+
+            // 404 page demo
+            window.show404 = function() {
+                document.getElementById('earth-container').classList.add('hidden');
+                document.getElementById('mainContent').classList.add('hidden');
+                document.getElementById('errorPage').classList.add('active');
+            };
+
+            window.goHome = function() {
+                document.getElementById('earth-container').classList.remove('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+                document.getElementById('errorPage').classList.remove('active');
+            };
+
+            document.getElementById('goHome')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.goHome();
+            });
+
+            console.log('✅ DREAM 24K IPTV — All sections loaded.');
+            console.log('🔑 Keywords: DREAM 24K IPTV, DREAM 24K IPTV subscription, DREAM 24K IPTV reseller, 8K stream, 4K streaming.');
+            console.log('💡 Type "show404()" in console to see the 404 page.');
+        })();
+    </script>
+
 </body>
 </html>
