@@ -1,254 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 - Page Not Found | Dream24K IPTV</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        body {
-            background: #0a0e1a;
-            color: #e8edf5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
-            margin: 0;
-        }
-        .error-container {
+        .error-page {
             text-align: center;
-            max-width: 600px;
-            width: 100%;
+            padding: 100px 20px;
         }
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            margin-bottom: 20px;
-            text-decoration: none;
+        .error-page h1 {
+            font-size: 100px;
+            color: #0088cc;
         }
-        .logo-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(145deg, #f7c948, #d4a020);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            color: #0a0e1a;
-            box-shadow: 0 8px 24px rgba(212, 160, 32, 0.3);
-        }
-        .logo-text .brand {
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(to right, #ffffff, #c8d4e8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .logo-text .brand span {
-            font-weight: 300;
-            color: #f7c948;
-            -webkit-text-fill-color: #f7c948;
-            background: none;
-        }
-        .logo-text .sub {
-            font-size: 12px;
-            color: #7a8aaa;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-        .logo-text .sub i {
-            color: #f7c948;
-        }
-        .error-number {
-            font-size: 120px;
-            font-weight: 900;
-            background: linear-gradient(145deg, #f7c948, #d4a020);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 10px 0;
-            line-height: 1;
-            animation: pulse404 2s ease-in-out infinite;
-        }
-        @keyframes pulse404 {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-        }
-        .error-title {
+        .error-page h2 {
             font-size: 32px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 12px;
+            margin: 20px 0;
         }
-        .error-title span {
-            color: #f7c948;
+        .error-page p {
+            color: #888;
+            font-size: 18px;
         }
-        .error-desc {
-            font-size: 16px;
-            color: #8aa0c8;
-            line-height: 1.7;
-            max-width: 450px;
-            margin: 0 auto 28px;
-        }
-        .btn-group {
-            display: flex;
-            gap: 14px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-        .btn-home {
-            background: linear-gradient(145deg, #f7c948, #d4a020);
-            border: none;
-            padding: 14px 36px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 16px;
-            color: #0a0e1a;
-            cursor: pointer;
-            transition: 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 6px 24px rgba(212, 160, 32, 0.2);
-        }
-        .btn-home:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 32px rgba(212, 160, 32, 0.4);
-        }
-        .btn-back {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 14px 36px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 16px;
-            color: #ffffff;
-            cursor: pointer;
-            transition: 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-back:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: scale(1.04);
-        }
-        .quick-links {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .quick-links a {
-            color: #6a8aaa;
-            text-decoration: none;
-            font-size: 13px;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .quick-links a:hover {
-            color: #f7c948;
-        }
-        .footer {
+        .error-page a {
+            display: inline-block;
             margin-top: 30px;
-            text-align: center;
-            font-size: 12px;
-            color: #3a4a6a;
+            padding: 15px 40px;
+            background: #0088cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s;
         }
-        @media (max-width: 480px) {
-            .error-number {
-                font-size: 80px;
-            }
-            .error-title {
-                font-size: 24px;
-            }
-            .error-desc {
-                font-size: 14px;
-            }
-            .btn-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            .btn-home,
-            .btn-back {
-                width: 100%;
-                justify-content: center;
-            }
-            .logo-text .brand {
-                font-size: 22px;
-            }
+        .error-page a:hover {
+            background: #006699;
         }
     </style>
 </head>
 <body>
-    <div class="error-container">
-        <a href="/" class="logo">
-            <div class="logo-icon"><i class="fas fa-play"></i></div>
-            <div class="logo-text">
-                <div class="brand">DREAM <span>24K</span></div>
-                <div class="sub"><i class="fas fa-crown"></i> Premium IPTV</div>
-            </div>
-        </a>
-
-        <div class="error-number">404</div>
-        <h1 class="error-title">Page <span>Not Found</span></h1>
-        <p class="error-desc">
-            Oops! The page you're looking for doesn't exist or has been moved.
-        </p>
-
-        <div class="btn-group">
-            <a href="/" class="btn-home"><i class="fas fa-home"></i> Go Home</a>
-            <a href="#" class="btn-back" onclick="history.back(); return false;"><i class="fas fa-arrow-left"></i> Go Back</a>
-        </div>
-
-        <div class="quick-links">
-            <a href="/#packages"><i class="fas fa-chevron-right"></i> Plans</a>
-            <a href="/#trial"><i class="fas fa-chevron-right"></i> Free Trial</a>
-            <a href="/#apps"><i class="fas fa-chevron-right"></i> Apps</a>
-            <a href="mailto:support@reselleriptv.com"><i class="fas fa-chevron-right"></i> Contact</a>
-        </div>
+    <div class="error-page">
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+        <p>Oops! The page you're looking for doesn't exist.</p>
+        <a href="/">Go Home</a>
     </div>
-
-    <div class="footer">
-        <i class="fas fa-shield-alt" style="color:#f7c948;"></i> Dream 24K IPTV · since 2017 · 40K+ live & 100K+ VOD
-    </div>
-
-    <script>
-        document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
-                (e.ctrlKey && e.key === 'U') || (e.ctrlKey && (e.key === 's' || e.key === 'S'))) {
-                e.preventDefault();
-                return false;
-            }
-        });
-    </script>
 </body>
 </html>
