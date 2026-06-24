@@ -2,10 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
     
-    <!-- Homepage -->
     <url>
         <loc>https://d24kiptv.com/</loc>
-        <lastmod>2026-01-15</lastmod>
+        <lastmod>2026-06-24</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
         <xhtml:link rel="alternate" hreflang="en" href="https://d24kiptv.com/" />
@@ -15,42 +14,37 @@
         <xhtml:link rel="alternate" hreflang="ar" href="https://d24kiptv.com/ar/" />
     </url>
 
-    <!-- Subscription Packages -->
     <url>
         <loc>https://d24kiptv.com/#subscriptions</loc>
-        <lastmod>2026-01-15</lastmod>
+        <lastmod>2026-06-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- Reseller Packages -->
     <url>
         <loc>https://d24kiptv.com/#reseller</loc>
-        <lastmod>2026-01-15</lastmod>
+        <lastmod>2026-06-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Features -->
     <url>
         <loc>https://d24kiptv.com/#features</loc>
-        <lastmod>2026-01-15</lastmod>
+        <lastmod>2026-06-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
-    <!-- FAQ -->
     <url>
         <loc>https://d24kiptv.com/#faq</loc>
-        <lastmod>2026-01-15</lastmod>
+        <lastmod>2026-06-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
-    <!-- 404 Page -->
     <url>
         <loc>https://d24kiptv.com/404.html</loc>
-        <lastmod>2026-01-15</lastmod>
+        <lastmod>2026-06-24</lastmod>
         <changefreq>never</changefreq>
         <priority>0.1</priority>
     </url>
