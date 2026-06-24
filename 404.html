@@ -83,8 +83,15 @@
             animation: pulse404 2s ease-in-out infinite;
         }
         @keyframes pulse404 {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
         }
         .error-title {
             font-size: 32px;
@@ -176,12 +183,27 @@
             color: #3a4a6a;
         }
         @media (max-width: 480px) {
-            .error-number { font-size: 80px; }
-            .error-title { font-size: 24px; }
-            .error-desc { font-size: 14px; }
-            .btn-group { flex-direction: column; align-items: center; }
-            .btn-home, .btn-back { width: 100%; justify-content: center; }
-            .logo-text .brand { font-size: 22px; }
+            .error-number {
+                font-size: 80px;
+            }
+            .error-title {
+                font-size: 24px;
+            }
+            .error-desc {
+                font-size: 14px;
+            }
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-home,
+            .btn-back {
+                width: 100%;
+                justify-content: center;
+            }
+            .logo-text .brand {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
@@ -207,12 +229,10 @@
         </div>
 
         <div class="quick-links">
-            <a href="/#plans"><i class="fas fa-chevron-right"></i> Plans</a>
-            <a href="/#reseller"><i class="fas fa-chevron-right"></i> Reseller</a>
-            <a href="/#features"><i class="fas fa-chevron-right"></i> Features</a>
-            <a href="/#faq"><i class="fas fa-chevron-right"></i> FAQ</a>
-            <a href="/#support"><i class="fas fa-chevron-right"></i> Contact</a>
+            <a href="/#packages"><i class="fas fa-chevron-right"></i> Plans</a>
             <a href="/#trial"><i class="fas fa-chevron-right"></i> Free Trial</a>
+            <a href="/#apps"><i class="fas fa-chevron-right"></i> Apps</a>
+            <a href="mailto:support@reselleriptv.com"><i class="fas fa-chevron-right"></i> Contact</a>
         </div>
     </div>
 
@@ -223,9 +243,10 @@
     <script>
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
                 (e.ctrlKey && e.key === 'U') || (e.ctrlKey && (e.key === 's' || e.key === 'S'))) {
-                e.preventDefault(); return false;
+                e.preventDefault();
+                return false;
             }
         });
     </script>
