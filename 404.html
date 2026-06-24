@@ -8,27 +8,16 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📺</text></svg>" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body {
             background: #0b0d15;
             color: #eef2f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
-            text-align: center;
-            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
         }
-
-        /* ===== ANIMATED BACKGROUND ===== */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -39,7 +28,6 @@
             background: radial-gradient(ellipse at center, #141824 0%, #050510 100%);
             overflow: hidden;
         }
-
         .bg-animation .orb {
             position: absolute;
             border-radius: 50%;
@@ -47,104 +35,24 @@
             opacity: 0.15;
             animation: orbFloat 20s ease-in-out infinite;
         }
-
-        .bg-animation .orb:nth-child(1) {
-            width: 400px;
-            height: 400px;
-            background: #f7b731;
-            top: -100px;
-            right: -100px;
-            animation-delay: 0s;
-        }
-
-        .bg-animation .orb:nth-child(2) {
-            width: 300px;
-            height: 300px;
-            background: #ff6b6b;
-            bottom: -50px;
-            left: -50px;
-            animation-delay: -7s;
-        }
-
-        .bg-animation .orb:nth-child(3) {
-            width: 250px;
-            height: 250px;
-            background: #4fc3f7;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation-delay: -14s;
-        }
-
-        @keyframes orbFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(50px, -30px) scale(1.1); }
-            50% { transform: translate(-20px, 40px) scale(0.9); }
-            75% { transform: translate(30px, -20px) scale(1.05); }
-        }
-
-        /* ===== STARS ===== */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle var(--duration) ease-in-out infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.8; }
-        }
-
-        /* ===== ERROR CONTAINER ===== */
+        .bg-animation .orb:nth-child(1) { width: 400px; height: 400px; background: #f7b731; top: -100px; right: -100px; animation-delay: 0s; }
+        .bg-animation .orb:nth-child(2) { width: 300px; height: 300px; background: #ff6b6b; bottom: -50px; left: -50px; animation-delay: -7s; }
+        .bg-animation .orb:nth-child(3) { width: 250px; height: 250px; background: #4fc3f7; top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -14s; }
+        @keyframes orbFloat { 0%, 100% { transform: translate(0, 0) scale(1); } 25% { transform: translate(50px, -30px) scale(1.1); } 50% { transform: translate(-20px, 40px) scale(0.9); } 75% { transform: translate(30px, -20px) scale(1.05); } }
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        .star { position: absolute; width: 2px; height: 2px; background: white; border-radius: 50%; animation: twinkle var(--duration) ease-in-out infinite; }
+        @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.8; } }
         .error-container {
             position: relative;
             z-index: 10;
+            text-align: center;
+            padding: 2rem;
             max-width: 600px;
-            padding: 40px;
-            background: rgba(18, 23, 43, 0.9);
-            border-radius: 30px;
-            border: 1px solid rgba(247, 183, 49, 0.2);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 0 60px rgba(247, 183, 49, 0.05);
             animation: fadeInUp 0.8s ease-out;
         }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== LOGO ===== */
-        .error-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            margin-bottom: 1.5rem;
-        }
-
-        .error-logo .logo-icon {
-            width: 48px;
-            height: 48px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .error-logo { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 1.5rem; }
+        .error-logo .logo-icon { width: 48px; height: 48px; position: relative; display: flex; align-items: center; justify-content: center; }
         .error-logo .logo-icon .ring {
             position: absolute;
             width: 100%;
@@ -155,7 +63,6 @@
             border-right-color: #ffaa00;
             animation: spinRing 3s linear infinite;
         }
-
         .error-logo .logo-icon .ring::after {
             content: '';
             position: absolute;
@@ -166,352 +73,65 @@
             border-left-color: rgba(255, 215, 0, 0.3);
             animation: spinRing 4s linear infinite reverse;
         }
-
-        .error-logo .logo-icon i {
-            position: relative;
-            z-index: 2;
-            font-size: 20px;
-            color: #ffd700;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            margin-left: 3px;
-        }
-
-        .error-logo .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
-
-        .error-logo .logo-text .brand {
-            font-size: 22px;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 1px;
-        }
-
-        .error-logo .logo-text .brand span {
-            color: #ffd700;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-        }
-
-        .error-logo .logo-text .sub {
-            font-size: 9px;
-            color: rgba(255, 255, 255, 0.4);
-            letter-spacing: 2px;
-            font-weight: 300;
-        }
-
-        .error-logo .logo-text .sub i {
-            color: #ffd700;
-        }
-
-        @keyframes spinRing {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* ===== ERROR CONTENT ===== */
-        .error-code {
-            font-size: 7rem;
-            font-weight: 800;
-            color: #f7b731;
-            line-height: 1;
-            text-shadow: 0 0 60px rgba(247, 183, 49, 0.2);
-        }
-
-        .error-title {
-            font-size: 2rem;
-            margin: 15px 0 10px;
-            background: linear-gradient(145deg, #ffffff 20%, #b0c4de);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .error-text {
-            color: #94a3b8;
-            font-size: 1.05rem;
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-
-        .error-text strong {
-            color: #f7b731;
-            -webkit-text-fill-color: #f7b731;
-        }
-
-        /* ===== SEARCH BOX ===== */
-        .search-box {
-            margin: 20px 0;
-        }
-
-        .search-box form {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .search-box input {
-            padding: 12px 20px;
-            border-radius: 30px;
-            border: 1px solid #2d3348;
-            background: #0b0d15;
-            color: #eef2f6;
-            width: 60%;
-            font-size: 0.95rem;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        .search-box input:focus {
-            border-color: #f7b731;
-            box-shadow: 0 0 0 3px rgba(247, 183, 49, 0.1);
-        }
-
-        .search-box input::placeholder {
-            color: #4a5068;
-        }
-
-        .search-box button {
-            padding: 12px 28px;
-            border-radius: 30px;
-            border: none;
-            background: #f7b731;
-            color: #0b0d15;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .search-box button:hover {
-            background: #e8a820;
-            transform: scale(1.02);
-        }
-
-        /* ===== BUTTONS ===== */
-        .btn-home {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #f7b731;
-            color: #0b0d15;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: 0.3s;
-            font-size: 1rem;
-            margin: 5px 0;
-        }
-
-        .btn-home:hover {
-            background: #e8a820;
-            transform: scale(1.03);
-            box-shadow: 0 0 30px rgba(247, 183, 49, 0.2);
-        }
-
-        .btn-support {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: transparent;
-            color: #cbd5e0;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            border: 1px solid #2d3348;
-            transition: 0.3s;
-            font-size: 1rem;
-            margin: 5px 0;
-            cursor: pointer;
-        }
-
-        .btn-support:hover {
-            border-color: #f7b731;
-            color: #f7b731;
-            background: rgba(247, 183, 49, 0.05);
-        }
-
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            margin: 15px 0;
-        }
-
-        /* ===== CONTACT LINKS ===== */
-        .contact-links {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .contact-links a {
-            color: #64748b;
-            font-size: 1.4rem;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-
-        .contact-links a:hover {
-            color: #f7b731;
-            transform: scale(1.1);
-        }
-
-        /* ===== COUNTDOWN ===== */
-        .countdown {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            color: #2d3348;
-        }
-
-        .countdown i {
-            color: rgba(247, 183, 49, 0.3);
-            margin-right: 6px;
-        }
-
-        .countdown span {
-            color: #f7b731;
-            font-weight: 600;
-        }
-
-        /* ===== GLITCH EFFECT ===== */
-        .glitch {
-            position: relative;
-            display: inline-block;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: '404';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.4;
-        }
-
-        .glitch::before {
-            color: #ff6b6b;
-            z-index: -1;
-            transform: translate(-3px, -2px);
-            animation: glitchShift 3s infinite;
-        }
-
-        .glitch::after {
-            color: #4fc3f7;
-            z-index: -1;
-            transform: translate(3px, 2px);
-            animation: glitchShift 2.5s infinite reverse;
-        }
-
-        @keyframes glitchShift {
-            0%, 100% { transform: translate(-3px, -2px); }
-            20% { transform: translate(2px, 3px); }
-            40% { transform: translate(-4px, 1px); }
-            60% { transform: translate(3px, -2px); }
-            80% { transform: translate(-2px, 4px); }
-        }
-
-        /* ===== RESPONSIVE ===== */
+        .error-logo .logo-icon i { position: relative; z-index: 2; font-size: 20px; color: #ffd700; text-shadow: 0 0 30px rgba(255,215,0,0.5); margin-left: 3px; }
+        .error-logo .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .error-logo .logo-text .brand { font-size: 22px; font-weight: 800; color: #ffffff; letter-spacing: 1px; }
+        .error-logo .logo-text .brand span { color: #ffd700; text-shadow: 0 0 30px rgba(255,215,0,0.3); }
+        .error-logo .logo-text .sub { font-size: 9px; color: rgba(255,255,255,0.4); letter-spacing: 2px; font-weight: 300; }
+        .error-logo .logo-text .sub i { color: #ffd700; }
+        @keyframes spinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .error-icon { font-size: 4.5rem; color: #f7b731; margin-bottom: 1rem; opacity: 0.6; animation: pulseIcon 2s ease-in-out infinite; }
+        @keyframes pulseIcon { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.1); opacity: 1; } }
+        .error-code { font-size: 7rem; font-weight: 800; color: #f7b731; text-shadow: 0 0 60px rgba(247,183,49,0.2); line-height: 1; margin-bottom: 0.5rem; letter-spacing: -4px; }
+        .error-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(145deg, #ffffff 20%, #b0c4de); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .error-subtitle { font-size: 1.2rem; color: #94a3b8; margin-bottom: 0.5rem; }
+        .error-desc { color: #64748b; font-size: 1rem; max-width: 450px; margin: 0 auto 2rem; line-height: 1.7; }
+        .error-actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+        .btn-home { display: inline-flex; align-items: center; gap: 0.7rem; background: #f7b731; color: #0b0d15; font-weight: 700; padding: 0.8rem 2.2rem; border-radius: 60px; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; font-size: 1rem; }
+        .btn-home:hover { background: #e8a820; transform: scale(1.03); box-shadow: 0 0 30px rgba(247,183,49,0.2); }
+        .btn-support { display: inline-flex; align-items: center; gap: 0.7rem; background: #1e2230; color: #cbd5e0; font-weight: 500; padding: 0.8rem 2.2rem; border-radius: 60px; text-decoration: none; border: 1px solid #2d3348; transition: all 0.3s; cursor: pointer; }
+        .btn-support:hover { border-color: #f7b731; color: #f7b731; background: rgba(247,183,49,0.05); }
+        .countdown { margin-top: 2rem; font-size: 0.8rem; color: #2d3348; }
+        .countdown i { color: rgba(247,183,49,0.3); margin-right: 6px; }
+        .countdown span { color: #f7b731; font-weight: 600; }
+        .glitch { position: relative; display: inline-block; }
+        .glitch::before, .glitch::after { content: '404'; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.5; }
+        .glitch::before { color: #ff6b6b; z-index: -1; transform: translate(-3px, -2px); animation: glitchShift 3s infinite; }
+        .glitch::after { color: #4fc3f7; z-index: -1; transform: translate(3px, 2px); animation: glitchShift 2.5s infinite reverse; }
+        @keyframes glitchShift { 0%, 100% { transform: translate(-3px, -2px); } 20% { transform: translate(2px, 3px); } 40% { transform: translate(-4px, 1px); } 60% { transform: translate(3px, -2px); } 80% { transform: translate(-2px, 4px); } }
         @media (max-width: 600px) {
-            .error-container { padding: 25px; }
             .error-code { font-size: 5rem; }
-            .error-title { font-size: 1.5rem; }
+            .error-title { font-size: 1.8rem; }
+            .error-icon { font-size: 3.5rem; }
+            .error-actions { flex-direction: column; align-items: center; }
+            .btn-home, .btn-support { width: 100%; justify-content: center; }
             .error-logo .logo-icon { width: 36px; height: 36px; }
             .error-logo .logo-text .brand { font-size: 16px; }
             .error-logo .logo-text .sub { font-size: 7px; }
-            .search-box input { width: 100%; }
-            .search-box button { width: 100%; }
-            .btn-group { flex-direction: column; align-items: center; }
-            .btn-home, .btn-support { width: 100%; justify-content: center; }
-            .contact-links { gap: 15px; }
-            .contact-links a { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-
-    <!-- ===== ANIMATED BACKGROUND ===== -->
-    <div class="bg-animation">
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-    </div>
-
-    <!-- ===== STARS ===== -->
+    <div class="bg-animation"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
     <div class="stars" id="stars"></div>
-
-    <!-- ===== ERROR CONTAINER ===== -->
     <div class="error-container">
-
-        <!-- ===== LOGO ===== -->
         <div class="error-logo">
-            <div class="logo-icon">
-                <div class="ring"></div>
-                <i class="fas fa-play"></i>
-            </div>
-            <div class="logo-text">
-                <span class="brand">DREAM <span>24K</span></span>
-                <span class="sub"><i class="fas fa-crown"></i> Premium IPTV Panel</span>
-            </div>
+            <div class="logo-icon"><div class="ring"></div><i class="fas fa-play"></i></div>
+            <div class="logo-text"><span class="brand">DREAM <span>24K</span></span><span class="sub"><i class="fas fa-crown"></i> Premium IPTV Panel</span></div>
         </div>
-
-        <!-- ===== ERROR ===== -->
+        <div class="error-icon"><i class="fas fa-satellite-dish"></i></div>
         <div class="error-code glitch">404</div>
         <h1 class="error-title">Signal Lost</h1>
-        <p class="error-text">
-            The channel you're trying to tune into is not available.<br />
-            It might have been moved, deleted, or never existed.
-        </p>
-
-        <!-- ===== SEARCH ===== -->
-        <div class="search-box">
-            <form action="/" method="get">
-                <input type="text" placeholder="Search DREAM 24K IPTV..." name="q" />
-                <button type="submit"><i class="fas fa-search"></i> Search</button>
-            </form>
-        </div>
-
-        <!-- ===== BUTTONS ===== -->
-        <div class="btn-group">
-            <a href="/" class="btn-home"><i class="fas fa-home"></i> Back to Home</a>
+        <p class="error-subtitle">The page you're looking for has drifted away</p>
+        <p class="error-desc">The channel you're trying to tune into is not available. Please check the URL or return to our homepage.</p>
+        <div class="error-actions">
+            <a href="/" class="btn-home"><i class="fas fa-home"></i> Back to DREAM 24K</a>
             <a href="#" class="btn-support" id="supportBtn"><i class="fas fa-headset"></i> Contact Support</a>
         </div>
-
-        <!-- ===== CONTACT LINKS ===== -->
-        <div class="contact-links">
-            <a href="https://wa.me/212663087765" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://t.me/reselleriptvcom" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
-            <a href="mailto:support@reselleriptv.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="/" title="Home"><i class="fas fa-home"></i></a>
-        </div>
-
-        <!-- ===== COUNTDOWN ===== -->
-        <div class="countdown">
-            <i class="fas fa-sync-alt"></i>
-            Auto-redirect in <span id="countdown">10</span> seconds
-        </div>
-
-        <!-- ===== COPYRIGHT ===== -->
-        <p style="margin-top: 20px; color: #2d3348; font-size: 0.75rem;">
-            &copy; 2026 <strong style="color:#f7b731;">DREAM 24K IPTV</strong> — Premium 4K &amp; 8K Streaming
-        </p>
-
+        <div class="countdown"><i class="fas fa-sync-alt"></i> Auto-redirect in <span id="countdown">10</span> seconds</div>
     </div>
-
-    <!-- ===== SCRIPT ===== -->
     <script>
         (function() {
-            'use strict';
-
-            // ===== GENERATE STARS =====
             const container = document.getElementById('stars');
             for (let i = 0; i < 150; i++) {
                 const star = document.createElement('div');
@@ -524,40 +144,24 @@
                 star.style.animationDelay = (Math.random() * 5) + 's';
                 container.appendChild(star);
             }
-
-            // ===== COUNTDOWN REDIRECT =====
             let seconds = 10;
             const countdownEl = document.getElementById('countdown');
-
             const redirectTimer = setInterval(() => {
                 seconds--;
                 if (countdownEl) countdownEl.textContent = seconds;
-                if (seconds <= 0) {
-                    clearInterval(redirectTimer);
-                    window.location.href = '/';
-                }
+                if (seconds <= 0) { clearInterval(redirectTimer); window.location.href = '/'; }
             }, 1000);
-
-            // ===== SUPPORT BUTTON =====
             document.getElementById('supportBtn').addEventListener('click', (e) => {
                 e.preventDefault();
-                alert('📱 DREAM 24K IPTV Support\n\n' +
-                    'Phone: +212 663-087765\n' +
-                    'Telegram: @reselleriptvcom\n' +
-                    'Email: support@reselleriptv.com\n\n' +
-                    'We\'re available 24/7 to help you!');
+                alert('📱 DREAM 24K IPTV Support\n\nPhone: +212 663-087765\nTelegram: @reselleriptvcom\nEmail: support@reselleriptv.com\n\nWe\'re available 24/7 to help you!');
             });
-
-            // ===== HOME BUTTON =====
             document.querySelector('.btn-home').addEventListener('click', (e) => {
                 e.preventDefault();
                 window.location.href = '/';
             });
-
             console.log('📡 404 - Signal Lost');
             console.log('🔄 Redirecting to homepage in 10 seconds...');
         })();
     </script>
-
 </body>
 </html>
