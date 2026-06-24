@@ -1,5 +1,16 @@
+# DREAM 24K IPTV - Robots.txt
+# Allow all crawlers but specify sitemap location
+
 User-agent: *
 Allow: /
+
+# Disallow admin or private areas (if any)
 Disallow: /admin/
+Disallow: /panel/
 Disallow: /private/
+
+# Sitemap location
 Sitemap: https://d24kiptv.com/sitemap.xml
+
+# Crawl delay for heavy crawlers
+Crawl-delay: 1
