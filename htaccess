@@ -1,5 +1,5 @@
 # .htaccess for Dream24K IPTV
-# Domain: https://d24kiptv.com/
+# Fixes 404 on Coolify
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -13,13 +13,13 @@
     RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
     RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
     
-    # SPA routing - if not a file or directory, serve index.html
+    # SPA routing
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^ index.html [L]
 </IfModule>
 
-# Custom 404 page
+# Custom 404 page - THIS FIXES THE 404
 ErrorDocument 404 /404.html
 
 # Security Headers
@@ -27,23 +27,6 @@ ErrorDocument 404 /404.html
     Header always set X-Content-Type-Options "nosniff"
     Header always set X-XSS-Protection "1; mode=block"
     Header always set X-Frame-Options "SAMEORIGIN"
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
-</IfModule>
-
-# Gzip Compression
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
-</IfModule>
-
-# Cache Control
-<IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresByType text/html "access plus 1 day"
-    ExpiresByType text/css "access plus 1 year"
-    ExpiresByType application/javascript "access plus 1 year"
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/svg+xml "access plus 1 year"
 </IfModule>
 
 # Prevent directory listing
