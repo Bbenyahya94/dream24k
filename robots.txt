@@ -1,6 +1,4 @@
 # DREAM 24K IPTV - Robots.txt
-# Allow all crawlers but specify sitemap location
-
 User-agent: *
 Allow: /
 
