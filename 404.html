@@ -3,59 +3,385 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 - Dream 24K IPTV | Page Not Found</title>
-    <meta name="description" content="Dream 24K IPTV - Page not found. Return to our premium IPTV subscription and reseller panel." />
-    <meta name="robots" content="noindex, follow" />
-    
-    <!-- ===== GOOGLE TAG ===== -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_GA4_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-YOUR_GA4_ID');
-    </script>
-    
+    <title>404 - Signal Lost | DREAM 24K IPTV</title>
+    <meta name="description" content="Page not found. Return to DREAM 24K IPTV - Premium 4K & 8K Streaming Service." />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
-        body { background: #0a0e1a; color: #e8edf5; display: flex; align-items: center; justify-content: center; min-height: 100vh; overflow-x: hidden; }
-        .error-wrapper { text-align: center; padding: 40px 24px; max-width: 700px; }
-        .error-wrapper .error-code { font-size: 120px; font-weight: 900; color: #f7c948; text-shadow: 0 0 80px rgba(247,201,72,0.15); line-height: 1; }
-        .error-wrapper h2 { font-size: 32px; font-weight: 700; margin: 10px 0 12px; color: #ffffff; }
-        .error-wrapper p { color: #8aa0c8; font-size: 18px; margin-bottom: 24px; line-height: 1.7; }
-        .error-wrapper .btn-home { display: inline-block; padding: 16px 48px; background: linear-gradient(145deg, #f7c948, #d4a020); border: none; border-radius: 60px; font-weight: 700; font-size: 18px; color: #0a0e1a; text-decoration: none; transition: 0.2s; box-shadow: 0 8px 30px rgba(212,160,32,0.3); }
-        .error-wrapper .btn-home:hover { transform: scale(1.04); box-shadow: 0 12px 40px rgba(212,160,32,0.4); }
-        .error-wrapper .contact-links { margin-top: 24px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .error-wrapper .contact-links a { display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; border-radius: 60px; font-weight: 600; font-size: 15px; text-decoration: none; color: #fff; transition: 0.2s; }
-        .error-wrapper .contact-links a:hover { transform: scale(1.04); }
-        .error-wrapper .contact-links .wa { background: #25D366; }
-        .error-wrapper .contact-links .tg { background: #0088cc; }
-        .error-wrapper .keywords { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 20px 0 28px; }
-        .error-wrapper .keywords span { background: rgba(247,201,72,0.06); border: 1px solid rgba(247,201,72,0.08); padding: 6px 18px; border-radius: 60px; font-size: 13px; color: #f7c948; }
-        @media (max-width: 600px) { .error-wrapper .error-code { font-size: 80px; } .error-wrapper h2 { font-size: 24px; } .error-wrapper p { font-size: 15px; } .error-wrapper .btn-home { padding: 14px 32px; font-size: 16px; } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #0b0d15;
+            color: #eef2f6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: radial-gradient(ellipse at center, #141824 0%, #050510 100%);
+            overflow: hidden;
+        }
+
+        .bg-animation .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+
+        .bg-animation .orb:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background: #f7b731;
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-animation .orb:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            background: #ff6b6b;
+            bottom: -50px;
+            left: -50px;
+            animation-delay: -7s;
+        }
+
+        .bg-animation .orb:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            background: #4fc3f7;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -30px) scale(1.1); }
+            50% { transform: translate(-20px, 40px) scale(0.9); }
+            75% { transform: translate(30px, -20px) scale(1.05); }
+        }
+
+        /* Stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+        }
+
+        /* 404 Content */
+        .error-container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-icon {
+            font-size: 5rem;
+            color: #f7b731;
+            margin-bottom: 1rem;
+            opacity: 0.6;
+            animation: pulseIcon 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 800;
+            color: #f7b731;
+            text-shadow: 0 0 60px rgba(247, 183, 49, 0.2);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -4px;
+        }
+
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(145deg, #ffffff 20%, #b0c4de);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .error-subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+
+        .error-desc {
+            color: #64748b;
+            font-size: 1rem;
+            max-width: 450px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .error-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: #f7b731;
+            color: #0b0d15;
+            font-weight: 700;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-home:hover {
+            background: #e8a820;
+            transform: scale(1.03);
+            box-shadow: 0 0 30px rgba(247, 183, 49, 0.2);
+        }
+
+        .btn-support {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: transparent;
+            color: #cbd5e0;
+            font-weight: 500;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            border: 1px solid #2d3348;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-support:hover {
+            border-color: #f7b731;
+            color: #f7b731;
+        }
+
+        /* Glitch effect on 404 */
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: '404';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+        }
+
+        .glitch::before {
+            color: #ff6b6b;
+            z-index: -1;
+            transform: translate(-3px, -2px);
+            animation: glitchShift 3s infinite;
+        }
+
+        .glitch::after {
+            color: #4fc3f7;
+            z-index: -1;
+            transform: translate(3px, 2px);
+            animation: glitchShift 2.5s infinite reverse;
+        }
+
+        @keyframes glitchShift {
+            0%, 100% { transform: translate(-3px, -2px); }
+            20% { transform: translate(2px, 3px); }
+            40% { transform: translate(-4px, 1px); }
+            60% { transform: translate(3px, -2px); }
+            80% { transform: translate(-2px, 4px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .error-code {
+                font-size: 5rem;
+            }
+            .error-title {
+                font-size: 1.8rem;
+            }
+            .error-icon {
+                font-size: 3.5rem;
+            }
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-home,
+            .btn-support {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="error-wrapper">
-        <div class="error-code">404</div>
-        <h2>Page Not Found</h2>
-        <p>Oops! The Dream 24K IPTV page you're looking for doesn't exist.</p>
-        <div class="keywords">
-            <span>Dream 24K IPTV</span>
-            <span>Dream24K IPTV</span>
-            <span>IPTV Subscription</span>
-            <span>IPTV Reseller</span>
-            <span>IPTV Panel</span>
-            <span>Premium IPTV</span>
-            <span>Best IPTV</span>
-            <span>4K IPTV</span>
+
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <!-- Stars -->
+    <div class="stars" id="stars"></div>
+
+    <!-- 404 Content -->
+    <div class="error-container">
+        <div class="error-icon">
+            <i class="fas fa-satellite-dish"></i>
         </div>
-        <a href="/" class="btn-home"><i class="fas fa-home"></i> Go Home</a>
-        <div class="contact-links">
-            <a href="#" class="wa" onclick="window.open('https://wa.me/212663087765?text=I%20need%20help%20finding%20a%20page%20on%20Dream24K%20IPTV','_blank')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="#" class="tg" onclick="window.open('https://t.me/reselleriptvcom?text=I%20need%20help%20finding%20a%20page%20on%20Dream24K%20IPTV','_blank')"><i class="fab fa-telegram-plane"></i> Telegram</a>
+
+        <div class="error-code glitch">404</div>
+
+        <h1 class="error-title">Signal Lost</h1>
+        <p class="error-subtitle">The page you're looking for has drifted away</p>
+        <p class="error-desc">
+            The channel you're trying to tune into is not available.
+            Please check the URL or return to our homepage.
+        </p>
+
+        <div class="error-actions">
+            <a href="/" class="btn-home">
+                <i class="fas fa-home"></i> Back to DREAM 24K
+            </a>
+            <a href="#" class="btn-support" id="supportBtn">
+                <i class="fas fa-headset"></i> Contact Support
+            </a>
+        </div>
+
+        <div style="margin-top: 2rem; font-size: 0.8rem; color: #2d3348;">
+            <i class="fas fa-sync-alt"></i> Auto-redirect in <span id="countdown">10</span> seconds
         </div>
     </div>
+
+    <script>
+        // ============================================================
+        // 404.html - Full interactive 404 page
+        // ============================================================
+
+        // --- Generate stars ---
+        (function createStars() {
+            const container = document.getElementById('stars');
+            const count = 150;
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = (Math.random() * 2 + 1) + 'px';
+                star.style.height = star.style.width;
+                star.style.setProperty('--duration', (2 + Math.random() * 4) + 's');
+                star.style.animationDelay = (Math.random() * 5) + 's';
+                container.appendChild(star);
+            }
+        })();
+
+        // --- Countdown redirect ---
+        let seconds = 10;
+        const countdownEl = document.getElementById('countdown');
+
+        const redirectTimer = setInterval(() => {
+            seconds--;
+            if (countdownEl) {
+                countdownEl.textContent = seconds;
+            }
+            if (seconds <= 0) {
+                clearInterval(redirectTimer);
+                window.location.href = '/';
+            }
+        }, 1000);
+
+        // --- Support button ---
+        document.getElementById('supportBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('📱 DREAM 24K IPTV Support\n\n' +
+                'Phone: +212 663-087765\n' +
+                'Telegram: @reselleriptvcom\n' +
+                'Email: support@reselleriptv.com\n\n' +
+                'We\'re available 24/7 to help you!');
+        });
+
+        // --- Home button - prevent default and redirect ---
+        document.querySelector('.btn-home').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = '/';
+        });
+
+        // --- Console info ---
+        console.log('📡 404 - Signal Lost');
+        console.log('🔄 Redirecting to homepage in 10 seconds...');
+        console.log('💡 DREAM 24K IPTV - Premium 4K & 8K Streaming');
+    </script>
+
 </body>
 </html>
