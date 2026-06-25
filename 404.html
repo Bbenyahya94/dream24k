@@ -1,404 +1,518 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 - Page Not Found | DREAM 24K IPTV</title>
-    <meta name="description" content="The page you're looking for doesn't exist. Return to DREAM 24K IPTV for premium 4K and 8K streaming." />
-    <meta name="robots" content="noindex, follow" />
-    <link rel="canonical" href="https://d24kiptv.com/404.html" />
-    <meta property="og:title" content="404 - Page Not Found | DREAM 24K IPTV" />
-    <meta property="og:description" content="The page you're looking for doesn't exist. Return to DREAM 24K IPTV for premium 4K and 8K streaming." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://d24kiptv.com/404.html" />
+    <title>404 · Signal Lost · DREAM 24K IPTV</title>
+    <meta name="description" content="Page not found · The channel you're looking for is offline. Return to DREAM 24K IPTV homepage." />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📺</text></svg>" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "404 - Page Not Found",
-        "description": "The page you're looking for doesn't exist.",
-        "breadcrumb": {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://d24kiptv.com/" }
-            ]
-        }
-    }
-    </script>
-    
     <style>
+        /* ===== RESET & BASE (matches main site) ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
             background: #0b0d15;
             color: #eef2f6;
+            line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            overflow-x: hidden;
         }
+
         .container {
-            max-width: 700px;
-            text-align: center;
-            padding: 20px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
+
+        a {
+            text-decoration: none;
+            color: #f7b731;
+            transition: 0.3s;
+        }
+
+        /* ===== HEADER (exact match) ===== */
+        header {
+            background: rgba(11, 13, 21, 0.95);
+            padding: 12px 0;
+            border-bottom: 2px solid rgba(247, 183, 49, 0.3);
+            backdrop-filter: blur(20px);
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            color: #f7b731;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #fff;
+            font-weight: 300;
+        }
+
+        .logo .tagline {
+            font-size: 0.65rem;
+            color: #64748b;
+            letter-spacing: 1px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #cbd5e0;
+            margin-left: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #f7b731;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f7b731;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .cta-nav {
+            background: #f7b731;
+            color: #0b0d15;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-weight: 700;
+        }
+        .nav-links .cta-nav:hover {
+            background: #e8a820;
+            color: #0b0d15;
+        }
+        .nav-links .cta-nav::after {
+            display: none;
+        }
+
+        /* ===== LANGUAGE DROPDOWN (placeholder) ===== */
+        .lang-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .lang-btn {
+            background: rgba(20, 24, 36, 0.8);
+            color: #eef2f6;
+            padding: 8px 16px;
+            border: 1px solid #2d3348;
+            border-radius: 30px;
+            cursor: default;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.7;
+        }
+        .lang-btn i {
+            opacity: 0.5;
+        }
+
+        /* ===== 404 HERO ===== */
+        .error-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 60px;
+            background: radial-gradient(circle at 30% 40%, #141824, #0b0d15 80%);
+            text-align: center;
+            min-height: 70vh;
+        }
+
+        .error-content {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        /* ===== ANIMATED ICON ===== */
+        .error-icon {
+            font-size: 7rem;
+            color: #f7b731;
+            display: inline-block;
+            margin-bottom: 10px;
+            animation: glitchFlicker 3s infinite ease-in-out;
+            position: relative;
+        }
+
+        .error-icon .fa-tv {
+            display: inline-block;
+            animation: tvPulse 2s infinite alternate;
+        }
+
+        .error-icon .fa-satellite-dish {
+            position: absolute;
+            font-size: 2.2rem;
+            top: -10px;
+            right: -30px;
+            color: #f7b731aa;
+            animation: spinDish 8s infinite linear;
+        }
+
+        @keyframes tvPulse {
+            0% { transform: scale(1) rotate(0deg); opacity: 0.9; }
+            100% { transform: scale(1.05) rotate(-2deg); opacity: 1; }
+        }
+
+        @keyframes spinDish {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes glitchFlicker {
+            0%, 100% { opacity: 1; transform: translateX(0) skewX(0deg); }
+            3% { opacity: 0.6; transform: translateX(-6px) skewX(-4deg); }
+            6% { opacity: 1; transform: translateX(4px) skewX(3deg); }
+            9% { opacity: 0.8; transform: translateX(-2px) skewX(-1deg); }
+            12% { opacity: 1; transform: translateX(0) skewX(0deg); }
+            92% { opacity: 1; }
+            95% { opacity: 0.3; transform: scale(0.98); }
+            97% { opacity: 1; transform: scale(1.02); }
+        }
+
+        /* ===== TEXT ===== */
         .error-code {
-            font-size: 10rem;
+            font-size: 7rem;
             font-weight: 800;
+            line-height: 1;
             background: linear-gradient(145deg, #f7b731, #e8a820);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1;
-            margin-bottom: 10px;
-            animation: pulse404 3s ease-in-out infinite;
+            margin-top: -0.2rem;
+            letter-spacing: 6px;
+            animation: codeGlow 3s infinite alternate;
         }
-        @keyframes pulse404 {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
+
+        @keyframes codeGlow {
+            0% { text-shadow: 0 0 20px rgba(247, 183, 49, 0.1); }
+            100% { text-shadow: 0 0 50px rgba(247, 183, 49, 0.25); }
         }
-        .icon-404 {
-            font-size: 4rem;
-            color: #f7b731;
-            margin-bottom: 15px;
-            display: block;
-        }
-        h1 {
-            font-size: 2.5rem;
+
+        .error-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin: 0.2rem 0 0.5rem;
             color: #fff;
-            margin-bottom: 10px;
         }
-        h1 span {
+
+        .error-title span {
             color: #f7b731;
         }
-        p {
-            font-size: 1.2rem;
+
+        .error-desc {
+            font-size: 1.15rem;
             color: #94a3b8;
-            margin-bottom: 30px;
-            line-height: 1.8;
+            max-width: 520px;
+            margin: 0.5rem auto 1.8rem;
+            line-height: 1.7;
         }
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
+
+        .error-desc i {
+            color: #f7b731;
+            margin: 0 4px;
         }
-        .btn-home {
+
+        /* ===== CTA BUTTON (matches main site) ===== */
+        .cta-btn {
             display: inline-block;
             background: #f7b731;
             color: #0b0d15;
-            padding: 14px 40px;
+            padding: 14px 44px;
             border-radius: 50px;
             font-weight: 700;
             font-size: 1.1rem;
-            text-decoration: none;
             transition: 0.3s;
-            box-shadow: 0 0 30px rgba(247, 183, 49, 0.2);
-        }
-        .btn-home:hover {
-            background: #e8a820;
-            transform: scale(1.05);
-            box-shadow: 0 0 50px rgba(247, 183, 49, 0.3);
-        }
-        .btn-home i {
-            margin-right: 10px;
-        }
-        .btn-support {
-            display: inline-block;
-            background: #2d3348;
-            color: #eef2f6;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: 0.3s;
-            border: 1px solid #3d4358;
-        }
-        .btn-support:hover {
-            background: #3d4358;
-            transform: scale(1.05);
-            border-color: #f7b731;
-        }
-        .btn-support i {
-            margin-right: 10px;
-        }
-        .search-box {
-            margin: 30px 0;
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .search-box input {
-            padding: 12px 25px;
-            border-radius: 50px;
-            border: 2px solid #2d3348;
-            background: #141824;
-            color: #eef2f6;
-            font-size: 1rem;
-            min-width: 250px;
-            flex: 1;
-            transition: 0.3s;
-        }
-        .search-box input:focus {
-            border-color: #f7b731;
-            outline: none;
-            box-shadow: 0 0 20px rgba(247, 183, 49, 0.1);
-        }
-        .search-box input::placeholder {
-            color: #64748b;
-        }
-        .search-box button {
-            padding: 12px 30px;
-            border-radius: 50px;
+            box-shadow: 0 0 30px rgba(247, 183, 49, 0.25);
             border: none;
-            background: #f7b731;
-            color: #0b0d15;
-            font-weight: 700;
-            font-size: 1rem;
             cursor: pointer;
-            transition: 0.3s;
         }
-        .search-box button:hover {
+
+        .cta-btn:hover {
             background: #e8a820;
-            transform: scale(1.03);
+            transform: scale(1.04);
+            box-shadow: 0 0 45px rgba(247, 183, 49, 0.4);
         }
-        .popular-links {
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid #2d3348;
+
+        .cta-btn i {
+            margin-right: 10px;
         }
-        .popular-links h3 {
-            color: #94a3b8;
-            font-weight: 400;
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-        .popular-links a {
-            color: #f7b731;
-            text-decoration: none;
-            margin: 0 12px;
-            font-size: 0.95rem;
-            transition: 0.3s;
-        }
-        .popular-links a:hover {
-            color: #fff;
-            text-decoration: underline;
-        }
-        .footer-404 {
-            margin-top: 40px;
-            color: #2d3348;
-            font-size: 0.85rem;
-        }
-        .footer-404 a {
-            color: #f7b731;
-            text-decoration: none;
-        }
-        
-        /* Language specific */
-        .lang-content {
-            display: none;
-        }
-        .lang-content.active {
-            display: block;
-        }
-        
-        .lang-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
+
+        /* ===== SEARCH GLITCH LINE ===== */
+        .glitch-line {
             display: flex;
-            gap: 8px;
-            background: rgba(20, 24, 36, 0.9);
-            padding: 8px 12px;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 1.5rem 0 0.8rem;
+            font-size: 0.85rem;
+            color: #64748b;
+            flex-wrap: wrap;
+        }
+
+        .glitch-line span {
+            background: rgba(20, 24, 36, 0.6);
+            padding: 4px 16px;
             border-radius: 40px;
             border: 1px solid #2d3348;
-            z-index: 100;
-            backdrop-filter: blur(10px);
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            animation: scanline 4s infinite;
         }
-        .lang-switcher a {
-            color: #94a3b8;
-            text-decoration: none;
-            padding: 4px 10px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            transition: 0.3s;
+
+        @keyframes scanline {
+            0%, 100% { opacity: 0.6; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(4px); }
         }
-        .lang-switcher a:hover {
+
+        /* ===== FOOTER (minimal, matches) ===== */
+        footer {
+            text-align: center;
+            padding: 18px 0 14px;
+            border-top: 1px solid #2d3348;
+            color: #64748b;
+            margin-top: auto;
+        }
+
+        footer a {
             color: #f7b731;
         }
-        .lang-switcher a.active-lang {
-            background: #f7b731;
-            color: #0b0d15;
+
+        footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 8px 0 6px;
         }
-        
-        @media (max-width: 600px) {
-            .error-code { font-size: 6rem; }
-            h1 { font-size: 1.8rem; }
-            p { font-size: 1rem; }
-            .btn-home, .btn-support { padding: 12px 25px; font-size: 0.95rem; }
-            .search-box input { min-width: 180px; }
-            .lang-switcher { top: 10px; right: 10px; padding: 6px 10px; }
-            .lang-switcher a { font-size: 0.65rem; padding: 3px 8px; }
+
+        footer .social-links a {
+            color: #64748b;
+            font-size: 1.3rem;
+            transition: 0.3s;
+        }
+
+        footer .social-links a:hover {
+            color: #f7b731;
+            transform: scale(1.1);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-flex {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .header-right {
+                width: 100%;
+                justify-content: center;
+            }
+            .nav-links a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+            }
+            .error-code {
+                font-size: 5rem;
+            }
+            .error-icon {
+                font-size: 5rem;
+            }
+            .error-icon .fa-satellite-dish {
+                font-size: 1.6rem;
+                right: -18px;
+                top: -6px;
+            }
+            .error-title {
+                font-size: 1.8rem;
+            }
+            .error-desc {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+            .cta-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links a {
+                margin: 0 5px;
+                font-size: 0.7rem;
+            }
+            .nav-links .cta-nav {
+                padding: 4px 10px;
+                font-size: 0.7rem;
+            }
+            .logo h1 {
+                font-size: 1.3rem;
+            }
+            .error-code {
+                font-size: 4rem;
+            }
+            .error-icon {
+                font-size: 4rem;
+            }
+            .error-title {
+                font-size: 1.4rem;
+            }
+            .glitch-line {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* ===== RTL ===== */
+        [dir="rtl"] .nav-links a {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+        [dir="rtl"] .cta-btn i {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+        [dir="rtl"] .error-icon .fa-satellite-dish {
+            right: auto;
+            left: -30px;
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== LANGUAGE SWITCHER ===== -->
-    <div class="lang-switcher">
-        <a href="#" data-lang="en" class="active-lang">EN</a>
-        <a href="#" data-lang="fr">FR</a>
-        <a href="#" data-lang="es">ES</a>
-        <a href="#" data-lang="de">DE</a>
-        <a href="#" data-lang="ar">AR</a>
-    </div>
+    <!-- ===== HEADER (exact match) ===== -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <h1>DREAM <span>24K</span></h1>
+                <div class="tagline"><i class="fas fa-crown"></i> Premium IPTV Panel</div>
+            </div>
+            <div class="header-right">
+                <nav class="nav-links" aria-label="Main navigation">
+                    <a href="https://d24kiptv.com/#packages">Packages</a>
+                    <a href="https://d24kiptv.com/#reseller">Reseller</a>
+                    <a href="https://d24kiptv.com/#features">Features</a>
+                    <a href="https://d24kiptv.com/#faq">FAQ</a>
+                    <a href="https://d24kiptv.com/#contact">Support</a>
+                    <a href="https://d24kiptv.com/#trial" class="cta-nav"><i class="fas fa-gift"></i> Free Trial</a>
+                </nav>
+                <div class="lang-dropdown">
+                    <span class="lang-btn"><i class="fas fa-globe"></i> EN <i class="fas fa-chevron-down"></i></span>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <div class="container">
-        <!-- ENGLISH -->
-        <div class="lang-content active" data-lang="en">
-            <span class="icon-404">📺</span>
+    <!-- ===== 404 CONTENT ===== -->
+    <section class="error-section">
+        <div class="error-content">
+
+            <!-- animated icon -->
+            <div class="error-icon">
+                <i class="fas fa-tv"></i>
+                <i class="fas fa-satellite-dish"></i>
+            </div>
+
+            <!-- 404 code -->
             <div class="error-code">404</div>
-            <h1>Page <span>Not Found</span></h1>
-            <p>Oops! The page you're looking for doesn't exist or has been moved.<br>
-            But don't worry — you can still enjoy premium <strong>DREAM 24K IPTV</strong> 4K/8K streaming.</p>
-        </div>
 
-        <!-- FRENCH -->
-        <div class="lang-content" data-lang="fr">
-            <span class="icon-404">📺</span>
-            <div class="error-code">404</div>
-            <h1>Page <span>Introuvable</span></h1>
-            <p>Oups ! La page que vous recherchez n'existe pas ou a été déplacée.<br>
-            Mais ne vous inquiétez pas — vous pouvez toujours profiter du streaming <strong>DREAM 24K IPTV</strong> 4K/8K.</p>
-        </div>
+            <!-- title -->
+            <h1 class="error-title">
+                <span>Signal</span> Lost
+            </h1>
 
-        <!-- SPANISH -->
-        <div class="lang-content" data-lang="es">
-            <span class="icon-404">📺</span>
-            <div class="error-code">404</div>
-            <h1>Página <span>No Encontrada</span></h1>
-            <p>¡Ups! La página que buscas no existe o ha sido movida.<br>
-            Pero no te preocupes — todavía puedes disfrutar del streaming <strong>DREAM 24K IPTV</strong> 4K/8K.</p>
-        </div>
+            <!-- description -->
+            <p class="error-desc">
+                <i class="fas fa-exclamation-triangle"></i>
+                The channel you're looking for is
+                <strong style="color:#f7b731;">offline</strong>
+                or never existed.
+                <br />
+                Maybe it's time to <i class="fas fa-arrow-right"></i> 
+                <span style="color:#f7b731;">zap</span> back to our main lineup.
+            </p>
 
-        <!-- GERMAN -->
-        <div class="lang-content" data-lang="de">
-            <span class="icon-404">📺</span>
-            <div class="error-code">404</div>
-            <h1>Seite <span>Nicht Gefunden</span></h1>
-            <p>Hoppla! Die von Ihnen gesuchte Seite existiert nicht oder wurde verschoben.<br>
-            Aber keine Sorge — Sie können weiterhin <strong>DREAM 24K IPTV</strong> 4K/8K Streaming genießen.</p>
-        </div>
+            <!-- glitch / scan line -->
+            <div class="glitch-line">
+                <span><i class="fas fa-search"></i> NO SIGNAL</span>
+                <span><i class="fas fa-sync-alt fa-spin"></i> SCANNING</span>
+                <span><i class="fas fa-tint"></i> 0%</span>
+            </div>
 
-        <!-- ARABIC -->
-        <div class="lang-content" data-lang="ar">
-            <span class="icon-404">📺</span>
-            <div class="error-code">404</div>
-            <h1>الصفحة <span>غير موجودة</span></h1>
-            <p>عذراً! الصفحة التي تبحث عنها غير موجودة أو تم نقلها.<br>
-            ولكن لا تقلق — لا يزال بإمكانك الاستمتاع ببث <strong>DREAM 24K IPTV</strong> 4K/8K.</p>
-        </div>
+            <!-- CTA button -->
+            <a href="https://d24kiptv.com/" class="cta-btn">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
 
-        <!-- ===== BUTTONS ===== -->
-        <div class="btn-group">
-            <a href="index.html" class="btn-home"><i class="fas fa-home"></i> Back to Home</a>
-            <a href="https://wa.me/212663087765" target="_blank" class="btn-support"><i class="fab fa-whatsapp"></i> Contact Support</a>
         </div>
+    </section>
 
-        <!-- ===== SEARCH ===== -->
-        <div class="search-box">
-            <input type="text" placeholder="🔍 Search DREAM 24K..." id="searchInput">
-            <button onclick="searchSite()"><i class="fas fa-search"></i> Search</button>
+    <!-- ===== FOOTER (minimal) ===== -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://wa.me/212663087765" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://t.me/reselleriptvcom" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="mailto:support@reselleriptv.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p style="font-size:0.85rem; margin-top:4px;">
+                &copy; <span id="year">2026</span> <strong style="color:#f7b731;">DREAM 24K IPTV</strong>
+            </p>
         </div>
+    </footer>
 
-        <!-- ===== POPULAR LINKS ===== -->
-        <div class="popular-links">
-            <h3><i class="fas fa-arrow-right" style="color:#f7b731;"></i> Quick Links</h3>
-            <a href="index.html#subscriptions">Packages</a>
-            <a href="index.html#reseller">Reseller</a>
-            <a href="index.html#trial">Free Trial</a>
-            <a href="index.html#faq">FAQ</a>
-            <a href="index.html#contact">Support</a>
-        </div>
-
-        <div class="footer-404">
-            &copy; <span id="year">2026</span> <strong style="color:#f7b731;">DREAM 24K IPTV</strong> — Premium 4K &amp; 8K Streaming
-        </div>
-    </div>
-
+    <!-- ===== YEAR SCRIPT ===== -->
     <script>
-        (function() {
-            'use strict';
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-            // ===== YEAR =====
-            document.getElementById('year').textContent = new Date().getFullYear();
-
-            // ===== LANGUAGE SWITCHER =====
-            const langLinks = document.querySelectorAll('.lang-switcher a');
-            const langContent = document.querySelectorAll('.lang-content');
-
-            function setLanguage(lang) {
-                // Update active class on links
-                langLinks.forEach(link => {
-                    link.classList.toggle('active-lang', link.dataset.lang === lang);
-                });
-                // Show correct content
-                langContent.forEach(el => {
-                    el.classList.toggle('active', el.dataset.lang === lang);
-                });
-                // Update URL
-                const url = new URL(window.location);
-                url.searchParams.set('lang', lang);
-                window.history.pushState({}, '', url);
+        // ===== RTL TOGGLE (demo: press "R" to toggle RTL) =====
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'r' || e.key === 'R') {
+                const html = document.documentElement;
+                if (html.dir === 'rtl') {
+                    html.dir = 'ltr';
+                } else {
+                    html.dir = 'rtl';
+                }
             }
+        });
 
-            // Get language from URL
-            function getLangFromURL() {
-                const params = new URLSearchParams(window.location.search);
-                const lang = params.get('lang');
-                return lang && ['en', 'fr', 'es', 'de', 'ar'].includes(lang) ? lang : 'en';
-            }
-
-            langLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    setLanguage(this.dataset.lang);
-                });
-            });
-
-            // Init
-            const initialLang = getLangFromURL();
-            setLanguage(initialLang);
-
-            // ===== SEARCH =====
-            window.searchSite = function() {
-                const input = document.getElementById('searchInput');
-                const query = input.value.trim();
-                if (!query) return;
-                // Redirect to home with search param
-                window.location.href = 'index.html?search=' + encodeURIComponent(query);
-            };
-
-            document.getElementById('searchInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') window.searchSite();
-            });
-
-            console.log('✅ 404 page loaded with language support');
-
-        })();
+        console.log('📺 DREAM 24K IPTV · 404 Signal Lost · Press "R" to toggle RTL');
     </script>
 
 </body>
