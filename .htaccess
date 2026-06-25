@@ -1,99 +1,46 @@
-# ============================================================
-# DREAM 24K IPTV - .htaccess
-# Version: 2.0
-# ============================================================
+# .htaccess for DREAM 24K IPTV
 
-# ============================================================
-# SSL REDIRECT - Force HTTPS
-# ============================================================
+# Enable mod_rewrite
 RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
-# ============================================================
-# REDIRECT NON-WWW TO WWW
-# ============================================================
-RewriteCond %{HTTP_HOST} ^d24kiptv\.com [NC]
-RewriteRule ^(.*)$ https://www.d24kiptv.com/$1 [R=301,L]
+# Force HTTPS (uncomment when SSL is active)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
-# ============================================================
-# CUSTOM 404 ERROR PAGE
-# ============================================================
+# Redirect www to non-www (or vice versa)
+RewriteCond %{HTTP_HOST} ^www\.d24kiptv\.com [NC]
+RewriteRule ^(.*)$ https://d24kiptv.com/$1 [R=301,L]
+
+# Custom 404 error page
 ErrorDocument 404 /404.html
-ErrorDocument 403 /404.html
-ErrorDocument 500 /404.html
 
-# ============================================================
-# REMOVE TRAILING SLASH
-# ============================================================
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)/$ /$1 [R=301,L]
-
-# ============================================================
-# GZIP COMPRESSION - For faster loading
-# ============================================================
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json
-    AddOutputFilterByType DEFLATE image/svg+xml application/x-font-ttf application/x-font-woff
-</IfModule>
-
-# ============================================================
-# CACHE CONTROL - For better performance
-# ============================================================
-<IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresByType text/html "access plus 1 hour"
-    ExpiresByType text/css "access plus 1 week"
-    ExpiresByType text/javascript "access plus 1 week"
-    ExpiresByType image/webp "access plus 1 month"
-    ExpiresByType image/jpeg "access plus 1 month"
-    ExpiresByType image/png "access plus 1 month"
-    ExpiresByType application/json "access plus 1 day"
-</IfModule>
-
-# ============================================================
-# BLOCK BAD BOTS
-# ============================================================
-<IfModule mod_rewrite.c>
-    RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
-    RewriteCond %{HTTP_USER_AGENT} (acunetix|ahrefs|binlar|BlackWidow|Bolt|casper|dotbot|Easou|exabot|GrabNet|LWP::Simple|majestic|MJ12bot|rogerbot|Semrush|Scrapy|Snoopy|spbot|SurveyBot|VoidEYE|zgrab|ZmEu) [NC]
-    RewriteRule ^ - [F,L]
-</IfModule>
-
-# ============================================================
-# SECURITY HEADERS
-# ============================================================
-<IfModule mod_headers.c>
-    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "DENY"
-    Header set X-XSS-Protection "1; mode=block"
-    Header set Referrer-Policy "strict-origin-when-cross-origin"
-    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-</IfModule>
-
-# ============================================================
-# PREVENT DIRECT ACCESS TO .HTACCESS FILES
-# ============================================================
-<Files .htaccess>
-    Order Allow,Deny
-    Deny from all
-</Files>
-
-<FilesMatch "^(\.htaccess|\.htpasswd|\.env|\.git|composer\.json|package\.json)$">
-    Order Allow,Deny
-    Deny from all
-</FilesMatch>
-
-# ============================================================
-# PREVENT DIRECTORY BROWSING
-# ============================================================
+# Prevent directory listing
 Options -Indexes
 
-# ============================================================
-# CUSTOM 404 PAGE DIRECT ACCESS
-# ============================================================
-<Files "404.html">
-    Order Allow,Deny
-    Allow from all
-</Files>
+# Cache static files
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/json "access plus 0 seconds"
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/xml "access plus 0 seconds"
+</IfModule>
+
+# Compress text files
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json text/xml
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
