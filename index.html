@@ -1343,12 +1343,12 @@
 </style>
 </head>
 <body>
-   <!-- ===== HEADER ===== -->
+<!-- ===== HEADER ===== -->
 <header id="mainHeader">
     <div class="container header-flex">
         <div class="logo">
             <h1>DREAM <span>24K</span></h1>
-            <div class="tagline"><i class="fas fa-crown"></i> Premium IPTV Panel</div>
+            <div class="tagline"><i class="fas fa-crown"></i> <span data-i18n="nav.tagline">Premium IPTV Panel</span></div>
         </div>
         <div class="header-right">
             <!-- Hamburger Menu Button -->
@@ -1357,13 +1357,14 @@
             </button>
             <!-- Navigation -->
             <nav class="nav-links" id="mainNav">
-                <a href="#subscriptions">Packages</a>
-                <a href="#reseller">Reseller</a>
-                <a href="#features">Features</a>
-                <a href="#faq">FAQ</a>
-                <a href="#contact">Support</a>
-                <a href="#trial" class="cta-nav"><i class="fas fa-gift"></i> Free Trial</a>
+                <a href="#subscriptions" data-i18n="nav.packages">Packages</a>
+                <a href="#reseller" data-i18n="nav.reseller">Reseller</a>
+                <a href="#features" data-i18n="nav.features">Features</a>
+                <a href="#faq" data-i18n="nav.faq">FAQ</a>
+                <a href="#contact" data-i18n="nav.support">Support</a>
+                <a href="#trial" class="cta-nav" data-i18n="nav.trial"><i class="fas fa-gift"></i> Free Trial</a>
             </nav>
+            <!-- Language Switcher -->
             <div class="lang-dropdown">
                 <button class="lang-btn" id="langToggle"><i class="fas fa-globe"></i> <span id="currentLang">EN</span> <i class="fas fa-chevron-down"></i></button>
                 <div class="lang-dropdown-content" id="langMenu">
@@ -2259,7 +2260,7 @@
         console.log('✨ DREAM 24K IPTV · Global Network with animated overlay & zoom locked!');
     </script>
 
-    <script>
+   <script>
         (function() {
             'use strict';
 
@@ -2342,7 +2343,9 @@
                 yearSpan.textContent = new Date().getFullYear();
             }
 
-            // ===== COMPLETE TRANSLATIONS =====
+            // ============================================================
+            // COMPLETE TRANSLATIONS
+            // ============================================================
             const translations = {
                 en: {
                     'nav.tagline': 'Premium IPTV Panel',
@@ -2856,26 +2859,30 @@
                 }
             };
 
-            // ===== LANGUAGE DROPDOWN =====
-            const langDropdown = document.querySelector('.lang-dropdown');
-            const langLinks = document.querySelectorAll('.lang-dropdown-content a');
-            const currentLangLabel = document.getElementById('current-lang-label');
+            // ============================================================
+            // LANGUAGE SWITCHER
+            // ============================================================
+            const langLinks = document.querySelectorAll('#langMenu a');
+            const currentLangSpan = document.getElementById('currentLang');
 
-            const setLanguage = (lang) => {
-                document.documentElement.lang = lang;
+            function setLanguage(lang) {
+                // Update button text
+                const langNames = { en: 'EN', fr: 'FR', es: 'ES', de: 'DE', ar: 'AR' };
+                if (currentLangSpan) currentLangSpan.textContent = langNames[lang] || 'EN';
+
+                // Update active class on menu items
+                langLinks.forEach(link => {
+                    link.classList.toggle('active-lang', link.dataset.lang === lang);
+                });
+
+                // Update RTL for Arabic
                 if (lang === 'ar') {
                     document.documentElement.dir = 'rtl';
                 } else {
                     document.documentElement.dir = 'ltr';
                 }
-                // Update active class
-                langLinks.forEach(link => {
-                    link.classList.toggle('active-lang', link.dataset.lang === lang);
-                });
-                // Update label
-                const labelMap = { en: 'EN', ar: 'AR', fr: 'FR', es: 'ES', de: 'DE' };
-                currentLangLabel.textContent = labelMap[lang] || 'EN';
-                // Translate content
+
+                // Translate all elements with data-i18n
                 const t = translations[lang] || translations.en;
                 document.querySelectorAll('[data-i18n]').forEach(el => {
                     const key = el.dataset.i18n;
@@ -2883,25 +2890,81 @@
                         el.textContent = t[key];
                     }
                 });
+
+                // Save preference
                 localStorage.setItem('dream24k-lang', lang);
-            };
+            }
 
-            // Load saved language
-            const savedLang = localStorage.getItem('dream24k-lang') || 'en';
-            setLanguage(savedLang);
-
+            // Language menu clicks
             langLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const lang = this.dataset.lang;
                     setLanguage(lang);
                     // Close dropdown
-                    const dropdownContent = document.querySelector('.lang-dropdown-content');
-                    if (dropdownContent) dropdownContent.style.display = 'none';
+                    document.getElementById('langMenu').style.display = 'none';
                 });
             });
 
-            // ===== SMOOTH SCROLL FOR NAV LINKS =====
+            // Toggle dropdown
+            document.getElementById('langToggle').addEventListener('click', function(e) {
+                e.stopPropagation();
+                const menu = document.getElementById('langMenu');
+                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            // Close dropdown on outside click
+            document.addEventListener('click', function() {
+                document.getElementById('langMenu').style.display = 'none';
+            });
+
+            // Load saved language
+            const savedLang = localStorage.getItem('dream24k-lang') || 'en';
+            setLanguage(savedLang);
+
+            // ============================================================
+            // MOBILE MENU TOGGLE
+            // ============================================================
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    mainNav.classList.toggle('open');
+                    
+                    const icon = this.querySelector('i');
+                    if (mainNav.classList.contains('open')) {
+                        icon.className = 'fas fa-times';
+                    } else {
+                        icon.className = 'fas fa-bars';
+                    }
+                });
+            }
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (mainNav && mainNav.classList.contains('open')) {
+                    if (!e.target.closest('nav') && !e.target.closest('.menu-toggle')) {
+                        mainNav.classList.remove('open');
+                        const icon = menuToggle?.querySelector('i');
+                        if (icon) icon.className = 'fas fa-bars';
+                    }
+                }
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (mainNav && mainNav.classList.contains('open')) {
+                        mainNav.classList.remove('open');
+                        const icon = menuToggle?.querySelector('i');
+                        if (icon) icon.className = 'fas fa-bars';
+                    }
+                });
+            });
+
+            // ===== SMOOTH SCROLL =====
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
