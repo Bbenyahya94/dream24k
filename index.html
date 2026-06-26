@@ -26,7 +26,7 @@
     <meta name="twitter:description" content="DREAM 24K IPTV subscription offers premium 4K & 8K streaming with 40,000+ channels, VOD, and reseller plans." />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📺</text></svg>" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <style>
+   <style>
         /* ============================================================
            DREAM 24K IPTV - COMPLETE STYLES
            ============================================================ */
@@ -113,6 +113,28 @@
             align-items: center;
             gap: 15px;
             flex-wrap: wrap;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #eef2f6;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: 0.3s;
+            z-index: 1001;
+        }
+
+        .menu-toggle:hover {
+            color: #f7b731;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .nav-links a {
@@ -225,6 +247,7 @@
             border-radius: 10px;
             font-size: 0.85rem;
             transition: 0.2s;
+            cursor: pointer;
         }
 
         .lang-dropdown-content a:hover {
@@ -384,7 +407,7 @@
             }
         }
 
-        /* ===== HERO TEXT SECTION (below map) ===== */
+        /* ===== HERO TEXT SECTION ===== */
         .hero-text {
             text-align: center;
             padding: 60px 0 40px;
@@ -1058,64 +1081,190 @@
             transform: scale(1.1);
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ============================================================
+           RESPONSIVE STYLES
+           ============================================================ */
+
         @media (max-width: 768px) {
             .header-flex {
-                flex-direction: column;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+                padding: 5px 0;
+            }
+            
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            .logo .tagline {
+                font-size: 0.55rem;
+            }
+            
+            .header-right {
+                width: auto;
                 gap: 10px;
             }
-            .header-right {
+            
+            .menu-toggle {
+                display: block;
+                order: 1;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(11, 13, 21, 0.98);
+                padding: 20px;
+                border-bottom: 2px solid rgba(247, 183, 49, 0.3);
+                backdrop-filter: blur(20px);
+                gap: 5px;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
                 width: 100%;
-                justify-content: center;
+                z-index: 999;
             }
+            
+            .nav-links.open {
+                display: flex;
+            }
+            
             .nav-links a {
-                margin: 0 8px;
-                font-size: 0.8rem;
+                margin: 0;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                border-bottom: 1px solid rgba(45, 51, 72, 0.5);
+                width: 100%;
+                text-align: center;
+                color: #eef2f6;
             }
+            
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-links a::after {
+                display: none;
+            }
+            
+            .nav-links .cta-nav {
+                background: #f7b731;
+                color: #0b0d15;
+                padding: 10px 20px;
+                border-radius: 30px;
+                font-weight: 700;
+                margin-top: 5px;
+            }
+            
+            .nav-links .cta-nav:hover {
+                background: #e8a820;
+                color: #0b0d15;
+            }
+            
+            .lang-dropdown {
+                order: 2;
+            }
+            
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.75rem;
+            }
+            
+            .lang-dropdown-content {
+                right: -10px;
+                min-width: 160px;
+            }
+            
+            .lang-dropdown-content a {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
             .hero-text h1 {
                 font-size: 2rem;
             }
+            
             .sub-card.popular {
                 transform: scale(1);
             }
+            
             .qr-grid {
                 flex-direction: column;
                 align-items: center;
             }
+            
             .qr-item {
                 max-width: 100%;
                 width: 100%;
             }
+            
             .faq-grid {
                 grid-template-columns: 1fr;
             }
+            
             #earth-container {
                 margin-top: 60px;
                 height: 80vh;
                 min-height: 400px;
             }
+            
             .map-overlay h2 {
                 font-size: 1.5rem;
             }
+            
             .map-overlay p {
                 font-size: 0.8rem;
                 padding: 0.3rem 0.8rem;
             }
+            
             .qr-item .qr-code {
                 width: 140px;
                 height: 140px;
             }
+            
             .stats-banner {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
                 padding: 20px 15px;
             }
+            
             .stats-banner .stat-item .number {
                 font-size: 1.8rem;
             }
         }
 
         @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1rem;
+            }
+            
+            .logo .tagline {
+                display: none;
+            }
+            
+            .nav-links a {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+            
+            .lang-btn {
+                padding: 4px 10px;
+                font-size: 0.7rem;
+            }
+            
+            .lang-btn i {
+                font-size: 0.7rem;
+            }
+
+            .nav-links .cta-nav {
+                font-size: 0.8rem;
+                padding: 8px 15px;
+            }
+            
             .nav-links a {
                 margin: 0 5px;
                 font-size: 0.7rem;
@@ -1142,58 +1291,92 @@
                 font-size: 0.7rem;
             }
         }
-        /* RTL support */
+
+        /* ============================================================
+           RTL SUPPORT
+           ============================================================ */
         [dir="rtl"] .nav-links a {
             margin-left: 0;
             margin-right: 20px;
         }
+        
         [dir="rtl"] .sub-card ul li i {
             margin-right: 0;
             margin-left: 10px;
         }
+        
         [dir="rtl"] .cta-btn i {
             margin-right: 0;
             margin-left: 10px;
         }
+        
         [dir="rtl"] .hero-text .features-hero span i {
             margin-right: 0;
             margin-left: 8px;
         }
+        
         [dir="rtl"] .contact-cta .contact-info i {
             margin-right: 0;
             margin-left: 10px;
         }
-    </style>
+
+        [dir="rtl"] .menu-toggle {
+            order: 0;
+        }
+        
+        [dir="rtl"] .lang-dropdown {
+            order: 1;
+        }
+        
+        [dir="rtl"] .lang-dropdown-content {
+            right: auto;
+            left: -10px;
+        }
+
+        /* ===== LANGUAGE CONTENT ===== */
+        .lang-content {
+            display: none;
+        }
+        .lang-content.active {
+            display: block;
+        }
+</style>
 </head>
 <body>
-    <header id="mainHeader">
-        <div class="container header-flex">
-            <div class="logo">
-                <h1>DREAM <span>24K</span></h1>
-                <div class="tagline"><i class="fas fa-crown"></i> <span data-i18n="nav.tagline">Premium IPTV Panel</span></div>
-            </div>
-            <div class="header-right">
-                <nav class="nav-links" aria-label="Main navigation">
-                    <a href="#subscriptions" data-i18n="nav.packages">Packages</a>
-                    <a href="#reseller" data-i18n="nav.reseller">Reseller</a>
-                    <a href="#features" data-i18n="nav.features">Features</a>
-                    <a href="#faq" data-i18n="nav.faq">FAQ</a>
-                    <a href="#contact" data-i18n="nav.support">Support</a>
-                    <a href="#trial" class="cta-nav" data-i18n="nav.trial"><i class="fas fa-gift"></i> Free Trial</a>
-                </nav>
-                <div class="lang-dropdown">
-                    <button class="lang-btn" aria-label="Language switcher"><i class="fas fa-globe"></i> <span id="current-lang-label">EN</span> <i class="fas fa-chevron-down"></i></button>
-                    <div class="lang-dropdown-content" role="menu">
-                        <a href="#" data-lang="en" class="active-lang" role="menuitem">🇬🇧 English</a>
-                        <a href="#" data-lang="ar" role="menuitem">🇸🇦 العربية</a>
-                        <a href="#" data-lang="fr" role="menuitem">🇫🇷 Français</a>
-                        <a href="#" data-lang="es" role="menuitem">🇪🇸 Español</a>
-                        <a href="#" data-lang="de" role="menuitem">🇩🇪 Deutsch</a>
-                    </div>
+   <!-- ===== HEADER ===== -->
+<header id="mainHeader">
+    <div class="container header-flex">
+        <div class="logo">
+            <h1>DREAM <span>24K</span></h1>
+            <div class="tagline"><i class="fas fa-crown"></i> Premium IPTV Panel</div>
+        </div>
+        <div class="header-right">
+            <!-- Hamburger Menu Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Navigation -->
+            <nav class="nav-links" id="mainNav">
+                <a href="#subscriptions">Packages</a>
+                <a href="#reseller">Reseller</a>
+                <a href="#features">Features</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Support</a>
+                <a href="#trial" class="cta-nav"><i class="fas fa-gift"></i> Free Trial</a>
+            </nav>
+            <div class="lang-dropdown">
+                <button class="lang-btn" id="langToggle"><i class="fas fa-globe"></i> <span id="currentLang">EN</span> <i class="fas fa-chevron-down"></i></button>
+                <div class="lang-dropdown-content" id="langMenu">
+                    <a href="#" data-lang="en" class="active-lang">🇬🇧 English</a>
+                    <a href="#" data-lang="fr">🇫🇷 Français</a>
+                    <a href="#" data-lang="es">🇪🇸 Español</a>
+                    <a href="#" data-lang="de">🇩🇪 Deutsch</a>
+                    <a href="#" data-lang="ar">🇸🇦 العربية</a>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
     <main>
         <div id="earth-container">
